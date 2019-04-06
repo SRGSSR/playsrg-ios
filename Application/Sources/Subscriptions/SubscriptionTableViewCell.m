@@ -168,7 +168,7 @@
 
 - (id)previewObject
 {
-    return self.show;
+    return (! self.editing) ? self.show : nil;
 }
 
 #pragma mark Notifications

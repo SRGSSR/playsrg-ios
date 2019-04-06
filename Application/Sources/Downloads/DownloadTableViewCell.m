@@ -299,7 +299,7 @@
 
 - (id)previewObject
 {
-    return self.download.media;
+    return (! self.editing) ? self.download.media : nil;
 }
 
 #pragma mark Notifications

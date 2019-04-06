@@ -381,7 +381,7 @@
     [self.favorite objectForType:FavoriteTypeUnspecified available:NULL withCompletionBlock:^(SRGMedia * _Nullable media, NSError * _Nullable error) {
         previewObject = media;
     }];
-    return previewObject;
+    return (! self.editing) ? previewObject : nil;
 }
 
 #pragma mark Notifications

@@ -336,7 +336,7 @@
 
 - (id)previewObject
 {
-    return self.media;
+    return (! self.editing) ? self.media : nil;
 }
 
 #pragma mark Notifications
