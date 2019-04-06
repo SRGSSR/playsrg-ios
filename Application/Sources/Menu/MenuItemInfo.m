@@ -80,6 +80,11 @@
             break;
         }
             
+        case MenuItemWatchLater: {
+            image = [UIImage imageNamed:@"watch_later-22"];
+            break;
+        }
+            
         case MenuItemDownloads: {
             image = [UIImage imageNamed:@"download-22"];
             break;

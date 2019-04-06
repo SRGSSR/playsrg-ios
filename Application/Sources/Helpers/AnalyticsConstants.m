@@ -23,7 +23,8 @@ NSString *AnalyticsNameForPageType(AnalyticsPageType pageType)
                      @(AnalyticsPageTypeNotifications) : NSLocalizedString(@"Notifications", @"[Technical] Notifications page type for analytics measurements"),
                      @(AnalyticsPageTypeSearch) : NSLocalizedString(@"Search", @"[Technical] Search page type for analytics measurements"),
                      @(AnalyticsPageTypeOnboarding) : NSLocalizedString(@"Onboarding", @"[Technical] Onboarding page type for analytics measurements"),
-                     @(AnalyticsPageTypeUser) : PlaySRGNonLocalizedString(@"User") };
+                     @(AnalyticsPageTypeUser) : PlaySRGNonLocalizedString(@"User"),
+                     @(AnalyticsPageTypeWatchLater) : PlaySRGNonLocalizedString(@"Watch later") };
     });
     return s_names[@(pageType)];
 }
@@ -57,6 +58,9 @@ AnalyticsTitle const AnalyticsTitleSubscriptionRemoveAll = @"subscription_remove
 AnalyticsTitle const AnalyticsTitleSubscriptionOpenShow = @"show_subscription";
 AnalyticsTitle const AnalyticsTitleSearch = @"search";
 AnalyticsTitle const AnalyticsTitleUserActivity = @"user_activity_ios";
+AnalyticsTitle const AnalyticsTitleWatchLaterRemove = @"watch_later_remove";
+AnalyticsTitle const AnalyticsTitleWatchLaterRemoveAll = @"watch_later_remove_all";
+AnalyticsTitle const AnalyticsTitleWatchLaterOpenMedia = @"play_watch_later";
 
 AnalyticsSource const AnalyticsSourceAutomatic = @"automatic";
 AnalyticsSource const AnalyticsSourceButton = @"button";

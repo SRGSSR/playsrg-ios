@@ -24,7 +24,8 @@ typedef NS_ENUM(NSInteger, AnalyticsPageType) {
     AnalyticsPageTypeNotifications,
     AnalyticsPageTypeSearch,
     AnalyticsPageTypeOnboarding,
-    AnalyticsPageTypeUser
+    AnalyticsPageTypeUser,
+    AnalyticsPageTypeWatchLater
 };
 
 /**
@@ -173,6 +174,21 @@ OBJC_EXPORT AnalyticsTitle const AnalyticsTitleSearch;
  *  Title for events related to opening a user activity
  */
 OBJC_EXPORT AnalyticsTitle const AnalyticsTitleUserActivity;
+
+/**
+ *  Title for events related to deletion of a watch later entry
+ */
+OBJC_EXPORT AnalyticsTitle const AnalyticsTitleWatchLaterRemove;
+
+/**
+ *  Title for events related to deletion of all watch alter entries
+ */
+OBJC_EXPORT AnalyticsTitle const AnalyticsTitleWatchLaterRemoveAll;
+
+/**
+ *  Title for events related to watch later playback
+ */
+OBJC_EXPORT AnalyticsTitle const AnalyticsTitleWatchLaterOpenMedia;
 
 /**
  *  @name Analytics values

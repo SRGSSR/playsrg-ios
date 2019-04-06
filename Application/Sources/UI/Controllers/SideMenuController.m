@@ -21,6 +21,7 @@
 #import "ShowsViewController.h"
 #import "SubscriptionsViewController.h"
 #import "UIDevice+PlaySRG.h"
+#import "WatchLaterViewController.h"
 #import "WebViewController.h"
 
 #import <ComScore/ComScore.h>
@@ -374,6 +375,11 @@ static const CGFloat SideMenuOffset = -50.f;
                 
             case MenuItemSubscriptions: {
                 viewController = [[SubscriptionsViewController alloc] init];
+                break;
+            }
+                
+            case MenuItemWatchLater: {
+                viewController = [[WatchLaterViewController alloc] init];
                 break;
             }
                 

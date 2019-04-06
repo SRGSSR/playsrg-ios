@@ -474,7 +474,7 @@ name: srgmediaplayer-ios, nameSpecified: , owner: SRGSSR, version: dfa597d
 
 name: srgnetwork-ios, nameSpecified: , owner: SRGSSR, version: 2318934
 
-name: srguserdata-ios, nameSpecified: , owner: SRGSSR, version: 55d82c7
+name: srguserdata-ios, nameSpecified: , owner: SRGSSR, version: 9c9a23c
 
 name: tagcommander-ios, nameSpecified: , owner: SRGSSR, version: 4.1.5_4.1.3
 

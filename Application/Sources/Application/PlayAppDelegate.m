@@ -107,6 +107,7 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
     NSURL *storeFileURL = [HLSApplicationLibraryDirectoryURL() URLByAppendingPathComponent:@"PlayData.sqlite"];
     SRGUserData.currentUserData = [[SRGUserData alloc] initWithStoreFileURL:storeFileURL
                                                           historyServiceURL:applicationConfiguration.historyServiceURL
+                                                        playlistsServiceURL:nil
                                                             identityService:SRGIdentityService.currentIdentityService];
     
     // Setup Google Cast

@@ -41,6 +41,7 @@
         [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemSubscriptions]];
     }
     [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemFavorites]];
+    [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemWatchLater]];
     [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemDownloads]];
     
     [sectionInfos addObject:[[MenuSectionInfo alloc] initWithTitle:NSLocalizedString(@"My content", @"Menu section header label for user personal content")

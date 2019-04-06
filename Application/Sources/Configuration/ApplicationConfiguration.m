@@ -128,6 +128,7 @@ NSString *TitleForMenuItem(MenuItem menuItem)
         s_names = @{ @(MenuItemSearch) : NSLocalizedString(@"Search", @"Label in the left menu to present the search view"),
                      @(MenuItemFavorites) : NSLocalizedString(@"Favorites", @"Label in the left menu to present favorites"),
                      @(MenuItemSubscriptions) : NSLocalizedString(@"Subscriptions", @"Label in the left menu to present subscriptions"),
+                     @(MenuItemWatchLater) : NSLocalizedString(@"Watch later", @"Label in the left menu to present Watch later list"),
                      @(MenuItemDownloads) : NSLocalizedString(@"Downloads", @"Label in the left menu to present downloads"),
                      @(MenuItemHistory) : NSLocalizedString(@"History", @"Label in the left menu to present history"),
                      @(MenuItemTVOverview) : NSLocalizedString(@"Overview", @"Label in the left menu to present the main TV view"),
