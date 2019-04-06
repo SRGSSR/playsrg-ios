@@ -1024,11 +1024,11 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     
     if (WatchLaterContainsMediaMetadata(media)) {
         [self.watchLaterButton setImage:[UIImage imageNamed:@"watch_later_full-48"] forState:UIControlStateNormal];
-        self.watchLaterButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Remove from watch later list", @"Media watch later removal label");
+        self.watchLaterButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Remove from \"Watch later\" list", @"Media watch later removal label");
     }
     else {
         [self.watchLaterButton setImage:[UIImage imageNamed:@"watch_later-48"] forState:UIControlStateNormal];
-        self.watchLaterButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Add to watch later list", @"Media watch later creation label");
+        self.watchLaterButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Add to \"Watch later\" list", @"Media watch later creation label");
     }
 }
 

@@ -12,7 +12,6 @@
 #import "ApplicationSettings.h"
 #import "Banner.h"
 #import "Download.h"
-#import "Favorite.h"
 #import "GoogleCast.h"
 #import "History.h"
 #import "MediaPlayerViewController.h"
@@ -29,6 +28,7 @@
 #import "UIView+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 #import "UIWindow+PlaySRG.h"
+#import "WatchLater.h"
 
 #import <Masonry/Masonry.h>
 #import <SRGAnalytics_DataProvider/SRGAnalytics_DataProvider.h>
@@ -166,22 +166,22 @@
 {
     NSMutableArray<id<UIPreviewActionItem>> *previewActionItems = [NSMutableArray array];
     
-    Favorite *favorite = [Favorite favoriteForMedia:self.media];
-    BOOL favorited = (favorite != nil);
+    BOOL inWatchLaterList = WatchLaterContainsMediaMetadata(self.media);
     
-    UIPreviewAction *favoriteAction = [UIPreviewAction actionWithTitle:favorited ? NSLocalizedString(@"Remove from favorites", @"Button label to remove a favorite from the media preview window") : NSLocalizedString(@"Add to favorites", @"Button label to add a favorite from the media preview window") style:favorited ? UIPreviewActionStyleDestructive : UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-        [Favorite toggleFavoriteForMedia:self.media];
-        
-        // Use !favorited since favorited status has been reversed
-        AnalyticsTitle analyticsTitle = (! favorited) ? AnalyticsTitleFavoriteAdd : AnalyticsTitleFavoriteRemove;
-        SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
-        labels.source = AnalyticsSourcePeekMenu;
-        labels.value = self.media.URN;
-        [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:analyticsTitle labels:labels];
-        
-        [Banner showFavorite:! favorited forItemWithName:self.media.title inViewController:nil /* Not 'self' since dismissed */];
+    UIPreviewAction *watchLaterAction = [UIPreviewAction actionWithTitle:inWatchLaterList ? NSLocalizedString(@"Remove from \"Watch later\"", @"Button label to remove a media from the watch later list, from the media preview window") : NSLocalizedString(@"Add to \"Watch later\"", @"Button label to add a media to the watch later list, from the media preview window") style:inWatchLaterList ? UIPreviewActionStyleDestructive : UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        WatchLaterToggleMediaMetadata(self.media, ^(BOOL added, NSError * _Nullable error) {
+            if (! error) {
+                AnalyticsTitle analyticsTitle = added ? AnalyticsTitleWatchLaterAdd : AnalyticsTitleWatchLaterRemove;
+                SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
+                labels.source = AnalyticsSourcePeekMenu;
+                labels.value = self.media.URN;
+                [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:analyticsTitle labels:labels];
+                
+                [Banner showWatchLaterAdded:added forItemWithName:self.media.title inViewController:self];
+            }
+        });
     }];
-    [previewActionItems addObject:favoriteAction];
+    [previewActionItems addObject:watchLaterAction];
     
     BOOL downloadable = [Download canDownloadMedia:self.media];
     if (downloadable) {
