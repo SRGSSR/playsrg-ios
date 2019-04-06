@@ -107,6 +107,11 @@
 		08280F112258EA4000AC978D /* WatchLaterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08280F0E2258EA4000AC978D /* WatchLaterViewController.storyboard */; };
 		08280F122258EA4000AC978D /* WatchLaterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08280F0E2258EA4000AC978D /* WatchLaterViewController.storyboard */; };
 		08280F132258EA4000AC978D /* WatchLaterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08280F0E2258EA4000AC978D /* WatchLaterViewController.storyboard */; };
+		08280F162258F02400AC978D /* WatchLater.m in Sources */ = {isa = PBXBuildFile; fileRef = 08280F142258F02300AC978D /* WatchLater.m */; };
+		08280F172258F02400AC978D /* WatchLater.m in Sources */ = {isa = PBXBuildFile; fileRef = 08280F142258F02300AC978D /* WatchLater.m */; };
+		08280F182258F02400AC978D /* WatchLater.m in Sources */ = {isa = PBXBuildFile; fileRef = 08280F142258F02300AC978D /* WatchLater.m */; };
+		08280F192258F02400AC978D /* WatchLater.m in Sources */ = {isa = PBXBuildFile; fileRef = 08280F142258F02300AC978D /* WatchLater.m */; };
+		08280F1A2258F02400AC978D /* WatchLater.m in Sources */ = {isa = PBXBuildFile; fileRef = 08280F142258F02300AC978D /* WatchLater.m */; };
 		0837CEA91D3F7B5D00A1E089 /* HomeMediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0837CEA71D3F7B5D00A1E089 /* HomeMediaCollectionViewCell.m */; };
 		0837CEAA1D3F7B5D00A1E089 /* HomeMediaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0837CEA81D3F7B5D00A1E089 /* HomeMediaCollectionViewCell.xib */; };
 		0837CEAB1D3FAEE100A1E089 /* HomeMediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0837CEA71D3F7B5D00A1E089 /* HomeMediaCollectionViewCell.m */; };
@@ -1570,6 +1575,8 @@
 		0827DA231F0D437400A31A42 /* SRGMedia+PlaySRG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRGMedia+PlaySRG.h"; sourceTree = "<group>"; };
 		0827DA241F0D437400A31A42 /* SRGMedia+PlaySRG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRGMedia+PlaySRG.m"; sourceTree = "<group>"; };
 		08280F0E2258EA4000AC978D /* WatchLaterViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WatchLaterViewController.storyboard; sourceTree = "<group>"; };
+		08280F142258F02300AC978D /* WatchLater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatchLater.m; sourceTree = "<group>"; };
+		08280F152258F02300AC978D /* WatchLater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchLater.h; sourceTree = "<group>"; };
 		0837CEA61D3F7B5D00A1E089 /* HomeMediaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMediaCollectionViewCell.h; sourceTree = "<group>"; };
 		0837CEA71D3F7B5D00A1E089 /* HomeMediaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMediaCollectionViewCell.m; sourceTree = "<group>"; };
 		0837CEA81D3F7B5D00A1E089 /* HomeMediaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeMediaCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -2380,6 +2387,8 @@
 		086320F22258C6CF00C719A6 /* WatchLater */ = {
 			isa = PBXGroup;
 			children = (
+				08280F152258F02300AC978D /* WatchLater.h */,
+				08280F142258F02300AC978D /* WatchLater.m */,
 				086320F92258C6CF00C719A6 /* WatchLaterTableViewCell.h */,
 				086320F62258C6CF00C719A6 /* WatchLaterTableViewCell.m */,
 				086320FA2258C6CF00C719A6 /* WatchLaterTableViewCell.xib */,
@@ -5249,6 +5258,7 @@
 				087A88351EAA610500525C2A /* LiveAccessView.m in Sources */,
 				E6971AED1D4B300C008CA703 /* PlayApplicationError.m in Sources */,
 				08C691351D391A1B00BB8AAA /* HomeMediaListTableViewCell.m in Sources */,
+				08280F162258F02400AC978D /* WatchLater.m in Sources */,
 				08BAABDA1E7613F0007644D7 /* HomeMediasViewController.m in Sources */,
 				08A3ED021FA2612E00A517EF /* SRGDataProvider+PlaySRG.m in Sources */,
 				08AA551D1D49EBF600C5026E /* ApplicationConfiguration.m in Sources */,
@@ -5371,6 +5381,7 @@
 				6F4760801EB37DF1003021EA /* UIDevice+PlaySRG.m in Sources */,
 				6F12DB5121A3EFBF0054879D /* HistoryViewController.m in Sources */,
 				6FA9ECBB20C7AB3A00D3D6C2 /* NotificationTableViewCell.m in Sources */,
+				08280F172258F02400AC978D /* WatchLater.m in Sources */,
 				08DD9D601FFE6EF800115906 /* ModuleViewController.m in Sources */,
 				088899462077628300242654 /* TVChannel.m in Sources */,
 				E66BEC1D1DA7FCED00AD4450 /* MediaPlayerViewController.m in Sources */,
@@ -5510,6 +5521,7 @@
 				6F4760871EB37DF1003021EA /* UIDevice+PlaySRG.m in Sources */,
 				6F12DB5221A3EFBF0054879D /* HistoryViewController.m in Sources */,
 				6FA9ECBC20C7AB3A00D3D6C2 /* NotificationTableViewCell.m in Sources */,
+				08280F182258F02400AC978D /* WatchLater.m in Sources */,
 				08DD9D641FFE6EF900115906 /* ModuleViewController.m in Sources */,
 				088899472077628400242654 /* TVChannel.m in Sources */,
 				E66BEC1E1DA7FCED00AD4450 /* MediaPlayerViewController.m in Sources */,
@@ -5649,6 +5661,7 @@
 				6F47608E1EB37DF1003021EA /* UIDevice+PlaySRG.m in Sources */,
 				6F12DB5321A3EFBF0054879D /* HistoryViewController.m in Sources */,
 				6FA9ECBD20C7AB3A00D3D6C2 /* NotificationTableViewCell.m in Sources */,
+				08280F192258F02400AC978D /* WatchLater.m in Sources */,
 				08DD9D681FFE6EF900115906 /* ModuleViewController.m in Sources */,
 				088899482077628400242654 /* TVChannel.m in Sources */,
 				E66BEC1F1DA7FCED00AD4450 /* MediaPlayerViewController.m in Sources */,
@@ -5788,6 +5801,7 @@
 				6F4760951EB37DF2003021EA /* UIDevice+PlaySRG.m in Sources */,
 				6F12DB5421A3EFBF0054879D /* HistoryViewController.m in Sources */,
 				6FA9ECBE20C7AB3A00D3D6C2 /* NotificationTableViewCell.m in Sources */,
+				08280F1A2258F02400AC978D /* WatchLater.m in Sources */,
 				08DD9D6C1FFE6EFA00115906 /* ModuleViewController.m in Sources */,
 				088899492077628500242654 /* TVChannel.m in Sources */,
 				E66BEC201DA7FCED00AD4450 /* MediaPlayerViewController.m in Sources */,

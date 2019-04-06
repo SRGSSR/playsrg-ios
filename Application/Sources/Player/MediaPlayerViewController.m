@@ -12,7 +12,6 @@
 #import "ApplicationConfiguration.h"
 #import "Banner.h"
 #import "Download.h"
-#import "Favorite.h"
 #import "GoogleCast.h"
 #import "History.h"
 #import "LiveAccessView.h"
@@ -42,6 +41,7 @@
 #import "UIView+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 #import "UIWindow+PlaySRG.h"
+#import "WatchLater.h"
 
 #import <FXReachability/FXReachability.h>
 #import <GoogleCast/GoogleCast.h>
@@ -50,6 +50,7 @@
 #import <Masonry/Masonry.h>
 #import <SRGAnalytics_DataProvider/SRGAnalytics_DataProvider.h>
 #import <SRGAppearance/SRGAppearance.h>
+#import <SRGUserData/SRGUserData.h>
 
 // Store the most recently used landscape orientation, also between player instantiations (so that the user last used
 // orientation is preferred)
@@ -89,7 +90,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 @property (nonatomic, weak) IBOutlet GCKUICastButton *googleCastButton;
 @property (nonatomic, weak) IBOutlet UIButton *downloadButton;
 @property (nonatomic, weak) IBOutlet UIButton *subscriptionButton;
-@property (nonatomic, weak) IBOutlet UIButton *favoriteButton;
+@property (nonatomic, weak) IBOutlet UIButton *watchLaterButton;
 @property (nonatomic, weak) IBOutlet UIButton *shareButton;
 
 @property (nonatomic, weak) IBOutlet UIView *playerView;
@@ -259,7 +260,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
         @strongify(letterboxController)
         
         [self updateDownloadStatus];
-        [self updateFavoriteStatus];
+        [self updateWatchLaterStatus];
         [self updateSharingStatus];
         
         [self updateSubscriptionStatus];
@@ -384,9 +385,9 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
                                                name:FXReachabilityStatusDidChangeNotification
                                              object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(favoriteStateDidChange:)
-                                               name:FavoriteStateDidChangeNotification
-                                             object:nil];
+                                           selector:@selector(playlistsDidChange:)
+                                               name:SRGPlaylistsDidChangeNotification
+                                             object:SRGUserData.currentUserData.playlists];
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(downloadStateDidChange:)
                                                name:DownloadStateDidChangeNotification
@@ -683,7 +684,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
         [self.relatedContentsStackView play_setHidden:YES];
     }
     
-    [self updateFavoriteStatus];
+    [self updateWatchLaterStatus];
     [self updateSubscriptionStatus];
     
     [self updateliveAccessViewContentForMediaType:media.mediaType force:NO];
@@ -829,7 +830,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     }
     
     [self updateDownloadStatusForMedia:mainChapterMedia];
-    [self updateFavoriteStatusForMedia:mainChapterMedia];
+    [self updateWatchLaterStatusForMedia:mainChapterMedia];
     [self updateSharingStatusForMedia:mainChapterMedia];
     
     [self updateSubscriptionStatus];
@@ -1007,27 +1008,27 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     }
 }
 
-- (void)updateFavoriteStatus
+- (void)updateWatchLaterStatus
 {
-    [self updateFavoriteStatusForMedia:[self mainChapterMedia]];
+    [self updateWatchLaterStatusForMedia:[self mainChapterMedia]];
 }
 
-- (void)updateFavoriteStatusForMedia:(SRGMedia *)media
+- (void)updateWatchLaterStatusForMedia:(SRGMedia *)media
 {
     if (self.letterboxController.continuousPlaybackUpcomingMedia || ! media) {
-        self.favoriteButton.hidden = YES;
+        self.watchLaterButton.hidden = YES;
         return;
     }
     
-    self.favoriteButton.hidden = NO;
+    self.watchLaterButton.hidden = NO;
     
-    if ([Favorite favoriteForMedia:media]) {
-        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite_full-48"] forState:UIControlStateNormal];
-        self.favoriteButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Remove favorite", @"Media favorite removal label");
+    if (WatchLaterContainsMediaMetadata(media)) {
+        [self.watchLaterButton setImage:[UIImage imageNamed:@"watch_later_full-48"] forState:UIControlStateNormal];
+        self.watchLaterButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Remove from watch later list", @"Media watch later removal label");
     }
     else {
-        [self.favoriteButton setImage:[UIImage imageNamed:@"favorite-48"] forState:UIControlStateNormal];
-        self.favoriteButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Favorite", @"Media favorite creation label");
+        [self.watchLaterButton setImage:[UIImage imageNamed:@"watch_later-48"] forState:UIControlStateNormal];
+        self.watchLaterButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Add to watch later list", @"Media watch later creation label");
     }
 }
 
@@ -1383,14 +1384,11 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 - (void)letterboxView:(SRGLetterboxView *)letterboxView didLongPressSubdivision:(SRGSubdivision *)subdivision
 {
     SRGMedia *media = [self.letterboxController.mediaComposition mediaForSubdivision:subdivision];
-    Favorite *favorite = [Favorite toggleFavoriteForMedia:media];
-    [Banner showFavorite:(favorite != nil) forItemWithName:media.title inViewController:self];
-}
-
-- (BOOL)letterboxView:(SRGLetterboxView *)letterboxView shouldDisplayFavoriteForSubdivision:(SRGSubdivision *)subdivision
-{
-    SRGMedia *media = [self.letterboxController.mediaComposition mediaForSubdivision:subdivision];
-    return media && [Favorite favoriteForMedia:media];
+    WatchLaterAddMediaMetadata(media, ^(NSError * _Nullable error) {
+        if (! error) {
+            [Banner showWatchLaterAdded:YES forItemWithName:media.title inViewController:self];
+        }
+    });
 }
 
 #pragma mark SRGLetterboxPictureInPictureDelegate protocol
@@ -1479,23 +1477,24 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 
 #pragma mark Actions
 
-- (IBAction)toggleFavorite:(id)sender
+- (IBAction)toggleWatchLater:(id)sender
 {
     SRGMedia *mainChapterMedia = [self mainChapterMedia];
     if (! mainChapterMedia) {
         return;
     }
     
-    Favorite *favorite = [Favorite toggleFavoriteForMedia:mainChapterMedia];
-    [self updateFavoriteStatus];
-    
-    AnalyticsTitle analyticsTitle = (favorite) ? AnalyticsTitleFavoriteAdd : AnalyticsTitleFavoriteRemove;
-    SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
-    labels.source = AnalyticsSourceButton;
-    labels.value = mainChapterMedia.URN;
-    [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:analyticsTitle labels:labels];
-    
-    [Banner showFavorite:(favorite != nil) forItemWithName:mainChapterMedia.title inViewController:self];
+    WatchLaterToggleMediaMetadata(mainChapterMedia, ^(BOOL added, NSError * _Nullable error) {
+        if (!error) {
+            AnalyticsTitle analyticsTitle = added ? AnalyticsTitleWatchLaterAdd : AnalyticsTitleWatchLaterRemove;
+            SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
+            labels.source = AnalyticsSourceButton;
+            labels.value = mainChapterMedia.URN;
+            [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:analyticsTitle labels:labels];
+            
+            [Banner showWatchLaterAdded:added forItemWithName:mainChapterMedia.title inViewController:self];
+        }
+    });
 }
 
 - (IBAction)toggleSubscription:(id)sender
@@ -1898,10 +1897,14 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     }
 }
 
-- (void)favoriteStateDidChange:(NSNotification *)notification
+- (void)playlistsDidChange:(NSNotification *)notification
 {
-    [self updateFavoriteStatus];
-    [self.letterboxView setNeedsSubdivisionFavoritesUpdate];
+    if ([notification.userInfo[SRGPlaylistChangedUidsKey] containsObject:SRGWatchLaterPlaylistUid]) {
+        NSDictionary *playlistEntryChanges = notification.userInfo[SRGPlaylistEntryChangesKey][SRGWatchLaterPlaylistUid];
+        if (playlistEntryChanges && [playlistEntryChanges[SRGPlaylistEntryChangedUidsSubKey] containsObject:[self mainChapterMedia].URN]) {
+            [self updateWatchLaterStatus];
+        }
+    }
 }
 
 - (void)downloadStateDidChange:(NSNotification *)notification

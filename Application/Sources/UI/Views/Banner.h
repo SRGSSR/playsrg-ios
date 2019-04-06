@@ -71,6 +71,14 @@ typedef NS_ENUM(NSInteger, BannerStyle) {
 + (void)showSubscription:(BOOL)subscribed forShowWithName:(nullable NSString *)name inView:(nullable UIView *)view;
 + (void)showSubscription:(BOOL)subscribed forShowWithName:(nullable NSString *)name inViewController:(nullable UIViewController *)viewController;
 
+/**
+ *  Show a banner telling the user that the specified item has been added to or removed from the watch later list.
+ *
+ *  @discussion If no name is provided, a standard description will be used.
+ */
++ (void)showWatchLaterAdded:(BOOL)added forItemWithName:(nullable NSString *)name inView:(nullable UIView *)view;
++ (void)showWatchLaterAdded:(BOOL)added forItemWithName:(nullable NSString *)name inViewController:(nullable UIViewController *)viewController;
+
 @end
 
 NS_ASSUME_NONNULL_END

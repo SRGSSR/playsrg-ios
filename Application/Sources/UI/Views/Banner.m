@@ -100,7 +100,7 @@ static NSString *BannerShortenedName(NSString *name);
         name = NSLocalizedString(@"The selected content", @"Name of the favorited item, if no title or name to display");
     }
     
-    NSString *messageFormatString = isFavorite ? NSLocalizedString(@"%@ has been added to favorites", @"Message displayed at the top of the screen when adding a media or a show to the favorite list. Quotes are managed by the application.") : NSLocalizedString(@"%@ has been removed from favorites", @"Message displayed at the top of the screen when removing an item to the favorite list. Quotes are managed by the application.");
+    NSString *messageFormatString = isFavorite ? NSLocalizedString(@"%@ has been added to favorites", @"Message displayed at the top of the screen when adding a media or a show to the favorite list. Quotes are managed by the application.") : NSLocalizedString(@"%@ has been removed from favorites", @"Message displayed at the top of the screen when removing an item from the favorite list. Quotes are managed by the application.");
     NSString *message = [NSString stringWithFormat:messageFormatString, BannerShortenedName(name)];
     UIImage *image = isFavorite ? [UIImage imageNamed:@"favorite_full-22"] : [UIImage imageNamed:@"favorite-22"];
     [self showWithStyle:BannerStyleInfo message:message image:image sticky:NO inViewController:viewController];
@@ -120,6 +120,23 @@ static NSString *BannerShortenedName(NSString *name);
     NSString *messageFormatString = subscribed ? NSLocalizedString(@"%@ has been added to subscriptions", @"Message displayed at the top of the screen when adding an item to the subscription list. Quotes are managed by the application.") : NSLocalizedString(@"%@ has been removed from subscriptions", @"Message at the top of the screen displayed when removing an item from the subscription list. Quotes are managed by the application.");
     NSString *message = [NSString stringWithFormat:messageFormatString, BannerShortenedName(name)];
     UIImage *image = subscribed ? [UIImage imageNamed:@"subscription_full-22"] : [UIImage imageNamed:@"subscription-22"];
+    [self showWithStyle:BannerStyleInfo message:message image:image sticky:NO inViewController:viewController];
+}
+
++ (void)showWatchLaterAdded:(BOOL)added forItemWithName:(NSString *)name inView:(UIView *)view
+{
+    [self showWatchLaterAdded:added forItemWithName:name inViewController:view.nearestViewController];
+}
+
++ (void)showWatchLaterAdded:(BOOL)added forItemWithName:(NSString *)name inViewController:(UIViewController *)viewController
+{
+    if (! name) {
+        name = NSLocalizedString(@"The selected content", @"Name of the watch later item, if no title or name to display");
+    }
+    
+    NSString *messageFormatString = added ? NSLocalizedString(@"%@ has been added to watch later list", @"Message displayed at the top of the screen when adding a media to the watch later list. Quotes are managed by the application.") : NSLocalizedString(@"%@ has been removed from watch later list", @"Message displayed at the top of the screen when removing an item from the watch later list. Quotes are managed by the application.");
+    NSString *message = [NSString stringWithFormat:messageFormatString, BannerShortenedName(name)];
+    UIImage *image = added ? [UIImage imageNamed:@"watch_later_full-22"] : [UIImage imageNamed:@"watch_later-22"];
     [self showWithStyle:BannerStyleInfo message:message image:image sticky:NO inViewController:viewController];
 }
 

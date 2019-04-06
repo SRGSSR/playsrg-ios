@@ -176,6 +176,11 @@ OBJC_EXPORT AnalyticsTitle const AnalyticsTitleSearch;
 OBJC_EXPORT AnalyticsTitle const AnalyticsTitleUserActivity;
 
 /**
+ *  Title for events related to watch later
+ */
+OBJC_EXPORT AnalyticsTitle const AnalyticsTitleWatchLaterAdd;
+
+/**
  *  Title for events related to deletion of a watch later entry
  */
 OBJC_EXPORT AnalyticsTitle const AnalyticsTitleWatchLaterRemove;

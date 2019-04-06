@@ -58,6 +58,7 @@ AnalyticsTitle const AnalyticsTitleSubscriptionRemoveAll = @"subscription_remove
 AnalyticsTitle const AnalyticsTitleSubscriptionOpenShow = @"show_subscription";
 AnalyticsTitle const AnalyticsTitleSearch = @"search";
 AnalyticsTitle const AnalyticsTitleUserActivity = @"user_activity_ios";
+AnalyticsTitle const AnalyticsTitleWatchLaterAdd = @"watch_later";
 AnalyticsTitle const AnalyticsTitleWatchLaterRemove = @"watch_later_remove";
 AnalyticsTitle const AnalyticsTitleWatchLaterRemoveAll = @"watch_later_remove_all";
 AnalyticsTitle const AnalyticsTitleWatchLaterOpenMedia = @"play_watch_later";
