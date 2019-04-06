@@ -41,6 +41,7 @@
 
 @property (nonatomic, weak) IBOutlet UIProgressView *progressView;
 
+@property (nonatomic) UIColor *blockingOverlayViewColor;
 @property (nonatomic) UIColor *durationLabelBackgroundColor;
 @property (nonatomic) UIColor *favoriteImageViewBackgroundColor;
 
@@ -71,8 +72,9 @@
     self.favoriteImageView.backgroundColor = UIColor.play_redColor;
     self.favoriteImageView.hidden = YES;
     
-    self.favoriteImageViewBackgroundColor = self.favoriteImageView.backgroundColor;
+    self.blockingOverlayViewColor = self.blockingOverlayView.backgroundColor;
     self.durationLabelBackgroundColor = self.durationLabel.backgroundColor;
+    self.favoriteImageViewBackgroundColor = self.favoriteImageView.backgroundColor;
     
     self.media360ImageView.layer.shadowOpacity = 0.3f;
     self.media360ImageView.layer.shadowRadius = 2.f;
@@ -159,8 +161,9 @@
     
     if (self.editing) {
         [self updateDownloadStatus];
-        self.favoriteImageView.backgroundColor = self.favoriteImageViewBackgroundColor;
+        self.blockingOverlayView.backgroundColor = self.blockingOverlayViewColor;
         self.durationLabel.backgroundColor = self.durationLabelBackgroundColor;
+        self.favoriteImageView.backgroundColor = self.favoriteImageViewBackgroundColor;
     }
 }
 
@@ -170,8 +173,9 @@
     
     if (self.editing) {
         [self updateDownloadStatus];
-        self.favoriteImageView.backgroundColor = self.favoriteImageViewBackgroundColor;
+        self.blockingOverlayView.backgroundColor = self.blockingOverlayViewColor;
         self.durationLabel.backgroundColor = self.durationLabelBackgroundColor;
+        self.favoriteImageView.backgroundColor = self.favoriteImageViewBackgroundColor;
     }
 }
 

@@ -39,6 +39,7 @@
 
 @property (nonatomic, weak) IBOutlet UIProgressView *progressView;
 
+@property (nonatomic) UIColor *blockingOverlayViewColor;
 @property (nonatomic) UIColor *durationLabelBackgroundColor;
 
 @end
@@ -65,6 +66,7 @@
     
     self.youthProtectionColorImageView.hidden = YES;
     
+    self.blockingOverlayViewColor = self.blockingOverlayView.backgroundColor;
     self.durationLabelBackgroundColor = self.durationLabel.backgroundColor;
     
     self.media360ImageView.layer.shadowOpacity = 0.3f;
@@ -144,6 +146,7 @@
     
     if (self.editing) {
         [self updateDownloadStatus];
+        self.blockingOverlayView.backgroundColor = self.blockingOverlayViewColor;
         self.durationLabel.backgroundColor = self.durationLabelBackgroundColor;
     }
 }
@@ -154,6 +157,7 @@
     
     if (self.editing) {
         [self updateDownloadStatus];
+        self.blockingOverlayView.backgroundColor = self.blockingOverlayViewColor;
         self.durationLabel.backgroundColor = self.durationLabelBackgroundColor;
     }
 }
