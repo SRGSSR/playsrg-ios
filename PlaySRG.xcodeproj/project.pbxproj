@@ -22,26 +22,6 @@
 		080731B82224544A00AF9C83 /* SRGAnalytics_Identity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080731B5222453EC00AF9C83 /* SRGAnalytics_Identity.framework */; };
 		080731B92224546200AF9C83 /* SRGAnalytics_Identity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080731B5222453EC00AF9C83 /* SRGAnalytics_Identity.framework */; };
 		080731BA2224547A00AF9C83 /* SRGAnalytics_Identity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 080731B5222453EC00AF9C83 /* SRGAnalytics_Identity.framework */; };
-		081220831DCCE70400BF8326 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0812207A1DCCE70400BF8326 /* FavoritesViewController.m */; };
-		081220841DCCE70400BF8326 /* FavoritesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0812207B1DCCE70400BF8326 /* FavoritesViewController.storyboard */; };
-		081220851DCCE70400BF8326 /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0812207D1DCCE70400BF8326 /* FavoriteTableViewCell.m */; };
-		081220861DCCE70400BF8326 /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0812207E1DCCE70400BF8326 /* FavoriteTableViewCell.xib */; };
-		0812208A1DCCE97400BF8326 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0812207A1DCCE70400BF8326 /* FavoritesViewController.m */; };
-		0812208B1DCCE97400BF8326 /* FavoritesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0812207B1DCCE70400BF8326 /* FavoritesViewController.storyboard */; };
-		0812208C1DCCE97400BF8326 /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0812207D1DCCE70400BF8326 /* FavoriteTableViewCell.m */; };
-		0812208D1DCCE97400BF8326 /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0812207E1DCCE70400BF8326 /* FavoriteTableViewCell.xib */; };
-		081220911DCCE97400BF8326 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0812207A1DCCE70400BF8326 /* FavoritesViewController.m */; };
-		081220921DCCE97400BF8326 /* FavoritesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0812207B1DCCE70400BF8326 /* FavoritesViewController.storyboard */; };
-		081220931DCCE97400BF8326 /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0812207D1DCCE70400BF8326 /* FavoriteTableViewCell.m */; };
-		081220941DCCE97400BF8326 /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0812207E1DCCE70400BF8326 /* FavoriteTableViewCell.xib */; };
-		081220981DCCE97400BF8326 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0812207A1DCCE70400BF8326 /* FavoritesViewController.m */; };
-		081220991DCCE97400BF8326 /* FavoritesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0812207B1DCCE70400BF8326 /* FavoritesViewController.storyboard */; };
-		0812209A1DCCE97400BF8326 /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0812207D1DCCE70400BF8326 /* FavoriteTableViewCell.m */; };
-		0812209B1DCCE97400BF8326 /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0812207E1DCCE70400BF8326 /* FavoriteTableViewCell.xib */; };
-		0812209F1DCCE97500BF8326 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0812207A1DCCE70400BF8326 /* FavoritesViewController.m */; };
-		081220A01DCCE97500BF8326 /* FavoritesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0812207B1DCCE70400BF8326 /* FavoritesViewController.storyboard */; };
-		081220A11DCCE97500BF8326 /* FavoriteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0812207D1DCCE70400BF8326 /* FavoriteTableViewCell.m */; };
-		081220A21DCCE97500BF8326 /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0812207E1DCCE70400BF8326 /* FavoriteTableViewCell.xib */; };
 		081220AA1DD079BB00BF8326 /* DownloadsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 081220A51DD079BB00BF8326 /* DownloadsViewController.m */; };
 		081220AB1DD079BB00BF8326 /* DownloadsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081220A61DD079BB00BF8326 /* DownloadsViewController.storyboard */; };
 		081220AC1DD079BB00BF8326 /* DownloadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 081220A81DD079BB00BF8326 /* DownloadTableViewCell.m */; };
@@ -1548,12 +1528,6 @@
 		0806E7B51D50D918002ED406 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		0806E7B61D50D918002ED406 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		080731B5222453EC00AF9C83 /* SRGAnalytics_Identity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SRGAnalytics_Identity.framework; path = Carthage/Build/iOS/Static/SRGAnalytics_Identity.framework; sourceTree = "<group>"; };
-		081220791DCCE70400BF8326 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
-		0812207A1DCCE70400BF8326 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
-		0812207B1DCCE70400BF8326 /* FavoritesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FavoritesViewController.storyboard; sourceTree = "<group>"; };
-		0812207C1DCCE70400BF8326 /* FavoriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewCell.h; sourceTree = "<group>"; };
-		0812207D1DCCE70400BF8326 /* FavoriteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteTableViewCell.m; sourceTree = "<group>"; };
-		0812207E1DCCE70400BF8326 /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		081220A41DD079BB00BF8326 /* DownloadsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadsViewController.h; sourceTree = "<group>"; };
 		081220A51DD079BB00BF8326 /* DownloadsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadsViewController.m; sourceTree = "<group>"; };
 		081220A61DD079BB00BF8326 /* DownloadsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DownloadsViewController.storyboard; sourceTree = "<group>"; };
@@ -2355,19 +2329,6 @@
 			path = Downloads;
 			sourceTree = "<group>";
 		};
-		081220761DCCE70400BF8326 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-				081220791DCCE70400BF8326 /* FavoritesViewController.h */,
-				0812207A1DCCE70400BF8326 /* FavoritesViewController.m */,
-				0812207B1DCCE70400BF8326 /* FavoritesViewController.storyboard */,
-				0812207C1DCCE70400BF8326 /* FavoriteTableViewCell.h */,
-				0812207D1DCCE70400BF8326 /* FavoriteTableViewCell.m */,
-				0812207E1DCCE70400BF8326 /* FavoriteTableViewCell.xib */,
-			);
-			path = Favorites;
-			sourceTree = "<group>";
-		};
 		0837CEBA1D3FD6E600A1E089 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2540,7 +2501,6 @@
 				08AA551A1D49EBF600C5026E /* Configuration */,
 				6F861AF61DAE65A600C46102 /* Designables */,
 				081220731DCCE70400BF8326 /* Downloads */,
-				081220761DCCE70400BF8326 /* Favorites */,
 				08654B921D3CDA160040EF04 /* Helpers */,
 				6F9CEA6321884ACC007DE35F /* History */,
 				08C68ECE1D38DEA100BB8AAA /* Home */,
@@ -3767,7 +3727,6 @@
 				6F7C89CF20AAFC6100255A54 /* Onboardings.xcassets in Resources */,
 				6FB3C1AD1DBCE783008160B4 /* MediaPreviewViewController.storyboard in Resources */,
 				0837CEC41D3FD6E600A1E089 /* FontAwesome.otf in Resources */,
-				081220841DCCE70400BF8326 /* FavoritesViewController.storyboard in Resources */,
 				6FB0BB4020AEF5D1007C5D87 /* Onboarding.strings in Resources */,
 				08C690DD1D38E5BE00BB8AAA /* HomeViewController.storyboard in Resources */,
 				08C691281D39089700BB8AAA /* CommonImages.xcassets in Resources */,
@@ -3798,7 +3757,6 @@
 				E66BEC211DA7FCED00AD4450 /* MediaPlayerViewController.storyboard in Resources */,
 				6F0F88A41ECF0CE50060A893 /* override_default_srf3.pdf in Resources */,
 				6F14AB42208E2CAD000B225F /* SubscriptionTableViewCell.xib in Resources */,
-				081220861DCCE70400BF8326 /* FavoriteTableViewCell.xib in Resources */,
 				6F2961FC2006186100CAB0E4 /* placeholder_media_list-180.pdf in Resources */,
 				6F5F4FC91DB10CFD0011CCA3 /* RelatedContentView.xib in Resources */,
 				E65FB2101D66D69700820696 /* DailyVideosViewController.storyboard in Resources */,
@@ -3874,7 +3832,6 @@
 				6FA7EC3A20AB0FEB00A9C5FE /* Onboardings.json in Resources */,
 				6F0F88891ECF0CDD0060A893 /* override_artwork_rts_deux.pdf in Resources */,
 				0837CECD1D3FDAF900A1E089 /* FontAwesome.otf in Resources */,
-				0812208B1DCCE97400BF8326 /* FavoritesViewController.storyboard in Resources */,
 				6F3B33AE1EEEB20400D60789 /* MenuHeaderSectionView.xib in Resources */,
 				08DADF8D20D92D6500291AD1 /* placeholder_notification-180.pdf in Resources */,
 				6F0F888D1ECF0CDD0060A893 /* override_default_rts_un.pdf in Resources */,
@@ -3906,7 +3863,6 @@
 				E6DB5F221D66E0950057094B /* ShowsViewController.storyboard in Resources */,
 				08602BFD2213786B0081D166 /* HomeShowsAccessTableViewCell.xib in Resources */,
 				E66BEC221DA7FCED00AD4450 /* MediaPlayerViewController.storyboard in Resources */,
-				0812208D1DCCE97400BF8326 /* FavoriteTableViewCell.xib in Resources */,
 				6F5F4FCA1DB10CFD0011CCA3 /* RelatedContentView.xib in Resources */,
 				E65FB2111D66D69700820696 /* DailyVideosViewController.storyboard in Resources */,
 				6F340F4C220DA87500778CA3 /* SRGUserData.bundle in Resources */,
@@ -3992,7 +3948,6 @@
 				6FA9ECC220C7AD8C00D3D6C2 /* NotificationsViewController.storyboard in Resources */,
 				6F32275B216F2FEC006A785D /* MenuAccountHeaderView.xib in Resources */,
 				6F12DB4D21A3EFBF0054879D /* HistoryTableViewCell.xib in Resources */,
-				081220921DCCE97400BF8326 /* FavoritesViewController.storyboard in Resources */,
 				6F12DB5721A3EFBF0054879D /* HistoryViewController.storyboard in Resources */,
 				6F4EA1341EE034B000BEC4DA /* Accessibility.strings in Resources */,
 				08564B251D41112800381549 /* HomeSectionHeaderView.xib in Resources */,
@@ -4013,7 +3968,6 @@
 				6FCB57481EC2047B0015CAB7 /* override_artwork_rete_due.pdf in Resources */,
 				6F0C99B22121FBD800073AB6 /* SRGLogger.bundle in Resources */,
 				08C68FA51D38DF8300BB8AAA /* Localizable.strings in Resources */,
-				081220941DCCE97400BF8326 /* FavoriteTableViewCell.xib in Resources */,
 				6F6B643521A70FAA00E207FC /* HomeStatusHeaderView.xib in Resources */,
 				6F5F4FCB1DB10CFD0011CCA3 /* RelatedContentView.xib in Resources */,
 				E65FB2121D66D69700820696 /* DailyVideosViewController.storyboard in Resources */,
@@ -4081,7 +4035,6 @@
 				0837CEDF1D3FDAFA00A1E089 /* FontAwesome.otf in Resources */,
 				08602BFF2213786B0081D166 /* HomeShowsAccessTableViewCell.xib in Resources */,
 				6F0C99A42121FBD800073AB6 /* SRGNetwork.bundle in Resources */,
-				081220991DCCE97400BF8326 /* FavoritesViewController.storyboard in Resources */,
 				6F0F883E1ECEE78C0060A893 /* override_default_radio_rtr.pdf in Resources */,
 				08C690E01D38E5BE00BB8AAA /* HomeViewController.storyboard in Resources */,
 				08564B261D41112800381549 /* HomeSectionHeaderView.xib in Resources */,
@@ -4104,7 +4057,6 @@
 				E6DB5F241D66E0950057094B /* ShowsViewController.storyboard in Resources */,
 				6F1938331EFBFEA40017B1D1 /* ApplicationConfiguration.json in Resources */,
 				E66BEC241DA7FCED00AD4450 /* MediaPlayerViewController.storyboard in Resources */,
-				0812209B1DCCE97400BF8326 /* FavoriteTableViewCell.xib in Resources */,
 				08DD9D691FFE6EF900115906 /* ModuleViewController.storyboard in Resources */,
 				6F5F4FCC1DB10CFD0011CCA3 /* RelatedContentView.xib in Resources */,
 				6F4EA1371EE034C500BEC4DA /* Accessibility.strings in Resources */,
@@ -4174,7 +4126,6 @@
 				6FB3C1B11DBCE783008160B4 /* MediaPreviewViewController.storyboard in Resources */,
 				08602C002213786B0081D166 /* HomeShowsAccessTableViewCell.xib in Resources */,
 				0837CEE81D3FDAFA00A1E089 /* FontAwesome.otf in Resources */,
-				081220A01DCCE97500BF8326 /* FavoritesViewController.storyboard in Resources */,
 				08C6908B1D38E3E600BB8AAA /* iTunesArtwork@2x in Resources */,
 				08C690E11D38E5BE00BB8AAA /* HomeViewController.storyboard in Resources */,
 				6F6B643721A70FAA00E207FC /* HomeStatusHeaderView.xib in Resources */,
@@ -4194,7 +4145,6 @@
 				E6AE51371D3FD0ED00572CE4 /* HomeMediaListTableViewCell.xib in Resources */,
 				E6DB5F251D66E0950057094B /* ShowsViewController.storyboard in Resources */,
 				E66BEC251DA7FCED00AD4450 /* MediaPlayerViewController.storyboard in Resources */,
-				081220A21DCCE97500BF8326 /* FavoriteTableViewCell.xib in Resources */,
 				08280F132258EA4000AC978D /* WatchLaterViewController.storyboard in Resources */,
 				6F340F4F220DA87700778CA3 /* SRGUserData.bundle in Resources */,
 				086321132258C6D000C719A6 /* WatchLaterTableViewCell.xib in Resources */,
@@ -5276,7 +5226,6 @@
 				081220AC1DD079BB00BF8326 /* DownloadTableViewCell.m in Sources */,
 				6F861AF81DAE65A600C46102 /* SRGMediaPlayerDesignables.m in Sources */,
 				6F00875D219AA888004BD6FF /* StoreReview.m in Sources */,
-				081220851DCCE70400BF8326 /* FavoriteTableViewCell.m in Sources */,
 				08DD9D5D1FFE6EDB00115906 /* ModuleViewController.m in Sources */,
 				6F4760131EB37BC6003021EA /* Banner.m in Sources */,
 				6F7218131DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
@@ -5286,7 +5235,6 @@
 				6F14AB3C208E2979000B225F /* SubscriptionTableViewCell.m in Sources */,
 				6F4760791EB37D60003021EA /* UIDevice+PlaySRG.m in Sources */,
 				6F14AB2F208E2788000B225F /* SubscriptionsViewController.m in Sources */,
-				081220831DCCE70400BF8326 /* FavoritesViewController.m in Sources */,
 				6F475FE11EB37BC6003021EA /* ModalTransition.m in Sources */,
 				6FD633EA1FFD151000875BE5 /* MiniPlayerView.m in Sources */,
 				089EA00A201011FB0070E11A /* SRGBaseTopic+PlaySRG.m in Sources */,
@@ -5442,7 +5390,6 @@
 				6FC8866C1EC58BD5000BC3FF /* SRGProgram+PlaySRG.m in Sources */,
 				6F32275F216F2FEC006A785D /* MenuAccountHeaderView.m in Sources */,
 				0827DA1F1F0D36E200A31A42 /* NSBundle+PlaySRG.m in Sources */,
-				0812208C1DCCE97400BF8326 /* FavoriteTableViewCell.m in Sources */,
 				6F7218141DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
 				6F1484C01EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F80E9C321A682E70027CA2F /* TableRequestViewController.m in Sources */,
@@ -5451,7 +5398,6 @@
 				6F861AF91DAE65A600C46102 /* SRGMediaPlayerDesignables.m in Sources */,
 				08BAABDC1E76141E007644D7 /* HomeMediasViewController.m in Sources */,
 				6FDF08E7218B126700B2AF2C /* Onboarding.m in Sources */,
-				0812208A1DCCE97400BF8326 /* FavoritesViewController.m in Sources */,
 				08EB37B11D48B2B00080EDE4 /* MenuTableViewCell.m in Sources */,
 				6F4760851EB37DF1003021EA /* UIWindow+PlaySRG.m in Sources */,
 				E64BA3FC1D4A5887002C10D5 /* WebViewController.m in Sources */,
@@ -5582,7 +5528,6 @@
 				6FC8866D1EC58BD5000BC3FF /* SRGProgram+PlaySRG.m in Sources */,
 				6F322760216F2FEC006A785D /* MenuAccountHeaderView.m in Sources */,
 				0827DA201F0D36E200A31A42 /* NSBundle+PlaySRG.m in Sources */,
-				081220931DCCE97400BF8326 /* FavoriteTableViewCell.m in Sources */,
 				6F7218151DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
 				6F1484C11EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F80E9C421A682E70027CA2F /* TableRequestViewController.m in Sources */,
@@ -5591,7 +5536,6 @@
 				6F861AFA1DAE65A600C46102 /* SRGMediaPlayerDesignables.m in Sources */,
 				08BAABDE1E76141F007644D7 /* HomeMediasViewController.m in Sources */,
 				6FDF08E8218B126700B2AF2C /* Onboarding.m in Sources */,
-				081220911DCCE97400BF8326 /* FavoritesViewController.m in Sources */,
 				08EB37B51D48B2B10080EDE4 /* MenuTableViewCell.m in Sources */,
 				6F47608C1EB37DF1003021EA /* UIWindow+PlaySRG.m in Sources */,
 				E64BA3FD1D4A5888002C10D5 /* WebViewController.m in Sources */,
@@ -5722,7 +5666,6 @@
 				6FC8866E1EC58BD5000BC3FF /* SRGProgram+PlaySRG.m in Sources */,
 				6F322761216F2FEC006A785D /* MenuAccountHeaderView.m in Sources */,
 				0827DA211F0D36E400A31A42 /* NSBundle+PlaySRG.m in Sources */,
-				0812209A1DCCE97400BF8326 /* FavoriteTableViewCell.m in Sources */,
 				6F7218161DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
 				6F1484C21EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F80E9C521A682E70027CA2F /* TableRequestViewController.m in Sources */,
@@ -5731,7 +5674,6 @@
 				6F861AFB1DAE65A600C46102 /* SRGMediaPlayerDesignables.m in Sources */,
 				08BAABE01E76141F007644D7 /* HomeMediasViewController.m in Sources */,
 				6FDF08E9218B126700B2AF2C /* Onboarding.m in Sources */,
-				081220981DCCE97400BF8326 /* FavoritesViewController.m in Sources */,
 				08EB37B91D48B2B10080EDE4 /* MenuTableViewCell.m in Sources */,
 				6F4760931EB37DF1003021EA /* UIWindow+PlaySRG.m in Sources */,
 				E64BA3FE1D4A5888002C10D5 /* WebViewController.m in Sources */,
@@ -5862,7 +5804,6 @@
 				6FC8866F1EC58BD5000BC3FF /* SRGProgram+PlaySRG.m in Sources */,
 				6F322762216F2FEC006A785D /* MenuAccountHeaderView.m in Sources */,
 				0827DA221F0D36E400A31A42 /* NSBundle+PlaySRG.m in Sources */,
-				081220A11DCCE97500BF8326 /* FavoriteTableViewCell.m in Sources */,
 				6F7218171DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
 				6F1484C31EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F80E9C621A682E70027CA2F /* TableRequestViewController.m in Sources */,
@@ -5871,7 +5812,6 @@
 				6F861AFC1DAE65A600C46102 /* SRGMediaPlayerDesignables.m in Sources */,
 				08BAABE21E761420007644D7 /* HomeMediasViewController.m in Sources */,
 				6FDF08EA218B126700B2AF2C /* Onboarding.m in Sources */,
-				0812209F1DCCE97500BF8326 /* FavoritesViewController.m in Sources */,
 				08EB37BD1D48B2B20080EDE4 /* MenuTableViewCell.m in Sources */,
 				6F47609A1EB37DF2003021EA /* UIWindow+PlaySRG.m in Sources */,
 				E64BA3FF1D4A5888002C10D5 /* WebViewController.m in Sources */,

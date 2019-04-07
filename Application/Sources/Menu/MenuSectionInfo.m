@@ -40,7 +40,6 @@
     if (PushService.sharedService) {
         [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemSubscriptions]];
     }
-    [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemFavorites]];
     [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemWatchLater]];
     [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemDownloads]];
     

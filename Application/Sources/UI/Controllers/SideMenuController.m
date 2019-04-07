@@ -9,7 +9,6 @@
 #import "ApplicationSettings.h"
 #import "CalendarViewController.h"
 #import "DownloadsViewController.h"
-#import "FavoritesViewController.h"
 #import "HistoryViewController.h"
 #import "HomeViewController.h"
 #import "MainNavigationController.h"
@@ -365,11 +364,6 @@ static const CGFloat SideMenuOffset = -50.f;
         switch (selectedMenuItemInfo.menuItem) {
             case MenuItemSearch: {
                 viewController = [[SearchViewController alloc] init];
-                break;
-            }
-                
-            case MenuItemFavorites: {
-                viewController = [[FavoritesViewController alloc] init];
                 break;
             }
                 
