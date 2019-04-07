@@ -8,7 +8,6 @@
 
 #import "AnalyticsConstants.h"
 #import "Banner.h"
-#import "Favorite.h"
 #import "NSBundle+PlaySRG.h"
 #import "PushService.h"
 #import "UIColor+PlaySRG.h"
@@ -26,7 +25,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *placeholderImageView;
 
 @property (nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
-@property (nonatomic, weak) IBOutlet UIImageView *favoriteImageView;
 @property (nonatomic, weak) IBOutlet UIView *gradientView;
 @property (nonatomic, weak) IBOutlet UIImageView *subscriptionImageView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
@@ -52,9 +50,6 @@
     
     self.thumbnailImageView.backgroundColor = UIColor.play_grayThumbnailImageViewBackgroundColor;
     
-    self.favoriteImageView.backgroundColor = UIColor.play_redColor;
-    self.favoriteImageView.hidden = YES;
-    
     self.subscriptionImageView.layer.shadowOpacity = 0.3f;
     self.subscriptionImageView.layer.shadowRadius = 2.f;
     self.subscriptionImageView.layer.shadowOffset = CGSizeMake(0.f, 1.f);
@@ -67,7 +62,6 @@
     self.showView.alpha = 0.f;
     self.placeholderView.alpha = 1.f;
     
-    self.favoriteImageView.hidden = YES;
     [self.thumbnailImageView play_resetImage];
 }
 
@@ -77,20 +71,14 @@
     
     if (newWindow) {
         // Ensure proper state when the view is reinserted
-        [self updateFavoriteStatus];
         [self updateSubscriptionStatus];
         
-        [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(favoriteStateDidChange:)
-                                                   name:FavoriteStateDidChangeNotification
-                                                 object:nil];
         [NSNotificationCenter.defaultCenter addObserver:self
                                                selector:@selector(subscriptionStateDidChange:)
                                                    name:PushServiceSubscriptionStateDidChangeNotification
                                                  object:nil];
     }
     else {
-        [NSNotificationCenter.defaultCenter removeObserver:self name:FavoriteStateDidChangeNotification object:nil];
         [NSNotificationCenter.defaultCenter removeObserver:self name:PushServiceSubscriptionStateDidChangeNotification object:nil];
     }
 }
@@ -139,16 +127,10 @@
     
     [self.thumbnailImageView play_requestImageForObject:show withScale:ImageScaleSmall type:SRGImageTypeDefault placeholder:ImagePlaceholderMediaList];
     
-    [self updateFavoriteStatus];
     [self updateSubscriptionStatus];
 }
 
 #pragma mark UI
-
-- (void)updateFavoriteStatus
-{
-    self.favoriteImageView.hidden = ([Favorite favoriteForShow:self.show] == nil);
-}
 
 - (void)updateSubscriptionStatus
 {
@@ -166,11 +148,6 @@
 }
 
 #pragma mark Notifications
-
-- (void)favoriteStateDidChange:(NSNotification *)notification
-{
-    [self updateFavoriteStatus];
-}
 
 - (void)subscriptionStateDidChange:(NSNotification *)notification
 {

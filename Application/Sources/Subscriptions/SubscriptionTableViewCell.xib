@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,10 +22,10 @@
                         <rect key="frame" x="20" y="11" width="593" height="114"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Phc-qq-Pdg" userLabel="Left View">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="114"/>
+                                <rect key="frame" x="0.0" y="0.0" width="149.5" height="114"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="ncO-mH-V9z">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="84"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="149.5" height="84"/>
                                         <color key="backgroundColor" red="0.27554744479999999" green="0.27554744479999999" blue="0.27554744479999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="84" id="0uj-b6-lAP"/>
@@ -35,14 +33,14 @@
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_gradient-35" translatesAutoresizingMaskIntoConstraints="NO" id="fyS-K3-Vzr" userLabel="Gradient Image View">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="149.5" height="35"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="xd9-QG-CPZ"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="subscription_full-18" translatesAutoresizingMaskIntoConstraints="NO" id="roo-Ci-UaY" userLabel="Subscription Image View">
-                                        <rect key="frame" x="127" y="5" width="18" height="18"/>
+                                        <rect key="frame" x="126.5" y="5" width="18" height="18"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="1yB-Os-9ii"/>
@@ -50,20 +48,13 @@
                                             <constraint firstAttribute="width" constant="18" id="dey-bK-v6w"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="favorite_full-18" translatesAutoresizingMaskIntoConstraints="NO" id="QhV-ol-txf">
-                                        <rect key="frame" x="127" y="61" width="18" height="18"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="QhV-ol-txf" firstAttribute="trailing" secondItem="ncO-mH-V9z" secondAttribute="trailing" constant="-5" id="6a3-LN-Fsv"/>
                                     <constraint firstItem="ncO-mH-V9z" firstAttribute="top" secondItem="Phc-qq-Pdg" secondAttribute="top" id="Ng4-VW-xQI"/>
                                     <constraint firstItem="ncO-mH-V9z" firstAttribute="leading" secondItem="Phc-qq-Pdg" secondAttribute="leading" id="Umy-3q-tdP"/>
                                     <constraint firstItem="fyS-K3-Vzr" firstAttribute="top" secondItem="ncO-mH-V9z" secondAttribute="top" id="YdE-Im-5RG"/>
                                     <constraint firstItem="fyS-K3-Vzr" firstAttribute="leading" secondItem="ncO-mH-V9z" secondAttribute="leading" id="Z0f-XO-3s3"/>
-                                    <constraint firstItem="QhV-ol-txf" firstAttribute="bottom" secondItem="ncO-mH-V9z" secondAttribute="bottom" constant="-5" id="dQw-A9-DLt"/>
                                     <constraint firstItem="ncO-mH-V9z" firstAttribute="width" secondItem="Phc-qq-Pdg" secondAttribute="width" id="hei-jV-Uf7"/>
                                     <constraint firstItem="roo-Ci-UaY" firstAttribute="top" secondItem="ncO-mH-V9z" secondAttribute="top" constant="5" id="kJ1-Wb-4dg"/>
                                     <constraint firstItem="roo-Ci-UaY" firstAttribute="trailing" secondItem="ncO-mH-V9z" secondAttribute="trailing" constant="-5" id="nif-XT-Fg8"/>
@@ -71,10 +62,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GkD-I1-QAB" userLabel="Show Info View">
-                                <rect key="frame" x="158" y="0.0" width="435" height="114"/>
+                                <rect key="frame" x="157.5" y="0.0" width="435.5" height="114"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAc-5G-idk" userLabel="Title Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="435" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="435.5" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -100,7 +91,6 @@
             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="favoriteImageView" destination="QhV-ol-txf" id="iHA-r9-TEV"/>
                 <outlet property="gradientView" destination="fyS-K3-Vzr" id="LYW-eM-9iJ"/>
                 <outlet property="subscriptionImageView" destination="roo-Ci-UaY" id="vtc-Zb-6g6"/>
                 <outlet property="thumbnailImageView" destination="ncO-mH-V9z" id="JFK-yM-zi1"/>
@@ -110,7 +100,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="favorite_full-18" width="18" height="18"/>
         <image name="subscription_full-18" width="18" height="18"/>
         <image name="top_gradient-35" width="1" height="35"/>
     </resources>
