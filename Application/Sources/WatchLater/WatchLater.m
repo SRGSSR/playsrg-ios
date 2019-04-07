@@ -6,17 +6,9 @@
 
 #import "WatchLater.h"
 
-#import "ApplicationConfiguration.h"
-#import "Download.h"
-#import "NSTimer+PlaySRG.h"
 
 #import <libextobjc/libextobjc.h>
-#import <SRGLetterbox/SRGLetterbox.h>
 #import <SRGUserData/SRGUserData.h>
-
-static NSMutableDictionary<NSString *, NSNumber *> *s_cachedProgresses;
-static NSMutableDictionary<NSString *, NSString *> *s_tasks;
-static NSTimer *s_trackerTimer;
 
 #pragma mark Media metadata functions
 
