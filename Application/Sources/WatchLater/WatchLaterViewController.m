@@ -324,7 +324,7 @@
 - (void)playlistsDidChange:(NSNotification *)notification
 {
     if ([notification.userInfo[SRGPlaylistChangedUidsKey] containsObject:SRGWatchLaterPlaylistUid]) {
-        NSDictionary *playlistEntryChanges = notification.userInfo[SRGPlaylistEntryChangesKey][SRGWatchLaterPlaylistUid];
+        NSDictionary<NSString *, NSArray<NSString *> *> *playlistEntryChanges = notification.userInfo[SRGPlaylistEntryChangesKey][SRGWatchLaterPlaylistUid];
         if (playlistEntryChanges) {
             NSArray<NSString *> *previousURNs = playlistEntryChanges[SRGPlaylistEntryPreviousUidsSubKey];
             NSArray<NSString *> *URNs = playlistEntryChanges[SRGPlaylistEntryUidsSubKey];
