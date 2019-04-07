@@ -8,7 +8,6 @@
 
 #import "AnalyticsConstants.h"
 #import "Banner.h"
-#import "Favorite.h"
 #import "NSBundle+PlaySRG.h"
 #import "PushService.h"
 #import "UIImage+PlaySRG.h"
@@ -26,13 +25,11 @@ static const UILayoutPriority LogoImageViewAspectRatioConstraintLowPriority = 70
 @property (nonatomic, weak) IBOutlet UIImageView *logoImageView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic, weak) IBOutlet UILabel *subtitleLabel;
-@property (nonatomic, weak) IBOutlet UIButton *favoriteButton;
 @property (nonatomic, weak) IBOutlet UIButton *subscriptionButton;
+@property (nonatomic, weak) IBOutlet UIButton *notificationButton;
 
 @property (nonatomic) IBOutlet NSLayoutConstraint *logoImageViewRatio16_9Constraint; // Need to retain it, because active state removes it
 @property (nonatomic) IBOutlet NSLayoutConstraint *logoImageViewRatioBigLandscapeScreenConstraint; // Need to retain it, because active state removes it
-
-@property (nonatomic, assign) BOOL favoriteState;
 
 @end
 
@@ -92,15 +89,18 @@ static const UILayoutPriority LogoImageViewAspectRatioConstraintLowPriority = 70
 {
     [super willMoveToWindow:newWindow];
     
+    // Ensure proper state when the view is reinserted
+    [self updateSubscriptionStatus];
+    
     if (newWindow) {
         [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(favoriteStateDidChange:)
-                                                   name:FavoriteStateDidChangeNotification
+                                               selector:@selector(subscriptionStateDidChange:)
+                                                   name:PushServiceSubscriptionStateDidChangeNotification
                                                  object:nil];
     }
     else {
         [NSNotificationCenter.defaultCenter removeObserver:self
-                                                      name:FavoriteStateDidChangeNotification
+                                                      name:PushServiceSubscriptionStateDidChangeNotification
                                                     object:nil];
     }
 }
@@ -119,35 +119,32 @@ static const UILayoutPriority LogoImageViewAspectRatioConstraintLowPriority = 70
     
     [self.logoImageView play_requestImageForObject:show withScale:ImageScaleLarge type:SRGImageTypeDefault placeholder:ImagePlaceholderMediaList];
     
-    [self updateFavoriteStatus];
     [self updateSubscriptionStatus];
 }
 
 #pragma mark UI
-
-- (void)updateFavoriteStatus
-{
-    Favorite *favorite = [Favorite favoriteForShow:self.show];
-    BOOL isFavorite = (favorite != nil);
-    [self.favoriteButton setImage:isFavorite ? [UIImage imageNamed:@"favorite_full-22"] : [UIImage imageNamed:@"favorite-22"]
-                         forState:UIControlStateNormal];
-    self.favoriteButton.accessibilityLabel = isFavorite ? PlaySRGAccessibilityLocalizedString(@"Remove favorite", @"Show favorite removal label") : PlaySRGAccessibilityLocalizedString(@"Favorite", @"Show favorite creation label");
-}
 
 - (void)updateSubscriptionStatus
 {
     PushService *pushService = PushService.sharedService;
     if (! pushService) {
         self.subscriptionButton.hidden = YES;
+        self.notificationButton.hidden = YES;
         return;
     }
     
     self.subscriptionButton.hidden = NO;
+    self.notificationButton.hidden = NO;
     
     BOOL subscribed = [pushService isSubscribedToShow:self.show];
     [self.subscriptionButton setImage:subscribed ? [UIImage imageNamed:@"subscription_full-22"] : [UIImage imageNamed:@"subscription-22"]
                              forState:UIControlStateNormal];
     self.subscriptionButton.accessibilityLabel = subscribed ? PlaySRGAccessibilityLocalizedString(@"Unsubscribe from show", @"Show unsubscription label") : PlaySRGAccessibilityLocalizedString(@"Subscribe to show", @"Show subscription label");
+    
+    BOOL pushNotificationSubscribed = [pushService isPushNotificationSubscribedToShow:self.show];
+    [self.notificationButton setImage:pushNotificationSubscribed ? [UIImage imageNamed:@"notification_full-22"] : [UIImage imageNamed:@"notification-22"]
+                             forState:UIControlStateNormal];
+    self.notificationButton.accessibilityLabel = pushNotificationSubscribed ? PlaySRGAccessibilityLocalizedString(@"Stop notifications from show", @"Show stop notification label") : PlaySRGAccessibilityLocalizedString(@"Be notified by the show", @"Show notification label");
 }
 
 - (void)updateAspectRatioWithSize:(CGSize)size
@@ -168,20 +165,6 @@ static const UILayoutPriority LogoImageViewAspectRatioConstraintLowPriority = 70
 
 #pragma mark Actions
 
-- (IBAction)toggleFavorite:(id)sender
-{
-    Favorite *favorite = [Favorite toggleFavoriteForShow:self.show];
-    [self updateFavoriteStatus];
-    
-    AnalyticsTitle analyticsTitle = (favorite) ? AnalyticsTitleFavoriteAdd : AnalyticsTitleFavoriteRemove;
-    SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
-    labels.source = AnalyticsSourceButton;
-    labels.value = self.show.URN;
-    [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:analyticsTitle labels:labels];
-    
-    [Banner showFavorite:(favorite != nil) forItemWithName:self.show.title inView:self];
-}
-
 - (IBAction)toggleSubscription:(id)sender
 {
     PushService *pushService = PushService.sharedService;
@@ -198,6 +181,8 @@ static const UILayoutPriority LogoImageViewAspectRatioConstraintLowPriority = 70
     
     BOOL subscribed = [pushService isSubscribedToShow:self.show];
     
+    // TODO: update analytics labels
+    
     AnalyticsTitle analyticsTitle = (subscribed) ? AnalyticsTitleSubscriptionAdd : AnalyticsTitleSubscriptionRemove;
     SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
     labels.source = AnalyticsSourceButton;
@@ -207,11 +192,38 @@ static const UILayoutPriority LogoImageViewAspectRatioConstraintLowPriority = 70
     [Banner showSubscription:subscribed forShowWithName:self.show.title inView:self];
 }
 
+- (IBAction)toggleNotification:(id)sender
+{
+    PushService *pushService = PushService.sharedService;
+    if (! pushService) {
+        return;
+    }
+    
+    BOOL toggled = [pushService togglePushNotificationForShow:self.show inView:self];
+    if (! toggled) {
+        return;
+    }
+    
+    [self updateSubscriptionStatus];
+    
+    BOOL pushNotificationSubscribed = [pushService isPushNotificationSubscribedToShow:self.show];
+    
+    // TODO: update analytics labels
+    
+    AnalyticsTitle analyticsTitle = (pushNotificationSubscribed) ? AnalyticsTitleSubscriptionAdd : AnalyticsTitleSubscriptionRemove;
+    SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
+    labels.source = AnalyticsSourceButton;
+    labels.value = self.show.URN;
+    [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:analyticsTitle labels:labels];
+    
+    [Banner showPushNotificationSubscription:pushNotificationSubscribed forShowWithName:self.show.title inView:self];
+}
+
 #pragma mark Notifications
 
-- (void)favoriteStateDidChange:(NSNotification *)notification
+- (void)subscriptionStateDidChange:(NSNotification *)notification
 {
-    [self updateFavoriteStatus];
+    [self updateSubscriptionStatus];
 }
 
 @end

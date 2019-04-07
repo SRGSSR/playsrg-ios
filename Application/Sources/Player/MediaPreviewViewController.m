@@ -210,7 +210,7 @@
         SRGShow *show = self.media.show;
         if (show) {
             BOOL subscribed = [pushService isSubscribedToShow:show];
-            UIPreviewAction *subscriptionAction = [UIPreviewAction actionWithTitle:subscribed ? NSLocalizedString(@"Unsubscribe from show", @"Button label to unsubscribe from a show") : NSLocalizedString(@"Subscribe to show", @"Button label to unsubscribe to a show") style:subscribed ? UIPreviewActionStyleDestructive : UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+            UIPreviewAction *subscriptionAction = [UIPreviewAction actionWithTitle:subscribed ? NSLocalizedString(@"Unsubscribe from show", @"Button label to unsubscribe from a show") : NSLocalizedString(@"Subscribe to show", @"Button label to subscribe to a show") style:subscribed ? UIPreviewActionStyleDestructive : UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
                 BOOL toggled = [pushService toggleSubscriptionForShow:show inViewController:nil /* Not 'self' since dismissed */];
                 if (! toggled) {
                     return;

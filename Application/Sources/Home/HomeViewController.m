@@ -326,7 +326,7 @@
     
     if (@available(iOS 10, *)) {
         if (PushService.sharedService.enabled) {
-            UIImage *notificationImage = [UIImage imageNamed:@"subscription_full-22"];
+            UIImage *notificationImage = [UIImage imageNamed:@"notification_full-22"];
             UIButton *notificationButton = [UIButton buttonWithType:UIButtonTypeCustom];
             notificationButton.frame = CGRectMake(0.f, 0.f, notificationImage.size.width, notificationImage.size.height);
             [notificationButton setImage:notificationImage forState:UIControlStateNormal];

@@ -1515,6 +1515,8 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     
     BOOL subscribed = [pushService isSubscribedToShow:show];
     
+    // TODO: update analytics labels
+    
     AnalyticsTitle analyticsTitle = (subscribed) ? AnalyticsTitleSubscriptionAdd : AnalyticsTitleSubscriptionRemove;
     SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
     labels.source = AnalyticsSourceButton;

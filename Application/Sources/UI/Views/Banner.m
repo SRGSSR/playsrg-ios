@@ -123,6 +123,23 @@ static NSString *BannerShortenedName(NSString *name);
     [self showWithStyle:BannerStyleInfo message:message image:image sticky:NO inViewController:viewController];
 }
 
++ (void)showPushNotificationSubscription:(BOOL)subscribed forShowWithName:(NSString *)name inView:(UIView *)view
+{
+    [self showPushNotificationSubscription:subscribed forShowWithName:name inViewController:view.nearestViewController];
+}
+
++ (void)showPushNotificationSubscription:(BOOL)subscribed forShowWithName:(NSString *)name inViewController:(UIViewController *)viewController
+{
+    if (! name) {
+        name = NSLocalizedString(@"The selected content", @"Name of the subscription item, if no title or name to display");
+    }
+    
+    NSString *messageFormatString = subscribed ? NSLocalizedString(@"%@ will notified you.", @"Message displayed at the top of the screen when adding an item to the notification list. Quotes are managed by the application.") : NSLocalizedString(@"%@ won't notify you anymore.", @"Message at the top of the screen displayed when removing an item from the notification list. Quotes are managed by the application.");
+    NSString *message = [NSString stringWithFormat:messageFormatString, BannerShortenedName(name)];
+    UIImage *image = subscribed ? [UIImage imageNamed:@"notification_full-22"] : [UIImage imageNamed:@"notification-22"];
+    [self showWithStyle:BannerStyleInfo message:message image:image sticky:NO inViewController:viewController];
+}
+
 + (void)showWatchLaterAdded:(BOOL)added forItemWithName:(NSString *)name inView:(UIView *)view
 {
     [self showWatchLaterAdded:added forItemWithName:name inViewController:view.nearestViewController];

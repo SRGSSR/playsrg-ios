@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,7 +35,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ick-GH-RRS">
-                    <rect key="frame" x="291" y="215" width="72" height="32"/>
+                    <rect key="frame" x="291" y="215.5" width="72" height="32"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5g-cj-1Y4" userLabel="Subscription Button">
                             <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -57,9 +56,9 @@
                                 <constraint firstAttribute="height" constant="32" id="Cla-bu-Zod"/>
                             </constraints>
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" image="favorite-22"/>
+                            <state key="normal" image="notification-22"/>
                             <connections>
-                                <action selector="toggleFavorite:" destination="7YI-iM-3v4" eventType="touchUpInside" id="GO4-La-rZa"/>
+                                <action selector="toggleNotification:" destination="7YI-iM-3v4" eventType="touchUpInside" id="iyA-07-Iba"/>
                             </connections>
                         </button>
                     </subviews>
@@ -81,10 +80,10 @@
                 <constraint firstItem="ART-wi-iC6" firstAttribute="top" secondItem="yyW-ox-kMV" secondAttribute="bottom" constant="8" id="nt7-xK-SZH"/>
             </constraints>
             <connections>
-                <outlet property="favoriteButton" destination="JMs-0z-bGJ" id="hMa-re-1Tg"/>
                 <outlet property="logoImageView" destination="Sae-FF-dJE" id="WXs-zb-rU3"/>
                 <outlet property="logoImageViewRatio16_9Constraint" destination="5xa-GV-ZZN" id="VLL-5f-AhA"/>
                 <outlet property="logoImageViewRatioBigLandscapeScreenConstraint" destination="0Tw-a7-vPO" id="bRi-C2-kPH"/>
+                <outlet property="notificationButton" destination="JMs-0z-bGJ" id="JQB-to-eaT"/>
                 <outlet property="subscriptionButton" destination="q5g-cj-1Y4" id="xnd-MW-PN6"/>
                 <outlet property="subtitleLabel" destination="ART-wi-iC6" id="Wfq-IF-z7l"/>
                 <outlet property="titleLabel" destination="yyW-ox-kMV" id="I75-mY-TQP"/>
@@ -93,7 +92,7 @@
         </collectionReusableView>
     </objects>
     <resources>
-        <image name="favorite-22" width="22" height="22"/>
+        <image name="notification-22" width="22" height="22"/>
         <image name="subscription-22" width="22" height="22"/>
     </resources>
 </document>

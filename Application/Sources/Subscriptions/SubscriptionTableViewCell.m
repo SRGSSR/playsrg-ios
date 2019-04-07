@@ -160,6 +160,7 @@
 - (void)updateSubscriptionStatus
 {
     BOOL subscribed = [PushService.sharedService isSubscribedToShow:self.show];
+    self.subscriptionImageView.image = [PushService.sharedService isPushNotificationSubscribedToShow:self.show] ? [UIImage imageNamed:@"notification_full_18"] :  [UIImage imageNamed:@"subscription_full-18"];
     self.subscriptionImageView.hidden = ! subscribed;
     self.gradientView.hidden = ! subscribed;
 }

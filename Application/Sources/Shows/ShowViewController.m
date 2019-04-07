@@ -9,7 +9,6 @@
 #import "ActivityItemSource.h"
 #import "ApplicationConfiguration.h"
 #import "Banner.h"
-#import "Favorite.h"
 #import "MediaCollectionViewCell.h"
 #import "NSBundle+PlaySRG.h"
 #import "PlayAppDelegate.h"
@@ -189,31 +188,16 @@
 {
     NSMutableArray<id<UIPreviewActionItem>> *previewActionItems = [NSMutableArray array];
     
-    Favorite *favorite = [Favorite favoriteForShow:self.show];
-    BOOL favorited = (favorite != nil);
-    
-    UIPreviewAction *favoriteAction = [UIPreviewAction actionWithTitle:favorited ? NSLocalizedString(@"Remove from favorites", @"Button label to remove a favorite from the show preview window") : NSLocalizedString(@"Add to favorites", @"Button label to add a favorite from the show preview window") style:favorited ? UIPreviewActionStyleDestructive : UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-        [Favorite toggleFavoriteForShow:self.show];
-        
-        // Use !favorited since favorited status has been reversed
-        AnalyticsTitle analyticsTitle = (! favorited) ? AnalyticsTitleFavoriteAdd : AnalyticsTitleFavoriteRemove;
-        SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
-        labels.source = AnalyticsSourcePeekMenu;
-        labels.value = self.show.URN;
-        [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:analyticsTitle labels:labels];
-        
-        [Banner showFavorite:! favorited forItemWithName:self.show.title inViewController:nil /* Not 'self' since dismissed */];
-    }];
-    [previewActionItems addObject:favoriteAction];
-    
     PushService *pushService = PushService.sharedService;
     if (pushService) {
         BOOL subscribed = [pushService isSubscribedToShow:self.show];
-        UIPreviewAction *subscriptionAction = [UIPreviewAction actionWithTitle:subscribed ? NSLocalizedString(@"Unsubscribe from show", @"Button label to unsubscribe from a show") : NSLocalizedString(@"Subscribe to show", @"Button label to unsubscribe to a show") style:subscribed ? UIPreviewActionStyleDestructive : UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        UIPreviewAction *subscriptionAction = [UIPreviewAction actionWithTitle:subscribed ? NSLocalizedString(@"Unsubscribe from show", @"Button label to unsubscribe from a show") : NSLocalizedString(@"Subscribe to show", @"Button label to subscribe to a show") style:subscribed ? UIPreviewActionStyleDestructive : UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
             BOOL toggled = [pushService toggleSubscriptionForShow:self.show inViewController:nil /* Not 'self' since dismissed */];
             if (! toggled) {
                 return;
             }
+            
+            // TODO: update analytics labels
             
             // Use !subscribed since the status has been reversed
             AnalyticsTitle analyticsTitle = (! subscribed) ? AnalyticsTitleSubscriptionAdd : AnalyticsTitleSubscriptionRemove;
@@ -225,6 +209,26 @@
             [Banner showSubscription:! subscribed forShowWithName:self.show.title inViewController:nil /* Not 'self' since dismissed */];
         }];
         [previewActionItems addObject:subscriptionAction];
+        
+        BOOL pushNotificationSubscribed = [pushService isPushNotificationSubscribedToShow:self.show];
+        UIPreviewAction *pushNotificationAction = [UIPreviewAction actionWithTitle:pushNotificationSubscribed ? NSLocalizedString(@"Stop notifications from show", @"Button label to unsubscribe push notification from a show") : NSLocalizedString(@"Be notified by the show", @"Button label to subscribe push notification from a show") style:pushNotificationSubscribed ? UIPreviewActionStyleDestructive : UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+            BOOL toggled = [pushService togglePushNotificationForShow:self.show inViewController:nil /* Not 'self' since dismissed */];
+            if (! toggled) {
+                return;
+            }
+            
+            // TODO: update analytics labels
+            
+            // Use !subscribed since the status has been reversed
+            AnalyticsTitle analyticsTitle = (! pushNotificationSubscribed) ? AnalyticsTitleSubscriptionAdd : AnalyticsTitleSubscriptionRemove;
+            SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
+            labels.source = AnalyticsSourcePeekMenu;
+            labels.value = self.show.URN;
+            [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:analyticsTitle labels:labels];
+            
+            [Banner showPushNotificationSubscription:! pushNotificationSubscribed forShowWithName:self.show.title inViewController:nil /* Not 'self' since dismissed */];
+        }];
+        [previewActionItems addObject:pushNotificationAction];
     }
     
     NSURL *sharingURL = [ApplicationConfiguration.sharedApplicationConfiguration sharingURLForShow:self.show];
