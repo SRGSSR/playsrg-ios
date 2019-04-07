@@ -9,7 +9,6 @@
 #import "ApplicationConfiguration.h"
 #import "ApplicationSettings.h"
 #import "ChannelService.h"
-#import "Favorite.h"
 #import "MediaPlayerViewController.h"
 #import "NSBundle+PlaySRG.h"
 #import "NSDateFormatter+PlaySRG.h"
@@ -43,7 +42,6 @@
 
 @property (nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
 @property (nonatomic, weak) IBOutlet UILabel *liveLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *favoriteImageView;
 
 @property (nonatomic, weak) IBOutlet UIView *blockingOverlayView;
 @property (nonatomic, weak) IBOutlet UIImageView *blockingReasonImageView;
@@ -105,17 +103,11 @@
     
     self.thumbnailImageView.backgroundColor = UIColor.play_grayThumbnailImageViewBackgroundColor;
     
-    self.favoriteImageView.backgroundColor = UIColor.play_redColor;
-    self.favoriteImageView.hidden = YES;
-    
     self.blockingOverlayView.hidden = YES;
     
     self.liveLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleCaption];
     self.liveLabel.backgroundColor = UIColor.play_blackDurationLabelBackgroundColor;
     [self.liveLabel play_displayDurationLabelForLive];
-    
-    self.favoriteImageView.backgroundColor = UIColor.play_redColor;
-    self.favoriteImageView.hidden = YES;
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openLiveRadio:)];
     [self.mediaView addGestureRecognizer:tapGestureRecognizer];
@@ -131,11 +123,9 @@
     self.media = nil;
     self.channel = nil;
     
-    self.favoriteImageView.hidden = YES;
     self.blockingOverlayView.hidden = YES;
     
     [self.thumbnailImageView play_resetImage];
-    self.favoriteImageView.hidden = YES;
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow
@@ -145,12 +135,6 @@
     if (newWindow) {
         [self registerForChannelUpdatesWithMedia:self.media];
         
-        [self updateFavoriteStatus];
-        [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(favoriteStateDidChange:)
-                                                   name:FavoriteStateDidChangeNotification
-                                                 object:nil];
-        
         @weakify(self)
         self.updateTimer = [NSTimer play_timerWithTimeInterval:1. repeats:YES block:^(NSTimer * _Nonnull timer) {
             @strongify(self)
@@ -159,8 +143,6 @@
     }
     else {
         [self unregisterChannelUpdatesWithMedia:self.media];
-        
-        [NSNotificationCenter.defaultCenter removeObserver:self name:FavoriteStateDidChangeNotification object:nil];
         
         self.updateTimer = nil;       // Invalidate timer
     }
@@ -216,8 +198,6 @@
 
 - (void)setMedia:(SRGMedia *)media
 {
-    self.favoriteImageView.hidden = YES;
-    
     [self unregisterChannelUpdatesWithMedia:_media];
     _media = media;
     [self registerForChannelUpdatesWithMedia:media];
@@ -340,13 +320,6 @@
     self.mediaView.accessibilityLabel = accessibilityLabel;
     
     [self.liveLabel play_displayDurationLabelForLive];
-    
-    [self updateFavoriteStatus];
-}
-
-- (void)updateFavoriteStatus
-{
-    self.favoriteImageView.hidden = ([Favorite favoriteForMedia:self.media] == nil);
 }
 
 #pragma mark Previewing protocol
@@ -354,13 +327,6 @@
 - (id)previewObject
 {
     return self.media;
-}
-
-#pragma mark Notifications
-
-- (void)favoriteStateDidChange:(NSNotification *)notification
-{
-    [self updateFavoriteStatus];
 }
 
 #pragma mark Actions

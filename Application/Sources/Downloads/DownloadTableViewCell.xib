@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -45,7 +45,7 @@
                                         <color key="trackTintColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </progressView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Dy-fb-9E2">
-                                        <rect key="frame" x="63.5" y="61" width="81" height="18"/>
+                                        <rect key="frame" x="81.5" y="61" width="63" height="18"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youth_protection_yellow-18" translatesAutoresizingMaskIntoConstraints="NO" id="F7R-ME-7bc">
                                                 <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
@@ -58,13 +58,8 @@
                                                     <constraint firstAttribute="width" constant="4" id="e6s-JD-tKi"/>
                                                 </constraints>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="favorite_full-18" translatesAutoresizingMaskIntoConstraints="NO" id="2o2-Dy-tMM">
-                                                <rect key="frame" x="22" y="0.0" width="18" height="18"/>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </imageView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text=" 00:00 " textAlignment="natural" lineBreakMode="wordWrap" minimumFontSize="10" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qos-Fl-Hqr" userLabel="Time Label">
-                                                <rect key="frame" x="40" y="0.0" width="41" height="18"/>
+                                                <rect key="frame" x="22" y="0.0" width="41" height="18"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="mc5-Aa-Cwg"/>
@@ -148,7 +143,6 @@
             <connections>
                 <outlet property="downloadStatusImageView" destination="TM2-Y3-cHc" id="99z-gi-J7l"/>
                 <outlet property="durationLabel" destination="Qos-Fl-Hqr" id="uM0-qZ-KOq"/>
-                <outlet property="favoriteImageView" destination="2o2-Dy-tMM" id="am1-jM-c5P"/>
                 <outlet property="media360ImageView" destination="wmN-wN-Xz3" id="AS4-oR-5aq"/>
                 <outlet property="progressView" destination="MeE-eL-S8U" id="wKN-Hy-ZY9"/>
                 <outlet property="subtitleLabel" destination="waz-M0-pDU" id="4fy-Uc-GAx"/>
@@ -162,7 +156,6 @@
     <resources>
         <image name="360_media-25" width="25" height="25"/>
         <image name="downloadable-22" width="22" height="22"/>
-        <image name="favorite_full-18" width="18" height="18"/>
         <image name="youth_protection_yellow-18" width="18" height="18"/>
     </resources>
 </document>

@@ -10,7 +10,6 @@
 #import "ApplicationConfiguration.h"
 #import "Banner.h"
 #import "Download.h"
-#import "Favorite.h"
 #import "History.h"
 #import "NSBundle+PlaySRG.h"
 #import "NSDateFormatter+PlaySRG.h"
@@ -32,7 +31,6 @@
 @property (nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
 @property (nonatomic, weak) IBOutlet UILabel *durationLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *youthProtectionColorImageView;
-@property (nonatomic, weak) IBOutlet UIImageView *favoriteImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *downloadStatusImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *media360ImageView;
 
@@ -64,9 +62,6 @@
     
     self.youthProtectionColorImageView.hidden = YES;
     
-    self.favoriteImageView.backgroundColor = UIColor.play_redColor;
-    self.favoriteImageView.hidden = YES;
-    
     self.media360ImageView.layer.shadowOpacity = 0.3f;
     self.media360ImageView.layer.shadowRadius = 2.f;
     self.media360ImageView.layer.shadowOffset = CGSizeMake(0.f, 1.f);
@@ -82,7 +77,6 @@
     
     self.youthProtectionColorImageView.hidden = YES;
     
-    self.favoriteImageView.hidden = YES;
     self.blockingOverlayView.hidden = YES;
     self.progressView.hidden = YES;
     
@@ -95,13 +89,7 @@
     
     if (newWindow) {
         // Ensure proper state when the view is reinserted
-        [self updateFavoriteStatus];
         [self updateDownloadStatus];
-        
-        [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(favoriteStateDidChange:)
-                                                   name:FavoriteStateDidChangeNotification
-                                                 object:nil];
         
         [NSNotificationCenter.defaultCenter addObserver:self
                                                selector:@selector(downloadStateDidChange:)
@@ -113,7 +101,6 @@
                                                  object:SRGUserData.currentUserData.history];
     }
     else {
-        [NSNotificationCenter.defaultCenter removeObserver:self name:FavoriteStateDidChangeNotification object:nil];
         [NSNotificationCenter.defaultCenter removeObserver:self name:DownloadStateDidChangeNotification object:nil];
         [NSNotificationCenter.defaultCenter removeObserver:self name:SRGHistoryDidChangeNotification object:SRGUserData.currentUserData.history];
     }
@@ -247,17 +234,11 @@
     id<SRGImage> imageObject = (media.contentType == SRGContentTypeLivestream && media.channel) ? media.channel : media;
     [self.thumbnailImageView play_requestImageForObject:imageObject withScale:ImageScaleSmall type:SRGImageTypeDefault placeholder:ImagePlaceholderMedia];
     
-    [self updateFavoriteStatus];
     [self updateDownloadStatus];
     [self updateHistoryStatus];
 }
 
 #pragma mark UI
-
-- (void)updateFavoriteStatus
-{
-    self.favoriteImageView.hidden = ([Favorite favoriteForMedia:self.media] == nil);
-}
 
 - (void)updateDownloadStatus
 {
@@ -330,11 +311,6 @@
 }
 
 #pragma mark Notifications
-
-- (void)favoriteStateDidChange:(NSNotification *)notification
-{
-    [self updateFavoriteStatus];
-}
 
 - (void)downloadStateDidChange:(NSNotification *)notification
 {

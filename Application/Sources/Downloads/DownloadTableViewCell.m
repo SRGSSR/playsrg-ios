@@ -7,7 +7,6 @@
 #import "DownloadTableViewCell.h"
 
 #import "AnalyticsConstants.h"
-#import "Favorite.h"
 #import "History.h"
 #import "NSBundle+PlaySRG.h"
 #import "NSDateFormatter+PlaySRG.h"
@@ -31,14 +30,12 @@
 @property (nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
 @property (nonatomic, weak) IBOutlet UILabel *durationLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *youthProtectionColorImageView;
-@property (nonatomic, weak) IBOutlet UIImageView *favoriteImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *downloadStatusImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *media360ImageView;
 
 @property (nonatomic, weak) IBOutlet UIProgressView *progressView;
 
 @property (nonatomic) UIColor *durationLabelBackgroundColor;
-@property (nonatomic) UIColor *favoriteImageViewBackgroundColor;
 
 @end
 
@@ -58,10 +55,6 @@
     
     self.thumbnailImageView.backgroundColor = UIColor.play_grayThumbnailImageViewBackgroundColor;
     
-    self.favoriteImageView.backgroundColor = UIColor.play_redColor;
-    self.favoriteImageView.hidden = YES;
-    
-    self.favoriteImageViewBackgroundColor = self.favoriteImageView.backgroundColor;
     self.durationLabelBackgroundColor = self.durationLabel.backgroundColor;
     
     self.youthProtectionColorImageView.hidden = YES;
@@ -98,7 +91,6 @@
     
     self.youthProtectionColorImageView.hidden = YES;
     
-    self.favoriteImageView.hidden = YES;
     self.progressView.hidden = YES;
     
     [self.thumbnailImageView play_resetImage];
@@ -109,20 +101,14 @@
     [super willMoveToWindow:window];
     
     if (window) {
-        [self updateFavoriteStatus];
         [self updateDownloadStatus];
         
-        [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(favoriteStateDidChange:)
-                                                   name:FavoriteStateDidChangeNotification
-                                                 object:nil];
         [NSNotificationCenter.defaultCenter addObserver:self
                                                selector:@selector(historyDidChange:)
                                                    name:SRGHistoryDidChangeNotification
                                                  object:SRGUserData.currentUserData.history];
     }
     else {
-        [NSNotificationCenter.defaultCenter removeObserver:self name:FavoriteStateDidChangeNotification object:nil];
         [NSNotificationCenter.defaultCenter removeObserver:self name:SRGHistoryDidChangeNotification object:SRGUserData.currentUserData.history];
     }
 }
@@ -150,7 +136,6 @@
     
     if (self.editing) {
         [self updateDownloadStatus];
-        self.favoriteImageView.backgroundColor = self.favoriteImageViewBackgroundColor;
         self.durationLabel.backgroundColor = self.durationLabelBackgroundColor;
     }
 }
@@ -161,7 +146,6 @@
     
     if (self.editing) {
         [self updateDownloadStatus];
-        self.favoriteImageView.backgroundColor = self.favoriteImageViewBackgroundColor;
         self.durationLabel.backgroundColor = self.durationLabelBackgroundColor;
     }
 }
@@ -228,17 +212,11 @@
         [self.thumbnailImageView play_requestImageForObject:download withScale:ImageScaleSmall type:SRGImageTypeDefault placeholder:ImagePlaceholderMedia];
     }];
     
-    [self updateFavoriteStatus];
     [self updateDownloadStatus];
     [self updateHistoryStatus];
 }
 
 #pragma mark UI
-
-- (void)updateFavoriteStatus
-{
-    self.favoriteImageView.hidden = ([Favorite favoriteForMedia:self.download.media] == nil);
-}
 
 - (void)updateDownloadStatus
 {
@@ -303,11 +281,6 @@
 }
 
 #pragma mark Notifications
-
-- (void)favoriteStateDidChange:(NSNotification *)notification
-{
-    [self updateFavoriteStatus];
-}
 
 - (void)downloadStateDidChange:(NSNotification *)notification
 {

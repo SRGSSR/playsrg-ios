@@ -8,7 +8,6 @@
 
 #import "AnalyticsConstants.h"
 #import "ChannelService.h"
-#import "Favorite.h"
 #import "NSBundle+PlaySRG.h"
 #import "NSDateFormatter+PlaySRG.h"
 #import "NSTimer+PlaySRG.h"
@@ -40,7 +39,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *subtitleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
 @property (nonatomic, weak) IBOutlet UILabel *durationLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *favoriteImageView;
 
 @property (nonatomic, weak) IBOutlet UIView *blockingOverlayView;
 @property (nonatomic, weak) IBOutlet UIImageView *blockingReasonImageView;
@@ -84,9 +82,6 @@
     
     self.durationLabel.backgroundColor = UIColor.play_blackDurationLabelBackgroundColor;
     
-    self.favoriteImageView.backgroundColor = UIColor.play_redColor;
-    self.favoriteImageView.hidden = YES;
-    
     self.blockingOverlayView.hidden = YES;
 }
 
@@ -104,7 +99,6 @@
     self.placeholderView.alpha = 1.f;
     self.progressView.progress = 1.f;
     
-    self.favoriteImageView.hidden = YES;
     self.blockingOverlayView.hidden = YES;
     
     [self.thumbnailImageView play_resetImage];
@@ -116,14 +110,7 @@
     
     if (newWindow) {
         // Ensure proper state when the view is reinserted
-        [self updateFavoriteStatus];
-        
         [self registerForChannelUpdatesWithMedia:self.media];
-        
-        [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(favoriteStateDidChange:)
-                                                   name:FavoriteStateDidChangeNotification
-                                                 object:nil];
         
         @weakify(self)
         self.updateTimer = [NSTimer play_timerWithTimeInterval:1. repeats:YES block:^(NSTimer * _Nonnull timer) {
@@ -133,8 +120,6 @@
     }
     else {
         [self unregisterChannelUpdatesWithMedia:self.media];
-        
-        [NSNotificationCenter.defaultCenter removeObserver:self name:FavoriteStateDidChangeNotification object:nil];
         
         self.updateTimer = nil;       // Invalidate timer
     }
@@ -189,8 +174,6 @@
     
     [self registerForChannelUpdatesWithMedia:media];
     [self reloadData];
-    
-    [self updateFavoriteStatus];
 }
 
 #pragma mark Channel updates
@@ -275,23 +258,11 @@
     [self.durationLabel play_displayDurationLabelForMediaMetadata:self.media];
 }
 
-- (void)updateFavoriteStatus
-{
-    self.favoriteImageView.hidden = ([Favorite favoriteForMedia:self.media] == nil);
-}
-
 #pragma mark Previewing protocol
 
 - (id)previewObject
 {
     return self.media;
-}
-
-#pragma mark Notifications
-
-- (void)favoriteStateDidChange:(NSNotification *)notification
-{
-    [self updateFavoriteStatus];
 }
 
 @end
