@@ -26,6 +26,7 @@
 #import "UIWindow+PlaySRG.h"
 #import "UpdateInfo.h"
 #import "WebViewController.h"
+#import "WatchLater.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import <Firebase/Firebase.h>
@@ -182,6 +183,7 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
     
     // Local objects migration
     [Favorite migrate];
+    WatchLaterMigrate();
     
     // 3D touch dynamic shortcut items. If search options are available, append a search option as last item. Dynamic shortcut
     // items are persisted between application launches, do not add them several times

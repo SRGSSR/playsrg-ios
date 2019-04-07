@@ -37,4 +37,9 @@ OBJC_EXPORT void WatchLaterRemoveMediaMetadata(id<SRGMediaMetadata> _Nonnull med
  */
 OBJC_EXPORT void WatchLaterToggleMediaMetadata(id<SRGMediaMetadata> _Nonnull mediaMetadata, void (^completion)(BOOL added, NSError * _Nullable error));
 
+/**
+ *  Perform migration.
+ */
+OBJC_EXPORT void WatchLaterMigrate();
+
 NS_ASSUME_NONNULL_END

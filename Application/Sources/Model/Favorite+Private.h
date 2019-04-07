@@ -24,4 +24,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface Favorite (WatchLaterMigration)
+/**
+ *  Available media favorites, sorted by date at which they were favorited (from the oldest to the most recent)
+ */
+@property (class, nonatomic, readonly) NSArray<Favorite *> *mediaFavorites;
+
+/**
+ *  Remove favorites wihtout notifications
+ */
++ (void)finishMigrationForFavorites:(NSArray<Favorite *> *)favorites;
+
+/**
+ *  Watch later synchronisation dictionary
+ */
+- (NSDictionary *)watchLaterDictionary;
+
+@end
+
 NS_ASSUME_NONNULL_END

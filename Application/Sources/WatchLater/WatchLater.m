@@ -6,9 +6,16 @@
 
 #import "WatchLater.h"
 
+#import "Favorite+Private.h"
 
 #import <libextobjc/libextobjc.h>
 #import <SRGUserData/SRGUserData.h>
+
+@interface SRGPlaylists (Private)
+
+- (void)saveEntryDictionaries:(NSArray<NSDictionary *> *)playlistEntryDictionaries toPlaylistUid:(NSString *)playlistUid withCompletionBlock:(void (^)(NSError * _Nullable error))completionBlock;
+
+@end
 
 #pragma mark Media metadata functions
 
@@ -53,4 +60,23 @@ void WatchLaterToggleMediaMetadata(id<SRGMediaMetadata> _Nonnull mediaMetadata, 
             });
         });
     }
+}
+
+void WatchLaterMigrate()
+{
+    NSArray<Favorite *> *favorites = [Favorite mediaFavorites];
+    if (favorites.count > 0) {
+        NSMutableArray<NSDictionary *> *mediaDictionaries = [NSMutableArray array];
+        for (Favorite *favorite in favorites) {
+            [mediaDictionaries addObject:favorite.watchLaterDictionary];
+        }
+        [SRGUserData.currentUserData.playlists saveEntryDictionaries:mediaDictionaries.copy toPlaylistUid:SRGWatchLaterPlaylistUid withCompletionBlock:^(NSError * _Nullable error) {
+            if (! error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [Favorite finishMigrationForFavorites:favorites];
+                });
+            }
+        }];
+    }
+    
 }
