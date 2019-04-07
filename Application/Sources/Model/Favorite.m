@@ -669,11 +669,18 @@ static NSArray<Favorite *> *s_sortedFavorites;
     return nil;
 }
 
-#pragma mark WatchLaterMigration
+#pragma mark Migration
 
 + (NSArray<Favorite *> *)mediaFavorites
 {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(Favorite.new, type), @(FavoriteTypeMedia)];
+    NSArray<Favorite *> *favorites = [self.favorites filteredArrayUsingPredicate:predicate];
+    return favorites.reverseObjectEnumerator.allObjects;
+}
+
++ (NSArray<Favorite *> *)showFavorites
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(Favorite.new, type), @(FavoriteTypeShow)];
     NSArray<Favorite *> *favorites = [self.favorites filteredArrayUsingPredicate:predicate];
     return favorites.reverseObjectEnumerator.allObjects;
 }

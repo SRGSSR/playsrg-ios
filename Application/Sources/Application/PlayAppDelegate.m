@@ -238,6 +238,7 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
     
     [PushService.sharedService setup];
     [self updateApplicationBadge];
+    [PushService.sharedService migrate];
     
     [self showNextAvailableOnboarding];
     

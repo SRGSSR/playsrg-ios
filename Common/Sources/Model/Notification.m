@@ -18,7 +18,8 @@ static NSString *NotificationDescriptionForType(NotificationType notificationTyp
     static dispatch_once_t s_onceToken;
     static NSDictionary<NSNumber *, NSString *> *s_descriptions;
     dispatch_once(&s_onceToken, ^{
-        s_descriptions = @{ @(NotificationTypeNewOnDemandContentAvailable) : @"New on-demand content available" };
+        s_descriptions = @{ @(NotificationTypeNewOnDemandContentAvailable) : @"New on-demand content available",
+                            @(NotificationTypeLocalNewOnDemandContentAvailable) : @"Local new on-demand content available" };
     });
     return s_descriptions[@(notificationType)];
 }
@@ -268,7 +269,8 @@ static NSValueTransformer *NotificationTypeTransformer(void)
     static NSValueTransformer *s_transformer;
     static dispatch_once_t s_onceToken;
     dispatch_once(&s_onceToken, ^{
-        s_transformer = [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{ @"newod" : @(NotificationTypeNewOnDemandContentAvailable) }
+        s_transformer = [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{ @"newod" : @(NotificationTypeNewOnDemandContentAvailable),
+                                                                                         @"localnewod" : @(NotificationTypeLocalNewOnDemandContentAvailable) }
                                                                          defaultValue:@(NotificationTypeNone)
                                                                   reverseDefaultValue:nil];
     });

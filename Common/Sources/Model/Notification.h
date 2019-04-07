@@ -19,9 +19,13 @@ typedef NS_ENUM(NSInteger, NotificationType) {
      */
     NotificationTypeNone = 0,
     /**
-     *  A new on-demand content is available.
+     *  A (push notification) new on-demand content is available.
      */
-    NotificationTypeNewOnDemandContentAvailable
+    NotificationTypeNewOnDemandContentAvailable,
+    /**
+     *  A local new on-demand content is available.
+     */
+    NotificationTypeLocalNewOnDemandContentAvailable
 };
 
 /**

@@ -66,6 +66,11 @@ OBJC_EXPORT NSString * const PushServiceDidReceiveNotification;
 - (BOOL)toggleSubscriptionForShow:(SRGShow *)show;
 
 /**
+ *  Toggle Push notification subscription for the specified show.
+ */
+- (BOOL)togglePushNotificationForShow:(SRGShow *)show;
+
+/**
  *  Remove any subscription for the specified show.
  */
 - (BOOL)unsubscribeFromShow:(SRGShow *)show;
@@ -74,6 +79,11 @@ OBJC_EXPORT NSString * const PushServiceDidReceiveNotification;
  *  Return YES iff the user has subscribed to the specified show.
  */
 - (BOOL)isSubscribedToShow:(SRGShow *)show;
+
+/**
+ *  Return YES iff the user has subscribed push notification to the specified show.
+ */
+- (BOOL)isPushNotificationSubscribedToShow:(SRGShow *)show;
 
 /**
  *  Return the URNs of all shows the user has subscribed to.
@@ -86,6 +96,11 @@ OBJC_EXPORT NSString * const PushServiceDidReceiveNotification;
 
 - (BOOL)toggleSubscriptionForShow:(SRGShow *)show inView:(nullable UIView *)view;
 - (BOOL)toggleSubscriptionForShow:(SRGShow *)show inViewController:(nullable UIViewController *)viewController;
+
+- (BOOL)togglePushNotificationForShow:(SRGShow *)show inView:(nullable UIView *)view;
+- (BOOL)togglePushNotificationForShow:(SRGShow *)show inViewController:(nullable UIViewController *)viewController;
+
+- (void)migrate;
 
 @end
 

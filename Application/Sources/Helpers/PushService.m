@@ -8,6 +8,7 @@
 
 #import "ApplicationConfiguration.h"
 #import "ApplicationSettings.h"
+#import "Favorite+Private.h"
 #import "PlayAppDelegate.h"
 #import "Notification.h"
 
@@ -204,14 +205,24 @@ NSString * const PushServiceDidReceiveNotification = @"PushServiceDidReceiveNoti
 
 #pragma mrk Subscription management
 
-- (NSString *)tagForURN:(NSString *)URN
+- (NSString *)pushTagForURN:(NSString *)URN
 {
     return [NSString stringWithFormat:@"%@|%@|%@|%@", self.appIdentifier, NotificationTypeString(NotificationTypeNewOnDemandContentAvailable), self.environmentIdentifier, URN];
 }
 
-- (NSString *)tagForShow:(SRGShow *)show
+- (NSString *)localTagForURN:(NSString *)URN
 {
-    return [self tagForURN:show.URN];
+    return [NSString stringWithFormat:@"%@|%@|%@|%@", self.appIdentifier, NotificationTypeString(NotificationTypeLocalNewOnDemandContentAvailable), self.environmentIdentifier, URN];
+}
+
+- (NSString *)pushTagForShow:(SRGShow *)show
+{
+    return [self pushTagForURN:show.URN];
+}
+
+- (NSString *)localTagForShow:(SRGShow *)show
+{
+    return [self localTagForURN:show.URN];
 }
 
 - (NSString *)showURNFromTag:(NSString *)tag
@@ -221,7 +232,8 @@ NSString * const PushServiceDidReceiveNotification = @"PushServiceDidReceiveNoti
         return nil;
     }
     
-    if (! [components[1] isEqualToString:NotificationTypeString(NotificationTypeNewOnDemandContentAvailable)]) {
+    if (! [components[1] isEqualToString:NotificationTypeString(NotificationTypeNewOnDemandContentAvailable)]
+        && ! [components[1] isEqualToString:NotificationTypeString(NotificationTypeLocalNewOnDemandContentAvailable)] ) {
         return nil;
     }
     
@@ -232,19 +244,53 @@ NSString * const PushServiceDidReceiveNotification = @"PushServiceDidReceiveNoti
     return components[3];
 }
 
-- (BOOL)subscribeToShow:(SRGShow *)show
+- (BOOL)subscribeNotificationToShow:(SRGShow *)show
 {
     if (! self.enabled || ! show) {
         return NO;
     }
     
-    [[UAirship push] addTag:[self tagForShow:show]];
+    [[UAirship push] removeTag:[self localTagForShow:show]];
+    [[UAirship push] addTag:[self pushTagForShow:show]];
     [[UAirship push] updateRegistration];
     
     [NSNotificationCenter.defaultCenter postNotificationName:PushServiceSubscriptionStateDidChangeNotification
                                                       object:self
                                                     userInfo:@{ PushServiceSubscriptionObjectKey : show,
                                                                 PushServiceSubscriptionStateKey : @YES }];
+    
+    return YES;
+}
+
+- (BOOL)subscribeToShow:(SRGShow *)show
+{
+    if (! show) {
+        return NO;
+    }
+    
+    [[UAirship push] removeTag:[self pushTagForShow:show]];
+    [[UAirship push] addTag:[self localTagForShow:show]];
+    [[UAirship push] updateRegistration];
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:PushServiceSubscriptionStateDidChangeNotification
+                                                      object:self
+                                                    userInfo:@{ PushServiceSubscriptionObjectKey : show,
+                                                                PushServiceSubscriptionStateKey : @YES }];
+    
+    return YES;
+}
+
+- (BOOL)subscribeToShowURN:(NSString *)showURN
+{
+    if (! showURN) {
+        return NO;
+    }
+    NSArray *tags1 = [UAirship push].tags;
+    [[UAirship push] removeTag:[self pushTagForURN:showURN]];
+    [[UAirship push] addTag:[self localTagForURN:showURN]];
+    NSArray *tags2 = [UAirship push].tags;
+    [[UAirship push] updateRegistration];
+    NSArray *tags3 = [UAirship push].tags;
     
     return YES;
 }
@@ -259,13 +305,24 @@ NSString * const PushServiceDidReceiveNotification = @"PushServiceDidReceiveNoti
     }
 }
 
+- (BOOL)togglePushNotificationForShow:(SRGShow *)show
+{
+    if ([self isPushNotificationSubscribedToShow:show]) {
+        return [self subscribeToShow:show];
+    }
+    else {
+        return [self subscribeNotificationToShow:show];
+    }
+}
+
 - (BOOL)unsubscribeFromShow:(SRGShow *)show
 {
-    if (! self.enabled || ! show) {
+    if (! show) {
         return NO;
     }
     
-    [[UAirship push] removeTag:[self tagForShow:show]];
+    [[UAirship push] removeTag:[self localTagForShow:show]];
+    [[UAirship push] removeTag:[self pushTagForShow:show]];
     [[UAirship push] updateRegistration];
     
     [NSNotificationCenter.defaultCenter postNotificationName:PushServiceSubscriptionStateDidChangeNotification
@@ -277,11 +334,20 @@ NSString * const PushServiceDidReceiveNotification = @"PushServiceDidReceiveNoti
 
 - (BOOL)isSubscribedToShow:(SRGShow *)show
 {
-    if (! self.enabled || ! show) {
+    if (! show) {
         return NO;
     }
     
-    return [[UAirship push].tags containsObject:[self tagForShow:show]];
+    return [[UAirship push].tags containsObject:[self localTagForShow:show]] || [[UAirship push].tags containsObject:[self pushTagForShow:show]];
+}
+
+- (BOOL)isPushNotificationSubscribedToShow:(SRGShow *)show
+{
+    if (! show) {
+        return NO;
+    }
+    
+    return [[UAirship push].tags containsObject:[self pushTagForShow:show]];
 }
 
 #pragma mark Actions
@@ -383,7 +449,17 @@ NSString * const PushServiceDidReceiveNotification = @"PushServiceDidReceiveNoti
 
 - (BOOL)toggleSubscriptionForShow:(SRGShow *)show inViewController:(UIViewController *)viewController
 {
-    if (! [self toggleSubscriptionForShow:show]) {
+    return [self toggleSubscriptionForShow:show];
+}
+
+- (BOOL)togglePushNotificationForShow:(SRGShow *)show inView:(UIView *)view
+{
+    return [self togglePushNotificationForShow:show inViewController:view.nearestViewController];
+}
+
+- (BOOL)togglePushNotificationForShow:(SRGShow *)show inViewController:(UIViewController *)viewController
+{
+    if (! [self togglePushNotificationForShow:show]) {
         if (! [self presentSystemAlertForPushNotifications]) {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Enable notifications?", @"Question displayed at the top of an alert asking the user to enable notifications")
                                                                                      message:NSLocalizedString(@"For the application to inform you when a new episode is available, notifications must be enabled.", @"Explanation displayed in the alert asking the user to enable notifications")
@@ -399,6 +475,20 @@ NSString * const PushServiceDidReceiveNotification = @"PushServiceDidReceiveNoti
     }
     
     return YES;
+}
+
+- (void)migrate
+{
+    NSArray<Favorite *> *favorites = [Favorite showFavorites];
+    if (favorites.count) {
+        NSArray<NSString *> *subscribedShowURNs = self.subscribedShowURNs;
+        for (Favorite *favorite in favorites) {
+            if (favorite.showURN && ! [subscribedShowURNs containsObject:favorite.showURN]) {
+                [self subscribeToShowURN:favorite.showURN];
+            }
+        }
+        [Favorite finishMigrationForFavorites:favorites];
+    }
 }
 
 @end

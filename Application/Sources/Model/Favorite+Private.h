@@ -31,6 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, nonatomic, readonly) NSArray<Favorite *> *mediaFavorites;
 
 /**
+ *  Available show favorites, sorted by date at which they were favorited (from the oldest to the most recent)
+ */
+@property (class, nonatomic, readonly) NSArray<Favorite *> *showFavorites;
+
+/**
  *  Remove favorites wihtout notifications
  */
 + (void)finishMigrationForFavorites:(NSArray<Favorite *> *)favorites;
