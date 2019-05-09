@@ -1291,6 +1291,11 @@
 		6FFD0BD722966A0900060BB3 /* DeepDiff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FFD0BD822966A0F00060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
 		6FFD0BD922966A0F00060BB3 /* DeepDiff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FFD0BDB22966AA100060BB3 /* DeepDiffBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD0BDA22966A9F00060BB3 /* DeepDiffBridge.swift */; };
+		6FFD0BDC22966AA100060BB3 /* DeepDiffBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD0BDA22966A9F00060BB3 /* DeepDiffBridge.swift */; };
+		6FFD0BDD22966AA100060BB3 /* DeepDiffBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD0BDA22966A9F00060BB3 /* DeepDiffBridge.swift */; };
+		6FFD0BDE22966AA100060BB3 /* DeepDiffBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD0BDA22966A9F00060BB3 /* DeepDiffBridge.swift */; };
+		6FFD0BDF22966AA100060BB3 /* DeepDiffBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFD0BDA22966A9F00060BB3 /* DeepDiffBridge.swift */; };
 		7ACE7CA000370D1208243956 /* libPods-PlaySRG-Play SRF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6E859054BE4FCA7A62352E /* libPods-PlaySRG-Play SRF.a */; };
 		E1D8F87EB9409ADB326F446F /* libPods-PlaySRG-Play RTR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 866AF638938EFA7338C23B03 /* libPods-PlaySRG-Play RTR.a */; };
 		E60178521D635E130000362E /* ComScore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60178511D635E130000362E /* ComScore.framework */; };
@@ -2089,6 +2094,7 @@
 		6FF3B68D2137DC8400F8A5E2 /* SRGContentProtection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SRGContentProtection.framework; path = Carthage/Build/iOS/Static/SRGContentProtection.framework; sourceTree = "<group>"; };
 		6FF3B6932137DCD500F8A5E2 /* SRGContentProtection.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SRGContentProtection.bundle; path = Carthage/Build/iOS/Static/SRGContentProtection.framework/SRGContentProtection.bundle; sourceTree = "<group>"; };
 		6FFD0BCA229668A000060BB3 /* DeepDiff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeepDiff.framework; path = Carthage/Build/iOS/DeepDiff.framework; sourceTree = "<group>"; };
+		6FFD0BDA22966A9F00060BB3 /* DeepDiffBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeepDiffBridge.swift; sourceTree = "<group>"; };
 		866AF638938EFA7338C23B03 /* libPods-PlaySRG-Play RTR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlaySRG-Play RTR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BDBB65E7B9D845CB1576750 /* Pods-PlaySRG-Play RTS.nightly.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaySRG-Play RTS.nightly.xcconfig"; path = "Pods/Target Support Files/Pods-PlaySRG-Play RTS/Pods-PlaySRG-Play RTS.nightly.xcconfig"; sourceTree = "<group>"; };
 		A0923E657497DE17CE057F6E /* Pods-PlaySRG-Play RTR.nightly.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaySRG-Play RTR.nightly.xcconfig"; path = "Pods/Target Support Files/Pods-PlaySRG-Play RTR/Pods-PlaySRG-Play RTR.nightly.xcconfig"; sourceTree = "<group>"; };
@@ -3248,6 +3254,7 @@
 		E62459EC1D488CEF00482BE9 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
+				6FFD0BDA22966A9F00060BB3 /* DeepDiffBridge.swift */,
 				6F661C9E1FBB632E008E345B /* Play-ObjectiveC-Bridge.h */,
 				E62459F31D488DC300482BE9 /* Play-Swift-Bridge.h */,
 				E62459ED1D488D0400482BE9 /* SwiftMessagesBridge.swift */,
@@ -5344,6 +5351,7 @@
 				6F9122BF1DC8708400725EEB /* PlayErrors.m in Sources */,
 				6FE1B9191FAC34D600A58F3B /* ContentInsets.m in Sources */,
 				6F93DE0D20AE985C00B71572 /* OnboardingsViewController.m in Sources */,
+				6FFD0BDB22966AA100060BB3 /* DeepDiffBridge.swift in Sources */,
 				6FAAF78820CABC0D00BB58A3 /* NSFileManager+PlaySRG.m in Sources */,
 				081220AC1DD079BB00BF8326 /* DownloadTableViewCell.m in Sources */,
 				6F861AF81DAE65A600C46102 /* SRGMediaPlayerDesignables.m in Sources */,
@@ -5521,6 +5529,7 @@
 				6F32275F216F2FEC006A785D /* MenuAccountHeaderView.m in Sources */,
 				0827DA1F1F0D36E200A31A42 /* NSBundle+PlaySRG.m in Sources */,
 				6F7218141DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
+				6FFD0BDC22966AA100060BB3 /* DeepDiffBridge.swift in Sources */,
 				6F1484C01EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F80E9C321A682E70027CA2F /* TableRequestViewController.m in Sources */,
 				6FE1B91A1FAC34D600A58F3B /* ContentInsets.m in Sources */,
@@ -5665,6 +5674,7 @@
 				6F322760216F2FEC006A785D /* MenuAccountHeaderView.m in Sources */,
 				0827DA201F0D36E200A31A42 /* NSBundle+PlaySRG.m in Sources */,
 				6F7218151DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
+				6FFD0BDD22966AA100060BB3 /* DeepDiffBridge.swift in Sources */,
 				6F1484C11EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F80E9C421A682E70027CA2F /* TableRequestViewController.m in Sources */,
 				6FE1B91B1FAC34D600A58F3B /* ContentInsets.m in Sources */,
@@ -5809,6 +5819,7 @@
 				6F322761216F2FEC006A785D /* MenuAccountHeaderView.m in Sources */,
 				0827DA211F0D36E400A31A42 /* NSBundle+PlaySRG.m in Sources */,
 				6F7218161DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
+				6FFD0BDE22966AA100060BB3 /* DeepDiffBridge.swift in Sources */,
 				6F1484C21EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F80E9C521A682E70027CA2F /* TableRequestViewController.m in Sources */,
 				6FE1B91C1FAC34D600A58F3B /* ContentInsets.m in Sources */,
@@ -5953,6 +5964,7 @@
 				6F322762216F2FEC006A785D /* MenuAccountHeaderView.m in Sources */,
 				0827DA221F0D36E400A31A42 /* NSBundle+PlaySRG.m in Sources */,
 				6F7218171DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
+				6FFD0BDF22966AA100060BB3 /* DeepDiffBridge.swift in Sources */,
 				6F1484C31EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F80E9C621A682E70027CA2F /* TableRequestViewController.m in Sources */,
 				6FE1B91D1FAC34D600A58F3B /* ContentInsets.m in Sources */,
