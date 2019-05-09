@@ -1276,6 +1276,21 @@
 		6FF3B6962137DCD700F8A5E2 /* SRGContentProtection.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6FF3B6932137DCD500F8A5E2 /* SRGContentProtection.bundle */; };
 		6FF3B6972137DCD700F8A5E2 /* SRGContentProtection.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6FF3B6932137DCD500F8A5E2 /* SRGContentProtection.bundle */; };
 		6FF3B6982137DCD700F8A5E2 /* SRGContentProtection.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6FF3B6932137DCD500F8A5E2 /* SRGContentProtection.bundle */; };
+		6FFD0BCB229668A100060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
+		6FFD0BCC229668BA00060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
+		6FFD0BCD229668C700060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
+		6FFD0BCE229668D200060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
+		6FFD0BCF229668DF00060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
+		6FFD0BD0229669F800060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
+		6FFD0BD1229669F800060BB3 /* DeepDiff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FFD0BD2229669FF00060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
+		6FFD0BD3229669FF00060BB3 /* DeepDiff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FFD0BD422966A0300060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
+		6FFD0BD522966A0300060BB3 /* DeepDiff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FFD0BD622966A0900060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
+		6FFD0BD722966A0900060BB3 /* DeepDiff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FFD0BD822966A0F00060BB3 /* DeepDiff.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; };
+		6FFD0BD922966A0F00060BB3 /* DeepDiff.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FFD0BCA229668A000060BB3 /* DeepDiff.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7ACE7CA000370D1208243956 /* libPods-PlaySRG-Play SRF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6E859054BE4FCA7A62352E /* libPods-PlaySRG-Play SRF.a */; };
 		E1D8F87EB9409ADB326F446F /* libPods-PlaySRG-Play RTR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 866AF638938EFA7338C23B03 /* libPods-PlaySRG-Play RTR.a */; };
 		E60178521D635E130000362E /* ComScore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60178511D635E130000362E /* ComScore.framework */; };
@@ -1508,6 +1523,7 @@
 				6F5F7FE31F382E9D00C330EC /* TCCore.framework in Embed Frameworks */,
 				E67BB6991D3E640C00E1FEA3 /* Mantle.framework in Embed Frameworks */,
 				E60178531D635E130000362E /* ComScore.framework in Embed Frameworks */,
+				6FFD0BD1229669F800060BB3 /* DeepDiff.framework in Embed Frameworks */,
 				6F5F7FE51F382E9D00C330EC /* TCSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -1522,6 +1538,7 @@
 				6F5F7FE71F382EB700C330EC /* TCCore.framework in Embed Frameworks */,
 				E67FFA281D3E6840007BD7BA /* Mantle.framework in Embed Frameworks */,
 				E60178551D635E160000362E /* ComScore.framework in Embed Frameworks */,
+				6FFD0BD3229669FF00060BB3 /* DeepDiff.framework in Embed Frameworks */,
 				6F5F7FE91F382EB700C330EC /* TCSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -1536,6 +1553,7 @@
 				6F5F7FEB1F382EBB00C330EC /* TCCore.framework in Embed Frameworks */,
 				E67FFA2D1D3E6844007BD7BA /* Mantle.framework in Embed Frameworks */,
 				E60178571D635E190000362E /* ComScore.framework in Embed Frameworks */,
+				6FFD0BD522966A0300060BB3 /* DeepDiff.framework in Embed Frameworks */,
 				6F5F7FED1F382EBB00C330EC /* TCSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -1550,6 +1568,7 @@
 				6F5F7FEF1F382EBF00C330EC /* TCCore.framework in Embed Frameworks */,
 				E67FFA321D3E6847007BD7BA /* Mantle.framework in Embed Frameworks */,
 				E60178591D635E1D0000362E /* ComScore.framework in Embed Frameworks */,
+				6FFD0BD722966A0900060BB3 /* DeepDiff.framework in Embed Frameworks */,
 				6F5F7FF11F382EBF00C330EC /* TCSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -1564,6 +1583,7 @@
 				6F5F7FF31F382EC400C330EC /* TCCore.framework in Embed Frameworks */,
 				E67FFA371D3E684B007BD7BA /* Mantle.framework in Embed Frameworks */,
 				E601785B1D635E210000362E /* ComScore.framework in Embed Frameworks */,
+				6FFD0BD922966A0F00060BB3 /* DeepDiff.framework in Embed Frameworks */,
 				6F5F7FF51F382EC400C330EC /* TCSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -2068,6 +2088,7 @@
 		6FEC91A821A6B39A00AA50C8 /* TableLoadMoreFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableLoadMoreFooterView.m; sourceTree = "<group>"; };
 		6FF3B68D2137DC8400F8A5E2 /* SRGContentProtection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SRGContentProtection.framework; path = Carthage/Build/iOS/Static/SRGContentProtection.framework; sourceTree = "<group>"; };
 		6FF3B6932137DCD500F8A5E2 /* SRGContentProtection.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SRGContentProtection.bundle; path = Carthage/Build/iOS/Static/SRGContentProtection.framework/SRGContentProtection.bundle; sourceTree = "<group>"; };
+		6FFD0BCA229668A000060BB3 /* DeepDiff.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeepDiff.framework; path = Carthage/Build/iOS/DeepDiff.framework; sourceTree = "<group>"; };
 		866AF638938EFA7338C23B03 /* libPods-PlaySRG-Play RTR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlaySRG-Play RTR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BDBB65E7B9D845CB1576750 /* Pods-PlaySRG-Play RTS.nightly.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaySRG-Play RTS.nightly.xcconfig"; path = "Pods/Target Support Files/Pods-PlaySRG-Play RTS/Pods-PlaySRG-Play RTS.nightly.xcconfig"; sourceTree = "<group>"; };
 		A0923E657497DE17CE057F6E /* Pods-PlaySRG-Play RTR.nightly.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaySRG-Play RTR.nightly.xcconfig"; path = "Pods/Target Support Files/Pods-PlaySRG-Play RTR/Pods-PlaySRG-Play RTR.nightly.xcconfig"; sourceTree = "<group>"; };
@@ -2120,6 +2141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FFD0BCB229668A100060BB3 /* DeepDiff.framework in Frameworks */,
 				6F5392DB2248FF4A0002BF87 /* Masonry.framework in Frameworks */,
 				6F5392BF2248DB6F0002BF87 /* YYWebImage.framework in Frameworks */,
 				6F5392A92248CF470002BF87 /* UICKeyChainStore.framework in Frameworks */,
@@ -2133,6 +2155,7 @@
 				6F0C99652121FA6B00073AB6 /* FXReachability.framework in Frameworks */,
 				6F0C99662121FA6B00073AB6 /* libextobjc.framework in Frameworks */,
 				6F0C99672121FA6B00073AB6 /* MAKVONotificationCenter.framework in Frameworks */,
+				6FFD0BD0229669F800060BB3 /* DeepDiff.framework in Frameworks */,
 				6F0C99682121FA6B00073AB6 /* SRGAnalytics_DataProvider.framework in Frameworks */,
 				080731B72224543200AF9C83 /* SRGAnalytics_Identity.framework in Frameworks */,
 				6F0C99692121FA6B00073AB6 /* SRGAnalytics_MediaPlayer.framework in Frameworks */,
@@ -2155,6 +2178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FFD0BCC229668BA00060BB3 /* DeepDiff.framework in Frameworks */,
 				6F5392DC2248FF620002BF87 /* Masonry.framework in Frameworks */,
 				6F5392C02248DB850002BF87 /* YYWebImage.framework in Frameworks */,
 				6F5392AA2248CF5B0002BF87 /* UICKeyChainStore.framework in Frameworks */,
@@ -2168,6 +2192,7 @@
 				6F0C99572121FA5E00073AB6 /* FXReachability.framework in Frameworks */,
 				6F0C99582121FA5E00073AB6 /* libextobjc.framework in Frameworks */,
 				6F0C99592121FA5E00073AB6 /* MAKVONotificationCenter.framework in Frameworks */,
+				6FFD0BD2229669FF00060BB3 /* DeepDiff.framework in Frameworks */,
 				6F0C995A2121FA5E00073AB6 /* SRGAnalytics_DataProvider.framework in Frameworks */,
 				080731B6222453EC00AF9C83 /* SRGAnalytics_Identity.framework in Frameworks */,
 				6F0C995B2121FA5E00073AB6 /* SRGAnalytics_MediaPlayer.framework in Frameworks */,
@@ -2190,6 +2215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FFD0BCD229668C700060BB3 /* DeepDiff.framework in Frameworks */,
 				6F5392DD2248FF790002BF87 /* Masonry.framework in Frameworks */,
 				6F5392C12248DB960002BF87 /* YYWebImage.framework in Frameworks */,
 				6F5392AB2248CF740002BF87 /* UICKeyChainStore.framework in Frameworks */,
@@ -2203,6 +2229,7 @@
 				6F0C99492121FA5200073AB6 /* FXReachability.framework in Frameworks */,
 				6F0C994A2121FA5200073AB6 /* libextobjc.framework in Frameworks */,
 				6F0C994B2121FA5200073AB6 /* MAKVONotificationCenter.framework in Frameworks */,
+				6FFD0BD422966A0300060BB3 /* DeepDiff.framework in Frameworks */,
 				6F0C994C2121FA5200073AB6 /* SRGAnalytics_DataProvider.framework in Frameworks */,
 				080731B82224544A00AF9C83 /* SRGAnalytics_Identity.framework in Frameworks */,
 				6F0C994D2121FA5200073AB6 /* SRGAnalytics_MediaPlayer.framework in Frameworks */,
@@ -2225,6 +2252,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FFD0BCE229668D200060BB3 /* DeepDiff.framework in Frameworks */,
 				6F5392DE2248FF970002BF87 /* Masonry.framework in Frameworks */,
 				6F5392C22248DBA70002BF87 /* YYWebImage.framework in Frameworks */,
 				6F5392AC2248CF8C0002BF87 /* UICKeyChainStore.framework in Frameworks */,
@@ -2238,6 +2266,7 @@
 				6F0C993B2121FA4600073AB6 /* FXReachability.framework in Frameworks */,
 				6F0C993C2121FA4600073AB6 /* libextobjc.framework in Frameworks */,
 				6F0C993D2121FA4600073AB6 /* MAKVONotificationCenter.framework in Frameworks */,
+				6FFD0BD622966A0900060BB3 /* DeepDiff.framework in Frameworks */,
 				6F0C993E2121FA4600073AB6 /* SRGAnalytics_DataProvider.framework in Frameworks */,
 				080731B92224546200AF9C83 /* SRGAnalytics_Identity.framework in Frameworks */,
 				6F0C993F2121FA4600073AB6 /* SRGAnalytics_MediaPlayer.framework in Frameworks */,
@@ -2260,6 +2289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FFD0BCF229668DF00060BB3 /* DeepDiff.framework in Frameworks */,
 				6F5392DF2248FFAB0002BF87 /* Masonry.framework in Frameworks */,
 				6F5392C32248DBB80002BF87 /* YYWebImage.framework in Frameworks */,
 				6F5392AD2248CF9D0002BF87 /* UICKeyChainStore.framework in Frameworks */,
@@ -2273,6 +2303,7 @@
 				6F0C992D2121F9E100073AB6 /* FXReachability.framework in Frameworks */,
 				6F0C992E2121F9E100073AB6 /* libextobjc.framework in Frameworks */,
 				6F0C992F2121F9E100073AB6 /* SRGDataProvider.framework in Frameworks */,
+				6FFD0BD822966A0F00060BB3 /* DeepDiff.framework in Frameworks */,
 				6F0C99312121F9E100073AB6 /* SRGMediaPlayer.framework in Frameworks */,
 				6F0C99322121F9E100073AB6 /* SRGLetterbox.framework in Frameworks */,
 				6F0C99332121F9E100073AB6 /* SRGAnalytics_DataProvider.framework in Frameworks */,
@@ -3230,6 +3261,7 @@
 				6F8CAE8F2122C5DF005046BA /* CoconutKit.framework */,
 				E60178511D635E130000362E /* ComScore.framework */,
 				08B6F7E5210CF8660097EF8B /* CoreData.framework */,
+				6FFD0BCA229668A000060BB3 /* DeepDiff.framework */,
 				6F5392982248C33E0002BF87 /* DZNEmptyDataSet.framework */,
 				E68712311D65B3D600CE7142 /* Fingertips.framework */,
 				6F0C991F2121F9DF00073AB6 /* FXReachability.framework */,
@@ -5133,6 +5165,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ComScore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TCCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TCSDK.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DeepDiff.framework",
 			);
 			name = "Copy Frameworks (Carthage)";
 			outputPaths = (
@@ -5151,6 +5184,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ComScore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TCCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TCSDK.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DeepDiff.framework",
 			);
 			name = "Copy Frameworks (Carthage)";
 			outputPaths = (
@@ -5169,6 +5203,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ComScore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TCCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TCSDK.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DeepDiff.framework",
 			);
 			name = "Copy Frameworks (Carthage)";
 			outputPaths = (
@@ -5187,6 +5222,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ComScore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TCCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TCSDK.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DeepDiff.framework",
 			);
 			name = "Copy Frameworks (Carthage)";
 			outputPaths = (
@@ -5205,6 +5241,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ComScore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TCCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/TCSDK.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DeepDiff.framework",
 			);
 			name = "Copy Frameworks (Carthage)";
 			outputPaths = (
