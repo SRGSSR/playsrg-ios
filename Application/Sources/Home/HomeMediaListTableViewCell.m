@@ -11,6 +11,7 @@
 #import "HomeMediaCollectionViewCell.h"
 #import "HomeMediaCollectionHeaderView.h"
 #import "MediaPlayerViewController.h"
+#import "Play-Swift-Bridge.h"
 #import "SRGBaseTopic+PlaySRG.h"
 #import "UICollectionView+PlaySRG.h"
 #import "UIColor+PlaySRG.h"
@@ -142,17 +143,15 @@ static const CGFloat HomeStandardMargin = 10.f;
 
 - (void)setHomeSectionInfo:(HomeSectionInfo *)homeSectionInfo featured:(BOOL)featured
 {
-    [super setHomeSectionInfo:homeSectionInfo featured:featured];
-    
-    UIColor *backgroundColor = UIColor.clearColor;
-    if (homeSectionInfo.module && ! ApplicationConfiguration.sharedApplicationConfiguration.moduleColorsDisabled) {
-        backgroundColor = homeSectionInfo.module.backgroundColor;
-    }
-    self.backgroundColor = backgroundColor;
-    
-    [self.collectionView reloadData];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
+    [self.collectionView reloadDataAnimatedWithOldObjects:self.homeSectionInfo.items newObjects:homeSectionInfo.items updateData:^{
+        [super setHomeSectionInfo:homeSectionInfo featured:featured];
+        
+        UIColor *backgroundColor = UIColor.clearColor;
+        if (homeSectionInfo.module && ! ApplicationConfiguration.sharedApplicationConfiguration.moduleColorsDisabled) {
+            backgroundColor = homeSectionInfo.module.backgroundColor;
+        }
+        self.backgroundColor = backgroundColor;
+        
         if (homeSectionInfo) {
             // Scroll to the latest radio regional live stream played.
             if (homeSectionInfo.homeSection == HomeSectionRadioLive && ! [self isEmpty]) {
@@ -171,7 +170,7 @@ static const CGFloat HomeStandardMargin = 10.f;
             }
         }
         self.collectionView.scrollEnabled = (homeSectionInfo.items.count != 0);
-    });
+    }];
 }
 
 #pragma mark UICollectionViewDataSource protocol

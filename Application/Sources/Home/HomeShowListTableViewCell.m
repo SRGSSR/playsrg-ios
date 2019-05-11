@@ -7,6 +7,7 @@
 #import "HomeShowListTableViewCell.h"
 
 #import "HomeShowCollectionViewCell.h"
+#import "Play-Swift-Bridge.h"
 #import "ShowViewController.h"
 
 #import <CoconutKit/CoconutKit.h>
@@ -123,9 +124,9 @@ static const CGFloat HomeStandardMargin = 10.f;
 
 - (void)setHomeSectionInfo:(HomeSectionInfo *)homeSectionInfo featured:(BOOL)featured
 {
-    [super setHomeSectionInfo:homeSectionInfo featured:featured];
-    
-    [self.collectionView reloadData];
+    [self.collectionView reloadDataAnimatedWithOldObjects:self.homeSectionInfo.items newObjects:homeSectionInfo.items updateData:^{
+        [super setHomeSectionInfo:homeSectionInfo featured:featured];
+    }];
 }
 
 #pragma mark UICollectionViewDataSource protocol

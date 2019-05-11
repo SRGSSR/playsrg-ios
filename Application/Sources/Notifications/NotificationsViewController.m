@@ -9,6 +9,7 @@
 #import "Banner.h"
 #import "NSArray+PlaySRG.h"
 #import "Notification.h"
+#import "Play-Swift-Bridge.h"
 #import "PlayErrors.h"
 #import "PushService.h"
 #import "ShowViewController.h"
@@ -141,24 +142,16 @@
         [self.refreshControl endRefreshing];
     }
     
-    [self reloadDataAnimated:YES];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
+    NSArray<Notification *> *notifications = Notification.notifications;
+    [self.tableView reloadDataAnimatedWithOldObjects:self.notifications newObjects:notifications section:0 updateData:^{
+        self.notifications = notifications;
         [self.tableView flashScrollIndicators];
-    });
+    }];
 }
 
 - (AnalyticsPageType)pageType
 {
     return AnalyticsPageTypeNotifications;
-}
-
-#pragma mark UI
-
-- (void)reloadDataAnimated:(BOOL)animated
-{
-    self.notifications = Notification.notifications;
-    [self.tableView reloadData];
 }
 
 #pragma mark ContentInsets protocol
@@ -296,7 +289,7 @@
         [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:AnalyticsTitleNotificationOpen labels:labels];
     }
     
-    [tableView reloadData];
+    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark Actions
