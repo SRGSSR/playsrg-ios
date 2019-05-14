@@ -19,7 +19,7 @@ extension NSObject: DiffAware {
 
 extension UITableView {
     @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], section: Int = 0, updateData: () -> Void) {
-        if !oldObjects.isEmpty && !newObjects.isEmpty {
+        if !oldObjects.isEmpty && !newObjects.isEmpty && oldObjects != newObjects {
             let changes = diff(old: oldObjects, new: newObjects)
             self.reload(changes: changes, section: section, insertionAnimation: .automatic, deletionAnimation: .automatic, replacementAnimation: .automatic, updateData: updateData, completion: nil)
         }
