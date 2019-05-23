@@ -143,7 +143,7 @@ static const CGFloat HomeStandardMargin = 10.f;
 
 - (void)setHomeSectionInfo:(HomeSectionInfo *)homeSectionInfo featured:(BOOL)featured
 {
-    [self.collectionView reloadDataAnimatedWithOldObjects:self.homeSectionInfo.items newObjects:homeSectionInfo.items updateData:^{
+    [self.collectionView reloadDataAnimatedWithOldObjects:self.homeSectionInfo.items newObjects:homeSectionInfo.items section:0 updateData:^{
         [super setHomeSectionInfo:homeSectionInfo featured:featured];
         
         UIColor *backgroundColor = UIColor.clearColor;
@@ -170,7 +170,7 @@ static const CGFloat HomeStandardMargin = 10.f;
             }
         }
         self.collectionView.scrollEnabled = (homeSectionInfo.items.count != 0);
-    }];
+    } completion:nil];
 }
 
 #pragma mark UICollectionViewDataSource protocol

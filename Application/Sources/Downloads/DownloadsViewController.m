@@ -12,6 +12,7 @@
 #import "DownloadFooterSectionView.h"
 #import "DownloadTableViewCell.h"
 #import "NSBundle+PlaySRG.h"
+#import "Play-Swift-Bridge.h"
 #import "PlayErrors.h"
 #import "UIColor+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
@@ -112,7 +113,7 @@
 {
     [super updateForContentSizeCategory];
     
-    [self reloadDataAnimated:NO];
+    [self.tableView reloadData];
 }
 
 #pragma mark Overrides
@@ -125,11 +126,12 @@
         [self.refreshControl endRefreshing];
     }
     
-    [self reloadDataAnimated:YES];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
+    [self.tableView reloadDataAnimatedWithOldObjects:self.downloads newObjects:Download.downloads section:0 updateData:^{
+        self.downloads = Download.downloads;
+    } completion:^(BOOL finished) {
+        // TODO: Does this work? Is a dispatch async main queue needed? If yes, should the completion handler be called always on the next run loop?
         [self.tableView flashScrollIndicators];
-    });
+    }];
 }
 
 - (AnalyticsPageType)pageType
@@ -138,12 +140,6 @@
 }
 
 #pragma mark UI
-
-- (void)reloadDataAnimated:(BOOL)animated
-{
-    [self.tableView reloadData];
-    [self updateInterfaceForEditionAnimated:animated];
-}
 
 - (void)updateInterfaceForEditionAnimated:(BOOL)animated
 {

@@ -87,9 +87,9 @@
 
 - (void)setHomeSectionInfo:(HomeSectionInfo *)homeSectionInfo featured:(BOOL)featured
 {
-    [self.collectionView reloadDataAnimatedWithOldObjects:self.homeSectionInfo.items newObjects:homeSectionInfo.items updateData:^{
+    [self.collectionView reloadDataAnimatedWithOldObjects:self.homeSectionInfo.items newObjects:homeSectionInfo.items section:0 updateData:^{
         [super setHomeSectionInfo:homeSectionInfo featured:featured];
-    }];
+    } completion:nil];
 }
 
 #pragma mark UICollectionViewDataSource protocol

@@ -18,27 +18,29 @@ extension NSObject: DiffAware {
 }
 
 extension UITableView {
-    @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], section: Int = 0, updateData: () -> Void) {
+    @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], section: Int = 0, updateData: () -> Void, completion: ((Bool) -> Void)?) {
         if !oldObjects.isEmpty && !newObjects.isEmpty && oldObjects != newObjects {
             let changes = diff(old: oldObjects, new: newObjects)
-            self.reload(changes: changes, section: section, insertionAnimation: .automatic, deletionAnimation: .automatic, replacementAnimation: .automatic, updateData: updateData, completion: nil)
+            self.reload(changes: changes, section: section, insertionAnimation: .automatic, deletionAnimation: .automatic, replacementAnimation: .automatic, updateData: updateData, completion: completion)
         }
         else {
             updateData()
-            self.reloadData()
+            self.reloadSections(IndexSet(integer: section), with: .none)
+            completion?(true)
         }
     }
 }
 
 extension UICollectionView {
-    @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], updateData: () -> Void) {
+    @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], section: Int = 0, updateData: () -> Void, completion: ((Bool) -> Void)?) {
         if !oldObjects.isEmpty && !newObjects.isEmpty {
             let changes = diff(old: oldObjects, new: newObjects)
-            self.reload(changes: changes, updateData: updateData)
+            self.reload(changes: changes, section: section, updateData: updateData, completion: completion)
         }
         else {
             updateData()
-            self.reloadData()
+            self.reloadSections(IndexSet(integer: section))
+            completion?(true)
         }
     }
 }
