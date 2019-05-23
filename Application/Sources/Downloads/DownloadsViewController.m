@@ -306,8 +306,6 @@
         NSArray *selectedRows = self.tableView.indexPathsForSelectedRows;
         if (deleteAllModeEnabled || selectedRows.count == self.downloads.count) {
             [Download removeAllDownloads];
-            self.downloads = nil;
-            [self reloadDataAnimated:YES];
             
             SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
             labels.source = AnalyticsSourceSelection;
@@ -372,43 +370,7 @@
 
 - (void)downloadStateDidChange:(NSNotification *)notification
 {
-    Download *download = notification.object;
-    DownloadState state = [notification.userInfo[DownloadStateKey] integerValue];
-    
-    switch (state) {
-        case DownloadStateAdded:
-        case DownloadStateRemoved: {
-            BOOL added = (state == DownloadStateAdded);
-            // We only receive 1 object in notification. Could have more change…
-            if ((added && self.downloads.count + 1 == Download.downloads.count)
-                    || (! added && self.downloads.count - 1 == Download.downloads.count)) {
-                [self.tableView beginUpdates];
-                if (added) {
-                    self.downloads = Download.downloads;
-                    NSInteger downloadIndex = [self.downloads indexOfObject:download];
-                    [self.tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:downloadIndex inSection:0] ]
-                                          withRowAnimation:UITableViewRowAnimationAutomatic];
-                }
-                else {
-                    NSInteger downloadIndex = [self.downloads indexOfObject:download];
-                    self.downloads = Download.downloads;
-                    [self.tableView deleteRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:downloadIndex inSection:0] ]
-                                          withRowAnimation:UITableViewRowAnimationAutomatic];
-                }
-                [self.tableView endUpdates];
-                
-                [self updateInterfaceForEditionAnimated:YES];
-            }
-            else {
-                self.downloads = Download.downloads;
-                [self reloadDataAnimated:YES];
-            }
-            break;
-        }
-            
-        default:
-            break;
-    }
+    [self refresh];
 }
 
 @end
