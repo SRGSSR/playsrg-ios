@@ -6,6 +6,7 @@
 
 #import "HomeShowVerticalListTableViewCell.h"
 
+#import "Play-Swift-Bridge.h"
 #import "ShowCollectionViewCell.h"
 #import "ShowViewController.h"
 
@@ -86,9 +87,9 @@
 
 - (void)setHomeSectionInfo:(HomeSectionInfo *)homeSectionInfo featured:(BOOL)featured
 {
-    [super setHomeSectionInfo:homeSectionInfo featured:featured];
-    
-    [self.collectionView reloadData];
+    [self.collectionView reloadDataAnimatedWithOldObjects:self.homeSectionInfo.items newObjects:homeSectionInfo.items updateData:^{
+        [super setHomeSectionInfo:homeSectionInfo featured:featured];
+    }];
 }
 
 #pragma mark UICollectionViewDataSource protocol
