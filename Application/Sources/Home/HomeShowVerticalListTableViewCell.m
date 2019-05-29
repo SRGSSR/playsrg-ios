@@ -87,7 +87,7 @@
 
 - (void)setHomeSectionInfo:(HomeSectionInfo *)homeSectionInfo featured:(BOOL)featured
 {
-    [self.collectionView reloadDataAnimatedWithOldObjects:self.homeSectionInfo.items newObjects:homeSectionInfo.items section:0 updateData:^{
+    [self.collectionView reloadDataAnimatedWithOldObjects:self.homeSectionInfo.items newObjects:homeSectionInfo.items updateData:^{
         [super setHomeSectionInfo:homeSectionInfo featured:featured];
     } completion:nil];
 }

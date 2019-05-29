@@ -156,7 +156,6 @@
     [SRGUserData.currentUserData.playlists discardPlaylistEntriesWithUids:@[media.URN] fromPlaylistWithUid:SRGPlaylistUidWatchLater completionBlock:^(NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (! error) {
-                [self hideItems:@[media]];
                 [self updateInterfaceForEditionAnimated:YES];
                 
                 SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
@@ -271,8 +270,6 @@
             [SRGUserData.currentUserData.playlists discardPlaylistEntriesWithUids:URNs.copy fromPlaylistWithUid:SRGPlaylistUidWatchLater completionBlock:^(NSError * _Nullable error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (! error) {
-                        NSArray<SRGMedia *> *medias = [self.items filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K IN %@", @keypath(SRGMedia.new, URN), URNs]];
-                        [self hideItems:medias];
                         [self updateInterfaceForEditionAnimated:YES];
                     }
                 });
@@ -336,13 +333,7 @@
 - (void)watchLaterDidChange:(NSNotification *)notification
 {
     if ([notification.userInfo[WatchLaterMediaMetadataStateKey] integerValue] == WatchLaterMediaMetadataStateRemoved) {
-        NSString *URN = notification.userInfo[WatchLaterMediaMetadataUidKey];
-        SRGMedia *media = [self.items filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K == %@", @keypath(SRGMedia.new, URN), URN]].firstObject;
-        
-        if (media) {
-            [self hideItems:@[media]];
-            [self updateInterfaceForEditionAnimated:YES];
-        }
+        [self refresh];
     }
 }
 

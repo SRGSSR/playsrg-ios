@@ -57,18 +57,6 @@ typedef void (^ListRequestCompletionBlock)(NSArray * _Nullable items, NSHTTPURLR
  */
 @property (nonatomic, readonly, nullable) NSArray *items;
 
-/**
- *  Hide the specified items from the `items` returned list. Ignore items which do not belong to the list.
- *
- *  @discussion Hidden items are cleared when the list is cleared.
- */
-- (void)hideItems:(NSArray *)items;
-
-/**
- *  Unhide a previously hidden items. Ignore items which have not been hidden before.
- */
-- (void)unhideItems:(NSArray *)items;
-
 @end
 
 /**
@@ -109,6 +97,8 @@ typedef void (^ListRequestCompletionBlock)(NSArray * _Nullable items, NSHTTPURLR
  */
 - (void)refreshDidStart;
 - (void)refreshDidFinishWithError:(nullable NSError *)error;
+
+- (void)updateWithItems:(nullable NSArray *)items previousItems:(nullable NSArray *)previousItems completion:(void (NS_NOESCAPE ^)(void))completion;
 
 @end
 

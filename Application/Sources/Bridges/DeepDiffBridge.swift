@@ -17,36 +17,31 @@ extension NSObject: DiffAware {
     }
 }
 
-// TODO: Shoudl completion blocks be called on the next run loop with a dispatch_async?
+// TODO: Should completion blocks be called on the next run loop with a dispatch_async?
 
 extension UITableView {
-    @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], section: Int = 0, updateData: () -> Void, completion: ((Bool) -> Void)?) {
-        if !oldObjects.isEmpty && !newObjects.isEmpty && oldObjects != newObjects {
+    @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], updateData: () -> Void, completion: ((Bool) -> Void)?) {
+        if self.numberOfSections <= 1 && !oldObjects.isEmpty && !newObjects.isEmpty && oldObjects != newObjects {
             let changes = diff(old: oldObjects, new: newObjects)
-            self.reload(changes: changes, section: section, insertionAnimation: .automatic, deletionAnimation: .automatic, replacementAnimation: .automatic, updateData: updateData, completion: completion)
+            self.reload(changes: changes, section: 0, insertionAnimation: .automatic, deletionAnimation: .automatic, replacementAnimation: .automatic, updateData: updateData, completion: completion)
         }
         else {
             updateData()
-            UIView.performWithoutAnimation {
-                self.reloadSections(IndexSet(integer: section), with: .none)
-            }
+            self.reloadData()
             completion?(true)
         }
     }
 }
 
 extension UICollectionView {
-    @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], section: Int = 0, updateData: () -> Void, completion: ((Bool) -> Void)?) {
-        if !oldObjects.isEmpty && !newObjects.isEmpty {
+    @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], updateData: () -> Void, completion: ((Bool) -> Void)?) {
+        if self.numberOfSections <= 1 && !oldObjects.isEmpty && !newObjects.isEmpty {
             let changes = diff(old: oldObjects, new: newObjects)
-            self.reload(changes: changes, section: section, updateData: updateData, completion: completion)
+            self.reload(changes: changes, section: 0, updateData: updateData, completion: completion)
         }
         else {
             updateData()
-            // FIXME: Initial placeholder layout is invalid on homepages. Not the case if .reloadData(). Why?
-            UIView.performWithoutAnimation {
-                self.reloadSections(IndexSet(integer: section))
-            }
+            self.reloadData()
             completion?(true)
         }
     }

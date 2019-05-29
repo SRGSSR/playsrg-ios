@@ -8,6 +8,7 @@
 
 #import "Banner.h"
 #import "CollectionLoadMoreFooterView.h"
+#import "Play-Swift-Bridge.h"
 #import "UIColor+PlaySRG.h"
 #import "UIImageView+PlaySRG.h"
 
@@ -122,20 +123,6 @@
 {
     self.lastRequestError = error;
     [self endRefreshing];
-    
-    if (! error) {
-        [self.collectionView reloadData];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.collectionView flashScrollIndicators];
-        });
-    }
-    // Display errors in the view background when the list is empty. When content has been loaded, we don't bother
-    // the user with errors
-    else if (self.items.count == 0) {
-        [self.collectionView reloadEmptyDataSet];
-        [self.collectionView.collectionViewLayout invalidateLayout];
-    }
 }
 
 - (void)didCancelRefreshRequest
@@ -143,6 +130,16 @@
     [super didCancelRefreshRequest];
     
     [self endRefreshing];
+}
+
+- (void)updateWithItems:(NSArray *)items previousItems:(NSArray *)previousItems completion:(void (NS_NOESCAPE ^)(void))completion
+{
+    [self.collectionView reloadDataAnimatedWithOldObjects:previousItems newObjects:items updateData:^{
+        completion();
+    } completion:^(BOOL finished) {
+        [self.collectionView reloadEmptyDataSet];
+        [self.collectionView flashScrollIndicators];
+    }];
 }
 
 #pragma mark UI

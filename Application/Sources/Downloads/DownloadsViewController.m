@@ -126,7 +126,7 @@
         [self.refreshControl endRefreshing];
     }
     
-    [self.tableView reloadDataAnimatedWithOldObjects:self.downloads newObjects:Download.downloads section:0 updateData:^{
+    [self.tableView reloadDataAnimatedWithOldObjects:self.downloads newObjects:Download.downloads updateData:^{
         self.downloads = Download.downloads;
     } completion:^(BOOL finished) {
         [self.tableView flashScrollIndicators];

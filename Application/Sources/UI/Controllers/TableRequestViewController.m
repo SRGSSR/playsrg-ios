@@ -7,6 +7,7 @@
 #import "TableRequestViewController.h"
 
 #import "Banner.h"
+#import "Play-Swift-Bridge.h"
 #import "TableLoadMoreFooterView.h"
 #import "UIColor+PlaySRG.h"
 #import "UIImageView+PlaySRG.h"
@@ -83,7 +84,7 @@
 {
     [super updateForContentSizeCategory];
     
-    [self reloadData];
+    [self .tableView reloadData];
 }
 
 #pragma mark Request lifecycle
@@ -102,14 +103,17 @@
     [self endRefreshing];
     
     if (! error) {
-        [self reloadData];
-        
-        [self selectItems:self.previouslySelectedItems];
-        self.previouslySelectedItems = nil;
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.tableView flashScrollIndicators];
-        });
+        if (self.canLoadMoreItems) {
+            self.tableView.tableFooterView = [[TableLoadMoreFooterView alloc] initWithFrame:CGRectMake(0.f, 0.f, 0.f, 60.f)];
+            
+            // Automatically load pages while the footer is still visible (e.g. for small page sizes).
+            if (CGRectGetMinY(self.tableView.tableFooterView.frame) < CGRectGetHeight(self.tableView.frame)) {
+                [self loadNextPage];
+            }
+        }
+        else {
+            self.tableView.tableFooterView = nil;
+        }
     }
     // Display errors in the view background when the list is empty. When content has been loaded, we don't bother
     // the user with errors
@@ -125,24 +129,21 @@
     [self endRefreshing];
 }
 
-#pragma mark UI
-
-- (void)reloadData
+- (void)updateWithItems:(NSArray *)items previousItems:(NSArray *)previousItems completion:(void (NS_NOESCAPE ^)(void))completion
 {
-    [self.tableView reloadData];
-    
-    if (self.canLoadMoreItems) {
-        self.tableView.tableFooterView = [[TableLoadMoreFooterView alloc] initWithFrame:CGRectMake(0.f, 0.f, 0.f, 60.f)];
+    [self.tableView reloadDataAnimatedWithOldObjects:previousItems newObjects:items updateData:^{
+        completion();
+    } completion:^(BOOL finished) {
+        [self.tableView reloadEmptyDataSet];
         
-        // Automatically load pages while the footer is still visible (e.g. for small page sizes).
-        if (CGRectGetMinY(self.tableView.tableFooterView.frame) < CGRectGetHeight(self.tableView.frame)) {
-            [self loadNextPage];
-        }
-    }
-    else {
-        self.tableView.tableFooterView = nil;
-    }
+        [self selectItems:self.previouslySelectedItems];
+        self.previouslySelectedItems = nil;
+        
+        [self.tableView flashScrollIndicators];
+    }];
 }
+
+#pragma mark UI
 
 - (void)endRefreshing
 {
@@ -151,26 +152,6 @@
     if (self.refreshControl.refreshing) {
         [self.refreshControl endRefreshing];
     }
-}
-
-#pragma mark Overrides
-
-- (void)hideItems:(NSArray *)items
-{
-    NSMutableArray<NSIndexPath *> *indexPaths = [NSMutableArray array];
-    for (id item in items) {
-        NSInteger itemIndex = [self.items indexOfObject:item];
-        if (itemIndex != NSNotFound) {
-            [indexPaths addObject:[NSIndexPath indexPathForRow:itemIndex inSection:0]];
-        }
-    }
-    
-    [super hideItems:items];
-    
-    [self.tableView deleteRowsAtIndexPaths:indexPaths.copy
-                          withRowAnimation:UITableViewRowAnimationAutomatic];
-    
-    [self.tableView reloadEmptyDataSet];
 }
 
 #pragma mark Helpers

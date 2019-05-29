@@ -159,7 +159,7 @@
     }
     self.requestedShows = nil;
     
-    [self.tableView reloadDataAnimatedWithOldObjects:self.shows newObjects:shows section:0 updateData:^{
+    [self.tableView reloadDataAnimatedWithOldObjects:self.shows newObjects:shows updateData:^{
         self.shows = shows;
     } completion:^(BOOL finished) {
         [self.tableView reloadEmptyDataSet];

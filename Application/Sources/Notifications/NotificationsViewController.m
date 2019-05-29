@@ -143,7 +143,7 @@
     }
     
     NSArray<Notification *> *notifications = Notification.notifications;
-    [self.tableView reloadDataAnimatedWithOldObjects:self.notifications newObjects:notifications section:0 updateData:^{
+    [self.tableView reloadDataAnimatedWithOldObjects:self.notifications newObjects:notifications updateData:^{
         self.notifications = notifications;
     } completion:^(BOOL finished) {
         [self.tableView flashScrollIndicators];

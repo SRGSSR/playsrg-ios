@@ -153,7 +153,6 @@
     [SRGUserData.currentUserData.history discardHistoryEntriesWithUids:@[media.URN] completionBlock:^(NSError * _Nonnull error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (! error) {
-                [self hideItems:@[media]];
                 [self updateInterfaceForEditionAnimated:YES];
             }
         });
@@ -268,8 +267,6 @@
             [SRGUserData.currentUserData.history discardHistoryEntriesWithUids:URNs completionBlock:^(NSError * _Nonnull error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (! error) {
-                        NSArray<SRGMedia *> *medias = [self.items filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"%K IN %@", @keypath(SRGMedia.new, URN), URNs]];
-                        [self hideItems:medias];
                         [self updateInterfaceForEditionAnimated:YES];
                     }
                 });

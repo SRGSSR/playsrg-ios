@@ -172,27 +172,27 @@
     }
 }
 
-- (void)refreshDidFinishWithError:(NSError *)error
+- (void)updateWithItems:(NSArray *)items previousItems:(NSArray *)previousItems completion:(void (NS_NOESCAPE ^)(void))completion
 {
     // Separate all shows according to their first letter (beware of special characters and emojis)
     NSMutableDictionary<NSString *, NSMutableArray<SRGShow *> *> *showsAlphabeticalMap = [NSMutableDictionary dictionary];
-    [self.items enumerateObjectsUsingBlock:^(SRGShow *  _Nonnull show, NSUInteger idx, BOOL * _Nonnull stop) {
+    [items enumerateObjectsUsingBlock:^(SRGShow *  _Nonnull show, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMutableString *firstLetter = [[show.title substringToIndex:1].uppercaseString mutableCopy];
-        if (!firstLetter) {
+        if (! firstLetter) {
             return;
         }
         
         // Remove accents / diacritics and extract the first char (for wide chars / emoji support)
         CFStringTransform((__bridge CFMutableStringRef)firstLetter, NULL, kCFStringTransformStripCombiningMarks, NO);
         unichar firstChar = [firstLetter characterAtIndex:0];
-        if (!isalpha(firstChar)) {
+        if (! isalpha(firstChar)) {
             firstChar = '#';
         }
         
         NSString *indexLetter = [NSString stringWithCharacters:&firstChar length:1];
         
         NSMutableArray *showsForIndexLetter = showsAlphabeticalMap[indexLetter];
-        if (!showsForIndexLetter) {
+        if (! showsForIndexLetter) {
             showsForIndexLetter = [NSMutableArray array];
             showsAlphabeticalMap[indexLetter] = showsForIndexLetter;
         }
@@ -205,7 +205,7 @@
     self.collectionIndexView.indexTitles = self.indexLetters;
     
     // Call last to continue with the reload process, based on the sorted data
-    [super refreshDidFinishWithError:error];
+    [super updateWithItems:items previousItems:previousItems completion:completion];
 }
 
 - (BOOL)srg_isTrackedAutomatically

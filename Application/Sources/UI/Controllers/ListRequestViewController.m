@@ -10,52 +10,19 @@
 
 #import <libextobjc/libextobjc.h>
 
-static void commonInit(ListRequestViewController *self);
-
 @interface ListRequestViewController ()
 
 @property (nonatomic) SRGRequestQueue *requestQueue;
 
 @property (nonatomic) NSUInteger numberOfLoadedPages;
-@property (nonatomic) NSArray *loadedItems;
+@property (nonatomic) NSArray *items;
 @property (nonatomic) SRGPage *nextPage;
-
-@property (nonatomic) NSMutableArray *hiddenItems;
-@property (nonatomic) NSArray *cachedItems;
 
 @end
 
 @implementation ListRequestViewController
 
-#pragma mark Object lifecycle
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        commonInit(self);
-    }
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
-    if (self = [super initWithCoder:aDecoder]) {
-        commonInit(self);
-    }
-    return self;
-}
-
 #pragma mark Getters and setters
-
-- (NSArray *)items
-{
-    if (! self.cachedItems) {
-        NSMutableArray *items = [self.loadedItems mutableCopy];
-        [items removeObjectsInArray:self.hiddenItems];
-        self.cachedItems = [items copy];
-    }
-    return self.cachedItems;
-}
 
 - (BOOL)isLoading
 {
@@ -128,9 +95,10 @@ static void commonInit(ListRequestViewController *self);
                 strongLoadPage(nextPage);
             }
             else {
-                self.loadedItems = [loadingItems copy];
-                self.cachedItems = nil;         // Invalidate cache
-                
+                NSArray *items = [loadingItems copy];
+                [self updateWithItems:items previousItems:self.items completion:^{
+                    self.items = items;
+                }];
                 self.nextPage = loadingNextPage;
                 self.numberOfLoadedPages = numberOfLoadedPages;
             }
@@ -147,16 +115,17 @@ static void commonInit(ListRequestViewController *self);
         return;
     }
     
-    [self loadPage:self.nextPage withCompletionBlock:^(NSArray * _Nullable items, SRGPage * _Nullable nextPage, NSError * _Nullable error) {
+    [self loadPage:self.nextPage withCompletionBlock:^(NSArray * _Nullable pageItems, SRGPage * _Nullable nextPage, NSError * _Nullable error) {
         if (error) {
             return;
         }
         
-        self.loadedItems = [self.loadedItems arrayByAddingObjectsFromArray:items];
-        self.cachedItems = nil;         // Invalidate cache
-        
-        self.nextPage = nextPage;
-        ++self.numberOfLoadedPages;
+        NSArray *items = [self.items arrayByAddingObjectsFromArray:pageItems];
+        [self updateWithItems:items previousItems:self.items completion:^{
+            self.items = items;
+            self.nextPage = nextPage;
+            ++self.numberOfLoadedPages;
+        }];
     }];
 }
 
@@ -166,12 +135,11 @@ static void commonInit(ListRequestViewController *self);
     
     [self refreshDidStart];
     
-    self.loadedItems = nil;
-    self.nextPage = nil;
-    self.numberOfLoadedPages = 0;
-    
-    self.hiddenItems = [NSMutableArray array];
-    self.cachedItems = nil;
+    [self updateWithItems:nil previousItems:self.items completion:^{
+        self.items = nil;
+        self.nextPage = nil;
+        self.numberOfLoadedPages = 0;
+    }];
     
     [self refreshDidFinishWithError:nil];
 }
@@ -188,20 +156,6 @@ static void commonInit(ListRequestViewController *self);
         
         completionBlock(items, nextPage, error);
     }];
-}
-
-#pragma mark Item hiding
-
-- (void)hideItems:(NSArray *)items
-{
-    [self.hiddenItems addObjectsFromArray:items];
-    self.cachedItems = nil;         // Invalidate cache
-}
-
-- (void)unhideItems:(NSArray *)items
-{
-    [self.hiddenItems removeObjectsInArray:items];
-    self.cachedItems = nil;         // Invalidate cache
 }
 
 #pragma mark Stubs
@@ -226,9 +180,9 @@ static void commonInit(ListRequestViewController *self);
 - (void)refreshDidFinishWithError:(NSError *)error
 {}
 
-@end
-
-static void commonInit(ListRequestViewController *self)
+- (void)updateWithItems:(NSArray *)items previousItems:(NSArray *)previousItems completion:(void (NS_NOESCAPE ^)(void))completion
 {
-    self.hiddenItems = [NSMutableArray array];
+    completion();
 }
+
+@end
