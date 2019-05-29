@@ -12,6 +12,7 @@
 #import "ShowViewController.h"
 #import "FavoriteTableViewCell.h"
 #import "Favorites.h"
+#import "Play-Swift-Bridge.h"
 #import "UIColor+PlaySRG.h"
 #import "UIImageView+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
@@ -102,7 +103,7 @@
 {
     [super updateForContentSizeCategory];
     
-    [self reloadDataAnimated:NO];
+    [self.tableView reloadData];
 }
 
 #pragma mark Overrides
@@ -144,24 +145,27 @@
 {
     self.lastRequestError = error;
     
-    if (! error) {
-        NSSortDescriptor *titleSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@keypath(SRGShow.new, title) ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
-        NSSortDescriptor *transmissionSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@keypath(SRGShow.new, transmission) ascending:YES];
-        self.shows = [self.requestedShows sortedArrayUsingDescriptors:@[titleSortDescriptor, transmissionSortDescriptor]];
-    }
-    self.requestedShows = nil;
-    
     // Avoid stopping scrolling
     // See http://stackoverflow.com/a/31681037/760435
     if (self.refreshControl.refreshing) {
         [self.refreshControl endRefreshing];
     }
     
-    [self reloadDataAnimated:YES];
+    NSArray<SRGShow *> *shows = nil;
+    if (! error) {
+        NSSortDescriptor *titleSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@keypath(SRGShow.new, title) ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+        NSSortDescriptor *transmissionSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@keypath(SRGShow.new, transmission) ascending:YES];
+        shows = [self.requestedShows sortedArrayUsingDescriptors:@[titleSortDescriptor, transmissionSortDescriptor]];
+    }
+    self.requestedShows = nil;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    [self.tableView reloadDataAnimatedWithOldObjects:self.shows newObjects:shows section:0 updateData:^{
+        self.shows = shows;
+    } completion:^(BOOL finished) {
+        [self.tableView reloadEmptyDataSet];
+        [self updateInterfaceForEditionAnimated:YES];
         [self.tableView flashScrollIndicators];
-    });
+    }];
 }
 
 - (AnalyticsPageType)pageType
@@ -170,12 +174,6 @@
 }
 
 #pragma mark UI
-
-- (void)reloadDataAnimated:(BOOL)animated
-{
-    [self.tableView reloadData];
-    [self updateInterfaceForEditionAnimated:animated];
-}
 
 - (void)updateInterfaceForEditionAnimated:(BOOL)animated
 {
@@ -377,9 +375,6 @@
         NSArray *selectedRows = self.tableView.indexPathsForSelectedRows;
         if (deleteAllModeEnabled || selectedRows.count == self.shows.count) {
             FavoritesRemoveShows(nil);
-            
-            self.shows = nil;
-            [self reloadDataAnimated:YES];
             
             SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
             labels.source = AnalyticsSourceSelection;
