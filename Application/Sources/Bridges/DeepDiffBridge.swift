@@ -17,6 +17,8 @@ extension NSObject: DiffAware {
     }
 }
 
+// TODO: Shoudl completion blocks be called on the next run loop with a dispatch_async?
+
 extension UITableView {
     @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], section: Int = 0, updateData: () -> Void, completion: ((Bool) -> Void)?) {
         if !oldObjects.isEmpty && !newObjects.isEmpty && oldObjects != newObjects {

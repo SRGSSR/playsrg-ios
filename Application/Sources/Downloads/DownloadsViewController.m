@@ -129,7 +129,6 @@
     [self.tableView reloadDataAnimatedWithOldObjects:self.downloads newObjects:Download.downloads section:0 updateData:^{
         self.downloads = Download.downloads;
     } completion:^(BOOL finished) {
-        // TODO: Does this work? Is a dispatch async main queue needed? If yes, should the completion handler be called always on the next run loop?
         [self.tableView flashScrollIndicators];
     }];
 }
