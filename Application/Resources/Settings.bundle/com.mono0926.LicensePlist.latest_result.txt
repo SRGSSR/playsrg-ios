@@ -462,6 +462,8 @@ name: CoconutKit, nameSpecified: , owner: defagos, version: 3.3.7
 
 name: ComScore-iOS-watchOS-tvOS, nameSpecified: , owner: SRGSSR, version: 5.8.4
 
+name: DeepDiff, nameSpecified: , owner: onmyway133, version: 2.2.0
+
 name: DZNEmptyDataSet, nameSpecified: , owner: SRGSSR, version: v1.8.1_srg1
 
 name: FXReachability, nameSpecified: , owner: SRGSSR, version: 1.3.2_srg3

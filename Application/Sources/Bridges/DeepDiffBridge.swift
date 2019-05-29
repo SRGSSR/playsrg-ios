@@ -25,7 +25,9 @@ extension UITableView {
         }
         else {
             updateData()
-            self.reloadSections(IndexSet(integer: section), with: .none)
+            UIView.performWithoutAnimation {
+                self.reloadSections(IndexSet(integer: section), with: .none)
+            }
             completion?(true)
         }
     }
@@ -39,7 +41,10 @@ extension UICollectionView {
         }
         else {
             updateData()
-            self.reloadSections(IndexSet(integer: section))
+            // FIXME: Initial placeholder layout is invalid on homepages. Not the case if .reloadData(). Why?
+            UIView.performWithoutAnimation {
+                self.reloadSections(IndexSet(integer: section))
+            }
             completion?(true)
         }
     }
