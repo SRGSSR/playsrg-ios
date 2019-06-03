@@ -9,6 +9,7 @@
 #import "Banner.h"
 #import "NSArray+PlaySRG.h"
 #import "Notification.h"
+#import "NotificationTableViewCell.h"
 #import "Play-Swift-Bridge.h"
 #import "PlayErrors.h"
 #import "PushService.h"
@@ -205,19 +206,6 @@
     return VerticalOffsetForEmptyDataSet(scrollView);
 }
 
-#pragma mark NotificationTableViewCellDelegate protocol
-
-- (void)notificationTableViewCell:(NotificationTableViewCell *)cell willDeleteNotification:(Notification *)notification
-{
-    NSInteger index = [self.notifications indexOfObject:notification];
-    if (index != NSNotFound) {
-        self.notifications = [self.notifications play_arrayByRemovingObjectAtIndex:index];
-        [self.tableView deleteRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow:index inSection:0] ]
-                              withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.tableView reloadEmptyDataSet];
-    }
-}
-
 #pragma mark UITableViewDataSource protocol
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -241,7 +229,6 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(NotificationTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.notification = self.notifications[indexPath.row];
-    cell.cellDelegate = self;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

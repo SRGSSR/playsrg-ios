@@ -50,7 +50,6 @@
     MGSwipeButton *deleteButton = [MGSwipeButton buttonWithTitle:@"" icon:[UIImage imageNamed:@"delete-22"] backgroundColor:UIColor.redColor callback:^BOOL(MGSwipeTableCell * _Nonnull cell) {
         @strongify(self)
         [Notification removeNotification:self.notification];
-        [self.cellDelegate notificationTableViewCell:self willDeleteNotification:self.notification];
         return YES;
     }];
     deleteButton.tintColor = UIColor.whiteColor;

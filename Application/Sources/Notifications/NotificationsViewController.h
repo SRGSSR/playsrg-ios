@@ -6,13 +6,12 @@
 
 #import "ContentInsets.h"
 #import "DataViewController.h"
-#import "NotificationTableViewCell.h"
 
 #import <DZNEmptyDataSet/DZNEmptyDataSet.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NotificationsViewController : DataViewController <ContentInsets, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, NotificationTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface NotificationsViewController : DataViewController <ContentInsets, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end
 

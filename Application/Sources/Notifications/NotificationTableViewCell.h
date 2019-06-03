@@ -11,19 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class NotificationTableViewCell;
-
-@protocol NotificationTableViewCellDelegate <NSObject>
-
-- (void)notificationTableViewCell:(NotificationTableViewCell *)cell willDeleteNotification:(Notification *)notification;
-
-@end
-
 @interface NotificationTableViewCell : MGSwipeTableCell
 
 @property (nonatomic, nullable) Notification *notification;
-
-@property (nonatomic, weak, nullable) id<NotificationTableViewCellDelegate> cellDelegate;
 
 @end
 
