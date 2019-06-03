@@ -18,6 +18,7 @@ extension NSObject: DiffAware {
 }
 
 // TODO: Should completion blocks be called on the next run loop with a dispatch_async?
+// TODO: Cells in edit mode should remain in edit mode (e.g. attempting to delete a history entry while loading a large history)
 
 extension UITableView {
     @objc public func reloadDataAnimated(oldObjects: [NSObject], newObjects: [NSObject], updateData: () -> Void, completion: ((Bool) -> Void)?) {
