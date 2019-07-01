@@ -139,7 +139,7 @@
     UIColor *thumbnailImageViewBackgroundColor = UIColor.play_grayThumbnailImageViewBackgroundColor;
     if (self.homeSectionInfo.module && ! ApplicationConfiguration.sharedApplicationConfiguration.moduleColorsDisabled) {
         titleTextColor = self.homeSectionInfo.module.linkColor ?: ApplicationConfiguration.sharedApplicationConfiguration.moduleDefaultLinkColor;
-        thumbnailImageViewBackgroundColor = self.homeSectionInfo.module.backgroundColor;
+        thumbnailImageViewBackgroundColor = [UIColor colorWithWhite:0.f alpha:0.1f];
     }
     
     self.titleLabel.textColor = titleTextColor;
