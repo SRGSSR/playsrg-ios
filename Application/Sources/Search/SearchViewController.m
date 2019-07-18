@@ -239,7 +239,7 @@
     // loading the first page only, so that both requests are made together when loading initial search results. We use the
     // maximum page size and do not manage pagination for shows. This leads to simple code withoug impacting its usability
     // (the user can still refine the search to get better results, and there are not so many shows anyway).
-    if (page.number == 0 && ! applicationConfiguration.showsSearchDisabled && query.length > 0) {
+    if (page.number == 0 && ! applicationConfiguration.showsSearchDisabled && (query.length != 0 || self.settings.showURNs.count != 0)) {
         static const NSUInteger kShowSearchPageSize = 50;
         
         @weakify(self)
@@ -250,17 +250,27 @@
             }
         }];
         
-        SRGPageRequest *showSearchRequest = [[SRGDataProvider.currentDataProvider showsForVendor:applicationConfiguration.vendor matchingQuery:query mediaType:self.settings.mediaType withCompletionBlock:^(NSArray<NSString *> * _Nullable showURNs, NSNumber * _Nonnull total, SRGPage * _Nonnull page, SRGPage * _Nullable nextPage, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
-            if (error || showURNs.count == 0) {
-                return;
-            }
-            
+        void (^showsWithURNsBlock)(NSArray<NSString *> *) = ^(NSArray<NSString *> *showURNs) {
             SRGPageRequest *showsRequest = [[SRGDataProvider.currentDataProvider showsWithURNs:showURNs completionBlock:^(NSArray<SRGShow *> * _Nullable shows, SRGPage * _Nonnull page, SRGPage * _Nullable nextPage, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
                 self.shows = shows;
             }] requestWithPageSize:kShowSearchPageSize];
             [self.showsRequestQueue addRequest:showsRequest resume:YES];
-        }] requestWithPageSize:kShowSearchPageSize];
-        [self.showsRequestQueue addRequest:showSearchRequest resume:YES];
+        };
+        
+        if (self.settings.showURNs.count != 0) {
+            NSArray<NSString *> *showURNs = [self.settings.showURNs sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES] ]];
+            showsWithURNsBlock(showURNs);
+        }
+        else {
+            SRGPageRequest *showSearchRequest = [[SRGDataProvider.currentDataProvider showsForVendor:applicationConfiguration.vendor matchingQuery:query mediaType:self.settings.mediaType withCompletionBlock:^(NSArray<NSString *> * _Nullable showURNs, NSNumber * _Nonnull total, SRGPage * _Nonnull page, SRGPage * _Nullable nextPage, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
+                if (error || showURNs.count == 0) {
+                    return;
+                }
+                
+                showsWithURNsBlock(showURNs);
+            }] requestWithPageSize:kShowSearchPageSize];
+            [self.showsRequestQueue addRequest:showSearchRequest resume:YES];
+        }
     }
 }
 
