@@ -250,16 +250,21 @@
             }
         }];
         
-        void (^showsWithURNsBlock)(NSArray<NSString *> *) = ^(NSArray<NSString *> *showURNs) {
+        void (^showsWithURNsBlock)(NSArray<NSString *> *, BOOL) = ^(NSArray<NSString *> *showURNs, BOOL reorder) {
+            if (reorder) {
+                showURNs = [showURNs sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES] ]];
+            }
             SRGPageRequest *showsRequest = [[SRGDataProvider.currentDataProvider showsWithURNs:showURNs completionBlock:^(NSArray<SRGShow *> * _Nullable shows, SRGPage * _Nonnull page, SRGPage * _Nullable nextPage, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
+                if (reorder) {
+                    shows = [shows sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@keypath(SRGShow.new, title) ascending:YES] ]];
+                }
                 self.shows = shows;
             }] requestWithPageSize:kShowSearchPageSize];
             [self.showsRequestQueue addRequest:showsRequest resume:YES];
         };
         
         if (self.settings.showURNs.count != 0) {
-            NSArray<NSString *> *showURNs = [self.settings.showURNs sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES] ]];
-            showsWithURNsBlock(showURNs);
+            showsWithURNsBlock(self.settings.showURNs.allObjects, YES);
         }
         else {
             SRGPageRequest *showSearchRequest = [[SRGDataProvider.currentDataProvider showsForVendor:applicationConfiguration.vendor matchingQuery:query mediaType:self.settings.mediaType withCompletionBlock:^(NSArray<NSString *> * _Nullable showURNs, NSNumber * _Nonnull total, SRGPage * _Nonnull page, SRGPage * _Nullable nextPage, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
@@ -267,7 +272,7 @@
                     return;
                 }
                 
-                showsWithURNsBlock(showURNs);
+                showsWithURNsBlock(showURNs, NO);
             }] requestWithPageSize:kShowSearchPageSize];
             [self.showsRequestQueue addRequest:showSearchRequest resume:YES];
         }
