@@ -31,11 +31,31 @@
 
 - (void)play_displayDurationLabelForMediaMetadata:(id<SRGMediaMetadata>)object
 {
-    BOOL isLivestreamOrScheduledLivestream = (object.contentType == SRGContentTypeLivestream || object.contentType == SRGContentTypeScheduledLivestream);
-    [self play_displayDurationLabelWithTimeAvailability:[object timeAvailabilityAtDate:NSDate.date]
-                                               duration:object.duration
-                      isLivestreamOrScheduledLivestream:isLivestreamOrScheduledLivestream
-                                            isLiveEvent:PlayIsSwissTXTURN(object.URN)];
+    BOOL isLivestream = (object.contentType == SRGContentTypeLivestream || object.contentType == SRGContentTypeScheduledLivestream);
+    SRGTimeAvailability timeAvailability = [object timeAvailabilityAtDate:NSDate.date];
+    
+    self.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleCaption];
+    
+    if (timeAvailability == SRGTimeAvailabilityNotYetAvailable) {
+        [self play_displayDurationLabelWithName:NSLocalizedString(@"Soon", @"Short label identifying content which will be available soon.") bulletColor:isLivestream ? UIColor.whiteColor : nil];
+    }
+    else if (timeAvailability == SRGTimeAvailabilityNotAvailableAnymore) {
+        [self play_displayDurationLabelWithName:NSLocalizedString(@"Expired", @"Short label identifying content which has expired.") bulletColor:nil];
+    }
+    else if (isLivestream) {
+        [self play_displayDurationLabelForLive];
+    }
+    else if(PlayIsSwissTXTURN(object.URN)) {
+        [self play_displayDurationLabelWithName:NSLocalizedString(@"Replay", @"Short label identifying a replay sport event. Display in uppercase.") bulletColor:[UIColor srg_blueColor]];
+    }
+    else if (object.duration != 0.) {
+        NSString *durationString = PlayFormattedDuration(object.duration / 1000.);
+        [self play_displayDurationLabelWithName:durationString bulletColor:nil];
+    }
+    else {
+        self.text = nil;
+        self.hidden = YES;
+    }
 }
 
 - (void)play_displayAvailabilityLabelForMediaMetadata:(id<SRGMediaMetadata>)object
@@ -69,32 +89,6 @@
 }
 
 #pragma mark Private
-
-- (void)play_displayDurationLabelWithTimeAvailability:(SRGTimeAvailability)timeAvailability duration:(NSTimeInterval)duration isLivestreamOrScheduledLivestream:(BOOL)isLivestreamOrScheduledLivestream isLiveEvent:(BOOL)isLiveEvent
-{
-    self.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleCaption];
-    
-    if (timeAvailability == SRGTimeAvailabilityNotYetAvailable) {
-        [self play_displayDurationLabelWithName:NSLocalizedString(@"Soon", @"Short label identifying content which will be available soon.") bulletColor:isLivestreamOrScheduledLivestream ? UIColor.whiteColor : nil];
-    }
-    else if (timeAvailability == SRGTimeAvailabilityNotAvailableAnymore) {
-        [self play_displayDurationLabelWithName:NSLocalizedString(@"Expired", @"Short label identifying content which has expired.") bulletColor:nil];
-    }
-    else if (isLivestreamOrScheduledLivestream) {
-        [self play_displayDurationLabelForLive];
-    }
-    else if(isLiveEvent) {
-        [self play_displayDurationLabelWithName:NSLocalizedString(@"Replay", @"Short label identifying a replay sport event. Display in uppercase.") bulletColor:[UIColor srg_blueColor]];
-    }
-    else if (duration != 0.) {
-        NSString *durationString = PlayFormattedDuration(duration / 1000.);
-        [self play_displayDurationLabelWithName:durationString bulletColor:nil];
-    }
-    else {
-        self.text = nil;
-        self.hidden = YES;
-    }
-}
 
 - (void)play_displayDurationLabelWithName:(NSString *)name bulletColor:(UIColor *)bulletColor
 {
