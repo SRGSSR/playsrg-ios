@@ -48,6 +48,9 @@
     else if(PlayIsSwissTXTURN(object.URN)) {
         [self play_displayDurationLabelWithName:NSLocalizedString(@"Replay", @"Short label identifying a replay sport event. Display in uppercase.") bulletColor:[UIColor srg_blueColor]];
     }
+    else if([object.date compare:NSDate.date] == NSOrderedDescending) {
+        [self play_displayDurationLabelWithName:NSLocalizedString(@"Web first", @"Short label identifying a web first content. Display in uppercase.") bulletColor:[UIColor srg_blueColor]];
+    }
     else if (object.duration != 0.) {
         NSString *durationString = PlayFormattedDuration(object.duration / 1000.);
         [self play_displayDurationLabelWithName:durationString bulletColor:nil];

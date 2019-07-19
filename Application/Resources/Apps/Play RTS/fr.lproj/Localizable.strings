@@ -592,6 +592,9 @@
    Title displayed at the top of the watch later list screen */
 "Watch later" = "Plus tard";
 
+/* @"Short label identifying a web first content. Display in uppercase. */
+"Web first" = "Avant-première";
+
 /* Label used on the home page to present scheduled livestream medias. Only on test versions. */
 "Web livestreams" = "Direct Web";
 
