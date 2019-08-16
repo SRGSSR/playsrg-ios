@@ -39,10 +39,13 @@
 
 @property (nonatomic, weak) IBOutlet UIProgressView *progressView;
 
+@property (nonatomic) IBOutlet NSLayoutConstraint *trailingTitleConstraint;
+
 @property (nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *allSizeLayoutConstraints;
 @property (nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *compactRegularLayoutConstraints;
 
 @property (nonatomic, copy) NSString *progressTaskHandle;
+@property (nonatomic, getter=isDisplayingMediaType) BOOL displayingMediaType;
 
 @end
 
@@ -169,17 +172,22 @@
 
 - (void)setMedia:(SRGMedia *)media
 {
-    [self setMedia:media withDateFormatter:nil];
+    [self setMedia:media withDateFormatter:nil displayingMediaType:NO];
 }
 
-- (void)setMedia:(SRGMedia *)media withDateFormatter:(NSDateFormatter *)dateFormatter
+- (void)setMedia:(SRGMedia *)media withDateFormatter:(NSDateFormatter *)dateFormatter displayingMediaType:(BOOL)displayingMediaType
 {
     _media = media;
+    
+    self.displayingMediaType = displayingMediaType;
     
     self.titleLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleBody];
     self.titleLabel.text = media.title;
     
     self.mediaTypeImageView.image = (media.mediaType == SRGMediaTypeAudio) ? [UIImage imageNamed:@"radioset-22"] : [UIImage imageNamed:@"tv-22"];
+    self.mediaTypeImageView.hidden = ! self.displayingMediaType;
+    self.trailingTitleConstraint.constant = (self.displayingMediaType) ? 28.f : 0.f;
+    
     if (media.contentType != SRGContentTypeLivestream) {
         NSString *showTitle = media.show.title;
         if (showTitle && ! [media.title containsString:showTitle]) {

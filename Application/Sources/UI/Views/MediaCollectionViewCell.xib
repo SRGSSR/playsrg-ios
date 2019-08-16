@@ -188,6 +188,7 @@
                 <outlet property="subtitleLabel" destination="Wce-v1-6RF" id="BSr-nB-NY6"/>
                 <outlet property="thumbnailImageView" destination="oyt-0M-2Tn" id="ScS-wz-5Ur"/>
                 <outlet property="titleLabel" destination="XHz-8o-wrG" id="qcw-Le-shV"/>
+                <outlet property="trailingTitleConstraint" destination="Ekv-rI-uEg" id="Sgu-XV-dMt"/>
                 <outlet property="youthProtectionColorImageView" destination="NRG-7r-BpG" id="GFd-S0-08f"/>
                 <outletCollection property="compactRegularLayoutConstraints" destination="NnA-e3-o1T" id="gUP-an-EDv"/>
                 <outletCollection property="compactRegularLayoutConstraints" destination="xsS-oc-dzu" id="6gZ-dY-8mg"/>

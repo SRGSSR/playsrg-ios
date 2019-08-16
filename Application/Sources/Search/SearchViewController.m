@@ -520,7 +520,7 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
     }
     else if ([cell isKindOfClass:MediaCollectionViewCell.class]) {
         MediaCollectionViewCell *mediaCell = (MediaCollectionViewCell *)cell;
-        mediaCell.media = self.items[indexPath.row];
+        [mediaCell setMedia:self.items[indexPath.row] withDateFormatter:nil displayingMediaType:YES];
     }
     else if ([cell isKindOfClass:SearchShowListCollectionViewCell.class]) {
         SearchShowListCollectionViewCell *showListCell = (SearchShowListCollectionViewCell *)cell;

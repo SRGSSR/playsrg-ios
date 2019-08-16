@@ -13,11 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MediaCollectionViewCell : UICollectionViewCell <Previewing>
 
-// A default date formatting is applied.
+// A default date formatting is applied, without displaying media type.
 @property (nonatomic) SRGMedia *media;
 
-// An optional date formatter can be provided.
-- (void)setMedia:(nullable SRGMedia *)media withDateFormatter:(nullable NSDateFormatter *)dateFormatter;
+// An optional date formatter can be provided, and displaying media type icon.
+- (void)setMedia:(nullable SRGMedia *)media withDateFormatter:(nullable NSDateFormatter *)dateFormatter displayingMediaType:(BOOL)displayingMediaType;
 
 @end
 

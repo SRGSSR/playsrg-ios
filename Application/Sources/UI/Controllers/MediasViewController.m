@@ -45,7 +45,7 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(MediaCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [cell setMedia:self.items[indexPath.row] withDateFormatter:self.dateFormatter];
+    [cell setMedia:self.items[indexPath.row] withDateFormatter:self.dateFormatter displayingMediaType:NO];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
