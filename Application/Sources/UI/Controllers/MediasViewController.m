@@ -9,9 +9,16 @@
 #import "MediaCollectionViewCell.h"
 #import "UIViewController+PlaySRG.h"
 
+#import <libextobjc/libextobjc.h>
 #import <SRGAppearance/SRGAppearance.h>
 
 static const CGFloat kLayoutHorizontalInset = 10.f;
+
+@interface MediasViewController ()
+
+@property (nonatomic, getter=isDisplayingMediaType) BOOL displayingMediaType;
+
+@end
 
 @implementation MediasViewController
 
@@ -45,7 +52,7 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(MediaCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [cell setMedia:self.items[indexPath.row] withDateFormatter:self.dateFormatter displayingMediaType:NO];
+    [cell setMedia:self.items[indexPath.row] withDateFormatter:self.dateFormatter displayingMediaType:self.displayingMediaType];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -77,6 +84,17 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
         static const CGFloat kItemWidth = 210.f;
         return CGSizeMake(kItemWidth, ceilf(kItemWidth * 9.f / 16.f + minTextHeight));
     }
+}
+
+#pragma mark Overrides
+
+- (void)refreshDidFinishWithError:(nullable NSError *)error
+{
+    [super refreshDidFinishWithError:error];
+    
+    NSString *keyPath = [NSString stringWithFormat:@"@distinctUnionOfObjects.%@", @keypath(SRGMedia.new, mediaType)];
+    NSArray<NSNumber *>* mediaTypes = [self.items valueForKeyPath:keyPath];
+    self.displayingMediaType = (mediaTypes.count > 1);
 }
 
 @end
