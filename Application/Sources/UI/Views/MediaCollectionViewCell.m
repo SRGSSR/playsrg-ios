@@ -26,6 +26,7 @@
 @interface MediaCollectionViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *mediaTypeImageView;
 @property (nonatomic, weak) IBOutlet UILabel *subtitleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
 @property (nonatomic, weak) IBOutlet UILabel *durationLabel;
@@ -59,6 +60,8 @@
     self.thumbnailImageView.backgroundColor = UIColor.play_grayThumbnailImageViewBackgroundColor;
     
     self.titleLabel.backgroundColor = backgroundColor;
+    
+    self.mediaTypeImageView.tintColor = UIColor.play_lightGrayColor;
     
     self.subtitleLabel.backgroundColor = backgroundColor;
     self.subtitleLabel.textColor = UIColor.play_lightGrayColor;
@@ -176,6 +179,7 @@
     self.titleLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleBody];
     self.titleLabel.text = media.title;
     
+    self.mediaTypeImageView.image = (media.mediaType == SRGMediaTypeAudio) ? [UIImage imageNamed:@"radioset-22"] : [UIImage imageNamed:@"tv-22"];
     if (media.contentType != SRGContentTypeLivestream) {
         NSString *showTitle = media.show.title;
         if (showTitle && ! [media.title containsString:showTitle]) {

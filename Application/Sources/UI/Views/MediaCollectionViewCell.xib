@@ -92,14 +92,17 @@
                         </subviews>
                     </stackView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="&lt;title&gt;" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHz-8o-wrG" userLabel="Title Label">
-                        <rect key="frame" x="159.5" y="4" width="362.5" height="18"/>
+                        <rect key="frame" x="159.5" y="4" width="334.5" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="wJ7-2s-dOe"/>
+                        </constraints>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="0.0" height="1"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="EDl-2o-9XW" userLabel="Subtitle Stack View">
-                        <rect key="frame" x="159.5" y="22" width="362.5" height="22"/>
+                        <rect key="frame" x="159.5" y="26" width="362.5" height="22"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="downloadable-22" translatesAutoresizingMaskIntoConstraints="NO" id="m53-Px-eX9" userLabel="Download Status Image View">
                                 <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -117,15 +120,23 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="tv-22" translatesAutoresizingMaskIntoConstraints="NO" id="i4b-F5-jKw" userLabel="Media Type Image View">
+                        <rect key="frame" x="500" y="4" width="22" height="22"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" priority="999" constant="22" id="JqT-BA-6Vg"/>
+                            <constraint firstAttribute="height" constant="22" id="XCL-gF-wEk"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="EDl-2o-9XW" firstAttribute="trailing" secondItem="XHz-8o-wrG" secondAttribute="trailing" id="278-QS-B55"/>
                 <constraint firstItem="XHz-8o-wrG" firstAttribute="leading" secondItem="wNj-MM-g7T" secondAttribute="leading" id="4bI-YS-KcS"/>
                 <constraint firstItem="EDl-2o-9XW" firstAttribute="top" secondItem="XHz-8o-wrG" secondAttribute="bottom" id="99A-Py-TjF"/>
                 <constraint firstItem="oyt-0M-2Tn" firstAttribute="top" secondItem="wNj-MM-g7T" secondAttribute="top" id="DsW-Ir-94N"/>
-                <constraint firstAttribute="trailing" secondItem="XHz-8o-wrG" secondAttribute="trailing" id="Ekv-rI-uEg"/>
+                <constraint firstAttribute="trailing" secondItem="XHz-8o-wrG" secondAttribute="trailing" constant="28" id="Ekv-rI-uEg"/>
+                <constraint firstItem="i4b-F5-jKw" firstAttribute="leading" secondItem="XHz-8o-wrG" secondAttribute="trailing" constant="6" id="HkU-h9-gWn"/>
                 <constraint firstItem="x7e-gr-cUo" firstAttribute="bottom" secondItem="oyt-0M-2Tn" secondAttribute="bottom" id="JRn-LJ-Ogv"/>
                 <constraint firstItem="P5b-T7-VxL" firstAttribute="trailing" secondItem="oyt-0M-2Tn" secondAttribute="trailing" constant="-5" id="KU2-45-NAj"/>
                 <constraint firstItem="x7e-gr-cUo" firstAttribute="leading" secondItem="oyt-0M-2Tn" secondAttribute="leading" id="Mt8-Uq-7uf"/>
@@ -137,10 +148,12 @@
                 <constraint firstItem="P5b-T7-VxL" firstAttribute="bottom" secondItem="oyt-0M-2Tn" secondAttribute="bottom" constant="-5" id="X48-Tc-dm7"/>
                 <constraint firstItem="EDl-2o-9XW" firstAttribute="leading" secondItem="XHz-8o-wrG" secondAttribute="leading" id="aPe-Pn-7lG"/>
                 <constraint firstItem="eXQ-vI-0FF" firstAttribute="trailing" secondItem="oyt-0M-2Tn" secondAttribute="trailing" id="cVF-EW-gqg"/>
+                <constraint firstItem="i4b-F5-jKw" firstAttribute="top" secondItem="XHz-8o-wrG" secondAttribute="top" id="eQE-5i-Sru"/>
                 <constraint firstItem="XHz-8o-wrG" firstAttribute="top" secondItem="oyt-0M-2Tn" secondAttribute="bottom" constant="5" id="ezs-9Z-dm0"/>
                 <constraint firstItem="oyt-0M-2Tn" firstAttribute="leading" secondItem="wNj-MM-g7T" secondAttribute="leading" id="fdI-gd-ejq"/>
                 <constraint firstItem="eXQ-vI-0FF" firstAttribute="leading" secondItem="oyt-0M-2Tn" secondAttribute="leading" id="jGo-ca-glg"/>
                 <constraint firstItem="NJ6-Ou-tus" firstAttribute="leading" secondItem="oyt-0M-2Tn" secondAttribute="leading" constant="5" id="rF1-bp-8aQ"/>
+                <constraint firstItem="i4b-F5-jKw" firstAttribute="trailing" secondItem="EDl-2o-9XW" secondAttribute="trailing" id="t8i-DC-1fx"/>
                 <constraint firstItem="eXQ-vI-0FF" firstAttribute="top" secondItem="oyt-0M-2Tn" secondAttribute="top" id="uIG-ir-wa1"/>
                 <constraint firstAttribute="trailing" secondItem="oyt-0M-2Tn" secondAttribute="trailing" id="vB7-yo-21n"/>
                 <constraint firstItem="eXQ-vI-0FF" firstAttribute="bottom" secondItem="oyt-0M-2Tn" secondAttribute="bottom" id="x70-1y-QyY"/>
@@ -170,6 +183,7 @@
                 <outlet property="downloadStatusImageView" destination="m53-Px-eX9" id="ogI-wz-1bJ"/>
                 <outlet property="durationLabel" destination="hyH-au-0BM" id="slY-eL-fUN"/>
                 <outlet property="media360ImageView" destination="NJ6-Ou-tus" id="FWC-xm-cgz"/>
+                <outlet property="mediaTypeImageView" destination="i4b-F5-jKw" id="G3D-cL-HMI"/>
                 <outlet property="progressView" destination="x7e-gr-cUo" id="lxb-bq-U36"/>
                 <outlet property="subtitleLabel" destination="Wce-v1-6RF" id="BSr-nB-NY6"/>
                 <outlet property="thumbnailImageView" destination="oyt-0M-2Tn" id="ScS-wz-5Ur"/>
@@ -189,5 +203,6 @@
         <image name="360_media-25" width="25" height="25"/>
         <image name="downloadable-22" width="22" height="22"/>
         <image name="geoblocked-25" width="25" height="25"/>
+        <image name="tv-22" width="22" height="22"/>
     </resources>
 </document>
