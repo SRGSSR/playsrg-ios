@@ -219,7 +219,7 @@
     self.titleLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleBody];
     self.titleLabel.text = media.title;
     
-    self.mediaTypeImageView.image = (media.mediaType == SRGMediaTypeAudio) ? [UIImage imageNamed:@"radioset-22"] : [UIImage imageNamed:@"tv-22"];
+    self.mediaTypeImageView.image = (media.mediaType == SRGMediaTypeAudio) ? [UIImage imageNamed:@"radioset-16"] : [UIImage imageNamed:@"tv-16"];
     
     if (media.contentType != SRGContentTypeLivestream) {
         NSString *showTitle = media.show.title;

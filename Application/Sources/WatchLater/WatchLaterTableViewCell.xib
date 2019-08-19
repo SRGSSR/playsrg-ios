@@ -110,24 +110,24 @@
                                 <rect key="frame" x="157.5" y="0.0" width="435.5" height="114"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbT-jA-SKS" userLabel="Title Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="407.5" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="413.5" height="20.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="ywN-Wa-3xB"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="ywN-Wa-3xB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="tv-22" translatesAutoresizingMaskIntoConstraints="NO" id="g05-vZ-prT">
-                                        <rect key="frame" x="413.5" y="0.0" width="22" height="22"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="tv-16" translatesAutoresizingMaskIntoConstraints="NO" id="g05-vZ-prT">
+                                        <rect key="frame" x="419.5" y="2" width="16" height="16"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" priority="999" constant="22" id="ExC-nV-1bW"/>
-                                            <constraint firstAttribute="height" constant="22" id="yJw-Fj-x3u"/>
+                                            <constraint firstAttribute="width" priority="999" constant="16" id="ExC-nV-1bW"/>
+                                            <constraint firstAttribute="height" constant="16" id="yJw-Fj-x3u"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="AX7-S7-GNv" userLabel="Subtitle Stack View">
-                                        <rect key="frame" x="0.0" y="22" width="435.5" height="22"/>
+                                        <rect key="frame" x="0.0" y="20.5" width="435.5" height="22"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="downloadable-22" translatesAutoresizingMaskIntoConstraints="NO" id="YBz-Mz-5VT">
                                                 <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -151,7 +151,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="g05-vZ-prT" firstAttribute="top" secondItem="s1l-H7-GFf" secondAttribute="top" id="4c2-tF-O3C"/>
+                                    <constraint firstItem="g05-vZ-prT" firstAttribute="top" secondItem="s1l-H7-GFf" secondAttribute="top" constant="2" id="4c2-tF-O3C"/>
                                     <constraint firstItem="AX7-S7-GNv" firstAttribute="top" secondItem="qbT-jA-SKS" secondAttribute="bottom" id="5hk-2K-nSu"/>
                                     <constraint firstItem="qbT-jA-SKS" firstAttribute="leading" secondItem="s1l-H7-GFf" secondAttribute="leading" id="G7u-bC-56B"/>
                                     <constraint firstAttribute="trailing" secondItem="AX7-S7-GNv" secondAttribute="trailing" id="ayM-HI-NB5"/>
@@ -193,6 +193,6 @@
         <image name="360_media-25" width="25" height="25"/>
         <image name="downloadable-22" width="22" height="22"/>
         <image name="geoblocked-25" width="25" height="25"/>
-        <image name="tv-22" width="22" height="22"/>
+        <image name="tv-16" width="16" height="16"/>
     </resources>
 </document>
