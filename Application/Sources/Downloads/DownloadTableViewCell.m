@@ -25,6 +25,7 @@
 @interface DownloadTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *mediaTypeImageView;
 @property (nonatomic, weak) IBOutlet UILabel *subtitleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
 @property (nonatomic, weak) IBOutlet UILabel *durationLabel;
@@ -58,6 +59,9 @@
     self.thumbnailImageView.backgroundColor = UIColor.play_grayThumbnailImageViewBackgroundColor;
     
     self.titleLabel.backgroundColor = backgroundColor;
+    
+    self.mediaTypeImageView.tintColor = UIColor.play_lightGrayColor;
+    
     self.subtitleLabel.backgroundColor = backgroundColor;
     
     self.durationLabelBackgroundColor = self.durationLabel.backgroundColor;
@@ -211,6 +215,8 @@
     
     self.titleLabel.text = download.title;
     self.titleLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleBody];
+    
+    self.mediaTypeImageView.image = (download.mediaType == SRGMediaTypeAudio) ? [UIImage imageNamed:@"radioset-16"] : [UIImage imageNamed:@"tv-16"];
     
     [self.durationLabel play_displayDurationLabelForMediaMetadata:download];
     

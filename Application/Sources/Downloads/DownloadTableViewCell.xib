@@ -90,13 +90,16 @@
                                 <rect key="frame" x="157.5" y="0.0" width="435.5" height="114"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVk-qC-VaO" userLabel="Title Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="435.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="413.5" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="JAj-1a-RmL"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="5j8-iE-ECf" userLabel="Subtitle Stack View">
-                                        <rect key="frame" x="0.0" y="20.5" width="435.5" height="22"/>
+                                        <rect key="frame" x="0.0" y="20.5" width="413.5" height="22"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="downloadable-22" translatesAutoresizingMaskIntoConstraints="NO" id="TM2-Y3-cHc">
                                                 <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -107,7 +110,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="&lt;subtitle&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="waz-M0-pDU" userLabel="Subtitle Label">
-                                                <rect key="frame" x="28" y="0.0" width="407.5" height="22"/>
+                                                <rect key="frame" x="28" y="0.0" width="385.5" height="22"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -117,12 +120,22 @@
                                             <constraint firstItem="TM2-Y3-cHc" firstAttribute="centerY" secondItem="5j8-iE-ECf" secondAttribute="centerY" id="AsL-Cu-qe6"/>
                                         </constraints>
                                     </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="tv-16" translatesAutoresizingMaskIntoConstraints="NO" id="2zy-ub-SxZ">
+                                        <rect key="frame" x="419.5" y="2" width="16" height="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="999" constant="16" id="Qqm-XB-KD6"/>
+                                            <constraint firstAttribute="height" constant="16" id="cd6-MS-jrc"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="fVk-qC-VaO" secondAttribute="trailing" id="2Yk-vL-1pl"/>
+                                    <constraint firstItem="2zy-ub-SxZ" firstAttribute="leading" secondItem="fVk-qC-VaO" secondAttribute="trailing" constant="6" id="A3e-TI-18k"/>
                                     <constraint firstItem="5j8-iE-ECf" firstAttribute="trailing" secondItem="fVk-qC-VaO" secondAttribute="trailing" id="NJU-tV-rhG"/>
                                     <constraint firstItem="fVk-qC-VaO" firstAttribute="leading" secondItem="ksZ-Pc-dfN" secondAttribute="leading" id="P4b-QV-HEv"/>
+                                    <constraint firstAttribute="trailing" secondItem="2zy-ub-SxZ" secondAttribute="trailing" id="c5N-bH-9lk"/>
+                                    <constraint firstItem="2zy-ub-SxZ" firstAttribute="top" secondItem="ksZ-Pc-dfN" secondAttribute="top" constant="2" id="lRQ-qy-ozf"/>
                                     <constraint firstItem="5j8-iE-ECf" firstAttribute="leading" secondItem="fVk-qC-VaO" secondAttribute="leading" id="mjZ-mR-h6R"/>
                                     <constraint firstItem="5j8-iE-ECf" firstAttribute="top" secondItem="fVk-qC-VaO" secondAttribute="bottom" id="nih-k8-mnH"/>
                                     <constraint firstItem="fVk-qC-VaO" firstAttribute="top" secondItem="ksZ-Pc-dfN" secondAttribute="top" id="vCN-zd-1rQ"/>
@@ -144,6 +157,7 @@
                 <outlet property="downloadStatusImageView" destination="TM2-Y3-cHc" id="99z-gi-J7l"/>
                 <outlet property="durationLabel" destination="Qos-Fl-Hqr" id="uM0-qZ-KOq"/>
                 <outlet property="media360ImageView" destination="wmN-wN-Xz3" id="AS4-oR-5aq"/>
+                <outlet property="mediaTypeImageView" destination="2zy-ub-SxZ" id="Pz4-Wm-UjF"/>
                 <outlet property="progressView" destination="MeE-eL-S8U" id="wKN-Hy-ZY9"/>
                 <outlet property="subtitleLabel" destination="waz-M0-pDU" id="4fy-Uc-GAx"/>
                 <outlet property="thumbnailImageView" destination="Bra-g0-jx8" id="urp-YA-072"/>
@@ -156,5 +170,6 @@
     <resources>
         <image name="360_media-25" width="25" height="25"/>
         <image name="downloadable-22" width="22" height="22"/>
+        <image name="tv-16" width="16" height="16"/>
     </resources>
 </document>
