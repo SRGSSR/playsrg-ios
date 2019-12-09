@@ -326,13 +326,6 @@
 {
     NSMutableArray<UIBarButtonItem *> *rightBarButtonItems = [NSMutableArray array];
     
-    UIBarButtonItem *searchBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search-22"]
-                                                                            style:UIBarButtonItemStylePlain
-                                                                           target:self
-                                                                           action:@selector(search:)];
-    searchBarButtonItem.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Search", @"Search button label");
-    [rightBarButtonItems addObject:searchBarButtonItem];
-    
     [PushService.sharedService updateApplicationBadge];
     
     if (@available(iOS 10, *)) {
