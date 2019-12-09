@@ -81,7 +81,7 @@
         self.navigationItem.titleView = [[UIImageView alloc] initWithImage:RadioChannelNavigationBarImage(self.radioChannel)];
     }
     else {
-        self.title = NSLocalizedString(@"Overview", @"Home page title");
+        self.title = NSLocalizedString(@"Videos", @"Videos home page title");
         self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_play-20"]];
     }
     
