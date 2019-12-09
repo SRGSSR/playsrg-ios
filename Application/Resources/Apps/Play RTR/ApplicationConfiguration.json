@@ -9,7 +9,7 @@
   "middlewareURL": "https://playfff.herokuapp.com",
   "feedbackURL": "https://play.typeform.com/to/rarQYT",
   "searchOptions": "tvShows,videos,radioShows,audios",
-  "tvHomeSections": "tvTrending,tvLive,tvFavoriteShows,tvEvents,tvTopics",
+  "tvHomeSections": "tvTrending,tvLive,tvFavoriteShows,tvShowsAccess,tvEvents,tvTopics",
   "tvTrendingEpisodesOnly": true,
   "tvFeaturedHomeSectionHeaderHidden": true,
   "tvNumberOfLivePlaceholders": 3,

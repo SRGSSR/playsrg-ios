@@ -13,7 +13,7 @@
   "identityWebsiteURL": "https://www.rts.ch/profile",
   "userDataServiceURL": "https://profil.rts.ch/api",
   "searchOptions": "tvShows,videos,radioShows,audios",
-  "tvHomeSections": "tvTrending,tvLive,tvFavoriteShows,tvEvents,tvTopics",
+  "tvHomeSections": "tvTrending,tvLive,tvFavoriteShows,tvShowsAccess,tvEvents,tvTopics",
   "tvTrendingEpisodesOnly": false,
   "tvTrendingEditorialLimit": 3,
   "tvFeaturedHomeSectionHeaderHidden": true,
