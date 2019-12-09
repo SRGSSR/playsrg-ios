@@ -33,6 +33,7 @@
 #import "UIViewController+PlaySRG.h"
 #import "UIWindow+PlaySRG.h"
 #import "UpdateInfo.h"
+#import "TabBarController.h"
 #import "WatchLater.h"
 #import "WebViewController.h"
 
@@ -167,7 +168,7 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
     [Download removeUnusedDownloadedFiles];
     
     // Setup view controller hierarchy
-    self.window.rootViewController = [[SideMenuController alloc] init];
+    self.window.rootViewController = [[TabBarController alloc] init];
     [self.window makeKeyAndVisible];
     
     [self checkForForcedUpdates];
