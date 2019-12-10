@@ -4,7 +4,7 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "MenuTableViewCell.h"
+#import "ProfilTableViewCell.h"
 
 #import "DownloadSession.h"
 #import "UIColor+PlaySRG.h"
@@ -12,15 +12,14 @@
 
 #import <SRGAppearance/SRGAppearance.h>
 
-@interface MenuTableViewCell ()
+@interface ProfilTableViewCell ()
 
-@property (nonatomic, weak) IBOutlet UIView *verticalLineView;
 @property (nonatomic, weak) IBOutlet UIImageView *iconImageView;
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
 @end
 
-@implementation MenuTableViewCell
+@implementation ProfilTableViewCell
 
 #pragma mark Getters and setters
 
@@ -32,16 +31,6 @@
     self.titleLabel.text = menuItemInfo.title;
     
     self.iconImageView.image = menuItemInfo.image;
-    [self updateIconImageViewAnimation];
-}
-
-- (void)setCurrent:(BOOL)current
-{
-    _current = current;
-    
-    self.verticalLineView.hidden = !current;
-    
-    [self updateAppearanceHighlighted:current];
     [self updateIconImageViewAnimation];
 }
 
@@ -84,10 +73,8 @@
 {
     [super setHighlighted:highlighted animated:animated];
     
-    if (! self.current) {
-        [self updateAppearanceHighlighted:highlighted];
-        [self updateIconImageViewAnimation];
-    }
+    [self updateAppearanceHighlighted:highlighted];
+    [self updateIconImageViewAnimation];
 }
 
 #pragma mark User interface

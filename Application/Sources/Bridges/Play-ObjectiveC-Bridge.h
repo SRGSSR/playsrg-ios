@@ -12,7 +12,7 @@
 #import "Onboarding.h"
 #import "PlayAppDelegate.h"
 #import "PushService.h"
-#import "SideMenuController.h"
+#import "TabBarController.h"
 #import "UIColor+PlaySRG.h"
 #import "UIDevice+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"

@@ -4,7 +4,7 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "MenuHeaderSectionView.h"
+#import "ProfilHeaderSectionView.h"
 
 #import "NSBundle+PlaySRG.h"
 #import "UIColor+PlaySRG.h"
@@ -12,13 +12,13 @@
 #import <Masonry/Masonry.h>
 #import <SRGAppearance/SRGAppearance.h>
 
-@interface MenuHeaderSectionView ()
+@interface ProfilHeaderSectionView ()
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
 @end
 
-@implementation MenuHeaderSectionView
+@implementation ProfilHeaderSectionView
 
 #pragma mark Class methods
 

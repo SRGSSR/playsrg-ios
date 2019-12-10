@@ -20,16 +20,11 @@
 
 #pragma mark Class methods
 
-+ (NSArray<MenuSectionInfo *> *)currentMenuSectionInfos
++ (NSArray<MenuSectionInfo *> *)profilMenuSectionInfos
 {
     ApplicationConfiguration *applicationConfiguration = ApplicationConfiguration.sharedApplicationConfiguration;
     
     NSMutableArray<MenuSectionInfo *> *sectionInfos = [NSMutableArray array];
-    
-    // General section
-    [sectionInfos addObject:[[MenuSectionInfo alloc] initWithTitle:NSLocalizedString(@"General", @"General menu section header label")
-                                                     menuItemInfos:@[[MenuItemInfo menuItemInfoWithMenuItem:MenuItemSearch]]
-                                                        headerless:YES]];
     
     // My content section
     NSMutableArray<MenuItemInfo *> *myContentMenuItems = [NSMutableArray array];
@@ -41,56 +36,6 @@
     [sectionInfos addObject:[[MenuSectionInfo alloc] initWithTitle:NSLocalizedString(@"My content", @"Menu section header label for user personal content")
                                                      menuItemInfos:myContentMenuItems.copy
                                                         headerless:YES]];
-    
-    // TV section
-    NSArray *tvMenuItems = applicationConfiguration.tvMenuItems;
-    if (tvMenuItems.count != 0) {
-        NSMutableArray *menuItemInfos = [NSMutableArray new];
-        
-        for (NSNumber *menuItemNumber in tvMenuItems) {
-            MenuItem menuItem = menuItemNumber.integerValue;
-            if (menuItem == MenuItemUnknown) {
-                continue;
-            }
-            
-            MenuItemInfo *menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:menuItem];
-            [menuItemInfos addObject:menuItemInfo];
-        }
-        
-        if (menuItemInfos.count != 0) {
-            [sectionInfos addObject:[[MenuSectionInfo alloc] initWithTitle:NSLocalizedString(@"TV", @"TV menu section header label")
-                                                             menuItemInfos:menuItemInfos.copy
-                                                                headerless:NO]];
-        }
-    }
-    
-    // Radio section
-    NSArray *radioChannels = applicationConfiguration.radioChannels;
-    if (radioChannels.count != 0) {
-        NSMutableArray *menuItemInfos = [NSMutableArray new];
-        
-        NSArray *radioMenuItems = applicationConfiguration.radioMenuItems;
-        for (NSNumber *menuItemNumber in radioMenuItems) {
-            MenuItem menuItem = menuItemNumber.integerValue;
-            if (menuItem == MenuItemUnknown) {
-                continue;
-            }
-            
-            MenuItemInfo *menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:menuItem];
-            [menuItemInfos addObject:menuItemInfo];
-        }
-        
-        for (RadioChannel *radioChannel in radioChannels) {
-            MenuItemInfo *menuItemInfo = [MenuItemInfo menuItemInfoWithRadioChannel:radioChannel];
-            [menuItemInfos addObject:menuItemInfo];
-        }
-        
-        if (menuItemInfos.count != 0) {
-            [sectionInfos addObject:[[MenuSectionInfo alloc] initWithTitle:NSLocalizedString(@"Radio", @"Radio menu section header label")
-                                                             menuItemInfos:menuItemInfos.copy
-                                                                headerless:NO]];
-        }
-    }
     
     // Other item sections
     NSMutableArray<MenuItemInfo *> *otherItemInfos = [NSMutableArray array];

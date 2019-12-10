@@ -8,10 +8,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MenuTableViewCell : UITableViewCell
+@interface ProfilTableViewCell : UITableViewCell
 
 @property (nonatomic) MenuItemInfo *menuItemInfo;
-@property (nonatomic, getter=isCurrent) BOOL current;
 
 @end
 

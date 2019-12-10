@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Return the menu sections corresponding to the current configuration
  */
-@property (class, nonatomic, readonly) NSArray<MenuSectionInfo *> *currentMenuSectionInfos;
+@property (class, nonatomic, readonly) NSArray<MenuSectionInfo *> *profilMenuSectionInfos;
 
 /**
  *  Instantiate an entry describing a menu section

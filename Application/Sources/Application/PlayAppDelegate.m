@@ -33,7 +33,6 @@
 #import "UIViewController+PlaySRG.h"
 #import "UIWindow+PlaySRG.h"
 #import "UpdateInfo.h"
-#import "TabBarController.h"
 #import "WatchLater.h"
 #import "WebViewController.h"
 
@@ -66,9 +65,9 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 
 #pragma mark Getters and setters
 
-- (SideMenuController *)sideMenuController
+- (TabBarController *)playTabBarController
 {
-    return (SideMenuController *)self.window.rootViewController;
+    return (TabBarController *)self.window.rootViewController;
 }
 
 - (void)setPresenterModeEnabled:(BOOL)presenterModeEnabled
@@ -740,16 +739,16 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 - (void)resetWithMenuItemInfo:(MenuItemInfo *)menuItemInfo completionBlock:(void (^)(void))completionBlock
 {
     void (^openMenuItemInfo)(void) = ^{
-        self.sideMenuController.selectedMenuItemInfo = menuItemInfo;
+        [self.playTabBarController openMenuItemInfo:menuItemInfo];
         completionBlock ? completionBlock() : nil;
     };
     
     // When dismissing a view controller with a transitioning delegate while the app is in the background, with animated = NO, there
     // is a bug leading to an incorrect final state. The bug does not occur if animated = YES, but the transition is visible. To get
     // a perfect result, we completely disable animations during the transition
-    if (self.sideMenuController.presentedViewController) {
+    if (self.playTabBarController.presentedViewController) {
         [UIView setAnimationsEnabled:NO];
-        [self.sideMenuController dismissViewControllerAnimated:YES completion:^{
+        [self.playTabBarController dismissViewControllerAnimated:YES completion:^{
             [UIView setAnimationsEnabled:YES];
             openMenuItemInfo();
         }];
@@ -762,12 +761,12 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 - (void)playURN:(NSString *)mediaURN media:(SRGMedia *)media atPosition:(SRGPosition *)position fromPushNotification:(BOOL)fromPushNotification completion:(void (^)(void))completion
 {
     if (media) {
-        [self.sideMenuController play_presentMediaPlayerWithMedia:media position:position airPlaySuggestions:YES fromPushNotification:fromPushNotification animated:YES completion:completion];
+        [self.playTabBarController play_presentMediaPlayerWithMedia:media position:position airPlaySuggestions:YES fromPushNotification:fromPushNotification animated:YES completion:completion];
     }
     else {
         [[SRGDataProvider.currentDataProvider mediaWithURN:mediaURN completionBlock:^(SRGMedia * _Nullable media, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
             if (media) {
-                [self.sideMenuController play_presentMediaPlayerWithMedia:media position:position airPlaySuggestions:YES fromPushNotification:fromPushNotification animated:YES completion:completion];
+                [self.playTabBarController play_presentMediaPlayerWithMedia:media position:position airPlaySuggestions:YES fromPushNotification:fromPushNotification animated:YES completion:completion];
             }
             else {
                 NSError *error = [NSError errorWithDomain:PlayErrorDomain
@@ -783,13 +782,13 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 {
     if (show) {
         ShowViewController *showViewController = [[ShowViewController alloc] initWithShow:show fromPushNotification:fromPushNotification];
-        [self.sideMenuController pushViewController:showViewController animated:YES];
+        [self.playTabBarController pushViewController:showViewController animated:YES];
     }
     else {
         [[SRGDataProvider.currentDataProvider showWithURN:showURN completionBlock:^(SRGShow * _Nullable show, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
             if (show) {
                 ShowViewController *showViewController = [[ShowViewController alloc] initWithShow:show fromPushNotification:fromPushNotification];
-                [self.sideMenuController pushViewController:showViewController animated:YES];
+                [self.playTabBarController pushViewController:showViewController animated:YES];
             }
             else {
                 NSError *error = [NSError errorWithDomain:PlayErrorDomain
@@ -808,7 +807,7 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
         SRGTopic *topic = [topics filteredArrayUsingPredicate:predicate].firstObject;
         if (topic) {
             HomeTopicViewController *homeTopicViewController = [[HomeTopicViewController alloc] initWithTopic:topic];
-            [self.sideMenuController pushViewController:homeTopicViewController animated:YES];
+            [self.playTabBarController pushViewController:homeTopicViewController animated:YES];
         }
         else {
             NSError *error = [NSError errorWithDomain:PlayErrorDomain
@@ -826,7 +825,7 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
         SRGModule *module = [modules filteredArrayUsingPredicate:predicate].firstObject;
         if (module) {
             ModuleViewController *moduleViewController = [[ModuleViewController alloc] initWithModule:module];
-            [self.sideMenuController pushViewController:moduleViewController animated:YES];
+            [self.playTabBarController pushViewController:moduleViewController animated:YES];
         }
         else {
             NSError *error = [NSError errorWithDomain:PlayErrorDomain
@@ -840,13 +839,13 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 - (void)openShowListWithRadioChannel:(RadioChannel *)radioChannel atIndex:(NSString *)index
 {
     ShowsViewController *showsViewController = [[ShowsViewController alloc] initWithRadioChannel:radioChannel alphabeticalIndex:index];
-    [self.sideMenuController pushViewController:showsViewController animated:YES];
+    [self.playTabBarController pushViewController:showsViewController animated:YES];
 }
 
 - (void)openCalendarAtDate:(NSDate *)date withRadioChannel:(RadioChannel *)radioChannel
 {
     CalendarViewController *calendarViewController = [[CalendarViewController alloc] initWithRadioChannel:radioChannel date:date];
-    [self.sideMenuController pushViewController:calendarViewController animated:YES];
+    [self.playTabBarController pushViewController:calendarViewController animated:YES];
 }
 
 #pragma mark What's new

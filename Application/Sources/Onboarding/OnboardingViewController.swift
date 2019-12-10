@@ -201,7 +201,7 @@ import SRGAppearance
         self.dismiss(animated: true, completion: {
             if (self.onboarding.uid == "account") {
                 let playAppDelegate = UIApplication.shared.delegate as! PlayAppDelegate
-                playAppDelegate.sideMenuController.displayMenuHeader(animated: true)
+                playAppDelegate.playTabBarController.displayAccountHeader(animated: true)
             }
         });
     }

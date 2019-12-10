@@ -264,7 +264,7 @@
             else {
                 UIApplication *application = UIApplication.sharedApplication;
                 PlayAppDelegate *appDelegate = (PlayAppDelegate *)application.delegate;
-                [appDelegate.sideMenuController pushViewController:showViewController animated:YES];
+                [appDelegate.playTabBarController pushViewController:showViewController animated:YES];
             }
         }];
         [previewActionItems addObject:showAction];

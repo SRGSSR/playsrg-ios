@@ -1,50 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Menu View Controller-->
+        <!--Profil View Controller-->
         <scene sceneID="c8w-N3-17z">
             <objects>
-                <viewController storyboardIdentifier="MenuViewController" id="AQ9-FI-Btu" customClass="MenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfilViewController" id="AQ9-FI-Btu" customClass="ProfilViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XA6-y3-JdL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BqA-U9-apX">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="MenuTableViewCell" rowHeight="50" id="uYn-yq-Dkr" customClass="MenuTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" reuseIdentifier="ProfilTableViewCell" rowHeight="50" id="uYn-yq-Dkr" customClass="ProfilTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uYn-yq-Dkr" id="pdj-wK-jLP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8k-bR-uQh" userLabel="Vertical Line">
-                                                    <rect key="frame" x="7" y="3" width="2" height="44.5"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="2" id="Q2d-al-qKN"/>
-                                                    </constraints>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99a-cz-vBb">
-                                                    <rect key="frame" x="59" y="15" width="293" height="20"/>
+                                                    <rect key="frame" x="64" y="15" width="322" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eFP-ei-Tdo" userLabel="Images View">
-                                                    <rect key="frame" x="23" y="14" width="22" height="22"/>
+                                                    <rect key="frame" x="28" y="14" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="QUz-aq-dr7"/>
                                                         <constraint firstAttribute="width" constant="22" id="wZd-TY-Ebd"/>
@@ -53,12 +44,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="eFP-ei-Tdo" firstAttribute="centerY" secondItem="pdj-wK-jLP" secondAttribute="centerY" id="4sg-Z6-ue6"/>
-                                                <constraint firstItem="s8k-bR-uQh" firstAttribute="leading" secondItem="pdj-wK-jLP" secondAttribute="leadingMargin" constant="-8" id="5EJ-7b-6W0"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="99a-cz-vBb" secondAttribute="trailing" constant="8" id="9KT-QG-SOG"/>
                                                 <constraint firstItem="99a-cz-vBb" firstAttribute="centerY" secondItem="eFP-ei-Tdo" secondAttribute="centerY" id="SW2-B1-rqd"/>
-                                                <constraint firstItem="s8k-bR-uQh" firstAttribute="top" secondItem="pdj-wK-jLP" secondAttribute="topMargin" constant="-8" id="Z1f-qg-RIZ"/>
                                                 <constraint firstItem="99a-cz-vBb" firstAttribute="leading" secondItem="eFP-ei-Tdo" secondAttribute="trailing" constant="14" id="oOt-re-B0W"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="s8k-bR-uQh" secondAttribute="bottom" constant="-8.5" id="u4V-Q4-RKn"/>
                                                 <constraint firstItem="eFP-ei-Tdo" firstAttribute="leading" secondItem="pdj-wK-jLP" secondAttribute="leadingMargin" constant="8" id="x70-H6-P3b"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -66,7 +54,6 @@
                                         <connections>
                                             <outlet property="iconImageView" destination="eFP-ei-Tdo" id="jUc-MN-5je"/>
                                             <outlet property="titleLabel" destination="99a-cz-vBb" id="4U4-Ee-IgK"/>
-                                            <outlet property="verticalLineView" destination="s8k-bR-uQh" id="gWf-Q5-D4m"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

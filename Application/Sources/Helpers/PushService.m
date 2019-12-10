@@ -12,6 +12,7 @@
 #import "PlayAppDelegate.h"
 #import "Notification.h"
 
+#import <CoconutKit/CoconutKit.h>
 #import <libextobjc/libextobjc.h>
 #import <UrbanAirship-iOS-SDK/AirshipKit.h>
 #import <UserNotifications/UserNotifications.h>
