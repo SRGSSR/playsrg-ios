@@ -7,10 +7,14 @@
 #import "TabBarController.h"
 
 #import "HomeViewController.h"
+#import "MiniPlayerView.h"
 #import "ProfilViewController.h"
 #import "RadiosViewController.h"
 #import "SearchViewController.h"
 
+#import <libextobjc/libextobjc.h>
+#import <MAKVONotificationCenter/MAKVONotificationCenter.h>
+#import <Masonry/Masonry.h>
 #import <SRGAppearance/SRGAppearance.h>
 
 typedef NS_ENUM(NSInteger, TabBarItem) {
@@ -21,6 +25,15 @@ typedef NS_ENUM(NSInteger, TabBarItem) {
     TabBarItemSearch,
     TabBarItemProfil
 };
+
+static const CGFloat MiniPlayerHeight = 50.f;
+static const CGFloat MiniPlayerOffset = 5.f;
+
+@interface TabBarController ()
+
+@property (nonatomic, weak) MiniPlayerView *miniPlayerView;
+
+@end
 
 @implementation TabBarController
 
@@ -91,6 +104,28 @@ typedef NS_ENUM(NSInteger, TabBarItem) {
                                                            NSForegroundColorAttributeName : foregroundColor }
                                                forState:controlState.integerValue];
     }
+    
+    // The mini player is not available for all BUs
+    MiniPlayerView *miniPlayerView = [[MiniPlayerView alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:miniPlayerView];
+    
+    // iOS 10 bug: Cannot apply a shadow to a blurred view without breaking the blur effect
+    // Probably related to radar 27189321.
+    // TODO: Remove when iOS 10 is not supported anymore
+    if (NSProcessInfo.processInfo.operatingSystemVersion.majorVersion != 10) {
+        miniPlayerView.layer.shadowOpacity = 0.9f;
+        miniPlayerView.layer.shadowRadius = 5.f;
+    }
+    
+    self.miniPlayerView = miniPlayerView;
+    
+    @weakify(self)
+    [miniPlayerView addObserver:self keyPath:@keypath(miniPlayerView.active) options:0 block:^(MAKVONotification *notification) {
+        @strongify(self)
+        [self updateLayoutAnimated:YES];
+    }];
+    
+    [self updateLayoutAnimated:NO];
 }
 
 #pragma mark Changing content
@@ -158,9 +193,55 @@ typedef NS_ENUM(NSInteger, TabBarItem) {
     }
 }
 
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+#pragma mark Layout
+
+- (void)updateLayoutAnimated:(BOOL)animated
 {
-    [self.selectedViewController pushViewController:viewController animated:animated];
+    void (^animations)(void) = ^{
+        if (self.miniPlayerView.active) {
+            [self.miniPlayerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self.view).with.offset(MiniPlayerOffset);
+                make.right.equalTo(self.view).with.offset(-MiniPlayerOffset);
+                
+                if (@available(iOS 11, *)) {
+                    make.bottom.equalTo(self.tabBar.mas_safeAreaLayoutGuideTop).with.offset(-MiniPlayerOffset);
+                    make.top.equalTo(self.tabBar.mas_safeAreaLayoutGuideTop).with.offset(-MiniPlayerOffset-MiniPlayerHeight);
+                }
+                else {
+                    make.bottom.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset);
+                    make.height.equalTo(@(MiniPlayerHeight));
+                }
+            }];
+        }
+        else {
+            [self.miniPlayerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self.view).with.offset(MiniPlayerOffset);
+                make.right.equalTo(self.view).with.offset(-MiniPlayerOffset);
+                if (@available(iOS 11, *)) {
+                    make.bottom.equalTo(self.tabBar.mas_safeAreaLayoutGuideTop).with.offset(-MiniPlayerOffset);
+                }
+                else {
+                    make.bottom.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset);
+                }
+                make.height.equalTo(@0);
+            }];
+        }
+        
+        [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
+            [viewController play_setNeedsContentInsetsUpdate];
+        }];
+    };
+    
+    if (animated) {
+        [self.view layoutIfNeeded];
+        [UIView animateWithDuration:0.2 animations:^{
+            animations();
+            [self.view layoutIfNeeded];
+        }];
+    }
+    else {
+        animations();
+    }
 }
 
 - (void)displayAccountHeaderAnimated:(BOOL)animated
@@ -171,6 +252,13 @@ typedef NS_ENUM(NSInteger, TabBarItem) {
     
     ProfilViewController *profilViewController = navigationController.viewControllers.firstObject;
     [profilViewController scrollToTopAnimated:animated];
+}
+
+#pragma mark Push and pop
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [self.selectedViewController pushViewController:viewController animated:animated];
 }
 
 @end

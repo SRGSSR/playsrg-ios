@@ -56,6 +56,9 @@
                                                    name:kGCKCastStateDidChangeNotification
                                                  object:nil];
         
+        self.layer.cornerRadius = 4.f;
+        self.layer.masksToBounds = YES;
+        
         [self updateLayoutAnimated:NO];
     }
     return self;

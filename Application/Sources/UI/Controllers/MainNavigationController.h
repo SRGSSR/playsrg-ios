@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController radioChannel:(nullable RadioChannel *)radioChannel;;
 
 /**
- *  Push the spcified view controller.
+ *  Push the specified view controller.
  */
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
 
