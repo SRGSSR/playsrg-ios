@@ -9,19 +9,6 @@
 #import "ApplicationConfiguration.h"
 #import "HomeMediasViewController.h"
 
-UIImage *ImageForSection(HomeSection section)
-{
-    static NSDictionary<NSNumber *, NSString *> *s_imageNames;
-    static dispatch_once_t s_onceToken;
-    dispatch_once(&s_onceToken, ^{
-        s_imageNames = @{ @(HomeSectionTVLive) : @"tv",
-                          @(HomeSectionRadioLive) : @"radioset" };
-    });
-    
-    NSString *imageName = s_imageNames[@(section)] ?: @"live";
-    return [UIImage imageNamed:[NSString stringWithFormat:@"%@-22", imageName]];
-}
-
 @implementation LivesViewController
 
 #pragma mark Object lifecycle
@@ -34,7 +21,7 @@ UIImage *ImageForSection(HomeSection section)
     for (NSNumber *sectionNumber in sections) {
         HomeSection section = sectionNumber.integerValue;
         HomeMediasViewController *viewController = [[HomeMediasViewController alloc] initWithHomeSectionInfo:[[HomeSectionInfo alloc] initWithHomeSection:section]];
-        viewController.play_pageItem = [[PageItem alloc] initWithTitle:TitleForHomeSection(section) image:ImageForSection(section)];
+        viewController.play_pageItem = [[PageItem alloc] initWithTitle:TitleForHomeSection(section) image:nil];
         [viewControllers addObject:viewController];
     }
     
