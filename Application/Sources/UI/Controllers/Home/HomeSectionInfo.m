@@ -199,7 +199,7 @@
             
         case HomeSectionRadioFavoriteShows: {
             return [[SRGDataProvider.currentDataProvider showsWithURNs:FavoritesShowURNs().allObjects completionBlock:^(NSArray<SRGShow *> * _Nullable shows, SRGPage * _Nonnull page, SRGPage * _Nullable nextPage, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(SRGShow.new, transmission), @(SRGTransmissionRadio)];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@ AND %K == %@", @keypath(SRGShow.new, transmission), @(SRGTransmissionRadio), @keypath(SRGShow.new, primaryChannelUid), self.identifier];
                 NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@keypath(SRGShow.new, title) ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
                 paginatedItemListCompletionBlock([[shows filteredArrayUsingPredicate:predicate] sortedArrayUsingDescriptors:@[sortDescriptor]], page, nextPage, HTTPResponse, error);
             }] requestWithPageSize:50];
