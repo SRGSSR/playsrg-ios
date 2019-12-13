@@ -121,7 +121,9 @@ OBJC_EXPORT NSString * const ApplicationConfigurationDidChangeNotification;
 @property (nonatomic, readonly) UIColor *moduleDefaultTextColor;
 
 @property (nonatomic, readonly) NSArray<NSNumber *> *tvMenuItems;                       // wrap `MenuItem` values
-@property (nonatomic, readonly) NSArray<NSNumber *> *tvHomeSections;
+
+@property (nonatomic, readonly) NSArray<NSNumber *> *videoSections;
+@property (nonatomic, readonly) NSArray<NSNumber *> *liveSections;
 
 @property (nonatomic, readonly) BOOL tvTrendingEpisodesOnly;
 @property (nonatomic, readonly, nullable) NSNumber *tvTrendingEditorialLimit;

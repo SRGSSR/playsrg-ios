@@ -11,7 +11,6 @@
 #import "Favorites.h"
 #import "HomeSectionHeaderView.h"
 #import "HomeMediaListTableViewCell.h"
-#import "HomeRadioLiveTableViewCell.h"
 #import "HomeSectionInfo.h"
 #import "HomeShowListTableViewCell.h"
 #import "HomeShowsAccessTableViewCell.h"
@@ -62,7 +61,7 @@
 - (instancetype)initWithRadioChannel:(RadioChannel *)radioChannel
 {
     if (self = [super init]) {
-        self.homeSections = (radioChannel) ? radioChannel.homeSections : ApplicationConfiguration.sharedApplicationConfiguration.tvHomeSections;
+        self.homeSections = (radioChannel) ? radioChannel.sections : ApplicationConfiguration.sharedApplicationConfiguration.videoSections;
         self.radioChannel = radioChannel;
         
         [self synchronizeHomeSections];
@@ -115,10 +114,6 @@
     NSString *showVerticalListCellIdentifier = NSStringFromClass(HomeShowVerticalListTableViewCell.class);
     UINib *homeShowVerticalListTableViewCellNib = [UINib nibWithNibName:showVerticalListCellIdentifier bundle:nil];
     [self.tableView registerNib:homeShowVerticalListTableViewCellNib forCellReuseIdentifier:showVerticalListCellIdentifier];
-    
-    NSString *radioLiveCellIdentifier = NSStringFromClass(HomeRadioLiveTableViewCell.class);
-    UINib *homeRadioLiveTableViewCellNib = [UINib nibWithNibName:radioLiveCellIdentifier bundle:nil];
-    [self.tableView registerNib:homeRadioLiveTableViewCellNib forCellReuseIdentifier:radioLiveCellIdentifier];
     
     NSString *showsAccessCellIdentifier = NSStringFromClass(HomeShowsAccessTableViewCell.class);
     UINib *homeShowsAccessTableViewCellNib = [UINib nibWithNibName:showsAccessCellIdentifier bundle:nil];

@@ -4,11 +4,11 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "RadiosViewController.h"
+#import "AudiosViewController.h"
 
 #import "HomeViewController.h"
 
-@implementation RadiosViewController
+@implementation AudiosViewController
 
 #pragma mark Object lifecycle
 
@@ -18,13 +18,13 @@
     
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     for (RadioChannel *radioChannel in radioChannels) {
-        HomeViewController *homeViewController = [[HomeViewController alloc] initWithRadioChannel:radioChannel];
-        homeViewController.play_pageItem = [[PageItem alloc] initWithTitle:radioChannel.name image:RadioChannelLogo22Image(radioChannel)];
-        [viewControllers addObject:homeViewController];
+        HomeViewController *viewController = [[HomeViewController alloc] initWithRadioChannel:radioChannel];
+        viewController.play_pageItem = [[PageItem alloc] initWithTitle:radioChannel.name image:RadioChannelLogo22Image(radioChannel)];
+        [viewControllers addObject:viewController];
     }
     
     if (self = [super initWithViewControllers:viewControllers.copy]) {
-        self.title = (radioChannels.count > 1) ? NSLocalizedString(@"Radios", @"Title displayed at the top of the radios view") : NSLocalizedString(@"Radio", @"Title displayed at the top of the radios view");
+        self.title = NSLocalizedString(@"Audio", @"Title displayed at the top of the audio view");
     }
     return self;
 }
@@ -33,7 +33,7 @@
 
 - (NSString *)srg_pageViewTitle
 {
-    return NSLocalizedString(@"Radios", @"[Technical] Title for radios analytics measurements");
+    return NSLocalizedString(@"Audio", @"[Technical] Title for audio analytics measurements");
 }
 
 - (NSArray<NSString *> *)srg_pageViewLevels

@@ -127,11 +127,11 @@
 		082910B0239E90D200D168F4 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910AD239E90D200D168F4 /* TabBarController.m */; };
 		082910B1239E90D200D168F4 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910AD239E90D200D168F4 /* TabBarController.m */; };
 		082910B2239E90D200D168F4 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910AD239E90D200D168F4 /* TabBarController.m */; };
-		082910B5239EA69C00D168F4 /* RadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* RadiosViewController.m */; };
-		082910B6239EA69C00D168F4 /* RadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* RadiosViewController.m */; };
-		082910B7239EA69C00D168F4 /* RadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* RadiosViewController.m */; };
-		082910B8239EA69C00D168F4 /* RadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* RadiosViewController.m */; };
-		082910B9239EA69C00D168F4 /* RadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* RadiosViewController.m */; };
+		082910B5239EA69C00D168F4 /* AudiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* AudiosViewController.m */; };
+		082910B6239EA69C00D168F4 /* AudiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* AudiosViewController.m */; };
+		082910B7239EA69C00D168F4 /* AudiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* AudiosViewController.m */; };
+		082910B8239EA69C00D168F4 /* AudiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* AudiosViewController.m */; };
+		082910B9239EA69C00D168F4 /* AudiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* AudiosViewController.m */; };
 		0832BF1022BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832BF0E22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m */; };
 		0832BF1122BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832BF0E22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m */; };
 		0832BF1222BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832BF0E22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m */; };
@@ -342,6 +342,11 @@
 		0875852E23A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */; };
 		0875852F23A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */; };
 		0875853023A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */; };
+		0875853623A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
+		0875853723A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
+		0875853823A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
+		0875853923A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
+		0875853A23A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
 		087A88351EAA610500525C2A /* LiveAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 087A88341EAA610500525C2A /* LiveAccessView.m */; };
 		087A88371EAA82D100525C2A /* LiveAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 087A88341EAA610500525C2A /* LiveAccessView.m */; };
 		087A88381EAA82D100525C2A /* LiveAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 087A88341EAA610500525C2A /* LiveAccessView.m */; };
@@ -759,11 +764,6 @@
 		6F12E4E922D8676600BC1718 /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F12E4E122D8676500BC1718 /* SearchHeaderView.xib */; };
 		6F12E4EA22D8676600BC1718 /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F12E4E122D8676500BC1718 /* SearchHeaderView.xib */; };
 		6F12E4EB22D8676600BC1718 /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F12E4E122D8676500BC1718 /* SearchHeaderView.xib */; };
-		6F1484BF1EF7B09400830E7B /* RadioShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1484BE1EF7B09400830E7B /* RadioShowsViewController.m */; };
-		6F1484C01EF7B09400830E7B /* RadioShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1484BE1EF7B09400830E7B /* RadioShowsViewController.m */; };
-		6F1484C11EF7B09400830E7B /* RadioShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1484BE1EF7B09400830E7B /* RadioShowsViewController.m */; };
-		6F1484C21EF7B09400830E7B /* RadioShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1484BE1EF7B09400830E7B /* RadioShowsViewController.m */; };
-		6F1484C31EF7B09400830E7B /* RadioShowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1484BE1EF7B09400830E7B /* RadioShowsViewController.m */; };
 		6F1938321EFBFE9E0017B1D1 /* ApplicationConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F1938311EFBFE9E0017B1D1 /* ApplicationConfiguration.json */; };
 		6F1938331EFBFEA40017B1D1 /* ApplicationConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F19382F1EFBFE8D0017B1D1 /* ApplicationConfiguration.json */; };
 		6F1938341EFBFEA80017B1D1 /* ApplicationConfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F19382D1EFBFE7F0017B1D1 /* ApplicationConfiguration.json */; };
@@ -1762,8 +1762,8 @@
 		0828BB3922E62831009617A7 /* parsePlayUrl.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = parsePlayUrl.js; sourceTree = "<group>"; };
 		082910AC239E90D200D168F4 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		082910AD239E90D200D168F4 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
-		082910B3239EA69B00D168F4 /* RadiosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadiosViewController.m; sourceTree = "<group>"; };
-		082910B4239EA69C00D168F4 /* RadiosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadiosViewController.h; sourceTree = "<group>"; };
+		082910B3239EA69B00D168F4 /* AudiosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudiosViewController.m; sourceTree = "<group>"; };
+		082910B4239EA69C00D168F4 /* AudiosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudiosViewController.h; sourceTree = "<group>"; };
 		0832BF0D22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchLoadingCollectionViewCell.h; sourceTree = "<group>"; };
 		0832BF0E22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchLoadingCollectionViewCell.m; sourceTree = "<group>"; };
 		0832BF0F22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchLoadingCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1830,6 +1830,8 @@
 		0875850B23A0025F00FA7207 /* ProfilHeaderSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilHeaderSectionView.xib; sourceTree = "<group>"; };
 		0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilHeaderSectionView.m; sourceTree = "<group>"; };
 		0875850D23A0025F00FA7207 /* ProfilTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilTableViewCell.h; sourceTree = "<group>"; };
+		0875853423A3DEFC00FA7207 /* LivesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivesViewController.h; sourceTree = "<group>"; };
+		0875853523A3DEFC00FA7207 /* LivesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivesViewController.m; sourceTree = "<group>"; };
 		087A88331EAA610500525C2A /* LiveAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveAccessView.h; sourceTree = "<group>"; };
 		087A88341EAA610500525C2A /* LiveAccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveAccessView.m; sourceTree = "<group>"; };
 		087BC6611EDF1B7B00EED89B /* UILabel+PlaySRG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+PlaySRG.h"; sourceTree = "<group>"; };
@@ -1984,8 +1986,6 @@
 		6F12E4DF22D8676300BC1718 /* SearchHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchHeaderView.m; sourceTree = "<group>"; };
 		6F12E4E022D8676300BC1718 /* SearchHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchHeaderView.h; sourceTree = "<group>"; };
 		6F12E4E122D8676500BC1718 /* SearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHeaderView.xib; sourceTree = "<group>"; };
-		6F1484BD1EF7B09400830E7B /* RadioShowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioShowsViewController.h; sourceTree = "<group>"; };
-		6F1484BE1EF7B09400830E7B /* RadioShowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioShowsViewController.m; sourceTree = "<group>"; };
 		6F19382D1EFBFE7F0017B1D1 /* ApplicationConfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ApplicationConfiguration.json; sourceTree = "<group>"; };
 		6F19382F1EFBFE8D0017B1D1 /* ApplicationConfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ApplicationConfiguration.json; sourceTree = "<group>"; };
 		6F1938311EFBFE9E0017B1D1 /* ApplicationConfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ApplicationConfiguration.json; sourceTree = "<group>"; };
@@ -2739,6 +2739,31 @@
 			path = Profil;
 			sourceTree = "<group>";
 		};
+		0875853123A3DDB700FA7207 /* Lives */ = {
+			isa = PBXGroup;
+			children = (
+				0875853423A3DEFC00FA7207 /* LivesViewController.h */,
+				0875853523A3DEFC00FA7207 /* LivesViewController.m */,
+			);
+			path = Lives;
+			sourceTree = "<group>";
+		};
+		0875853223A3DDB800FA7207 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
+		0875853323A3DDB800FA7207 /* Audios */ = {
+			isa = PBXGroup;
+			children = (
+				082910B4239EA69C00D168F4 /* AudiosViewController.h */,
+				082910B3239EA69B00D168F4 /* AudiosViewController.m */,
+			);
+			path = Audios;
+			sourceTree = "<group>";
+		};
 		08AA551A1D49EBF600C5026E /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -2823,6 +2848,7 @@
 			isa = PBXGroup;
 			children = (
 				08C68ECA1D38DEA100BB8AAA /* Appplication */,
+				0875853323A3DDB800FA7207 /* Audios */,
 				E62459EC1D488CEF00482BE9 /* Bridges */,
 				E6E673221D4A423E000C3CB9 /* Browser */,
 				E694A9F11D65F02700372DF0 /* Calendar */,
@@ -2832,7 +2858,7 @@
 				086F8D4C22984B29001BE2F4 /* Favorites */,
 				08654B921D3CDA160040EF04 /* Helpers */,
 				6F9CEA6321884ACC007DE35F /* History */,
-				08C68ECE1D38DEA100BB8AAA /* Home */,
+				0875853123A3DDB700FA7207 /* Lives */,
 				086BDE111EA63D3800965F45 /* MiniPlayer */,
 				6FDF08C4218B126700B2AF2C /* Model */,
 				08DD9D531FFE6EDA00115906 /* Module */,
@@ -2844,6 +2870,7 @@
 				0806E7B41D50D8DD002ED406 /* Settings */,
 				E6DB5F181D66E07A0057094B /* Shows */,
 				08AA55971D49EC2300C5026E /* UI */,
+				0875853223A3DDB800FA7207 /* Videos */,
 				086320F22258C6CF00C719A6 /* WatchLater */,
 			);
 			path = Sources;
@@ -3100,6 +3127,7 @@
 		6F475F8B1EB37BC6003021EA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				08C68ECE1D38DEA100BB8AAA /* Home */,
 				6F475F8C1EB37BC6003021EA /* BaseViewController.h */,
 				6F475F8D1EB37BC6003021EA /* BaseViewController.m */,
 				6F475F8E1EB37BC6003021EA /* CollectionRequestViewController.h */,
@@ -3117,8 +3145,6 @@
 				6F475F991EB37BC6003021EA /* PageViewController.h */,
 				6F475F9A1EB37BC6003021EA /* PageViewController.m */,
 				6F475F981EB37BC6003021EA /* PageViewController+Private.h */,
-				082910B4239EA69C00D168F4 /* RadiosViewController.h */,
-				082910B3239EA69B00D168F4 /* RadiosViewController.m */,
 				6F475F9C1EB37BC6003021EA /* RequestViewController.h */,
 				6F475F9D1EB37BC6003021EA /* RequestViewController.m */,
 				082910AC239E90D200D168F4 /* TabBarController.h */,
@@ -3310,10 +3336,10 @@
 		6FAAF77520CAB6ED00BB58A3 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				08C68EC91D38DEA100BB8AAA /* Sources */,
-				08C68E981D38DEA100BB8AAA /* Resources */,
 				6FBA2ECF20D11A65005EB21D /* Application-Info.plist */,
 				082092FC208E272E00711DE4 /* Application.entitlements */,
+				08C68E981D38DEA100BB8AAA /* Resources */,
+				08C68EC91D38DEA100BB8AAA /* Sources */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -3606,8 +3632,6 @@
 		E6DB5F181D66E07A0057094B /* Shows */ = {
 			isa = PBXGroup;
 			children = (
-				6F1484BD1EF7B09400830E7B /* RadioShowsViewController.h */,
-				6F1484BE1EF7B09400830E7B /* RadioShowsViewController.m */,
 				E6DB5F261D66E1550057094B /* ShowCollectionViewCell.h */,
 				E6DB5F271D66E1550057094B /* ShowCollectionViewCell.m */,
 				E6DB5F2D1D66E1640057094B /* ShowCollectionViewCell.xib */,
@@ -5728,7 +5752,7 @@
 				6F475FE11EB37BC6003021EA /* ModalTransition.m in Sources */,
 				6FD633EA1FFD151000875BE5 /* MiniPlayerView.m in Sources */,
 				089EA00A201011FB0070E11A /* SRGBaseTopic+PlaySRG.m in Sources */,
-				082910B5239EA69C00D168F4 /* RadiosViewController.m in Sources */,
+				082910B5239EA69C00D168F4 /* AudiosViewController.m in Sources */,
 				6F7EEBDE22DC40B7005E5A97 /* SearchBar.m in Sources */,
 				E64BA3FA1D4A587E002C10D5 /* WebViewController.m in Sources */,
 				0827DA1E1F0D36D900A31A42 /* NSBundle+PlaySRG.m in Sources */,
@@ -5742,6 +5766,7 @@
 				086BDE151EA63D3800965F45 /* AudioMiniPlayerView.m in Sources */,
 				6F7EEBF322DC7AA7005E5A97 /* SearchSettingMultiSelectionCell.m in Sources */,
 				08D0E0E81E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
+				0875853623A3DEFD00FA7207 /* LivesViewController.m in Sources */,
 				6FEC91A921A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6FE1B4971DCB84F00094D5BA /* AnalyticsConstants.m in Sources */,
 				088899452077627900242654 /* TVChannel.m in Sources */,
@@ -5761,7 +5786,6 @@
 				08DD9D5C1FFE6EDB00115906 /* ModuleHeaderView.m in Sources */,
 				081220AA1DD079BB00BF8326 /* DownloadsViewController.m in Sources */,
 				0804917B22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,
-				6F1484BF1EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6FB0AEFC217F4975009D707A /* SRGMediaComposition+PlaySRG.m in Sources */,
 				6F962FAA1FD5149F00EA42C1 /* MainNavigationController.m in Sources */,
 				088F6C5B1E4B72BF00FC792D /* LiveAccessButton.m in Sources */,
@@ -5835,6 +5859,7 @@
 			files = (
 				0859ADC722D72F4F00511F7F /* SearchSettingsMultiSelectionItem.m in Sources */,
 				082590F21F054ACD00BB527C /* HomeMediaCollectionHeaderView.m in Sources */,
+				0875853723A3DEFD00FA7207 /* LivesViewController.m in Sources */,
 				6F80106A20443230009FE197 /* PlayApplication.m in Sources */,
 				6F4760801EB37DF1003021EA /* UIDevice+PlaySRG.m in Sources */,
 				0804917C22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,
@@ -5915,7 +5940,6 @@
 				084F94B122D3B77700D2D3A5 /* SearchSettingMultiSelectionViewController.m in Sources */,
 				0827DA1F1F0D36E200A31A42 /* NSBundle+PlaySRG.m in Sources */,
 				6F7218141DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
-				6F1484C01EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F12E4E322D8676600BC1718 /* SearchHeaderView.m in Sources */,
 				6F80E9C321A682E70027CA2F /* TableRequestViewController.m in Sources */,
 				6FE1B91A1FAC34D600A58F3B /* ContentInsets.m in Sources */,
@@ -5951,7 +5975,7 @@
 				087A88381EAA82D100525C2A /* LiveAccessView.m in Sources */,
 				087BC6641EDF1B7C00EED89B /* UILabel+PlaySRG.m in Sources */,
 				6F47603F1EB37BD1003021EA /* UICollectionView+PlaySRG.m in Sources */,
-				082910B6239EA69C00D168F4 /* RadiosViewController.m in Sources */,
+				082910B6239EA69C00D168F4 /* AudiosViewController.m in Sources */,
 				E694A9F61D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8B22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F53220DA99B00778CA3 /* History.m in Sources */,
@@ -5999,6 +6023,7 @@
 			files = (
 				0859ADC822D72F4F00511F7F /* SearchSettingsMultiSelectionItem.m in Sources */,
 				082590F41F054ACE00BB527C /* HomeMediaCollectionHeaderView.m in Sources */,
+				0875853823A3DEFD00FA7207 /* LivesViewController.m in Sources */,
 				6F80106B20443230009FE197 /* PlayApplication.m in Sources */,
 				6F4760871EB37DF1003021EA /* UIDevice+PlaySRG.m in Sources */,
 				0804917D22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,
@@ -6079,7 +6104,6 @@
 				084F94B222D3B77700D2D3A5 /* SearchSettingMultiSelectionViewController.m in Sources */,
 				0827DA201F0D36E200A31A42 /* NSBundle+PlaySRG.m in Sources */,
 				6F7218151DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
-				6F1484C11EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F12E4E422D8676600BC1718 /* SearchHeaderView.m in Sources */,
 				6F80E9C421A682E70027CA2F /* TableRequestViewController.m in Sources */,
 				6FE1B91B1FAC34D600A58F3B /* ContentInsets.m in Sources */,
@@ -6115,7 +6139,7 @@
 				087A88371EAA82D100525C2A /* LiveAccessView.m in Sources */,
 				087BC6651EDF1B7C00EED89B /* UILabel+PlaySRG.m in Sources */,
 				6F4760401EB37BD1003021EA /* UICollectionView+PlaySRG.m in Sources */,
-				082910B7239EA69C00D168F4 /* RadiosViewController.m in Sources */,
+				082910B7239EA69C00D168F4 /* AudiosViewController.m in Sources */,
 				E694A9F71D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8C22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F54220DA99B00778CA3 /* History.m in Sources */,
@@ -6163,6 +6187,7 @@
 			files = (
 				0859ADC922D72F4F00511F7F /* SearchSettingsMultiSelectionItem.m in Sources */,
 				082590F61F054ACE00BB527C /* HomeMediaCollectionHeaderView.m in Sources */,
+				0875853923A3DEFD00FA7207 /* LivesViewController.m in Sources */,
 				6F80106C20443230009FE197 /* PlayApplication.m in Sources */,
 				6F47608E1EB37DF1003021EA /* UIDevice+PlaySRG.m in Sources */,
 				0804917E22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,
@@ -6243,7 +6268,6 @@
 				084F94B322D3B77700D2D3A5 /* SearchSettingMultiSelectionViewController.m in Sources */,
 				0827DA211F0D36E400A31A42 /* NSBundle+PlaySRG.m in Sources */,
 				6F7218161DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
-				6F1484C21EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F12E4E522D8676600BC1718 /* SearchHeaderView.m in Sources */,
 				6F80E9C521A682E70027CA2F /* TableRequestViewController.m in Sources */,
 				6FE1B91C1FAC34D600A58F3B /* ContentInsets.m in Sources */,
@@ -6279,7 +6303,7 @@
 				087A88391EAA82D200525C2A /* LiveAccessView.m in Sources */,
 				087BC6661EDF1B7C00EED89B /* UILabel+PlaySRG.m in Sources */,
 				6F4760411EB37BD1003021EA /* UICollectionView+PlaySRG.m in Sources */,
-				082910B8239EA69C00D168F4 /* RadiosViewController.m in Sources */,
+				082910B8239EA69C00D168F4 /* AudiosViewController.m in Sources */,
 				E694A9F81D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8D22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F55220DA99B00778CA3 /* History.m in Sources */,
@@ -6327,6 +6351,7 @@
 			files = (
 				0859ADCA22D72F4F00511F7F /* SearchSettingsMultiSelectionItem.m in Sources */,
 				082590F81F054ACF00BB527C /* HomeMediaCollectionHeaderView.m in Sources */,
+				0875853A23A3DEFD00FA7207 /* LivesViewController.m in Sources */,
 				6F80106D20443230009FE197 /* PlayApplication.m in Sources */,
 				6F4760951EB37DF2003021EA /* UIDevice+PlaySRG.m in Sources */,
 				0804917F22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,
@@ -6407,7 +6432,6 @@
 				084F94B422D3B77700D2D3A5 /* SearchSettingMultiSelectionViewController.m in Sources */,
 				0827DA221F0D36E400A31A42 /* NSBundle+PlaySRG.m in Sources */,
 				6F7218171DBE75AC00575072 /* PreviewingDelegate.m in Sources */,
-				6F1484C31EF7B09400830E7B /* RadioShowsViewController.m in Sources */,
 				6F12E4E622D8676600BC1718 /* SearchHeaderView.m in Sources */,
 				6F80E9C621A682E70027CA2F /* TableRequestViewController.m in Sources */,
 				6FE1B91D1FAC34D600A58F3B /* ContentInsets.m in Sources */,
@@ -6443,7 +6467,7 @@
 				087A883A1EAA82D200525C2A /* LiveAccessView.m in Sources */,
 				087BC6671EDF1B7D00EED89B /* UILabel+PlaySRG.m in Sources */,
 				6F4760421EB37BD1003021EA /* UICollectionView+PlaySRG.m in Sources */,
-				082910B9239EA69C00D168F4 /* RadiosViewController.m in Sources */,
+				082910B9239EA69C00D168F4 /* AudiosViewController.m in Sources */,
 				E694A9F91D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8E22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F56220DA99B00778CA3 /* History.m in Sources */,

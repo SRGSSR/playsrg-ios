@@ -20,7 +20,7 @@
 @property (nonatomic, getter=hasDarkStatusBar) BOOL darkStatusBar;
 @property (nonatomic, getter=isBadgeStrokeHidden) BOOL badgeStrokeHidden;
 @property (nonatomic) NSInteger numberOfLivePlaceholders;
-@property (nonatomic) NSArray<NSNumber *> *homeSections;
+@property (nonatomic) NSArray<NSNumber *> *sections;
 
 @end
 
@@ -56,8 +56,8 @@
             return nil;
         }
         
-        self.homeSections = dictionary[@"homeSections"];
-        if (! [self.homeSections isKindOfClass:NSArray.class] || self.homeSections.count == 0) {
+        self.sections = dictionary[@"sections"];
+        if (! [self.sections isKindOfClass:NSArray.class] || self.sections.count == 0) {
             return nil;
         }
         

@@ -7,7 +7,6 @@
 #import "HomeMediaListTableViewCell.h"
 
 #import "ApplicationSettings.h"
-#import "HomeLiveMediaCollectionViewCell.h"
 #import "HomeMediaCollectionViewCell.h"
 #import "HomeMediaCollectionHeaderView.h"
 #import "MediaPlayerViewController.h"
@@ -121,11 +120,7 @@ static const CGFloat HomeStandardMargin = 10.f;
     NSString *mediaCellIdentifier = NSStringFromClass(HomeMediaCollectionViewCell.class);
     UINib *mediaCellNib = [UINib nibWithNibName:mediaCellIdentifier bundle:nil];
     [self.collectionView registerNib:mediaCellNib forCellWithReuseIdentifier:mediaCellIdentifier];
-    
-    NSString *liveMediaCellIdentifier = NSStringFromClass(HomeLiveMediaCollectionViewCell.class);
-    UINib *liveMediaCellNib = [UINib nibWithNibName:liveMediaCellIdentifier bundle:nil];
-    [self.collectionView registerNib:liveMediaCellNib forCellWithReuseIdentifier:liveMediaCellIdentifier];
-    
+      
     NSString *headerViewIdentifier = NSStringFromClass(HomeMediaCollectionHeaderView.class);
     UINib *headerNib = [UINib nibWithNibName:headerViewIdentifier bundle:nil];
     [self.collectionView registerNib:headerNib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerViewIdentifier];
@@ -212,13 +207,7 @@ static const CGFloat HomeStandardMargin = 10.f;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    HomeSection homeSection = self.homeSectionInfo.homeSection;
-    if (homeSection == HomeSectionTVLive || homeSection == HomeSectionRadioLive) {
-        return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HomeLiveMediaCollectionViewCell.class) forIndexPath:indexPath];
-    }
-    else {
-        return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HomeMediaCollectionViewCell.class) forIndexPath:indexPath];
-    }
+    return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(HomeMediaCollectionViewCell.class) forIndexPath:indexPath];
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -237,16 +226,9 @@ static const CGFloat HomeStandardMargin = 10.f;
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SRGMedia *media = ! [self isEmpty] ? self.homeSectionInfo.items[indexPath.row] : nil;
+    HomeMediaCollectionViewCell *mediaCell = (HomeMediaCollectionViewCell *)cell;
     
-    HomeSection homeSection = self.homeSectionInfo.homeSection;
-    if (homeSection == HomeSectionTVLive || homeSection == HomeSectionRadioLive) {
-        HomeLiveMediaCollectionViewCell *mediaCell = (HomeLiveMediaCollectionViewCell *)cell;
-        [mediaCell setMedia:media featured:self.featured];
-    }
-    else {
-        HomeMediaCollectionViewCell *mediaCell = (HomeMediaCollectionViewCell *)cell;
-        [mediaCell setMedia:media module:self.homeSectionInfo.module featured:self.featured];
-    }
+    [mediaCell setMedia:media module:self.homeSectionInfo.module featured:self.featured];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath

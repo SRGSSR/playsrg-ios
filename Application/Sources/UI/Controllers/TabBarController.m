@@ -7,9 +7,10 @@
 #import "TabBarController.h"
 
 #import "HomeViewController.h"
+#import "LivesViewController.h"
 #import "MiniPlayerView.h"
 #import "ProfilViewController.h"
-#import "RadiosViewController.h"
+#import "AudiosViewController.h"
 #import "SearchViewController.h"
 
 #import <libextobjc/libextobjc.h>
@@ -20,8 +21,8 @@
 typedef NS_ENUM(NSInteger, TabBarItem) {
     TabBarItemNone = 0,
     TabBarItemVideos,
-    TabBarItemRadios,
-    TabBarItemLive,
+    TabBarItemAudios,
+    TabBarItemLives,
     TabBarItemSearch,
     TabBarItemProfil
 };
@@ -54,9 +55,16 @@ static const CGFloat MiniPlayerOffset = 5.f;
         
         NSArray<RadioChannel *> *radioChannels = applicationConfiguration.radioChannels;
         if (radioChannels.count > 0) {
-            viewController = [[RadiosViewController alloc] initWithRadioChannels:radioChannels];
+            viewController = [[AudiosViewController alloc] initWithRadioChannels:radioChannels];
             [viewControllers addObject:viewController];
-            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"radioset-22"] tag:TabBarItemRadios]];
+            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"radioset-22"] tag:TabBarItemAudios]];
+        }
+        
+        NSArray<NSNumber *> *liveSections = ApplicationConfiguration.sharedApplicationConfiguration.liveSections;
+        if (liveSections.count > 0) {
+            viewController = [[LivesViewController alloc] initWithSections:liveSections];
+            [viewControllers addObject:viewController];
+            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"live-22"] tag:TabBarItemLives]];
         }
         
         viewController = [[SearchViewController alloc] initWithQuery:nil settings:nil];
@@ -126,6 +134,7 @@ static const CGFloat MiniPlayerOffset = 5.f;
     }];
     
     [self updateLayoutAnimated:NO];
+    
 }
 
 #pragma mark Changing content
@@ -176,13 +185,13 @@ static const CGFloat MiniPlayerOffset = 5.f;
             
         case MenuItemRadio: {
             NSAssert(menuItemInfo.radioChannel, @"RadioChannel expected");
-            tabBarItem = TabBarItemRadios;
+            tabBarItem = TabBarItemAudios;
             break;
         }
             
         case MenuItemRadioShowAZ: {
             NSAssert(menuItemInfo.radioChannel, @"RadioChannel expected");
-            tabBarItem = TabBarItemRadios;
+            tabBarItem = TabBarItemAudios;
             break;
         }
             

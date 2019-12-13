@@ -229,7 +229,8 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
 @property (nonatomic) NSArray<NSNumber *> *searchOptions;
 
 @property (nonatomic) NSArray<NSNumber *> *tvMenuItems;
-@property (nonatomic) NSArray<NSNumber *> *tvHomeSections;
+@property (nonatomic) NSArray<NSNumber *> *videoSections;
+@property (nonatomic) NSArray<NSNumber *> *liveSections;
 
 @property (nonatomic) BOOL tvTrendingEpisodesOnly;
 @property (nonatomic) NSNumber *tvTrendingEditorialLimit;
@@ -244,7 +245,7 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
 @property (nonatomic) NSArray<NSNumber *> *topicSectionsWithSubtopics;
 
 @property (nonatomic) NSArray<RadioChannel *> *radioChannels;
-@property (nonatomic) NSArray<NSNumber *> *radioHomeSections;
+@property (nonatomic) NSArray<NSNumber *> *audioSections;
 
 @property (nonatomic) NSArray<TVChannel *> *tvChannels;
 
@@ -495,8 +496,11 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
     self.subtitleAvailabilityHidden = [self.remoteConfig configValueForKey:@"subtitleAvailabilityHidden"].boolValue;
     self.audioDescriptionAvailabilityHidden = [self.remoteConfig configValueForKey:@"audioDescriptionAvailabilityHidden"].boolValue;
     
-    NSString *tvHomeSectionsString = [self.remoteConfig configValueForKey:@"tvHomeSections"].stringValue;
-    self.tvHomeSections = [self homeSectionsFromString:tvHomeSectionsString];
+    NSString *videoSectionsString = [self.remoteConfig configValueForKey:@"videoSections"].stringValue;
+    self.videoSections = [self homeSectionsFromString:videoSectionsString];
+    
+    NSString *liveSectionsString = [self.remoteConfig configValueForKey:@"liveSections"].stringValue;
+    self.liveSections = [self homeSectionsFromString:liveSectionsString];
     
     self.tvTrendingEpisodesOnly = [self.remoteConfig configValueForKey:@"tvTrendingEpisodesOnly"].boolValue;
     
@@ -554,8 +558,8 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
     }
     self.tvMenuItems = tvMenuItems.copy;
     
-    NSString *radioHomeSectionsString = [self.remoteConfig configValueForKey:@"radioHomeSections"].stringValue;
-    self.radioHomeSections = [self homeSectionsFromString:radioHomeSectionsString];
+    NSString *audioSectionsString = [self.remoteConfig configValueForKey:@"audioSections"].stringValue;
+    self.audioSections = [self homeSectionsFromString:audioSectionsString];
     
     self.radioFeaturedHomeSectionHeaderHidden = [self.remoteConfig configValueForKey:@"radioFeaturedHomeSectionHeaderHidden"].boolValue;
     
@@ -566,19 +570,19 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
         if ([radioChannelsJSONObject isKindOfClass:NSArray.class]) {
             for (id radioChannelDictionary in radioChannelsJSONObject) {
                 if ([radioChannelDictionary isKindOfClass:NSDictionary.class]) {
-                    // Transform homeSections string to a homeSection array, or use the default one
-                    NSArray<NSNumber *> *homeSections = self.radioHomeSections;
+                    // Transform sections string to a homeSection array, or use the default one
+                    NSArray<NSNumber *> *sections = self.audioSections;
                     
-                    id homeSectionsValue = radioChannelDictionary[@"homeSections"];
-                    if ([homeSectionsValue isKindOfClass:NSString.class]) {
-                        NSArray<NSNumber *> *homeSectionsOverrides = [self homeSectionsFromString:homeSectionsValue];
-                        if (homeSectionsOverrides.count != 0) {
-                            homeSections = homeSectionsOverrides;
+                    id audioSectionsValue = radioChannelDictionary[@"sections"];
+                    if ([audioSectionsValue isKindOfClass:NSString.class]) {
+                        NSArray<NSNumber *> *sectionsOverrides = [self homeSectionsFromString:audioSectionsValue];
+                        if (sectionsOverrides.count != 0) {
+                            sections = sectionsOverrides;
                         }
                     }
                     
                     NSMutableDictionary *mutableRadioChannelDictionary = [radioChannelDictionary mutableCopy];
-                    mutableRadioChannelDictionary[@"homeSections"] = homeSections;
+                    mutableRadioChannelDictionary[@"sections"] = sections;
                     RadioChannel *radioChannel = [[RadioChannel alloc] initWithDictionary:mutableRadioChannelDictionary.copy];
                     if (radioChannel) {
                         [radioChannels addObject:radioChannel];
@@ -858,13 +862,13 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %p; tvMenuItems = %@; tvHomeSections: = %@; radioChannels = %@; radioHomeSections = %@; radioMenuItems = %@>",
+    return [NSString stringWithFormat:@"<%@: %p; tvMenuItems = %@; videoSections: = %@; radioChannels = %@; audioSections = %@; radioMenuItems = %@>",
             self.class,
             self,
             self.tvMenuItems,
-            self.tvHomeSections,
+            self.videoSections,
             self.radioChannels,
-            self.radioHomeSections,
+            self.audioSections,
             self.radioMenuItems];
 }
 

@@ -4,20 +4,20 @@
 //  License information is available from the LICENSE file.
 //
 
+#import "HomeSectionInfo.h"
 #import "PageViewController.h"
-#import "RadioChannel.h"
 
 #import <SRGAnalytics/SRGAnalytics.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RadiosViewController : PageViewController <SRGAnalyticsViewTracking>
+@interface LivesViewController : PageViewController <SRGAnalyticsViewTracking>
 
-- (instancetype)initWithRadioChannels:(NSArray<RadioChannel *> *)radioChannels;
+- (instancetype)initWithSections:(NSArray<NSNumber *> *)sections;
 
 @end
 
-@interface RadiosViewController (Unavailable)
+@interface LivesViewController (Unavailable)
 
 - (instancetype)init NS_UNAVAILABLE;
 
