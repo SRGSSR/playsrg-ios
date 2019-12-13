@@ -51,29 +51,29 @@ static const CGFloat MiniPlayerOffset = 5.f;
 
         UIViewController *viewController = [[HomeViewController alloc] initWithRadioChannel:nil];
         [viewControllers addObject:viewController];
-        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"tv-22"] tag:TabBarItemVideos]];
+        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"videos-25"] tag:TabBarItemVideos]];
         
         NSArray<RadioChannel *> *radioChannels = applicationConfiguration.radioChannels;
         if (radioChannels.count > 0) {
             viewController = [[AudiosViewController alloc] initWithRadioChannels:radioChannels];
             [viewControllers addObject:viewController];
-            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"radioset-22"] tag:TabBarItemAudios]];
+            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"audio-25"] tag:TabBarItemAudios]];
         }
         
         NSArray<NSNumber *> *liveSections = ApplicationConfiguration.sharedApplicationConfiguration.liveSections;
         if (liveSections.count > 0) {
             viewController = [[LivesViewController alloc] initWithSections:liveSections];
             [viewControllers addObject:viewController];
-            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"live-22"] tag:TabBarItemLives]];
+            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"lives-25"] tag:TabBarItemLives]];
         }
         
         viewController = [[SearchViewController alloc] initWithQuery:nil settings:nil];
         [viewControllers addObject:viewController];
-        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"search-22"] tag:TabBarItemSearch]];
+        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"search-25"] tag:TabBarItemSearch]];
         
         viewController = [[ProfilViewController alloc] init];
         [viewControllers addObject:viewController];
-        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"account-22"] tag:TabBarItemProfil]];
+        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"profil-25"] tag:TabBarItemProfil]];
         
         NSMutableArray<UINavigationController *> *navigationControllers = NSMutableArray.array;
         [viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
