@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import "LivesViewController.h"
 #import "MiniPlayerView.h"
-#import "ProfilViewController.h"
+#import "ProfileViewController.h"
 #import "AudiosViewController.h"
 #import "SearchViewController.h"
 
@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, TabBarItem) {
     TabBarItemAudios,
     TabBarItemLives,
     TabBarItemSearch,
-    TabBarItemProfil
+    TabBarItemProfile
 };
 
 static const CGFloat MiniPlayerHeight = 50.f;
@@ -70,9 +70,9 @@ static const CGFloat MiniPlayerOffset = 5.f;
         [viewControllers addObject:viewController];
         [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"search-25"] tag:TabBarItemSearch]];
         
-        viewController = [[ProfilViewController alloc] init];
+        viewController = [[ProfileViewController alloc] init];
         [viewControllers addObject:viewController];
-        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"profil-25"] tag:TabBarItemProfil]];
+        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"profile-25"] tag:TabBarItemProfile]];
         
         NSMutableArray<UINavigationController *> *navigationControllers = NSMutableArray.array;
         [viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -148,22 +148,22 @@ static const CGFloat MiniPlayerOffset = 5.f;
         }
             
         case MenuItemFavorites: {
-            tabBarItem = TabBarItemProfil;
+            tabBarItem = TabBarItemProfile;
             break;
         }
             
         case MenuItemWatchLater: {
-            tabBarItem = TabBarItemProfil;
+            tabBarItem = TabBarItemProfile;
             break;
         }
             
         case MenuItemDownloads: {
-            tabBarItem = TabBarItemProfil;
+            tabBarItem = TabBarItemProfile;
             break;
         }
             
         case MenuItemHistory: {
-            tabBarItem = TabBarItemProfil;
+            tabBarItem = TabBarItemProfile;
             break;
         }
             
@@ -258,8 +258,8 @@ static const CGFloat MiniPlayerOffset = 5.f;
     UINavigationController *navigationController = self.selectedViewController;
     [navigationController popToRootViewControllerAnimated:animated];
     
-    ProfilViewController *profilViewController = navigationController.viewControllers.firstObject;
-    [profilViewController scrollToTopAnimated:animated];
+    ProfileViewController *profileViewController = navigationController.viewControllers.firstObject;
+    [profileViewController scrollToTopAnimated:animated];
 }
 
 #pragma mark Push and pop

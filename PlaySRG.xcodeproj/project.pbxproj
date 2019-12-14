@@ -307,41 +307,41 @@
 		087584F123A0008500FA7207 /* MenuItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* MenuItemInfo.m */; };
 		087584F223A0008500FA7207 /* MenuItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* MenuItemInfo.m */; };
 		087584F323A0008500FA7207 /* MenuItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* MenuItemInfo.m */; };
-		0875850E23A0025F00FA7207 /* ProfilAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* ProfilAccountHeaderView.xib */; };
-		0875850F23A0025F00FA7207 /* ProfilAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* ProfilAccountHeaderView.xib */; };
-		0875851023A0025F00FA7207 /* ProfilAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* ProfilAccountHeaderView.xib */; };
-		0875851123A0025F00FA7207 /* ProfilAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* ProfilAccountHeaderView.xib */; };
-		0875851223A0025F00FA7207 /* ProfilAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* ProfilAccountHeaderView.xib */; };
-		0875851323A0025F00FA7207 /* ProfilAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850623A0025E00FA7207 /* ProfilAccountHeaderView.m */; };
-		0875851423A0025F00FA7207 /* ProfilAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850623A0025E00FA7207 /* ProfilAccountHeaderView.m */; };
-		0875851523A0025F00FA7207 /* ProfilAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850623A0025E00FA7207 /* ProfilAccountHeaderView.m */; };
-		0875851623A0025F00FA7207 /* ProfilAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850623A0025E00FA7207 /* ProfilAccountHeaderView.m */; };
-		0875851723A0025F00FA7207 /* ProfilAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850623A0025E00FA7207 /* ProfilAccountHeaderView.m */; };
-		0875851823A0025F00FA7207 /* ProfilTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850723A0025E00FA7207 /* ProfilTableViewCell.m */; };
-		0875851923A0025F00FA7207 /* ProfilTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850723A0025E00FA7207 /* ProfilTableViewCell.m */; };
-		0875851A23A0025F00FA7207 /* ProfilTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850723A0025E00FA7207 /* ProfilTableViewCell.m */; };
-		0875851B23A0025F00FA7207 /* ProfilTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850723A0025E00FA7207 /* ProfilTableViewCell.m */; };
-		0875851C23A0025F00FA7207 /* ProfilTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850723A0025E00FA7207 /* ProfilTableViewCell.m */; };
-		0875851D23A0025F00FA7207 /* ProfilViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0875850923A0025E00FA7207 /* ProfilViewController.storyboard */; };
-		0875851E23A0025F00FA7207 /* ProfilViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0875850923A0025E00FA7207 /* ProfilViewController.storyboard */; };
-		0875851F23A0025F00FA7207 /* ProfilViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0875850923A0025E00FA7207 /* ProfilViewController.storyboard */; };
-		0875852023A0025F00FA7207 /* ProfilViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0875850923A0025E00FA7207 /* ProfilViewController.storyboard */; };
-		0875852123A0025F00FA7207 /* ProfilViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0875850923A0025E00FA7207 /* ProfilViewController.storyboard */; };
-		0875852223A0025F00FA7207 /* ProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* ProfilViewController.m */; };
-		0875852323A0025F00FA7207 /* ProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* ProfilViewController.m */; };
-		0875852423A0025F00FA7207 /* ProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* ProfilViewController.m */; };
-		0875852523A0025F00FA7207 /* ProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* ProfilViewController.m */; };
-		0875852623A0025F00FA7207 /* ProfilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* ProfilViewController.m */; };
-		0875852723A0025F00FA7207 /* ProfilHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* ProfilHeaderSectionView.xib */; };
-		0875852823A0025F00FA7207 /* ProfilHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* ProfilHeaderSectionView.xib */; };
-		0875852923A0025F00FA7207 /* ProfilHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* ProfilHeaderSectionView.xib */; };
-		0875852A23A0025F00FA7207 /* ProfilHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* ProfilHeaderSectionView.xib */; };
-		0875852B23A0025F00FA7207 /* ProfilHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* ProfilHeaderSectionView.xib */; };
-		0875852C23A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */; };
-		0875852D23A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */; };
-		0875852E23A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */; };
-		0875852F23A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */; };
-		0875853023A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */; };
+		0875850E23A0025F00FA7207 /* ProfileAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* ProfileAccountHeaderView.xib */; };
+		0875850F23A0025F00FA7207 /* ProfileAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* ProfileAccountHeaderView.xib */; };
+		0875851023A0025F00FA7207 /* ProfileAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* ProfileAccountHeaderView.xib */; };
+		0875851123A0025F00FA7207 /* ProfileAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* ProfileAccountHeaderView.xib */; };
+		0875851223A0025F00FA7207 /* ProfileAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* ProfileAccountHeaderView.xib */; };
+		0875851323A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850623A0025E00FA7207 /* ProfileAccountHeaderView.m */; };
+		0875851423A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850623A0025E00FA7207 /* ProfileAccountHeaderView.m */; };
+		0875851523A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850623A0025E00FA7207 /* ProfileAccountHeaderView.m */; };
+		0875851623A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850623A0025E00FA7207 /* ProfileAccountHeaderView.m */; };
+		0875851723A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850623A0025E00FA7207 /* ProfileAccountHeaderView.m */; };
+		0875851823A0025F00FA7207 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850723A0025E00FA7207 /* ProfileTableViewCell.m */; };
+		0875851923A0025F00FA7207 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850723A0025E00FA7207 /* ProfileTableViewCell.m */; };
+		0875851A23A0025F00FA7207 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850723A0025E00FA7207 /* ProfileTableViewCell.m */; };
+		0875851B23A0025F00FA7207 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850723A0025E00FA7207 /* ProfileTableViewCell.m */; };
+		0875851C23A0025F00FA7207 /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850723A0025E00FA7207 /* ProfileTableViewCell.m */; };
+		0875851D23A0025F00FA7207 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0875850923A0025E00FA7207 /* ProfileViewController.storyboard */; };
+		0875851E23A0025F00FA7207 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0875850923A0025E00FA7207 /* ProfileViewController.storyboard */; };
+		0875851F23A0025F00FA7207 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0875850923A0025E00FA7207 /* ProfileViewController.storyboard */; };
+		0875852023A0025F00FA7207 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0875850923A0025E00FA7207 /* ProfileViewController.storyboard */; };
+		0875852123A0025F00FA7207 /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0875850923A0025E00FA7207 /* ProfileViewController.storyboard */; };
+		0875852223A0025F00FA7207 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* ProfileViewController.m */; };
+		0875852323A0025F00FA7207 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* ProfileViewController.m */; };
+		0875852423A0025F00FA7207 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* ProfileViewController.m */; };
+		0875852523A0025F00FA7207 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* ProfileViewController.m */; };
+		0875852623A0025F00FA7207 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* ProfileViewController.m */; };
+		0875852723A0025F00FA7207 /* ProfileHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* ProfileHeaderSectionView.xib */; };
+		0875852823A0025F00FA7207 /* ProfileHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* ProfileHeaderSectionView.xib */; };
+		0875852923A0025F00FA7207 /* ProfileHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* ProfileHeaderSectionView.xib */; };
+		0875852A23A0025F00FA7207 /* ProfileHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* ProfileHeaderSectionView.xib */; };
+		0875852B23A0025F00FA7207 /* ProfileHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* ProfileHeaderSectionView.xib */; };
+		0875852C23A0025F00FA7207 /* ProfileHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfileHeaderSectionView.m */; };
+		0875852D23A0025F00FA7207 /* ProfileHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfileHeaderSectionView.m */; };
+		0875852E23A0025F00FA7207 /* ProfileHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfileHeaderSectionView.m */; };
+		0875852F23A0025F00FA7207 /* ProfileHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfileHeaderSectionView.m */; };
+		0875853023A0025F00FA7207 /* ProfileHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* ProfileHeaderSectionView.m */; };
 		0875853623A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
 		0875853723A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
 		0875853823A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
@@ -1819,17 +1819,17 @@
 		087584CC23A0008500FA7207 /* MenuSectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuSectionInfo.m; sourceTree = "<group>"; };
 		087584CF23A0008500FA7207 /* MenuItemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemInfo.m; sourceTree = "<group>"; };
 		087584D523A0008500FA7207 /* MenuSectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSectionInfo.h; sourceTree = "<group>"; };
-		0875850323A0025E00FA7207 /* ProfilAccountHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilAccountHeaderView.xib; sourceTree = "<group>"; };
-		0875850423A0025E00FA7207 /* ProfilAccountHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilAccountHeaderView.h; sourceTree = "<group>"; };
-		0875850523A0025E00FA7207 /* ProfilHeaderSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilHeaderSectionView.h; sourceTree = "<group>"; };
-		0875850623A0025E00FA7207 /* ProfilAccountHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilAccountHeaderView.m; sourceTree = "<group>"; };
-		0875850723A0025E00FA7207 /* ProfilTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilTableViewCell.m; sourceTree = "<group>"; };
-		0875850823A0025E00FA7207 /* ProfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilViewController.h; sourceTree = "<group>"; };
-		0875850923A0025E00FA7207 /* ProfilViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfilViewController.storyboard; sourceTree = "<group>"; };
-		0875850A23A0025E00FA7207 /* ProfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilViewController.m; sourceTree = "<group>"; };
-		0875850B23A0025F00FA7207 /* ProfilHeaderSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilHeaderSectionView.xib; sourceTree = "<group>"; };
-		0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilHeaderSectionView.m; sourceTree = "<group>"; };
-		0875850D23A0025F00FA7207 /* ProfilTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilTableViewCell.h; sourceTree = "<group>"; };
+		0875850323A0025E00FA7207 /* ProfileAccountHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileAccountHeaderView.xib; sourceTree = "<group>"; };
+		0875850423A0025E00FA7207 /* ProfileAccountHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAccountHeaderView.h; sourceTree = "<group>"; };
+		0875850523A0025E00FA7207 /* ProfileHeaderSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeaderSectionView.h; sourceTree = "<group>"; };
+		0875850623A0025E00FA7207 /* ProfileAccountHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileAccountHeaderView.m; sourceTree = "<group>"; };
+		0875850723A0025E00FA7207 /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
+		0875850823A0025E00FA7207 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		0875850923A0025E00FA7207 /* ProfileViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
+		0875850A23A0025E00FA7207 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		0875850B23A0025F00FA7207 /* ProfileHeaderSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderSectionView.xib; sourceTree = "<group>"; };
+		0875850C23A0025F00FA7207 /* ProfileHeaderSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeaderSectionView.m; sourceTree = "<group>"; };
+		0875850D23A0025F00FA7207 /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
 		0875853423A3DEFC00FA7207 /* LivesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivesViewController.h; sourceTree = "<group>"; };
 		0875853523A3DEFC00FA7207 /* LivesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivesViewController.m; sourceTree = "<group>"; };
 		087A88331EAA610500525C2A /* LiveAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveAccessView.h; sourceTree = "<group>"; };
@@ -2724,17 +2724,17 @@
 				087584CF23A0008500FA7207 /* MenuItemInfo.m */,
 				087584D523A0008500FA7207 /* MenuSectionInfo.h */,
 				087584CC23A0008500FA7207 /* MenuSectionInfo.m */,
-				0875850423A0025E00FA7207 /* ProfilAccountHeaderView.h */,
-				0875850623A0025E00FA7207 /* ProfilAccountHeaderView.m */,
-				0875850323A0025E00FA7207 /* ProfilAccountHeaderView.xib */,
-				0875850523A0025E00FA7207 /* ProfilHeaderSectionView.h */,
-				0875850C23A0025F00FA7207 /* ProfilHeaderSectionView.m */,
-				0875850B23A0025F00FA7207 /* ProfilHeaderSectionView.xib */,
-				0875850D23A0025F00FA7207 /* ProfilTableViewCell.h */,
-				0875850723A0025E00FA7207 /* ProfilTableViewCell.m */,
-				0875850823A0025E00FA7207 /* ProfilViewController.h */,
-				0875850A23A0025E00FA7207 /* ProfilViewController.m */,
-				0875850923A0025E00FA7207 /* ProfilViewController.storyboard */,
+				0875850423A0025E00FA7207 /* ProfileAccountHeaderView.h */,
+				0875850623A0025E00FA7207 /* ProfileAccountHeaderView.m */,
+				0875850323A0025E00FA7207 /* ProfileAccountHeaderView.xib */,
+				0875850523A0025E00FA7207 /* ProfileHeaderSectionView.h */,
+				0875850C23A0025F00FA7207 /* ProfileHeaderSectionView.m */,
+				0875850B23A0025F00FA7207 /* ProfileHeaderSectionView.xib */,
+				0875850D23A0025F00FA7207 /* ProfileTableViewCell.h */,
+				0875850723A0025E00FA7207 /* ProfileTableViewCell.m */,
+				0875850823A0025E00FA7207 /* ProfileViewController.h */,
+				0875850A23A0025E00FA7207 /* ProfileViewController.m */,
+				0875850923A0025E00FA7207 /* ProfileViewController.storyboard */,
 			);
 			path = Profil;
 			sourceTree = "<group>";
@@ -4116,7 +4116,7 @@
 				6F0C998D2121FBD800073AB6 /* SRGMediaPlayer.bundle in Resources */,
 				0837CECC1D3FD6E600A1E089 /* SRGSSRType_Serif_Rg.ttf in Resources */,
 				6FF7BBB222A7901900FA758A /* SearchSettingsViewController.storyboard in Resources */,
-				0875850E23A0025F00FA7207 /* ProfilAccountHeaderView.xib in Resources */,
+				0875850E23A0025F00FA7207 /* ProfileAccountHeaderView.xib in Resources */,
 				6F7C89CF20AAFC6100255A54 /* Onboardings.xcassets in Resources */,
 				6FB3C1AD1DBCE783008160B4 /* MediaPreviewViewController.storyboard in Resources */,
 				0837CEC41D3FD6E600A1E089 /* FontAwesome.otf in Resources */,
@@ -4142,7 +4142,7 @@
 				6F0F889E1ECF0CE50060A893 /* override_default_tv_srf1.pdf in Resources */,
 				6F0F889B1ECF0CE50060A893 /* override_artwork_srf3.pdf in Resources */,
 				6F58664A1DD226EE005DAFE4 /* Settings.bundle in Resources */,
-				0875852723A0025F00FA7207 /* ProfilHeaderSectionView.xib in Resources */,
+				0875852723A0025F00FA7207 /* ProfileHeaderSectionView.xib in Resources */,
 				08C690501D38E0BE00BB8AAA /* iTunesArtwork in Resources */,
 				6F12E4D522D866E600BC1718 /* MostSearchedShowsHeaderView.xib in Resources */,
 				6FF3B6942137DCD700F8A5E2 /* SRGContentProtection.bundle in Resources */,
@@ -4180,7 +4180,7 @@
 				6F0C999C2121FBD800073AB6 /* SRGAnalytics.bundle in Resources */,
 				6F0F88A31ECF0CE50060A893 /* override_default_srf2.pdf in Resources */,
 				6F1A95EB216DF98D00DB15AA /* SRGIdentity.bundle in Resources */,
-				0875851D23A0025F00FA7207 /* ProfilViewController.storyboard in Resources */,
+				0875851D23A0025F00FA7207 /* ProfileViewController.storyboard in Resources */,
 				0837CEC91D3FD6E600A1E089 /* SRGSSRType_Lt.ttf in Resources */,
 				E6E2DF1F1D6ACA8B00791EDE /* ShowViewController.storyboard in Resources */,
 				0837CEC81D3FD6E600A1E089 /* SRGSSRType_It.ttf in Resources */,
@@ -4210,7 +4210,7 @@
 				08280F102258EA4000AC978D /* WatchLaterViewController.storyboard in Resources */,
 				6F12E4D822D866F200BC1718 /* MostSearchedShowsHeaderView.xib in Resources */,
 				6FF3B6952137DCD700F8A5E2 /* SRGContentProtection.bundle in Resources */,
-				0875851E23A0025F00FA7207 /* ProfilViewController.storyboard in Resources */,
+				0875851E23A0025F00FA7207 /* ProfileViewController.storyboard in Resources */,
 				6FF7BBB322A7901900FA758A /* SearchSettingsViewController.storyboard in Resources */,
 				E694A9E01D65EFF300372DF0 /* SearchViewController.storyboard in Resources */,
 				081220B11DD07B7A00BF8326 /* DownloadTableViewCell.xib in Resources */,
@@ -4230,7 +4230,7 @@
 				0837CED51D3FDAF900A1E089 /* SRGSSRType_Serif_Rg.ttf in Resources */,
 				6F2961FD2006186100CAB0E4 /* placeholder_media_list-180.pdf in Resources */,
 				6F4EA13A1EE034D500BEC4DA /* Accessibility.strings in Resources */,
-				0875850F23A0025F00FA7207 /* ProfilAccountHeaderView.xib in Resources */,
+				0875850F23A0025F00FA7207 /* ProfileAccountHeaderView.xib in Resources */,
 				6FB3C1AE1DBCE783008160B4 /* MediaPreviewViewController.storyboard in Resources */,
 				6F628AEF1F149ABA0085A9E3 /* HomeLiveMediaCollectionViewCell.xib in Resources */,
 				0804917722832C5D00E4CEC2 /* HomeShowCollectionViewCell.xib in Resources */,
@@ -4241,7 +4241,7 @@
 				08DADF8D20D92D6500291AD1 /* placeholder_notification-180.pdf in Resources */,
 				6F0F888D1ECF0CDD0060A893 /* override_default_rts_un.pdf in Resources */,
 				08C690DE1D38E5BE00BB8AAA /* HomeViewController.storyboard in Resources */,
-				0875852823A0025F00FA7207 /* ProfilHeaderSectionView.xib in Resources */,
+				0875852823A0025F00FA7207 /* ProfileHeaderSectionView.xib in Resources */,
 				086F8D6522984B29001BE2F4 /* FavoritesViewController.storyboard in Resources */,
 				6F1F92AB22A55EDA0026BFAC /* SearchShowListCollectionViewCell.xib in Resources */,
 				6F0F888C1ECF0CDD0060A893 /* override_default_couleur3.pdf in Resources */,
@@ -4320,7 +4320,7 @@
 				0804916B22831DEF00E4CEC2 /* HomeShowListTableViewCell.xib in Resources */,
 				6FCB57491EC2047B0015CAB7 /* override_artwork_rete_tre.pdf in Resources */,
 				6F12E4DA22D866F200BC1718 /* MostSearchedShowsHeaderView.xib in Resources */,
-				0875851F23A0025F00FA7207 /* ProfilViewController.storyboard in Resources */,
+				0875851F23A0025F00FA7207 /* ProfileViewController.storyboard in Resources */,
 				E694A9E11D65EFF300372DF0 /* SearchViewController.storyboard in Resources */,
 				6F475FF21EB37BC6003021EA /* TabStripCell.xib in Resources */,
 				6F0F88371ECEE7800060A893 /* override_default_la2.pdf in Resources */,
@@ -4377,14 +4377,14 @@
 				08C68FAF1D38DF8300BB8AAA /* iTunesArtwork@2x in Resources */,
 				6F58664C1DD226EE005DAFE4 /* Settings.bundle in Resources */,
 				08C68FB41D38DF8300BB8AAA /* LaunchScreen.xib in Resources */,
-				0875851023A0025F00FA7207 /* ProfilAccountHeaderView.xib in Resources */,
+				0875851023A0025F00FA7207 /* ProfileAccountHeaderView.xib in Resources */,
 				6F0F88361ECEE7800060A893 /* override_default_la1.pdf in Resources */,
 				0804917822832C5D00E4CEC2 /* HomeShowCollectionViewCell.xib in Resources */,
 				08DADF8E20D92D6500291AD1 /* placeholder_notification-180.pdf in Resources */,
 				6FE01B1823603E92008EBB27 /* AppCenterDistributeResources.bundle in Resources */,
 				E6AE51351D3FD0ED00572CE4 /* HomeMediaListTableViewCell.xib in Resources */,
 				E6DB5F231D66E0950057094B /* ShowsViewController.storyboard in Resources */,
-				0875852923A0025F00FA7207 /* ProfilHeaderSectionView.xib in Resources */,
+				0875852923A0025F00FA7207 /* ProfileHeaderSectionView.xib in Resources */,
 				6FF7BBB422A7901900FA758A /* SearchSettingsViewController.storyboard in Resources */,
 				E66BEC231DA7FCED00AD4450 /* MediaPlayerViewController.storyboard in Resources */,
 				6FCB57481EC2047B0015CAB7 /* override_artwork_rete_due.pdf in Resources */,
@@ -4489,7 +4489,7 @@
 				6F1938331EFBFEA40017B1D1 /* ApplicationConfiguration.json in Resources */,
 				E66BEC241DA7FCED00AD4450 /* MediaPlayerViewController.storyboard in Resources */,
 				08DD9D691FFE6EF900115906 /* ModuleViewController.storyboard in Resources */,
-				0875852023A0025F00FA7207 /* ProfilViewController.storyboard in Resources */,
+				0875852023A0025F00FA7207 /* ProfileViewController.storyboard in Resources */,
 				6F5F4FCC1DB10CFD0011CCA3 /* RelatedContentView.xib in Resources */,
 				6F4EA1371EE034C500BEC4DA /* Accessibility.strings in Resources */,
 				08DADF8F20D92D6500291AD1 /* placeholder_notification-180.pdf in Resources */,
@@ -4512,10 +4512,10 @@
 				6FD2CBC61DD19B0200B44958 /* placeholder_media-180.pdf in Resources */,
 				6F0F88731ECF0CD70060A893 /* override_artwork_rtr_srf1.pdf in Resources */,
 				6F4760111EB37BC6003021EA /* TranslucentTitleHeaderView.xib in Resources */,
-				0875851123A0025F00FA7207 /* ProfilAccountHeaderView.xib in Resources */,
+				0875851123A0025F00FA7207 /* ProfileAccountHeaderView.xib in Resources */,
 				0837CEE41D3FDAFA00A1E089 /* SRGSSRType_Lt.ttf in Resources */,
 				6F0C999A2121FBD800073AB6 /* SRGAppearance.bundle in Resources */,
-				0875852A23A0025F00FA7207 /* ProfilHeaderSectionView.xib in Resources */,
+				0875852A23A0025F00FA7207 /* ProfileHeaderSectionView.xib in Resources */,
 				E6E2DF221D6ACA8B00791EDE /* ShowViewController.storyboard in Resources */,
 				0837CEE31D3FDAFA00A1E089 /* SRGSSRType_It.ttf in Resources */,
 				6F40921022DCFE2B005F3850 /* MostSearchedShowCollectionViewCell.xib in Resources */,
@@ -4584,7 +4584,7 @@
 				6F58664E1DD226EE005DAFE4 /* Settings.bundle in Resources */,
 				08C690861D38E3E600BB8AAA /* iTunesArtwork in Resources */,
 				E6AE51371D3FD0ED00572CE4 /* HomeMediaListTableViewCell.xib in Resources */,
-				0875851223A0025F00FA7207 /* ProfilAccountHeaderView.xib in Resources */,
+				0875851223A0025F00FA7207 /* ProfileAccountHeaderView.xib in Resources */,
 				E6DB5F251D66E0950057094B /* ShowsViewController.storyboard in Resources */,
 				084F94B922D3B77700D2D3A5 /* SearchSettingMultiSelectionViewController.storyboard in Resources */,
 				E66BEC251DA7FCED00AD4450 /* MediaPlayerViewController.storyboard in Resources */,
@@ -4606,9 +4606,9 @@
 				08D0E0F11E9D29F800AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */,
 				6F0C99A52121FBD800073AB6 /* SRGNetwork.bundle in Resources */,
 				0804916D22831DEF00E4CEC2 /* HomeShowListTableViewCell.xib in Resources */,
-				0875852123A0025F00FA7207 /* ProfilViewController.storyboard in Resources */,
+				0875852123A0025F00FA7207 /* ProfileViewController.storyboard in Resources */,
 				6F0C99AF2121FBD800073AB6 /* SRGDataProvider.bundle in Resources */,
-				0875852B23A0025F00FA7207 /* ProfilHeaderSectionView.xib in Resources */,
+				0875852B23A0025F00FA7207 /* ProfileHeaderSectionView.xib in Resources */,
 				0837CEED1D3FDAFA00A1E089 /* SRGSSRType_Lt.ttf in Resources */,
 				6FD2CBC71DD19B0200B44958 /* placeholder_media-180.pdf in Resources */,
 				6F4760121EB37BC6003021EA /* TranslucentTitleHeaderView.xib in Resources */,
@@ -5715,7 +5715,7 @@
 				6F4C673E1EA6115C006A0A3B /* SearchViewController.m in Sources */,
 				6F340F52220DA99B00778CA3 /* History.m in Sources */,
 				086320FB2258C6D000C719A6 /* WatchLaterViewController.m in Sources */,
-				0875852223A0025F00FA7207 /* ProfilViewController.m in Sources */,
+				0875852223A0025F00FA7207 /* ProfileViewController.m in Sources */,
 				087A88351EAA610500525C2A /* LiveAccessView.m in Sources */,
 				E6971AED1D4B300C008CA703 /* PlayApplicationError.m in Sources */,
 				08C691351D391A1B00BB8AAA /* HomeMediaListTableViewCell.m in Sources */,
@@ -5725,7 +5725,7 @@
 				0841E70622F0953A009D8304 /* SRGDay+PlaySRG.m in Sources */,
 				08AA551D1D49EBF600C5026E /* ApplicationConfiguration.m in Sources */,
 				08C68F941D38DEA100BB8AAA /* HomeViewController.m in Sources */,
-				0875852C23A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */,
+				0875852C23A0025F00FA7207 /* ProfileHeaderSectionView.m in Sources */,
 				6FDF08EB218B126700B2AF2C /* OnboardingPage.m in Sources */,
 				6FB3C1A81DBCE783008160B4 /* MediaPreviewViewController.m in Sources */,
 				082590F01F054A6A00BB527C /* HomeMediaCollectionHeaderView.m in Sources */,
@@ -5760,7 +5760,7 @@
 				6F0E8D981F14F62F002014C3 /* SRGChannel+PlaySRG.m in Sources */,
 				08602BF72213786B0081D166 /* HomeShowsAccessTableViewCell.m in Sources */,
 				087BC6631EDF1B7C00EED89B /* UILabel+PlaySRG.m in Sources */,
-				0875851323A0025F00FA7207 /* ProfilAccountHeaderView.m in Sources */,
+				0875851323A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */,
 				E6DB5F1B1D66E0890057094B /* ShowsViewController.m in Sources */,
 				6F488ACB22EED363002B1150 /* PlayAccessibilityFormatter.m in Sources */,
 				086BDE151EA63D3800965F45 /* AudioMiniPlayerView.m in Sources */,
@@ -5841,7 +5841,7 @@
 				6F40920022DCF43D005F3850 /* Previewing.m in Sources */,
 				6FDF08E6218B126700B2AF2C /* Onboarding.m in Sources */,
 				0821D53E227F5ED300FC091F /* DeepLinkService.m in Sources */,
-				0875851823A0025F00FA7207 /* ProfilTableViewCell.m in Sources */,
+				0875851823A0025F00FA7207 /* ProfileTableViewCell.m in Sources */,
 				081DAA1F1E099A3A00018623 /* DownloadFooterSectionView.m in Sources */,
 				087584EF23A0008500FA7207 /* MenuItemInfo.m in Sources */,
 				6FAAF77C20CABA3A00BB58A3 /* Notification.m in Sources */,
@@ -5913,7 +5913,7 @@
 				E6971AEE1D4B300C008CA703 /* PlayApplicationError.m in Sources */,
 				08D0E0EA1E9D29F700AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
 				6FDF08F1218B126700B2AF2C /* UpdateInfo.m in Sources */,
-				0875852323A0025F00FA7207 /* ProfilViewController.m in Sources */,
+				0875852323A0025F00FA7207 /* ProfileViewController.m in Sources */,
 				6FA5D15E1F2077B10059E4E2 /* NSString+PlaySRG.m in Sources */,
 				08C691361D391A1B00BB8AAA /* HomeMediaListTableViewCell.m in Sources */,
 				6F0A7F0020AC0B9A00DF6723 /* OnboardingViewController.swift in Sources */,
@@ -5930,7 +5930,7 @@
 				6F475FE71EB37BC6003021EA /* TabStrip.m in Sources */,
 				6F40920122DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF61EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
-				0875851923A0025F00FA7207 /* ProfilTableViewCell.m in Sources */,
+				0875851923A0025F00FA7207 /* ProfileTableViewCell.m in Sources */,
 				6FB3C1A91DBCE783008160B4 /* MediaPreviewViewController.m in Sources */,
 				6F9122C01DC8708400725EEB /* PlayErrors.m in Sources */,
 				089EA00B201012180070E11A /* SRGBaseTopic+PlaySRG.m in Sources */,
@@ -5984,14 +5984,14 @@
 				E65FB20C1D66D69700820696 /* DailyMediasViewController.m in Sources */,
 				6FEC91AA21A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6F4760831EB37DF1003021EA /* UIStackView+PlaySRG.m in Sources */,
-				0875852D23A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */,
+				0875852D23A0025F00FA7207 /* ProfileHeaderSectionView.m in Sources */,
 				6F06E0A51DB7791300220FC6 /* ApplicationSettings.m in Sources */,
 				08564B1E1D41111A00381549 /* HomeSectionHeaderView.m in Sources */,
 				6FE686E21EB9D57400067D40 /* ChannelService.m in Sources */,
 				6FDF08EC218B126700B2AF2C /* OnboardingPage.m in Sources */,
 				6F556B391DDC419800B5DEA2 /* SettingsBaseViewController.m in Sources */,
 				08C68F8B1D38DEA100BB8AAA /* PlayAppDelegate.m in Sources */,
-				0875851423A0025F00FA7207 /* ProfilAccountHeaderView.m in Sources */,
+				0875851423A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */,
 				6F4760821EB37DF1003021EA /* UIImageView+PlaySRG.m in Sources */,
 				087584F023A0008500FA7207 /* MenuItemInfo.m in Sources */,
 				6F4760301EB37BD1003021EA /* PlayDurationFormatter.m in Sources */,
@@ -6077,7 +6077,7 @@
 				E6971AEF1D4B300C008CA703 /* PlayApplicationError.m in Sources */,
 				08D0E0EC1E9D29F800AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
 				6FDF08F2218B126700B2AF2C /* UpdateInfo.m in Sources */,
-				0875852423A0025F00FA7207 /* ProfilViewController.m in Sources */,
+				0875852423A0025F00FA7207 /* ProfileViewController.m in Sources */,
 				6FA5D15F1F2077B10059E4E2 /* NSString+PlaySRG.m in Sources */,
 				08C691371D391A1B00BB8AAA /* HomeMediaListTableViewCell.m in Sources */,
 				6F0A7F0120AC0B9A00DF6723 /* OnboardingViewController.swift in Sources */,
@@ -6094,7 +6094,7 @@
 				6F475FE81EB37BC6003021EA /* TabStrip.m in Sources */,
 				6F40920222DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF71EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
-				0875851A23A0025F00FA7207 /* ProfilTableViewCell.m in Sources */,
+				0875851A23A0025F00FA7207 /* ProfileTableViewCell.m in Sources */,
 				6FB3C1AA1DBCE783008160B4 /* MediaPreviewViewController.m in Sources */,
 				6F9122C11DC8708400725EEB /* PlayErrors.m in Sources */,
 				089EA00C2010121A0070E11A /* SRGBaseTopic+PlaySRG.m in Sources */,
@@ -6148,14 +6148,14 @@
 				E65FB20D1D66D69700820696 /* DailyMediasViewController.m in Sources */,
 				6FEC91AB21A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6F47608A1EB37DF1003021EA /* UIStackView+PlaySRG.m in Sources */,
-				0875852E23A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */,
+				0875852E23A0025F00FA7207 /* ProfileHeaderSectionView.m in Sources */,
 				6F06E0A61DB7791300220FC6 /* ApplicationSettings.m in Sources */,
 				08564B1F1D41111A00381549 /* HomeSectionHeaderView.m in Sources */,
 				6FE686E31EB9D57400067D40 /* ChannelService.m in Sources */,
 				6FDF08ED218B126700B2AF2C /* OnboardingPage.m in Sources */,
 				6F556B3A1DDC419800B5DEA2 /* SettingsBaseViewController.m in Sources */,
 				08C68F8C1D38DEA100BB8AAA /* PlayAppDelegate.m in Sources */,
-				0875851523A0025F00FA7207 /* ProfilAccountHeaderView.m in Sources */,
+				0875851523A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */,
 				6F4760891EB37DF1003021EA /* UIImageView+PlaySRG.m in Sources */,
 				087584F123A0008500FA7207 /* MenuItemInfo.m in Sources */,
 				6F4760311EB37BD1003021EA /* PlayDurationFormatter.m in Sources */,
@@ -6241,7 +6241,7 @@
 				E6971AF01D4B300C008CA703 /* PlayApplicationError.m in Sources */,
 				08D0E0EE1E9D29F800AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
 				6FDF08F3218B126700B2AF2C /* UpdateInfo.m in Sources */,
-				0875852523A0025F00FA7207 /* ProfilViewController.m in Sources */,
+				0875852523A0025F00FA7207 /* ProfileViewController.m in Sources */,
 				6FA5D1601F2077B10059E4E2 /* NSString+PlaySRG.m in Sources */,
 				08C691381D391A1B00BB8AAA /* HomeMediaListTableViewCell.m in Sources */,
 				6F0A7F0220AC0B9A00DF6723 /* OnboardingViewController.swift in Sources */,
@@ -6258,7 +6258,7 @@
 				6F475FE91EB37BC6003021EA /* TabStrip.m in Sources */,
 				6F40920322DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF81EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
-				0875851B23A0025F00FA7207 /* ProfilTableViewCell.m in Sources */,
+				0875851B23A0025F00FA7207 /* ProfileTableViewCell.m in Sources */,
 				6FB3C1AB1DBCE783008160B4 /* MediaPreviewViewController.m in Sources */,
 				6F9122C21DC8708400725EEB /* PlayErrors.m in Sources */,
 				089EA00D2010121A0070E11A /* SRGBaseTopic+PlaySRG.m in Sources */,
@@ -6312,14 +6312,14 @@
 				E65FB20E1D66D69700820696 /* DailyMediasViewController.m in Sources */,
 				6FEC91AC21A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6F4760911EB37DF1003021EA /* UIStackView+PlaySRG.m in Sources */,
-				0875852F23A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */,
+				0875852F23A0025F00FA7207 /* ProfileHeaderSectionView.m in Sources */,
 				6F06E0A71DB7791300220FC6 /* ApplicationSettings.m in Sources */,
 				08564B201D41111A00381549 /* HomeSectionHeaderView.m in Sources */,
 				6FE686E41EB9D57400067D40 /* ChannelService.m in Sources */,
 				6FDF08EE218B126700B2AF2C /* OnboardingPage.m in Sources */,
 				6F556B3B1DDC419800B5DEA2 /* SettingsBaseViewController.m in Sources */,
 				08C68F8D1D38DEA100BB8AAA /* PlayAppDelegate.m in Sources */,
-				0875851623A0025F00FA7207 /* ProfilAccountHeaderView.m in Sources */,
+				0875851623A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */,
 				6F4760901EB37DF1003021EA /* UIImageView+PlaySRG.m in Sources */,
 				087584F223A0008500FA7207 /* MenuItemInfo.m in Sources */,
 				6F4760321EB37BD1003021EA /* PlayDurationFormatter.m in Sources */,
@@ -6405,7 +6405,7 @@
 				E6971AF11D4B300C008CA703 /* PlayApplicationError.m in Sources */,
 				08D0E0F01E9D29F800AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
 				6FDF08F4218B126700B2AF2C /* UpdateInfo.m in Sources */,
-				0875852623A0025F00FA7207 /* ProfilViewController.m in Sources */,
+				0875852623A0025F00FA7207 /* ProfileViewController.m in Sources */,
 				6FA5D1611F2077B10059E4E2 /* NSString+PlaySRG.m in Sources */,
 				08C691391D391A1B00BB8AAA /* HomeMediaListTableViewCell.m in Sources */,
 				6F0A7F0320AC0B9A00DF6723 /* OnboardingViewController.swift in Sources */,
@@ -6422,7 +6422,7 @@
 				6F475FEA1EB37BC6003021EA /* TabStrip.m in Sources */,
 				6F40920422DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF91EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
-				0875851C23A0025F00FA7207 /* ProfilTableViewCell.m in Sources */,
+				0875851C23A0025F00FA7207 /* ProfileTableViewCell.m in Sources */,
 				6FB3C1AC1DBCE783008160B4 /* MediaPreviewViewController.m in Sources */,
 				6F9122C31DC8708400725EEB /* PlayErrors.m in Sources */,
 				089EA00E2010121A0070E11A /* SRGBaseTopic+PlaySRG.m in Sources */,
@@ -6476,14 +6476,14 @@
 				E65FB20F1D66D69700820696 /* DailyMediasViewController.m in Sources */,
 				6FEC91AD21A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6F4760981EB37DF2003021EA /* UIStackView+PlaySRG.m in Sources */,
-				0875853023A0025F00FA7207 /* ProfilHeaderSectionView.m in Sources */,
+				0875853023A0025F00FA7207 /* ProfileHeaderSectionView.m in Sources */,
 				6F06E0A81DB7791300220FC6 /* ApplicationSettings.m in Sources */,
 				08564B211D41111A00381549 /* HomeSectionHeaderView.m in Sources */,
 				6FE686E51EB9D57400067D40 /* ChannelService.m in Sources */,
 				6FDF08EF218B126700B2AF2C /* OnboardingPage.m in Sources */,
 				6F556B3C1DDC419800B5DEA2 /* SettingsBaseViewController.m in Sources */,
 				08C68F8E1D38DEA100BB8AAA /* PlayAppDelegate.m in Sources */,
-				0875851723A0025F00FA7207 /* ProfilAccountHeaderView.m in Sources */,
+				0875851723A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */,
 				6F4760971EB37DF2003021EA /* UIImageView+PlaySRG.m in Sources */,
 				087584F323A0008500FA7207 /* MenuItemInfo.m in Sources */,
 				6F4760331EB37BD1003021EA /* PlayDurationFormatter.m in Sources */,

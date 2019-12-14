@@ -4,7 +4,7 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "ProfilViewController.h"
+#import "ProfileViewController.h"
 
 #import "ApplicationConfiguration.h"
 #import "ContentInsets.h"
@@ -13,9 +13,9 @@
 #import "HistoryViewController.h"
 #import "MenuSectionInfo.h"
 #import "NSBundle+PlaySRG.h"
-#import "ProfilAccountHeaderView.h"
-#import "ProfilHeaderSectionView.h"
-#import "ProfilTableViewCell.h"
+#import "ProfileAccountHeaderView.h"
+#import "ProfileHeaderSectionView.h"
+#import "ProfileTableViewCell.h"
 #import "SettingsViewController.h"
 #import "UIDevice+PlaySRG.h"
 #import "UIScrollView+PlaySRG.h"
@@ -25,7 +25,7 @@
 
 #import <SRGIdentity/SRGIdentity.h>
 
-@interface ProfilViewController ()
+@interface ProfileViewController ()
 
 @property (nonatomic) NSArray<MenuSectionInfo *> *sectionInfos;
 
@@ -33,15 +33,15 @@
 
 @end
 
-@implementation ProfilViewController
+@implementation ProfileViewController
 
 #pragma mark Object lifecycle
 
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.title = NSLocalizedString(@"Profil", @"Title displayed at the top of the profil view");
-        self.sectionInfos = MenuSectionInfo.profilMenuSectionInfos;
+        self.title = NSLocalizedString(@"Profile", @"Title displayed at the top of the profile view");
+        self.sectionInfos = MenuSectionInfo.profileMenuSectionInfos;
     }
     return self;
 }
@@ -60,11 +60,11 @@
     self.tableView.delegate = self;
     
     if (SRGIdentityService.currentIdentityService) {
-        self.tableView.tableHeaderView = [ProfilAccountHeaderView view];
+        self.tableView.tableHeaderView = [ProfileAccountHeaderView view];
     }
     
-    Class headerClass = ProfilHeaderSectionView.class;
-    [self.tableView registerClass:ProfilHeaderSectionView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(headerClass)];
+    Class headerClass = ProfileHeaderSectionView.class;
+    [self.tableView registerClass:ProfileHeaderSectionView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(headerClass)];
     
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(accessibilityVoiceOverStatusChanged:)
@@ -110,7 +110,7 @@
 
 - (NSString *)srg_pageViewTitle
 {
-    return NSLocalizedString(@"Profil", @"[Technical] Title for profil analytics measurements");
+    return NSLocalizedString(@"Profile", @"[Technical] Title for profile analytics measurements");
 }
 
 - (NSArray<NSString *> *)srg_pageViewLevels
@@ -132,7 +132,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ProfilTableViewCell.class) forIndexPath:indexPath];
+    return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ProfileTableViewCell.class) forIndexPath:indexPath];
 }
 
 #pragma mark UITableViewDelegate protocol
@@ -142,7 +142,7 @@
     return 50.f;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(ProfilTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView willDisplayCell:(ProfileTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MenuItemInfo *menuItemInfo = self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row];
     cell.menuItemInfo = menuItemInfo;
@@ -157,12 +157,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     MenuSectionInfo *sectionInfo = self.sectionInfos[section];
-    return [ProfilHeaderSectionView heightForMenuSectionInfo:sectionInfo];
+    return [ProfileHeaderSectionView heightForMenuSectionInfo:sectionInfo];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    ProfilHeaderSectionView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(ProfilHeaderSectionView.class)];
+    ProfileHeaderSectionView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(ProfileHeaderSectionView.class)];
     headerView.menuSectionInfo = self.sectionInfos[section];
     return headerView;
 }
@@ -262,7 +262,7 @@
 
 - (void)applicationConfigurationDidChange:(NSNotification *)notification
 {
-    self.sectionInfos = MenuSectionInfo.profilMenuSectionInfos;
+    self.sectionInfos = MenuSectionInfo.profileMenuSectionInfos;
     [self.tableView reloadData];
     
     // Do not update selectedMenuItemInfo. If now invalid, it must not be visibly selected after all. A correct value
