@@ -4,13 +4,14 @@
 //  License information is available from the LICENSE file.
 //
 
+#import "ContentInsets.h"
 #import "MenuItemInfo.h"
 
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TabBarController : UITabBarController <UINavigationControllerDelegate>
+@interface TabBarController : UITabBarController <ContainerContentInsets, UINavigationControllerDelegate>
 
 /**
  *  Open the menu item.

@@ -42,8 +42,7 @@ static const CGFloat MiniPlayerOffset = 5.f;
 
 - (instancetype)init
 {
-    self = [super init];
-    if (self) {
+    if (self = [super init]) {
         ApplicationConfiguration *applicationConfiguration = ApplicationConfiguration.sharedApplicationConfiguration;
         
         NSMutableArray<UIViewController *> *viewControllers = NSMutableArray.array;
@@ -90,7 +89,8 @@ static const CGFloat MiniPlayerOffset = 5.f;
 
 #pragma mark View lifecycle
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     UIColor *foregroundColor = UIColor.whiteColor;
@@ -134,7 +134,6 @@ static const CGFloat MiniPlayerOffset = 5.f;
     }];
     
     [self updateLayoutAnimated:NO];
-    
 }
 
 #pragma mark Changing content
@@ -214,7 +213,7 @@ static const CGFloat MiniPlayerOffset = 5.f;
                 
                 if (@available(iOS 11, *)) {
                     make.bottom.equalTo(self.tabBar.mas_safeAreaLayoutGuideTop).with.offset(-MiniPlayerOffset);
-                    make.top.equalTo(self.tabBar.mas_safeAreaLayoutGuideTop).with.offset(-MiniPlayerOffset-MiniPlayerHeight);
+                    make.top.equalTo(self.tabBar.mas_safeAreaLayoutGuideTop).with.offset(-MiniPlayerOffset - MiniPlayerHeight);
                 }
                 else {
                     make.bottom.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset);
@@ -268,6 +267,13 @@ static const CGFloat MiniPlayerOffset = 5.f;
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     [self.selectedViewController pushViewController:viewController animated:animated];
+}
+
+#pragma mark ContainerContentInsets protocol
+
+- (UIEdgeInsets)play_additionalContentInsets
+{
+    return UIEdgeInsetsMake(0.f, 0.f, self.miniPlayerView.active ? (MiniPlayerHeight + MiniPlayerOffset) : 0.f, 0.f);
 }
 
 @end
