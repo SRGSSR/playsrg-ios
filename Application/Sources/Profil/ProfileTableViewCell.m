@@ -44,6 +44,7 @@
     self.backgroundColor = backgroundColor;
     
     self.titleLabel.backgroundColor = backgroundColor;
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 - (void)prepareForReuse
