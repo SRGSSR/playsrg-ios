@@ -4,7 +4,7 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "AudioMiniPlayerView.h"
+#import "PlayMiniPlayerView.h"
 
 #import "ApplicationConfiguration.h"
 #import "ApplicationSettings.h"
@@ -23,7 +23,7 @@
 #import <SRGLetterbox/SRGLetterbox.h>
 #import <libextobjc/libextobjc.h>
 
-@interface AudioMiniPlayerView ()
+@interface PlayMiniPlayerView ()
 
 @property (nonatomic) SRGMedia *media;          // Save the latest audio
 @property (nonatomic) SRGChannel *channel;      // Save the latest channel information
@@ -52,14 +52,14 @@
 
 @end
 
-@implementation AudioMiniPlayerView
+@implementation PlayMiniPlayerView
 
 #pragma mark Class methods
 
-+ (AudioMiniPlayerView *)view
++ (PlayMiniPlayerView *)view
 {
     static dispatch_once_t s_onceToken;
-    static AudioMiniPlayerView *s_view;
+    static PlayMiniPlayerView *s_view;
     dispatch_once(&s_onceToken, ^{
         s_view = [NSBundle.mainBundle loadNibNamed:NSStringFromClass(self) owner:nil options:nil].firstObject;
     });

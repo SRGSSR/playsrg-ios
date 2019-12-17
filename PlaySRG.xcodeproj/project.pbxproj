@@ -257,16 +257,16 @@
 		086321112258C6D000C719A6 /* WatchLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086320FA2258C6CF00C719A6 /* WatchLaterTableViewCell.xib */; };
 		086321122258C6D000C719A6 /* WatchLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086320FA2258C6CF00C719A6 /* WatchLaterTableViewCell.xib */; };
 		086321132258C6D000C719A6 /* WatchLaterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086320FA2258C6CF00C719A6 /* WatchLaterTableViewCell.xib */; };
-		086BDE151EA63D3800965F45 /* AudioMiniPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BDE131EA63D3800965F45 /* AudioMiniPlayerView.m */; };
-		086BDE161EA63D3800965F45 /* AudioMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086BDE141EA63D3800965F45 /* AudioMiniPlayerView.xib */; };
-		086BDE171EA63D5A00965F45 /* AudioMiniPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BDE131EA63D3800965F45 /* AudioMiniPlayerView.m */; };
-		086BDE181EA63D5A00965F45 /* AudioMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086BDE141EA63D3800965F45 /* AudioMiniPlayerView.xib */; };
-		086BDE191EA63D5B00965F45 /* AudioMiniPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BDE131EA63D3800965F45 /* AudioMiniPlayerView.m */; };
-		086BDE1A1EA63D5B00965F45 /* AudioMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086BDE141EA63D3800965F45 /* AudioMiniPlayerView.xib */; };
-		086BDE1B1EA63D5B00965F45 /* AudioMiniPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BDE131EA63D3800965F45 /* AudioMiniPlayerView.m */; };
-		086BDE1C1EA63D5B00965F45 /* AudioMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086BDE141EA63D3800965F45 /* AudioMiniPlayerView.xib */; };
-		086BDE1D1EA63D5B00965F45 /* AudioMiniPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BDE131EA63D3800965F45 /* AudioMiniPlayerView.m */; };
-		086BDE1E1EA63D5B00965F45 /* AudioMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086BDE141EA63D3800965F45 /* AudioMiniPlayerView.xib */; };
+		086BDE151EA63D3800965F45 /* PlayMiniPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BDE131EA63D3800965F45 /* PlayMiniPlayerView.m */; };
+		086BDE161EA63D3800965F45 /* PlayMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086BDE141EA63D3800965F45 /* PlayMiniPlayerView.xib */; };
+		086BDE171EA63D5A00965F45 /* PlayMiniPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BDE131EA63D3800965F45 /* PlayMiniPlayerView.m */; };
+		086BDE181EA63D5A00965F45 /* PlayMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086BDE141EA63D3800965F45 /* PlayMiniPlayerView.xib */; };
+		086BDE191EA63D5B00965F45 /* PlayMiniPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BDE131EA63D3800965F45 /* PlayMiniPlayerView.m */; };
+		086BDE1A1EA63D5B00965F45 /* PlayMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086BDE141EA63D3800965F45 /* PlayMiniPlayerView.xib */; };
+		086BDE1B1EA63D5B00965F45 /* PlayMiniPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BDE131EA63D3800965F45 /* PlayMiniPlayerView.m */; };
+		086BDE1C1EA63D5B00965F45 /* PlayMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086BDE141EA63D3800965F45 /* PlayMiniPlayerView.xib */; };
+		086BDE1D1EA63D5B00965F45 /* PlayMiniPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 086BDE131EA63D3800965F45 /* PlayMiniPlayerView.m */; };
+		086BDE1E1EA63D5B00965F45 /* PlayMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086BDE141EA63D3800965F45 /* PlayMiniPlayerView.xib */; };
 		086F8D5522984B29001BE2F4 /* Favorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 086F8D4D22984B29001BE2F4 /* Favorites.m */; };
 		086F8D5622984B29001BE2F4 /* Favorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 086F8D4D22984B29001BE2F4 /* Favorites.m */; };
 		086F8D5722984B29001BE2F4 /* Favorites.m in Sources */ = {isa = PBXBuildFile; fileRef = 086F8D4D22984B29001BE2F4 /* Favorites.m */; };
@@ -1799,9 +1799,9 @@
 		086320F82258C6CF00C719A6 /* WatchLaterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchLaterViewController.h; sourceTree = "<group>"; };
 		086320F92258C6CF00C719A6 /* WatchLaterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatchLaterTableViewCell.h; sourceTree = "<group>"; };
 		086320FA2258C6CF00C719A6 /* WatchLaterTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchLaterTableViewCell.xib; sourceTree = "<group>"; };
-		086BDE121EA63D3800965F45 /* AudioMiniPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioMiniPlayerView.h; sourceTree = "<group>"; };
-		086BDE131EA63D3800965F45 /* AudioMiniPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioMiniPlayerView.m; sourceTree = "<group>"; };
-		086BDE141EA63D3800965F45 /* AudioMiniPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioMiniPlayerView.xib; sourceTree = "<group>"; };
+		086BDE121EA63D3800965F45 /* PlayMiniPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayMiniPlayerView.h; sourceTree = "<group>"; };
+		086BDE131EA63D3800965F45 /* PlayMiniPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayMiniPlayerView.m; sourceTree = "<group>"; };
+		086BDE141EA63D3800965F45 /* PlayMiniPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayMiniPlayerView.xib; sourceTree = "<group>"; };
 		086F8D4D22984B29001BE2F4 /* Favorites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Favorites.m; sourceTree = "<group>"; };
 		086F8D4E22984B29001BE2F4 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		086F8D4F22984B29001BE2F4 /* FavoriteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteTableViewCell.h; sourceTree = "<group>"; };
@@ -2690,14 +2690,14 @@
 		086BDE111EA63D3800965F45 /* MiniPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				086BDE121EA63D3800965F45 /* AudioMiniPlayerView.h */,
-				086BDE131EA63D3800965F45 /* AudioMiniPlayerView.m */,
-				086BDE141EA63D3800965F45 /* AudioMiniPlayerView.xib */,
 				6FD633DB1FFBC0BE00875BE5 /* GoogleCastMiniPlayerView.h */,
 				6FD633DC1FFBC0BE00875BE5 /* GoogleCastMiniPlayerView.m */,
 				6FD633DD1FFBC0BE00875BE5 /* GoogleCastMiniPlayerView.xib */,
 				6FD633E81FFD151000875BE5 /* MiniPlayerView.h */,
 				6FD633E91FFD151000875BE5 /* MiniPlayerView.m */,
+				086BDE121EA63D3800965F45 /* PlayMiniPlayerView.h */,
+				086BDE131EA63D3800965F45 /* PlayMiniPlayerView.m */,
+				086BDE141EA63D3800965F45 /* PlayMiniPlayerView.xib */,
 			);
 			path = MiniPlayer;
 			sourceTree = "<group>";
@@ -4159,7 +4159,7 @@
 				6F5F4FC91DB10CFD0011CCA3 /* RelatedContentView.xib in Resources */,
 				E65FB2101D66D69700820696 /* DailyMediasViewController.storyboard in Resources */,
 				6F0C99922121FBD800073AB6 /* SRGLetterbox.bundle in Resources */,
-				086BDE161EA63D3800965F45 /* AudioMiniPlayerView.xib in Resources */,
+				086BDE161EA63D3800965F45 /* PlayMiniPlayerView.xib in Resources */,
 				6F0F88961ECF0CE50060A893 /* override_artwork_tv_srf_info.pdf in Resources */,
 				6F4EA13D1EE034E200BEC4DA /* Accessibility.strings in Resources */,
 				08602BFC2213786B0081D166 /* HomeShowsAccessTableViewCell.xib in Resources */,
@@ -4281,7 +4281,7 @@
 				0832BF1622BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.xib in Resources */,
 				6F0F88841ECF0CDD0060A893 /* override_artwork_rts_info.pdf in Resources */,
 				6F1A95EC216DF98D00DB15AA /* SRGIdentity.bundle in Resources */,
-				086BDE181EA63D5A00965F45 /* AudioMiniPlayerView.xib in Resources */,
+				086BDE181EA63D5A00965F45 /* PlayMiniPlayerView.xib in Resources */,
 				08754F48201BB00400458F3A /* InfoPlist.strings in Resources */,
 				6F0F88901ECF0CDD0060A893 /* override_default_rts_deux.pdf in Resources */,
 				6F0F888B1ECF0CDD0060A893 /* override_default_rts_info.pdf in Resources */,
@@ -4393,7 +4393,7 @@
 				6F6B643521A70FAA00E207FC /* HomeStatusHeaderView.xib in Resources */,
 				6F5F4FCB1DB10CFD0011CCA3 /* RelatedContentView.xib in Resources */,
 				E65FB2121D66D69700820696 /* DailyMediasViewController.storyboard in Resources */,
-				086BDE1A1EA63D5B00965F45 /* AudioMiniPlayerView.xib in Resources */,
+				086BDE1A1EA63D5B00965F45 /* PlayMiniPlayerView.xib in Resources */,
 				08BAABDF1E76141F007644D7 /* HomeMediasViewController.storyboard in Resources */,
 				6FCB574A1EC2047B0015CAB7 /* override_artwork_rete_uno.pdf in Resources */,
 				0837CEDC1D3FDAFA00A1E089 /* SRGSSRType_Md.ttf in Resources */,
@@ -4495,7 +4495,7 @@
 				08DADF8F20D92D6500291AD1 /* placeholder_notification-180.pdf in Resources */,
 				08754F44201BAFF500458F3A /* InfoPlist.strings in Resources */,
 				E65FB2131D66D69700820696 /* DailyMediasViewController.storyboard in Resources */,
-				086BDE1C1EA63D5B00965F45 /* AudioMiniPlayerView.xib in Resources */,
+				086BDE1C1EA63D5B00965F45 /* PlayMiniPlayerView.xib in Resources */,
 				6F628AF11F149ABA0085A9E3 /* HomeLiveMediaCollectionViewCell.xib in Resources */,
 				08BAABE11E76141F007644D7 /* HomeMediasViewController.storyboard in Resources */,
 				086321122258C6D000C719A6 /* WatchLaterTableViewCell.xib in Resources */,
@@ -4598,7 +4598,7 @@
 				6F0C99A02121FBD800073AB6 /* SRGAnalytics.bundle in Resources */,
 				08C690811D38E3E600BB8AAA /* Localizable.strings in Resources */,
 				6F0C99962121FBD800073AB6 /* SRGLetterbox.bundle in Resources */,
-				086BDE1E1EA63D5B00965F45 /* AudioMiniPlayerView.xib in Resources */,
+				086BDE1E1EA63D5B00965F45 /* PlayMiniPlayerView.xib in Resources */,
 				08BAABE31E761420007644D7 /* HomeMediasViewController.storyboard in Resources */,
 				0832BF1922BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.xib in Resources */,
 				6FA9ECC420C7AD8C00D3D6C2 /* NotificationsViewController.storyboard in Resources */,
@@ -5763,7 +5763,7 @@
 				0875851323A0025F00FA7207 /* ProfileAccountHeaderView.m in Sources */,
 				E6DB5F1B1D66E0890057094B /* ShowsViewController.m in Sources */,
 				6F488ACB22EED363002B1150 /* PlayAccessibilityFormatter.m in Sources */,
-				086BDE151EA63D3800965F45 /* AudioMiniPlayerView.m in Sources */,
+				086BDE151EA63D3800965F45 /* PlayMiniPlayerView.m in Sources */,
 				6F7EEBF322DC7AA7005E5A97 /* SearchSettingMultiSelectionCell.m in Sources */,
 				08D0E0E81E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
 				0875853623A3DEFD00FA7207 /* LivesViewController.m in Sources */,
@@ -5966,7 +5966,7 @@
 				0804916F22831DEF00E4CEC2 /* HomeShowListTableViewCell.m in Sources */,
 				0827DA261F0D43BC00A31A42 /* SRGMedia+PlaySRG.m in Sources */,
 				08AF9481217D27E40028B082 /* ActivityItemSource.m in Sources */,
-				086BDE171EA63D5A00965F45 /* AudioMiniPlayerView.m in Sources */,
+				086BDE171EA63D5A00965F45 /* PlayMiniPlayerView.m in Sources */,
 				08209309208F522B00711DE4 /* PushService.m in Sources */,
 				6F475FE21EB37BC6003021EA /* ModalTransition.m in Sources */,
 				08C68F901D38DEA100BB8AAA /* main.m in Sources */,
@@ -6130,7 +6130,7 @@
 				0804917022831DEF00E4CEC2 /* HomeShowListTableViewCell.m in Sources */,
 				0827DA271F0D43BD00A31A42 /* SRGMedia+PlaySRG.m in Sources */,
 				08AF9482217D27E40028B082 /* ActivityItemSource.m in Sources */,
-				086BDE191EA63D5B00965F45 /* AudioMiniPlayerView.m in Sources */,
+				086BDE191EA63D5B00965F45 /* PlayMiniPlayerView.m in Sources */,
 				0820930A208F522B00711DE4 /* PushService.m in Sources */,
 				6F475FE31EB37BC6003021EA /* ModalTransition.m in Sources */,
 				08C68F911D38DEA100BB8AAA /* main.m in Sources */,
@@ -6294,7 +6294,7 @@
 				0804917122831DEF00E4CEC2 /* HomeShowListTableViewCell.m in Sources */,
 				0827DA281F0D43BD00A31A42 /* SRGMedia+PlaySRG.m in Sources */,
 				08AF9483217D27E40028B082 /* ActivityItemSource.m in Sources */,
-				086BDE1B1EA63D5B00965F45 /* AudioMiniPlayerView.m in Sources */,
+				086BDE1B1EA63D5B00965F45 /* PlayMiniPlayerView.m in Sources */,
 				0820930B208F522B00711DE4 /* PushService.m in Sources */,
 				6F475FE41EB37BC6003021EA /* ModalTransition.m in Sources */,
 				08C68F921D38DEA100BB8AAA /* main.m in Sources */,
@@ -6458,7 +6458,7 @@
 				0804917222831DEF00E4CEC2 /* HomeShowListTableViewCell.m in Sources */,
 				0827DA291F0D43BD00A31A42 /* SRGMedia+PlaySRG.m in Sources */,
 				08AF9484217D27E40028B082 /* ActivityItemSource.m in Sources */,
-				086BDE1D1EA63D5B00965F45 /* AudioMiniPlayerView.m in Sources */,
+				086BDE1D1EA63D5B00965F45 /* PlayMiniPlayerView.m in Sources */,
 				0820930C208F522B00711DE4 /* PushService.m in Sources */,
 				6F475FE51EB37BC6003021EA /* ModalTransition.m in Sources */,
 				08C68F931D38DEA100BB8AAA /* main.m in Sources */,

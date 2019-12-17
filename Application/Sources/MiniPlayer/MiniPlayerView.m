@@ -7,7 +7,7 @@
 #import "MiniPlayerView.h"
 
 #import "ApplicationConfiguration.h"
-#import "AudioMiniPlayerView.h"
+#import "PlayMiniPlayerView.h"
 #import "GoogleCastMiniPlayerView.h"
 #import "UIColor+PlaySRG.h"
 
@@ -16,7 +16,7 @@
 
 @interface MiniPlayerView ()
 
-@property (nonatomic, weak) AudioMiniPlayerView *audioMiniPlayerView;
+@property (nonatomic, weak) PlayMiniPlayerView *audioMiniPlayerView;
 @property (nonatomic, weak) GoogleCastMiniPlayerView *googleCastMiniPlayerView;
 @property (nonatomic, getter=isActive) BOOL active;
 
@@ -37,7 +37,7 @@
             make.edges.equalTo(self);
         }];
         
-        AudioMiniPlayerView *audioMiniPlayerView = AudioMiniPlayerView.view;
+        PlayMiniPlayerView *audioMiniPlayerView = PlayMiniPlayerView.view;
         [self addSubview:audioMiniPlayerView];
         [audioMiniPlayerView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);

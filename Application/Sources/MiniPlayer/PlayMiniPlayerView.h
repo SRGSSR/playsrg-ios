@@ -8,9 +8,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AudioMiniPlayerView : UIView
+@interface PlayMiniPlayerView : UIView
 
-@property (class, nonatomic, readonly) AudioMiniPlayerView *view;
+@property (class, nonatomic, readonly) PlayMiniPlayerView *view;
 
 @end
 
