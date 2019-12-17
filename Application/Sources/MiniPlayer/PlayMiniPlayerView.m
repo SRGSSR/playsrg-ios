@@ -25,7 +25,7 @@
 
 @interface PlayMiniPlayerView ()
 
-@property (nonatomic) SRGMedia *media;          // Save the latest audio
+@property (nonatomic) SRGMedia *media;          // Save the latest media
 @property (nonatomic) SRGChannel *channel;      // Save the latest channel information
 
 @property (nonatomic) SRGLetterboxController *controller;
@@ -143,6 +143,11 @@
                                            selector:@selector(contentSizeCategoryDidChange:)
                                                name:UIContentSizeCategoryDidChangeNotification
                                              object:nil];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(audioSessionRouteDidChange:)
+                                               name:AVAudioSessionRouteChangeNotification
+                                             object:nil];
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow
@@ -248,7 +253,16 @@
     // medias created from a media composition. Use show primary channel uid as fallback.
     NSString *channelUid = self.channel.uid ?: self.media.show.primaryChannelUid;
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
-    self.thumbnailImageView.image = RadioChannelLogo22Image(radioChannel);
+    if (radioChannel) {
+        self.thumbnailImageView.image = RadioChannelLogo22Image(radioChannel);
+    }
+    else if (self.media.mediaType == SRGMediaTypeAudio) {
+        self.thumbnailImageView.image = (self.media.contentType == SRGContentTypeLivestream || self.media.contentType == SRGContentTypeScheduledLivestream) ? [UIImage imageNamed:@"radioset-22"] : [UIImage imageNamed:@"audio-22"];
+    }
+    else {
+        self.thumbnailImageView.image = (self.media.contentType == SRGContentTypeLivestream || self.media.contentType == SRGContentTypeScheduledLivestream) ? [UIImage imageNamed:@"tv-22"] : [UIImage imageNamed:@"video-22"];
+    }
+
     
     [self updateProgress];
 }
@@ -307,10 +321,6 @@
 
 - (void)registerForUserInterfaceUpdatesWithController:(SRGLetterboxController *)controller
 {
-    if (controller.media.mediaType != SRGMediaTypeAudio) {
-        return;
-    }
-    
     self.media = controller.media;
     self.playbackButton.mediaPlayerController = controller.mediaPlayerController;
     
@@ -366,18 +376,27 @@
     }
     
     // If a controller is readily available, use it
-    SRGPosition *position = HistoryResumePlaybackPositionForMedia(self.media);
+    SRGMedia *media = self.media;
+    SRGPosition *position = HistoryResumePlaybackPositionForMedia(media);
+    SRGLetterboxController *controller = self.controller;
     
-    if (self.controller) {
-        [self.controller playMedia:self.media atPosition:position withPreferredSettings:ApplicationSettingPlaybackSettings()];
+    // If a controller is readily available, use it
+    if (controller) {
+        [controller playMedia:media atPosition:position withPreferredSettings:ApplicationSettingPlaybackSettings()];
     }
     // Otherwise use a fresh instance and enable it with the service. The mini player observes service controller changes
     // and will automatically be updated
     else {
-        SRGLetterboxController *letterboxController = [[SRGLetterboxController alloc] init];
-        ApplicationConfigurationApplyControllerSettings(letterboxController);
-        [letterboxController playMedia:self.media atPosition:position withPreferredSettings:ApplicationSettingPlaybackSettings()];
-        [SRGLetterboxService.sharedService enableWithController:letterboxController pictureInPictureDelegate:nil];
+        controller = [[SRGLetterboxController alloc] init];
+        ApplicationConfigurationApplyControllerSettings(controller);
+        [controller playMedia:media atPosition:position withPreferredSettings:ApplicationSettingPlaybackSettings()];
+        [SRGLetterboxService.sharedService enableWithController:controller pictureInPictureDelegate:nil];
+    }
+    
+    if (media.mediaType == SRGMediaTypeVideo
+            && ! controller.pictureInPictureActive
+            && ! AVAudioSession.srg_isAirPlayActive) {
+        [self.nearestViewController play_presentMediaPlayerFromLetterboxController:controller withAirPlaySuggestions:NO fromPushNotification:NO animated:YES completion:nil];
     }
 }
 
@@ -398,16 +417,8 @@
 {
     SRGMedia *media = notification.userInfo[SRGLetterboxMediaKey];
     
-    // Update registrations for UI updates when the media played by the observed controller changes
     if (! [media isEqual:self.media]) {
-        SRGLetterboxController *controller = notification.object;
-        
-        if (media.mediaType == SRGMediaTypeAudio) {
-            [self registerForUserInterfaceUpdatesWithController:controller];
-        }
-        else {
-            [self unregisterUserInterfaceUpdatesWithController:controller];
-        }
+        self.media = media;
     }
     // Fix for inconsistent RTS data. A media from a media list does not have a channel oject, but a media created from a
     // media composition has one. Use the one retrieved from the Letterbox metadata notification if available as fallback.
@@ -440,6 +451,13 @@
 - (void)applicationWillEnterForeground:(NSNotification *)notification
 {
     [self unregisterUserInterfaceUpdatesWithController:self.controller];
+}
+
+- (void)audioSessionRouteDidChange:(NSNotification *)notification
+{
+    if (self.media.mediaType == SRGMediaTypeVideo && ! AVAudioSession.srg_isAirPlayActive) {
+        [self.controller stop];
+    }
 }
 
 - (void)contentSizeCategoryDidChange:(NSNotification *)notification

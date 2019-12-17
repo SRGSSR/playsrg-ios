@@ -512,7 +512,9 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
             [UIDevice.currentDevice setValue:@(UIInterfaceOrientationPortrait) forKey:@keypath(UIDevice.new, orientation)];
         }
         
-        if (self.letterboxController.media.mediaType != SRGMediaTypeAudio && ! self.letterboxController.pictureInPictureActive) {
+        if (self.letterboxController.media.mediaType != SRGMediaTypeAudio
+            && ! self.letterboxController.pictureInPictureActive
+            && ! AVAudioSession.srg_isAirPlayActive) {
             [SRGLetterboxService.sharedService disableForController:self.letterboxController];
         }
         
@@ -688,7 +690,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     [self updateAppearanceWithDetailsExpanded:self.detailsExpanded];
     [self reloadDetailsWithMedia:media mainChapterMedia:mainChapterMedia];
     
-    UIImage *closeButtonImage = (media.mediaType == SRGMediaTypeAudio) ? [UIImage imageNamed:@"arrow_down-48"] : [UIImage imageNamed:@"close-48"];
+    UIImage *closeButtonImage = (media.mediaType == SRGMediaTypeAudio || AVAudioSession.srg_isAirPlayActive) ? [UIImage imageNamed:@"arrow_down-48"] : [UIImage imageNamed:@"close-48"];
     [self.closeButton setImage:closeButtonImage forState:UIControlStateNormal];
     
     self.relatedContentsTitleLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleBody];
@@ -1923,6 +1925,9 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 {
     if (self.letterboxController.media.mediaType == SRGMediaTypeAudio && [notification.userInfo[SRGMediaPlayerPlaybackStateKey] integerValue] == SRGMediaPlayerPlaybackStatePlaying) {
         self.closeButton.accessibilityHint = PlaySRGAccessibilityLocalizedString(@"Closes the player while continuing to play audio.", @"Player close button hint");
+    }
+    if (self.letterboxController.media.mediaType == SRGMediaTypeVideo && AVAudioSession.srg_isAirPlayActive && [notification.userInfo[SRGMediaPlayerPlaybackStateKey] integerValue] == SRGMediaPlayerPlaybackStatePlaying) {
+        self.closeButton.accessibilityHint = PlaySRGAccessibilityLocalizedString(@"Closes the player while continuing to play video throw AirPlay.", @"Player close button hint");
     }
     else {
         self.closeButton.accessibilityHint = nil;
