@@ -23,30 +23,8 @@
                             </constraints>
                             <color key="trackTintColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </progressView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_up-22" translatesAutoresizingMaskIntoConstraints="NO" id="DQ5-bR-eEY">
-                            <rect key="frame" x="15" y="16" width="22" height="22"/>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="22" id="Bv5-Xf-vYS"/>
-                                <constraint firstAttribute="width" secondItem="DQ5-bR-eEY" secondAttribute="height" multiplier="1:1" id="qAm-ft-G8a"/>
-                            </constraints>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gTU-pg-s3K">
-                            <rect key="frame" x="52" y="16" width="22" height="22"/>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="22" id="hsC-Jb-AOO"/>
-                                <constraint firstAttribute="width" secondItem="gTU-pg-s3K" secondAttribute="height" multiplier="1:1" id="oci-9E-acv"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oO5-25-JOn">
-                            <rect key="frame" x="90" y="18" width="443" height="18"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWC-hN-4pX" customClass="SRGPlaybackButton">
-                            <rect key="frame" x="549" y="6" width="42" height="42"/>
+                            <rect key="frame" x="9" y="6" width="42" height="42"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="iWC-hN-4pX" secondAttribute="height" multiplier="1:1" id="0gQ-FU-N68"/>
                                 <constraint firstAttribute="height" constant="42" id="2HM-YE-0Gu"/>
@@ -62,22 +40,48 @@
                                 <action selector="togglePlaybackButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="zt2-Xu-A9j"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gTU-pg-s3K">
+                            <rect key="frame" x="60" y="16" width="22" height="22"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="hsC-Jb-AOO"/>
+                                <constraint firstAttribute="width" secondItem="gTU-pg-s3K" secondAttribute="height" multiplier="1:1" id="oci-9E-acv"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oO5-25-JOn">
+                            <rect key="frame" x="98" y="18" width="442" height="18"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKg-8I-Eaj">
+                            <rect key="frame" x="549" y="6" width="42" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="8m0-BV-N7p"/>
+                                <constraint firstAttribute="width" secondItem="wKg-8I-Eaj" secondAttribute="height" multiplier="1:1" id="Ux0-a3-cpw"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="close-22"/>
+                            <connections>
+                                <action selector="close:" destination="iN0-l3-epB" eventType="touchUpInside" id="2Ku-gc-YmP"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="DQ5-bR-eEY" firstAttribute="centerY" secondItem="iWC-hN-4pX" secondAttribute="centerY" id="06P-b2-vbt"/>
-                        <constraint firstAttribute="trailing" secondItem="iWC-hN-4pX" secondAttribute="trailing" constant="9" id="BfV-sS-M1Q"/>
                         <constraint firstItem="Rm4-ky-aFv" firstAttribute="leading" secondItem="Bfa-82-k4k" secondAttribute="leading" id="Hpv-L9-Wj4"/>
-                        <constraint firstItem="DQ5-bR-eEY" firstAttribute="leading" secondItem="Bfa-82-k4k" secondAttribute="leading" constant="15" id="I8h-v4-lUd"/>
-                        <constraint firstItem="gTU-pg-s3K" firstAttribute="leading" secondItem="DQ5-bR-eEY" secondAttribute="trailing" constant="15" id="Lsh-Vx-NW2"/>
                         <constraint firstAttribute="trailing" secondItem="Rm4-ky-aFv" secondAttribute="trailing" id="MEC-bn-dJV"/>
                         <constraint firstItem="Rm4-ky-aFv" firstAttribute="top" secondItem="Bfa-82-k4k" secondAttribute="top" id="ORv-Tg-jLV"/>
                         <constraint firstItem="iWC-hN-4pX" firstAttribute="top" secondItem="Bfa-82-k4k" secondAttribute="top" constant="6" id="RKG-FW-KyD"/>
+                        <constraint firstItem="wKg-8I-Eaj" firstAttribute="leading" secondItem="oO5-25-JOn" secondAttribute="trailing" constant="9" id="WbO-HY-uOc"/>
+                        <constraint firstItem="gTU-pg-s3K" firstAttribute="centerY" secondItem="wKg-8I-Eaj" secondAttribute="centerY" id="fql-zg-s6U"/>
                         <constraint firstItem="gTU-pg-s3K" firstAttribute="centerY" secondItem="iWC-hN-4pX" secondAttribute="centerY" id="kV9-0V-dZc"/>
-                        <constraint firstItem="iWC-hN-4pX" firstAttribute="leading" secondItem="oO5-25-JOn" secondAttribute="trailing" constant="16" id="okU-Wh-1LF"/>
+                        <constraint firstItem="gTU-pg-s3K" firstAttribute="leading" secondItem="iWC-hN-4pX" secondAttribute="trailing" constant="9" id="lm3-FF-Yty"/>
+                        <constraint firstItem="iWC-hN-4pX" firstAttribute="leading" secondItem="Bfa-82-k4k" secondAttribute="leading" constant="9" id="pdP-0Y-hhH"/>
                         <constraint firstItem="oO5-25-JOn" firstAttribute="centerY" secondItem="iWC-hN-4pX" secondAttribute="centerY" id="q2i-xD-Yq0"/>
                         <constraint firstItem="oO5-25-JOn" firstAttribute="leading" secondItem="gTU-pg-s3K" secondAttribute="trailing" constant="16" id="xfh-Pr-q69"/>
+                        <constraint firstAttribute="trailing" secondItem="wKg-8I-Eaj" secondAttribute="trailing" constant="9" id="xnB-eN-Rg0"/>
                     </constraints>
                 </view>
             </subviews>
@@ -93,7 +97,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="arrowImageView" destination="DQ5-bR-eEY" id="ecy-cc-rwl"/>
+                <outlet property="closeButton" destination="wKg-8I-Eaj" id="08j-z4-7Ws"/>
                 <outlet property="playbackButton" destination="iWC-hN-4pX" id="oIf-At-jhd"/>
                 <outlet property="progressView" destination="Rm4-ky-aFv" id="Y1o-ld-5KT"/>
                 <outlet property="thumbnailImageView" destination="gTU-pg-s3K" id="Jps-R0-CHJ"/>
@@ -103,7 +107,7 @@
         </view>
     </objects>
     <resources>
-        <image name="arrow_up-22" width="22" height="22"/>
+        <image name="close-22" width="22" height="22"/>
         <image name="pause-50" width="50" height="50"/>
         <image name="play-50" width="50" height="50"/>
     </resources>

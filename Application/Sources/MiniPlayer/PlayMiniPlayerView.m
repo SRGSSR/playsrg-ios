@@ -29,8 +29,8 @@
 
 @property (nonatomic) SRGLetterboxController *controller;
 
-@property (nonatomic, weak) IBOutlet UIImageView *arrowImageView;
 @property (nonatomic, weak) IBOutlet UIProgressView *progressView;
+@property (nonatomic, weak) IBOutlet UIButton *closeButton;
 
 // FIXME: Do not use SRGPlaybackButton! To have it work requires exposing private implementation details (see below)
 //        and why this can work is difficult to understand (since a hidden action calling -togglePlayPause on the media
@@ -351,6 +351,12 @@
             && ! AVAudioSession.srg_isAirPlayActive) {
         [self.nearestViewController play_presentMediaPlayerFromLetterboxController:controller withAirPlaySuggestions:NO fromPushNotification:NO animated:YES completion:nil];
     }
+}
+
+- (IBAction)close:(id)sender
+{
+    [self.controller reset];
+    self.media = nil;
 }
 
 #pragma mark Gestures
