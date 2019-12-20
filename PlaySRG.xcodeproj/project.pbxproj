@@ -467,16 +467,6 @@
 		08C691371D391A1B00BB8AAA /* HomeMediaListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C691331D391A1B00BB8AAA /* HomeMediaListTableViewCell.m */; };
 		08C691381D391A1B00BB8AAA /* HomeMediaListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C691331D391A1B00BB8AAA /* HomeMediaListTableViewCell.m */; };
 		08C691391D391A1B00BB8AAA /* HomeMediaListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08C691331D391A1B00BB8AAA /* HomeMediaListTableViewCell.m */; };
-		08D0E0E81E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D0E0E61E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m */; };
-		08D0E0E91E9D21C100AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D0E0E71E9D21C100AB8298 /* HomeRadioLiveTableViewCell.xib */; };
-		08D0E0EA1E9D29F700AB8298 /* HomeRadioLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D0E0E61E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m */; };
-		08D0E0EB1E9D29F700AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D0E0E71E9D21C100AB8298 /* HomeRadioLiveTableViewCell.xib */; };
-		08D0E0EC1E9D29F800AB8298 /* HomeRadioLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D0E0E61E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m */; };
-		08D0E0ED1E9D29F800AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D0E0E71E9D21C100AB8298 /* HomeRadioLiveTableViewCell.xib */; };
-		08D0E0EE1E9D29F800AB8298 /* HomeRadioLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D0E0E61E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m */; };
-		08D0E0EF1E9D29F800AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D0E0E71E9D21C100AB8298 /* HomeRadioLiveTableViewCell.xib */; };
-		08D0E0F01E9D29F800AB8298 /* HomeRadioLiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08D0E0E61E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m */; };
-		08D0E0F11E9D29F800AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D0E0E71E9D21C100AB8298 /* HomeRadioLiveTableViewCell.xib */; };
 		08D313585365FC2279A430F9 /* libPods-PlaySRG-Play RSI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 150A5554C7A1428D98119E57 /* libPods-PlaySRG-Play RSI.a */; };
 		08DADF8C20D92D6500291AD1 /* placeholder_notification-180.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 08DADF8B20D92D6400291AD1 /* placeholder_notification-180.pdf */; };
 		08DADF8D20D92D6500291AD1 /* placeholder_notification-180.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 08DADF8B20D92D6400291AD1 /* placeholder_notification-180.pdf */; };
@@ -1893,9 +1883,6 @@
 		08C691271D39089700BB8AAA /* CommonImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CommonImages.xcassets; sourceTree = "<group>"; };
 		08C691321D391A1B00BB8AAA /* HomeMediaListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMediaListTableViewCell.h; sourceTree = "<group>"; };
 		08C691331D391A1B00BB8AAA /* HomeMediaListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMediaListTableViewCell.m; sourceTree = "<group>"; };
-		08D0E0E51E9D21C100AB8298 /* HomeRadioLiveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeRadioLiveTableViewCell.h; sourceTree = "<group>"; };
-		08D0E0E61E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeRadioLiveTableViewCell.m; sourceTree = "<group>"; };
-		08D0E0E71E9D21C100AB8298 /* HomeRadioLiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeRadioLiveTableViewCell.xib; sourceTree = "<group>"; };
 		08DADF8B20D92D6400291AD1 /* placeholder_notification-180.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "placeholder_notification-180.pdf"; sourceTree = "<group>"; };
 		08DD9D541FFE6EDA00115906 /* ModuleHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModuleHeaderView.xib; sourceTree = "<group>"; };
 		08DD9D551FFE6EDA00115906 /* ModuleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleViewController.h; sourceTree = "<group>"; };
@@ -2905,9 +2892,6 @@
 				08BAABD71E7613F0007644D7 /* HomeMediasViewController.h */,
 				08BAABD81E7613F0007644D7 /* HomeMediasViewController.m */,
 				08BAABD91E7613F0007644D7 /* HomeMediasViewController.storyboard */,
-				08D0E0E51E9D21C100AB8298 /* HomeRadioLiveTableViewCell.h */,
-				08D0E0E61E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m */,
-				08D0E0E71E9D21C100AB8298 /* HomeRadioLiveTableViewCell.xib */,
 				08564B1B1D41111A00381549 /* HomeSectionHeaderView.h */,
 				08564B1C1D41111A00381549 /* HomeSectionHeaderView.m */,
 				08564B221D41112800381549 /* HomeSectionHeaderView.xib */,
@@ -4170,7 +4154,6 @@
 				6F0C99AB2121FBD800073AB6 /* SRGDataProvider.bundle in Resources */,
 				6F0F88A21ECF0CE50060A893 /* override_default_srf_musikwelle.pdf in Resources */,
 				0837CECA1D3FD6E600A1E089 /* SRGSSRType_Md.ttf in Resources */,
-				08D0E0E91E9D21C100AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */,
 				6F0F88A51ECF0CE50060A893 /* override_default_tv_srf2.pdf in Resources */,
 				6FD2CBC31DD19B0200B44958 /* placeholder_media-180.pdf in Resources */,
 				084F94B522D3B77700D2D3A5 /* SearchSettingMultiSelectionViewController.storyboard in Resources */,
@@ -4289,7 +4272,6 @@
 				08BAABDD1E76141E007644D7 /* HomeMediasViewController.storyboard in Resources */,
 				08C6901D1D38E08C00BB8AAA /* LaunchScreen.xib in Resources */,
 				0837CED31D3FDAF900A1E089 /* SRGSSRType_Md.ttf in Resources */,
-				08D0E0EB1E9D29F700AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */,
 				0804916A22831DEF00E4CEC2 /* HomeShowListTableViewCell.xib in Resources */,
 				6F7C89D020AAFC6100255A54 /* Onboardings.xcassets in Resources */,
 				6F4C0A7C20DCBDD200069A85 /* HomeShowVerticalListTableViewCell.xib in Resources */,
@@ -4398,7 +4380,6 @@
 				6FCB574A1EC2047B0015CAB7 /* override_artwork_rete_uno.pdf in Resources */,
 				0837CEDC1D3FDAFA00A1E089 /* SRGSSRType_Md.ttf in Resources */,
 				0828BB3C22E62831009617A7 /* parsePlayUrl.js in Resources */,
-				08D0E0ED1E9D29F800AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */,
 				6F4C0A7D20DCBDD200069A85 /* HomeShowVerticalListTableViewCell.xib in Resources */,
 				08C68FAA1D38DF8300BB8AAA /* iTunesArtwork in Resources */,
 				6FD2CBC51DD19B0200B44958 /* placeholder_media-180.pdf in Resources */,
@@ -4500,7 +4481,6 @@
 				08BAABE11E76141F007644D7 /* HomeMediasViewController.storyboard in Resources */,
 				086321122258C6D000C719A6 /* WatchLaterTableViewCell.xib in Resources */,
 				0837CEE51D3FDAFA00A1E089 /* SRGSSRType_Md.ttf in Resources */,
-				08D0E0EF1E9D29F800AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */,
 				6F2961FF2006186100CAB0E4 /* placeholder_media_list-180.pdf in Resources */,
 				6F6B643621A70FAA00E207FC /* HomeStatusHeaderView.xib in Resources */,
 				08C68FE81D38E04B00BB8AAA /* LaunchScreen.xib in Resources */,
@@ -4603,7 +4583,6 @@
 				0832BF1922BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.xib in Resources */,
 				6FA9ECC420C7AD8C00D3D6C2 /* NotificationsViewController.storyboard in Resources */,
 				0837CEEE1D3FDAFA00A1E089 /* SRGSSRType_Md.ttf in Resources */,
-				08D0E0F11E9D29F800AB8298 /* HomeRadioLiveTableViewCell.xib in Resources */,
 				6F0C99A52121FBD800073AB6 /* SRGNetwork.bundle in Resources */,
 				0804916D22831DEF00E4CEC2 /* HomeShowListTableViewCell.xib in Resources */,
 				0875852123A0025F00FA7207 /* ProfileViewController.storyboard in Resources */,
@@ -5765,7 +5744,6 @@
 				6F488ACB22EED363002B1150 /* PlayAccessibilityFormatter.m in Sources */,
 				086BDE151EA63D3800965F45 /* PlayMiniPlayerView.m in Sources */,
 				6F7EEBF322DC7AA7005E5A97 /* SearchSettingMultiSelectionCell.m in Sources */,
-				08D0E0E81E9D21C100AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
 				0875853623A3DEFD00FA7207 /* LivesViewController.m in Sources */,
 				6FEC91A921A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6FE1B4971DCB84F00094D5BA /* AnalyticsConstants.m in Sources */,
@@ -5911,7 +5889,6 @@
 				6F12DB4721A3EFBF0054879D /* HistoryTableViewCell.m in Sources */,
 				6F4760841EB37DF1003021EA /* UIViewController+PlaySRG.m in Sources */,
 				E6971AEE1D4B300C008CA703 /* PlayApplicationError.m in Sources */,
-				08D0E0EA1E9D29F700AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
 				6FDF08F1218B126700B2AF2C /* UpdateInfo.m in Sources */,
 				0875852323A0025F00FA7207 /* ProfileViewController.m in Sources */,
 				6FA5D15E1F2077B10059E4E2 /* NSString+PlaySRG.m in Sources */,
@@ -6075,7 +6052,6 @@
 				6F12DB4821A3EFBF0054879D /* HistoryTableViewCell.m in Sources */,
 				6F47608B1EB37DF1003021EA /* UIViewController+PlaySRG.m in Sources */,
 				E6971AEF1D4B300C008CA703 /* PlayApplicationError.m in Sources */,
-				08D0E0EC1E9D29F800AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
 				6FDF08F2218B126700B2AF2C /* UpdateInfo.m in Sources */,
 				0875852423A0025F00FA7207 /* ProfileViewController.m in Sources */,
 				6FA5D15F1F2077B10059E4E2 /* NSString+PlaySRG.m in Sources */,
@@ -6239,7 +6215,6 @@
 				6F12DB4921A3EFBF0054879D /* HistoryTableViewCell.m in Sources */,
 				6F4760921EB37DF1003021EA /* UIViewController+PlaySRG.m in Sources */,
 				E6971AF01D4B300C008CA703 /* PlayApplicationError.m in Sources */,
-				08D0E0EE1E9D29F800AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
 				6FDF08F3218B126700B2AF2C /* UpdateInfo.m in Sources */,
 				0875852523A0025F00FA7207 /* ProfileViewController.m in Sources */,
 				6FA5D1601F2077B10059E4E2 /* NSString+PlaySRG.m in Sources */,
@@ -6403,7 +6378,6 @@
 				6F12DB4A21A3EFBF0054879D /* HistoryTableViewCell.m in Sources */,
 				6F4760991EB37DF2003021EA /* UIViewController+PlaySRG.m in Sources */,
 				E6971AF11D4B300C008CA703 /* PlayApplicationError.m in Sources */,
-				08D0E0F01E9D29F800AB8298 /* HomeRadioLiveTableViewCell.m in Sources */,
 				6FDF08F4218B126700B2AF2C /* UpdateInfo.m in Sources */,
 				0875852623A0025F00FA7207 /* ProfileViewController.m in Sources */,
 				6FA5D1611F2077B10059E4E2 /* NSString+PlaySRG.m in Sources */,

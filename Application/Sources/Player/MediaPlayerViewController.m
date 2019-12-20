@@ -1883,13 +1883,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 
 - (void)mediaMetadataDidChange:(NSNotification *)notification
 {
-    // Store last audio livestream associated with the mini player for restoration when the application is restarted
     SRGMedia *media = notification.userInfo[SRGLetterboxMediaKey];
-    if (media.contentType == SRGContentTypeLivestream && media.mediaType == SRGMediaTypeAudio) {
-        [NSUserDefaults.standardUserDefaults setObject:media.URN forKey:PlaySRGSettingLastPlayedRadioLiveURN];
-        [NSUserDefaults.standardUserDefaults synchronize];
-    }
-    
     if (media) {
         [self.userActivity becomeCurrent];
     }

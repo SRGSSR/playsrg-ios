@@ -179,30 +179,6 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
         completionHandler(YES);
     }, @"FirstLaunchDone", nil);
     
-    // Migrate the latest radio live uid to URN
-    NSString *oldSettingLatestPlayedRadioLiveUid = [NSUserDefaults.standardUserDefaults stringForKey:@"PlaySRGSettingLatestPlayedRadioLiveUid"];
-    if (oldSettingLatestPlayedRadioLiveUid) {
-        [NSUserDefaults.standardUserDefaults removeObjectForKey:@"PlaySRGSettingLatestPlayedRadioLiveUid"];
-        [NSUserDefaults.standardUserDefaults synchronize];
-        
-        static dispatch_once_t s_onceToken;
-        static NSDictionary<NSNumber *, NSString *> *s_BUs;
-        dispatch_once(&s_onceToken, ^{
-            s_BUs = @{ @(SRGVendorRSI) : @"rsi",
-                       @(SRGVendorRTR) : @"rtr",
-                       @(SRGVendorRTS) : @"rts",
-                       @(SRGVendorSRF) : @"srf",
-                       @(SRGVendorSWI) : @"swi" };
-        });
-        SRGVendor vendor = ApplicationConfiguration.sharedApplicationConfiguration.vendor;
-        NSString *bu = s_BUs[@(vendor)];
-        if (bu) {
-            NSString *urn = [NSString stringWithFormat:@"urn:%@:audio:%@", bu, oldSettingLatestPlayedRadioLiveUid];
-            [NSUserDefaults.standardUserDefaults setObject:urn forKey:PlaySRGSettingLastPlayedRadioLiveURN];
-        }
-        [NSUserDefaults.standardUserDefaults synchronize];
-    }
-    
     [PushService.sharedService setup];
     [self updateApplicationBadge];
     FavoritesSetup();

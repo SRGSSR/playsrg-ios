@@ -30,7 +30,6 @@ NSString * const PlaySRGSettingAudioDescriptionAvailabilityDisplayed = @"PlaySRG
 
 NSString * const PlaySRGSettingLastLoggedInEmailAddress = @"PlaySRGSettingLastLoggedInEmailAddress";
 NSString * const PlaySRGSettingLastOpenHomepageUid = @"PlaySRGSettingLastOpenHomepageUid";
-NSString * const PlaySRGSettingLastPlayedRadioLiveURN = @"PlaySRGSettingLastPlayedRadioLiveURN";
 NSString * const PlaySRGSettingSelectedLiveStreamURNForChannels = @"PlaySRGSettingSelectedLiveStreamURNForChannels";
 NSString * const PlaySRGSettingServiceURL = @"PlaySRGSettingServiceURL";
 NSString * const PlaySRGSettingUserLocation = @"PlaySRGSettingUserLocation";

@@ -40,7 +40,6 @@ OBJC_EXPORT NSString * const PlaySRGSettingAudioDescriptionAvailabilityDisplayed
 
 OBJC_EXPORT NSString * const PlaySRGSettingLastLoggedInEmailAddress;
 OBJC_EXPORT NSString * const PlaySRGSettingLastOpenHomepageUid;
-OBJC_EXPORT NSString * const PlaySRGSettingLastPlayedRadioLiveURN;
 OBJC_EXPORT NSString * const PlaySRGSettingServiceURL;
 OBJC_EXPORT NSString * const PlaySRGSettingUserLocation;
 
