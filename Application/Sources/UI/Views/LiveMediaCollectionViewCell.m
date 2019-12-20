@@ -4,12 +4,13 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "HomeLiveMediaCollectionViewCell.h"
+#import "LiveMediaCollectionViewCell.h"
 
 #import "AnalyticsConstants.h"
 #import "ChannelService.h"
 #import "NSBundle+PlaySRG.h"
 #import "NSDateFormatter+PlaySRG.h"
+#import "NSString+PlaySRG.h"
 #import "PlayDurationFormatter.h"
 #import "SmartTimer.h"
 #import "SRGChannel+PlaySRG.h"
@@ -23,10 +24,8 @@
 #import <SRGAnalytics/SRGAnalytics.h>
 #import <SRGAppearance/SRGAppearance.h>
 
-@interface HomeLiveMediaCollectionViewCell ()
+@interface LiveMediaCollectionViewCell ()
 
-@property (nonatomic) SRGMedia *media;
-@property (nonatomic, getter=isFeatured) BOOL featured;
 @property (nonatomic) SRGChannel *channel;
 
 @property (nonatomic, weak) IBOutlet UIView *mediaView;
@@ -48,7 +47,7 @@
 
 @end
 
-@implementation HomeLiveMediaCollectionViewCell
+@implementation LiveMediaCollectionViewCell
 
 #pragma mark Getters and setters
 
@@ -96,12 +95,12 @@
     [self unregisterChannelUpdatesWithMedia:self.media];
     self.media = nil;
     
-    self.featured = NO;
     self.channel = nil;
     
     self.mediaView.hidden = YES;
     self.placeholderView.hidden = NO;
     
+    self.progressView.hidden = NO;
     self.progressView.progress = 1.f;
     
     self.blockingOverlayView.hidden = YES;
@@ -176,12 +175,11 @@
 
 #pragma mark Data
 
-- (void)setMedia:(SRGMedia *)media featured:(BOOL)featured
+- (void)setMedia:(SRGMedia *)media
 {
     [self unregisterChannelUpdatesWithMedia:self.media];
     
-    self.media = media;
-    self.featured = featured;
+    _media = media;
     self.channel = media.channel;
     
     [self registerForChannelUpdatesWithMedia:media];
@@ -192,7 +190,7 @@
 
 - (void)registerForChannelUpdatesWithMedia:(SRGMedia *)media
 {
-    if (! media) {
+    if (! media || media.contentType != SRGContentTypeLivestream) {
         return;
     }
     
@@ -204,7 +202,7 @@
 
 - (void)unregisterChannelUpdatesWithMedia:(SRGMedia *)media
 {
-    if (! media) {
+    if (! media || media.contentType != SRGContentTypeLivestream) {
         return;
     }
     
@@ -215,7 +213,7 @@
 
 - (void)reloadData
 {
-    if (! self.channel) {
+    if (! self.media || (self.media.contentType == SRGContentTypeLivestream && ! self.channel)) {
         self.mediaView.hidden = YES;
         self.placeholderView.hidden = NO;
         return;
@@ -224,9 +222,7 @@
     self.mediaView.hidden = NO;
     self.placeholderView.hidden = YES;
     
-    self.logoImageView.image = self.channel.play_banner22Image;
-    
-    self.titleLabel.font = [UIFont srg_mediumFontWithTextStyle:self.featured ? SRGAppearanceFontTextStyleTitle : SRGAppearanceFontTextStyleBody];
+    self.titleLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleTitle];
     self.durationLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleCaption];
     
     SRGBlockingReason blockingReason = [self.media blockingReasonAtDate:NSDate.date];
@@ -242,32 +238,64 @@
         self.titleLabel.textColor = UIColor.play_lightGrayColor;
     }
     
-    SRGAppearanceFontTextStyle subtitleTextStyle = self.featured ? SRGAppearanceFontTextStyleBody : SRGAppearanceFontTextStyleSubtitle;
-    ImageScale imageScale = self.featured ? ImageScaleMedium : ImageScaleSmall;
+    SRGAppearanceFontTextStyle subtitleTextStyle = SRGAppearanceFontTextStyleBody;
+    ImageScale imageScale = ImageScaleMedium;
     
     self.subtitleLabel.font = [UIFont srg_lightFontWithTextStyle:subtitleTextStyle];
     
-    SRGProgram *currentProgram = self.channel.currentProgram;
-    if ([currentProgram play_containsDate:NSDate.date]) {
-        self.titleLabel.text = currentProgram.title;
-        self.subtitleLabel.text = [NSString stringWithFormat:@"%@ - %@", [NSDateFormatter.play_timeFormatter stringFromDate:currentProgram.startDate], [NSDateFormatter.play_timeFormatter stringFromDate:currentProgram.endDate]];
+    [self.durationLabel play_displayDurationLabelForMediaMetadata:self.media];
+    
+    if (self.channel) {
+        self.logoImageView.image = self.channel.play_banner22Image;
         
-        float progress = [NSDate.date timeIntervalSinceDate:currentProgram.startDate] / ([currentProgram.endDate timeIntervalSinceDate:currentProgram.startDate]);
-        self.progressView.progress = fmaxf(fminf(progress, 1.f), 0.f);
-        
-        [self.thumbnailImageView play_requestImageForObject:currentProgram withScale:imageScale type:SRGImageTypeDefault placeholder:ImagePlaceholderMedia unavailabilityHandler:^{
+        SRGProgram *currentProgram = self.channel.currentProgram;
+        if ([currentProgram play_containsDate:NSDate.date]) {
+            self.titleLabel.text = currentProgram.title;
+            self.subtitleLabel.text = [NSString stringWithFormat:@"%@ - %@", [NSDateFormatter.play_timeFormatter stringFromDate:currentProgram.startDate], [NSDateFormatter.play_timeFormatter stringFromDate:currentProgram.endDate]];
+            
+            float progress = [NSDate.date timeIntervalSinceDate:currentProgram.startDate] / ([currentProgram.endDate timeIntervalSinceDate:currentProgram.startDate]);
+            self.progressView.progress = fmaxf(fminf(progress, 1.f), 0.f);
+            
+            [self.thumbnailImageView play_requestImageForObject:currentProgram withScale:imageScale type:SRGImageTypeDefault placeholder:ImagePlaceholderMedia unavailabilityHandler:^{
+                [self.thumbnailImageView play_requestImageForObject:self.channel withScale:imageScale type:SRGImageTypeDefault placeholder:ImagePlaceholderMedia];
+            }];
+        }
+        else {
+            self.titleLabel.text = self.channel.title;
+            self.subtitleLabel.text = NSLocalizedString(@"Currently", @"Text displayed on live cells when no program time information is available");
+            self.progressView.progress = 1.f;
+            
             [self.thumbnailImageView play_requestImageForObject:self.channel withScale:imageScale type:SRGImageTypeDefault placeholder:ImagePlaceholderMedia];
-        }];
+        }
     }
     else {
-        self.titleLabel.text = self.channel.title;
-        self.subtitleLabel.text = NSLocalizedString(@"Currently", @"Text displayed on live cells when no program time information is available");
-        self.progressView.progress = 1.f;
+        self.titleLabel.text = self.media.title;
         
-        [self.thumbnailImageView play_requestImageForObject:self.channel withScale:imageScale type:SRGImageTypeDefault placeholder:ImagePlaceholderMedia];
+        NSString *showTitle = self.media.show.title;
+        if (showTitle && ! [self.media.title containsString:showTitle]) {
+            NSMutableAttributedString *subtitle = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ - ", showTitle]
+                                                                                         attributes:@{ NSFontAttributeName : [UIFont srg_mediumFontWithTextStyle:subtitleTextStyle] }];
+            
+            NSDateFormatter *dateFormatter = NSDateFormatter.play_relativeDateAndTimeFormatter;
+            [subtitle appendAttributedString:[[NSAttributedString alloc] initWithString:[dateFormatter stringFromDate:self.media.date].play_localizedUppercaseFirstLetterString
+                                                                             attributes:@{ NSFontAttributeName : [UIFont srg_lightFontWithTextStyle:subtitleTextStyle] }]];
+            
+            self.subtitleLabel.attributedText = subtitle.copy;
+        }
+        else {
+            self.subtitleLabel.text = [NSDateFormatter.play_relativeDateAndTimeFormatter stringFromDate:self.media.date].play_localizedUppercaseFirstLetterString;
+        }
+        
+        if (self.media.contentType == SRGContentTypeScheduledLivestream && self.media.startDate && self.media.endDate && [self.media timeAvailabilityAtDate:NSDate.date] == SRGTimeAvailabilityAvailable) {
+            float progress = [NSDate.date timeIntervalSinceDate:self.media.startDate] / ([self.media.endDate timeIntervalSinceDate:self.media.startDate]);
+            self.progressView.progress = fmaxf(fminf(progress, 1.f), 0.f);
+        }
+        else {
+            self.progressView.hidden = YES;
+        }
+        
+        [self.thumbnailImageView play_requestImageForObject:self.media withScale:imageScale type:SRGImageTypeDefault placeholder:ImagePlaceholderMedia];
     }
-    
-    [self.durationLabel play_displayDurationLabelForMediaMetadata:self.media];
 }
 
 #pragma mark Previewing protocol

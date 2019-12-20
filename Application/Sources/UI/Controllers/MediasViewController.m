@@ -6,6 +6,7 @@
 
 #import "MediasViewController.h"
 
+#import "LiveMediaCollectionViewCell.h"
 #import "MediaCollectionViewCell.h"
 #import "UIViewController+PlaySRG.h"
 
@@ -27,6 +28,10 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
     UINib *cellNib = [UINib nibWithNibName:cellIdentifier bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:cellIdentifier];
     
+    NSString *liveCellIdentifier = NSStringFromClass(LiveMediaCollectionViewCell.class);
+    UINib *liveCellNib = [UINib nibWithNibName:liveCellIdentifier bundle:nil];
+    [self.collectionView registerNib:liveCellNib forCellWithReuseIdentifier:liveCellIdentifier];
+    
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(accessibilityVoiceOverStatusChanged:)
                                                name:UIAccessibilityVoiceOverStatusChanged
@@ -42,15 +47,22 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(MediaCollectionViewCell.class)
+    return [collectionView dequeueReusableCellWithReuseIdentifier:self.liveLargeCell ? NSStringFromClass(LiveMediaCollectionViewCell.class) : NSStringFromClass(MediaCollectionViewCell.class)
                                                      forIndexPath:indexPath];
 }
 
 #pragma mark UICollectionViewDelegate protocol
 
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(MediaCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [cell setMedia:self.items[indexPath.row] withDateFormatter:self.dateFormatter];
+    if (self.liveLargeCell) {
+        LiveMediaCollectionViewCell *liveMediaCell = (LiveMediaCollectionViewCell *)cell;
+        [liveMediaCell setMedia:self.items[indexPath.row]];
+    }
+    else {
+        MediaCollectionViewCell *mediaCell = (MediaCollectionViewCell *)cell;
+        [mediaCell setMedia:self.items[indexPath.row] withDateFormatter:self.dateFormatter];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -70,8 +82,14 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 {
     NSString *contentSizeCategory = UIApplication.sharedApplication.preferredContentSizeCategory;
     
-    // Table layout
-    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
+    // Large cell table layout
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.liveLargeCell) {
+        CGFloat width = CGRectGetWidth(collectionView.frame) - 2 * kLayoutHorizontalInset;
+        CGFloat height = width * 9 / 16 + 100.f;
+        return CGSizeMake(width, height);
+    }
+    // Line table layout
+    else if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
         CGFloat height = (SRGAppearanceCompareContentSizeCategories(contentSizeCategory, UIContentSizeCategoryExtraLarge) == NSOrderedAscending) ? 86.f : 100.f;
         return CGSizeMake(CGRectGetWidth(collectionView.frame) - 2 * kLayoutHorizontalInset, height);
     }

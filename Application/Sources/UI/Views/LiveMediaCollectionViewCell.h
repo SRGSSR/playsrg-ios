@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeLiveMediaCollectionViewCell : UICollectionViewCell <Previewing>
+@interface LiveMediaCollectionViewCell : UICollectionViewCell <Previewing>
 
-- (void)setMedia:(nullable SRGMedia *)media featured:(BOOL)featured;
+@property (nonatomic, nullable) SRGMedia *media;
 
 @end
 
