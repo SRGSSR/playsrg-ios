@@ -17,7 +17,6 @@
 #import "UIView+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 
-#import <FXReachability/FXReachability.h>
 #import <MAKVONotificationCenter/MAKVONotificationCenter.h>
 #import <SRGAppearance/SRGAppearance.h>
 #import <SRGLetterbox/SRGLetterbox.h>
@@ -25,8 +24,8 @@
 
 @interface PlayMiniPlayerView ()
 
-@property (nonatomic) SRGMedia *media;          // Save the latest media
-@property (nonatomic) SRGChannel *channel;      // Save the latest channel information
+@property (nonatomic) SRGMedia *media;          // Latest media
+@property (nonatomic) SRGChannel *channel;      // Latest channel information, if any
 
 @property (nonatomic) SRGLetterboxController *controller;
 
@@ -124,14 +123,6 @@
     [self addGestureRecognizer:tapGestureRecognizer];
     
     [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(reachabilityDidChange:)
-                                               name:FXReachabilityStatusDidChangeNotification
-                                             object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(applicationDidBecomeActive:)
-                                               name:UIApplicationDidBecomeActiveNotification
-                                             object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(applicationDidEnterBackground:)
                                                name:UIApplicationDidEnterBackgroundNotification
                                              object:nil];
@@ -169,12 +160,7 @@
         }];
         self.controller = letterboxService.controller;
         
-        if (self.media) {
-            [self reloadData];
-        }
-        else {
-            [self loadLatestMedia];
-        }
+        [self reloadData];
         
         [self registerForChannelUpdatesWithMedia:self.media];
     }
@@ -282,39 +268,6 @@
     // For non-started playback, display a full progress bar for livestreams (matching the usual slider behavior starting
     // at the end)
     self.progressView.progress = (self.media.contentType == SRGContentTypeLivestream) ? 1.f : HistoryPlaybackProgressForMediaMetadata(self.media);
-}
-
-- (void)loadLatestMedia
-{
-    ApplicationConfiguration *applicationConfiguration = ApplicationConfiguration.sharedApplicationConfiguration;
-    SRGVendor vendor = applicationConfiguration.vendor;
-    
-    void (^firstRadioLiveBlock)(void) = ^{
-        RadioChannel *radioChannel = ApplicationConfiguration.sharedApplicationConfiguration.radioChannels.firstObject;
-        if (radioChannel) {
-            [[SRGDataProvider.currentDataProvider radioLivestreamsForVendor:vendor channelUid:radioChannel.uid withCompletionBlock:^(NSArray<SRGMedia *> * _Nullable medias, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
-                self.media = ApplicationSettingSelectedLivestreamMediaForChannelUid(radioChannel.uid, medias) ?: medias.firstObject;
-                [self reloadData];
-            }] resume];
-        }
-    };
-    
-    NSString *lastPlayedRadioLiveURN = [NSUserDefaults.standardUserDefaults stringForKey:PlaySRGSettingLastPlayedRadioLiveURN];
-    if (lastPlayedRadioLiveURN) {
-        [[SRGDataProvider.currentDataProvider mediaCompositionForURN:lastPlayedRadioLiveURN standalone:ApplicationSettingStandaloneEnabled() withCompletionBlock:^(SRGMediaComposition * _Nullable mediaComposition, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
-            SRGMedia *media = [mediaComposition mediaForSubdivision:mediaComposition.mainChapter];
-            if (error || ! media) {
-                firstRadioLiveBlock();
-            }
-            else {
-                self.media = media;
-                [self reloadData];
-            }
-        }] resume];
-    }
-    else {
-        firstRadioLiveBlock();
-    }
 }
 
 #pragma mark Controller registration for playback-related UI updates
@@ -427,20 +380,6 @@
     }
     
     [self reloadData];
-}
-
-- (void)reachabilityDidChange:(NSNotification *)notification
-{
-    if ([FXReachability sharedInstance].reachable && ! self.media) {
-        [self loadLatestMedia];
-    }
-}
-
-- (void)applicationDidBecomeActive:(NSNotification *)notification
-{
-    if (! self.media) {
-        [self loadLatestMedia];
-    }
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification
