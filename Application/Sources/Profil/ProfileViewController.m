@@ -12,6 +12,7 @@
 #import "FavoritesViewController.h"
 #import "HistoryViewController.h"
 #import "MenuSectionInfo.h"
+#import "NotificationsViewController.h"
 #import "NSBundle+PlaySRG.h"
 #import "ProfileAccountHeaderView.h"
 #import "ProfileHeaderSectionView.h"
@@ -175,6 +176,16 @@
     
     UIViewController *viewController = nil;
     switch (menuItemInfo.menuItem) {
+        case MenuItemNotifications: {
+            viewController = [[NotificationsViewController alloc] init];
+            break;
+        }
+            
+        case MenuItemHistory: {
+            viewController = [[HistoryViewController alloc] init];
+            break;
+        }
+            
         case MenuItemFavorites: {
             viewController = [[FavoritesViewController alloc] init];
             break;
@@ -187,11 +198,6 @@
             
         case MenuItemDownloads: {
             viewController = [[DownloadsViewController alloc] init];
-            break;
-        }
-            
-        case MenuItemHistory: {
-            viewController = [[HistoryViewController alloc] init];
             break;
         }
             

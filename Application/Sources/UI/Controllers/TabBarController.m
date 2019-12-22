@@ -169,6 +169,11 @@ static const CGFloat MiniPlayerOffset = 5.f;
             break;
         }
             
+        case MenuItemNotifications: {
+            tabBarItem = TabBarItemProfile;
+            break;
+        }
+            
         case MenuItemTVOverview: {
             tabBarItem = TabBarItemVideos;
             break;

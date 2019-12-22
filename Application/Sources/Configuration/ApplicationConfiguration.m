@@ -130,18 +130,19 @@ NSString *TitleForMenuItem(MenuItem menuItem)
     static NSDictionary<NSNumber *, NSString *> *s_names;
     static dispatch_once_t s_onceToken;
     dispatch_once(&s_onceToken, ^{
-        s_names = @{ @(MenuItemSearch) : NSLocalizedString(@"Search", @"Label in the left menu to present the search view"),
-                     @(MenuItemFavorites) : NSLocalizedString(@"Favorites", @"Label in the left menu to present Favorites"),
-                     @(MenuItemWatchLater) : NSLocalizedString(@"Watch later", @"Label in the left menu to present the watch later list"),
-                     @(MenuItemDownloads) : NSLocalizedString(@"Downloads", @"Label in the left menu to present downloads"),
-                     @(MenuItemHistory) : NSLocalizedString(@"History", @"Label in the left menu to present history"),
-                     @(MenuItemTVOverview) : NSLocalizedString(@"Overview", @"Label in the left menu to present the main TV view"),
-                     @(MenuItemTVByDate) : NSLocalizedString(@"Programmes by date", @"Label in the left menu to present programmes by date"),
-                     @(MenuItemTVShowAZ) : NSLocalizedString(@"Programmes A-Z", @"Label in the left menu to present shows A to Z (radio or TV)"),
-                     @(MenuItemRadioShowAZ) : NSLocalizedString(@"Programmes A-Z", @"Label in the left menu to present shows A to Z (radio or TV)"),
-                     @(MenuItemFeedback) : NSLocalizedString(@"Feedback", @"Label in the left menu to display the feedback form"),
-                     @(MenuItemSettings) : NSLocalizedString(@"Settings", @"Label in the left menu to present settings"),
-                     @(MenuItemHelp) : NSLocalizedString(@"Help and copyright", @"Label in the left menu to present the help page") };
+        s_names = @{ @(MenuItemDownloads) : NSLocalizedString(@"Downloads", @"Label to present downloads"),
+                     @(MenuItemFavorites) : NSLocalizedString(@"Favorites", @"Label to present Favorites"),
+                     @(MenuItemFeedback) : NSLocalizedString(@"Feedback", @"Label to display the feedback form"),
+                     @(MenuItemHistory) : NSLocalizedString(@"History", @"Label to present history"),
+                     @(MenuItemHelp) : NSLocalizedString(@"Help and copyright", @"Label to present the help page"),
+                     @(MenuItemNotifications) : NSLocalizedString(@"Notifications", @"Label to present the help page"),
+                     @(MenuItemRadioShowAZ) : NSLocalizedString(@"Programmes A-Z", @"Label to present shows A to Z (radio or TV)"),
+                     @(MenuItemSearch) : NSLocalizedString(@"Search", @"Label to present the search view"),
+                     @(MenuItemSettings) : NSLocalizedString(@"Settings", @"Label to present settings"),
+                     @(MenuItemTVByDate) : NSLocalizedString(@"Programmes by date", @"Label to present programmes by date"),
+                     @(MenuItemTVOverview) : NSLocalizedString(@"Overview", @"Label to present the main TV view"),
+                     @(MenuItemTVShowAZ) : NSLocalizedString(@"Programmes A-Z", @"Label to present shows A to Z (radio or TV)"),
+                     @(MenuItemWatchLater) : NSLocalizedString(@"Watch later", @"Label to present the watch later list") };
     });
     return s_names[@(menuItem)];
 }

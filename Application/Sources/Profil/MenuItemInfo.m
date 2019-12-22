@@ -115,6 +115,11 @@ MenuItemOptionKey const MenuItemOptionShowByDateDateKey = @"MenuItemOptionShowBy
             break;
         }
             
+        case MenuItemNotifications: {
+            image = [UIImage imageNamed:@"subscription-22"];
+            break;
+        }
+            
         case MenuItemTVOverview: {
             image = [UIImage imageNamed:@"home-22"];
             break;

@@ -17,16 +17,12 @@
 #import "HomeShowVerticalListTableViewCell.h"
 #import "HomeStatusHeaderView.h"
 #import "NavigationController.h"
-#import "Notification.h"
-#import "NotificationsViewController.h"
 #import "NSBundle+PlaySRG.h"
-#import "PushService.h"
 #import "SearchViewController.h"
 #import "UIColor+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 
 #import <libextobjc/libextobjc.h>
-#import <PPBadgeView/PPBadgeView.h>
 #import <SRGAppearance/SRGAppearance.h>
 #import <SRGDataProvider/SRGDataProvider.h>
 #import <SRGUserData/SRGUserData.h>
@@ -128,27 +124,12 @@
                                                name:UIAccessibilityVoiceOverStatusChanged
                                              object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(applicationDidBecomeActive:)
-                                               name:UIApplicationDidBecomeActiveNotification
-                                             object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(didReceiveNotification:)
-                                               name:PushServiceDidReceiveNotification
-                                             object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(preferencesStateDidChange:)
                                                name:SRGPreferencesDidChangeNotification
                                              object:SRGUserData.currentUserData.preferences];
     
     [self updateStatusHeaderViewLayout];
     [self.tableView reloadData];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self updateBarButtonItems];
 }
 
 - (void)viewWillLayoutSubviews
@@ -315,49 +296,6 @@
     // Always set a header view. Setting it to nil when no message is displayed does not correctly update the table
     // view. Instead, use an invisible header with length close to 0
     self.tableView.tableHeaderView = headerView;
-}
-
-- (void)updateBarButtonItems
-{
-    NSMutableArray<UIBarButtonItem *> *rightBarButtonItems = [NSMutableArray array];
-    
-    [PushService.sharedService updateApplicationBadge];
-    
-    if (@available(iOS 10, *)) {
-        if (PushService.sharedService.enabled) {
-            UIImage *notificationImage = [UIImage imageNamed:@"subscription_full-22"];
-            UIButton *notificationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            notificationButton.frame = CGRectMake(0.f, 0.f, notificationImage.size.width, notificationImage.size.height);
-            [notificationButton setImage:notificationImage forState:UIControlStateNormal];
-            [notificationButton addTarget:self action:@selector(showNotifications:) forControlEvents:UIControlEventTouchUpInside];
-            
-            NSInteger badgeNumber = UIApplication.sharedApplication.applicationIconBadgeNumber;
-            if (badgeNumber != 0) {
-                NSString *badgeText = (badgeNumber > 99) ? @"99+" : @(badgeNumber).stringValue;
-                [notificationButton pp_addBadgeWithText:badgeText];
-                [notificationButton pp_moveBadgeWithX:-6.f Y:7.f];
-                [notificationButton pp_setBadgeHeight:14.f];
-                [notificationButton pp_setBadgeLabelAttributes:^(PPBadgeLabel *badgeLabel) {
-                    badgeLabel.font = [UIFont boldSystemFontOfSize:13.f];
-                    badgeLabel.backgroundColor = UIColor.play_notificationRedColor;
-                }];
-                
-                RadioChannel *radioChannel = self.radioChannel;
-                if (radioChannel && ! radioChannel.badgeStrokeHidden) {
-                    [notificationButton pp_setBadgeLabelAttributes:^(PPBadgeLabel *badgeLabel) {
-                        badgeLabel.layer.borderColor = radioChannel.titleColor.CGColor;
-                        badgeLabel.layer.borderWidth = 1.f;
-                    }];
-                }
-            }
-            
-            UIBarButtonItem *notificationsBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:notificationButton];
-            notificationsBarButtonItem.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Notifications", @"Notifications button label");
-            [rightBarButtonItems addObject:notificationsBarButtonItem];
-        }
-    }
-    
-    self.navigationItem.rightBarButtonItems = rightBarButtonItems.copy;
 }
 
 #pragma mark Section management
@@ -593,13 +531,6 @@
     [self refresh];
 }
 
-- (void)showNotifications:(id)sender
-{
-    NotificationsViewController *notificationsViewController = [[NotificationsViewController alloc] init];
-    NavigationController *navigationController = [[NavigationController alloc] initWithRootViewController:notificationsViewController];
-    [self presentViewController:navigationController animated:YES completion:nil];
-}
-
 - (void)search:(id)sender
 {
     SearchViewController *searchViewController = [[SearchViewController alloc] initWithQuery:nil settings:nil];
@@ -620,19 +551,6 @@
 - (void)accessibilityVoiceOverStatusChanged:(NSNotification *)notification
 {
     [self.tableView reloadData];
-}
-
-- (void)applicationDidBecomeActive:(NSNotification *)notification
-{
-    // Ensure correct notification button availability after:
-    //   - Dismissal of the initial system alert (displayed once at most), asking the user to enable push notifications.
-    //   - Returning from system settings, where the user might have updated push notification authorizations.
-    [self updateBarButtonItems];
-}
-
-- (void)didReceiveNotification:(NSNotification *)notification
-{
-    [self updateBarButtonItems];
 }
 
 - (void)preferencesStateDidChange:(NSNotification *)notification

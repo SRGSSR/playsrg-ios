@@ -28,6 +28,9 @@
     
     // My content section
     NSMutableArray<MenuItemInfo *> *myContentMenuItems = [NSMutableArray array];
+    if (@available(iOS 10, *)) {
+        [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemNotifications]];
+    }
     [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemHistory]];
     [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemFavorites]];
     [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemWatchLater]];

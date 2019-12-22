@@ -66,14 +66,6 @@
     [self.tableView insertSubview:refreshControl atIndex:0];
     self.refreshControl = refreshControl;
     
-    UIBarButtonItem *closeBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close-22"]
-                                                             landscapeImagePhone:nil
-                                                                           style:UIBarButtonItemStyleDone
-                                                                          target:self
-                                                                          action:@selector(close:)];
-    closeBarButtonItem.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Close", @"Close button label on search view");
-    self.navigationItem.leftBarButtonItem = closeBarButtonItem;
-    
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(applicationDidBecomeActive:)
                                                name:UIApplicationDidBecomeActiveNotification
@@ -308,11 +300,6 @@
 - (void)refresh:(id)sender
 {
     [self refresh];
-}
-
-- (void)close:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark Notifications

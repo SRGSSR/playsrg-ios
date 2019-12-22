@@ -56,6 +56,7 @@ typedef NS_ENUM(NSInteger, MenuItem) {
     MenuItemWatchLater,
     MenuItemDownloads,
     MenuItemHistory,
+    MenuItemNotifications,
     
     MenuItemTVOverview,
     MenuItemTVByDate,
