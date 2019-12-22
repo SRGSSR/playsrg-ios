@@ -8,6 +8,7 @@
 
 #import "HomeShowCollectionViewCell.h"
 #import "ShowViewController.h"
+#import "UIDevice+PlaySRG.h"
 
 #import <CoconutKit/CoconutKit.h>
 #import <SRGAppearance/SRGAppearance.h>
@@ -192,10 +193,12 @@ static const CGFloat HomeStandardMargin = 10.f;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewFlowLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    BOOL isLandscape = UIDevice.play_isLandscape;
+    
     // For compact layouts, display a single item with the full available collection width (up to a small margin)
     if (self.featured
             && [self collectionView:collectionView numberOfItemsInSection:indexPath.section] == 1
-            && self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
+            && self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && ! isLandscape) {
         return CGSizeMake(CGRectGetWidth(collectionView.frame) - 2 * HomeStandardMargin, CGRectGetHeight(collectionView.frame));
     }
     else {

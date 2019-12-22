@@ -17,6 +17,7 @@
 #import "NSString+PlaySRG.h"
 #import "SRGMedia+PlaySRG.h"
 #import "UIColor+PlaySRG.h"
+#import "UIDevice+PlaySRG.h"
 #import "UIImage+PlaySRG.h"
 #import "UIImageView+PlaySRG.h"
 #import "UILabel+PlaySRG.h"
@@ -270,7 +271,7 @@
 //   - Run. If conflicts still remain, lower priorities of remaining conflicting constraints
 - (void)updateActiveConstraints
 {
-    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && ! UIDevice.play_isLandscape) {
         for (NSLayoutConstraint *layoutConstraint in self.allSizeLayoutConstraints) {
             layoutConstraint.active = NO;
         }

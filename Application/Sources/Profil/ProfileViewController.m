@@ -204,7 +204,7 @@
             NSString *appVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
             [queryItems addObject:[NSURLQueryItem queryItemWithName:@"version" value:appVersion]];
             
-            BOOL isPad = UIDevice.play_deviceType == DeviceTypePad;
+            BOOL isPad = UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad;
             [queryItems addObject:[NSURLQueryItem queryItemWithName:@"type" value:isPad ? @"tablet" : @"phone"]];
             [queryItems addObject:[NSURLQueryItem queryItemWithName:@"model" value:UIDevice.currentDevice.model]];
             

@@ -361,10 +361,9 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     // iPhone devices: Set full screen in landscape orientation (done before the view is actually displayed. This
     // avoids status bar hiccups)
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
-        UIDeviceOrientation deviceOrientation = UIDevice.currentDevice.orientation;
-        BOOL isLandscape = UIDeviceOrientationIsValidInterfaceOrientation(deviceOrientation) ? UIDeviceOrientationIsLandscape(deviceOrientation) : UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation);
-        self.statusBarHidden = isLandscape;
+        BOOL isLandscape = UIDevice.play_isLandscape;
         
+        self.statusBarHidden = isLandscape;
         self.transitioning = isLandscape;
         [self.letterboxView setFullScreen:isLandscape animated:NO];
         self.transitioning = NO;
@@ -508,10 +507,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     [self.letterboxController cancelContinuousPlayback];
     
     if ([self play_isMovingFromParentViewController]) {
-        if (UIDevice.play_deviceType == DeviceTypePhoneOther) {
-            [UIDevice.currentDevice setValue:@(UIInterfaceOrientationPortrait) forKey:@keypath(UIDevice.new, orientation)];
-        }
-        
         if (self.letterboxController.media.mediaType != SRGMediaTypeAudio
             && ! self.letterboxController.pictureInPictureActive
             && ! AVAudioSession.srg_isAirPlayActive

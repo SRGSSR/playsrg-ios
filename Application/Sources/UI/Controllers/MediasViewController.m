@@ -8,6 +8,7 @@
 
 #import "LiveMediaCollectionViewCell.h"
 #import "MediaCollectionViewCell.h"
+#import "UIDevice+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 
 #import <SRGAppearance/SRGAppearance.h>
@@ -81,15 +82,16 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewFlowLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *contentSizeCategory = UIApplication.sharedApplication.preferredContentSizeCategory;
+    BOOL isLandscape = UIDevice.play_isLandscape;
     
     // Large cell table layout
-    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.liveLargeCell) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && ! isLandscape && self.liveLargeCell) {
         CGFloat width = CGRectGetWidth(collectionView.frame) - 2 * kLayoutHorizontalInset;
         CGFloat height = width * 9 / 16 + 100.f;
         return CGSizeMake(width, height);
     }
     // Line table layout
-    else if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
+    else if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && ! isLandscape) {
         CGFloat height = (SRGAppearanceCompareContentSizeCategories(contentSizeCategory, UIContentSizeCategoryExtraLarge) == NSOrderedAscending) ? 86.f : 100.f;
         return CGSizeMake(CGRectGetWidth(collectionView.frame) - 2 * kLayoutHorizontalInset, height);
     }

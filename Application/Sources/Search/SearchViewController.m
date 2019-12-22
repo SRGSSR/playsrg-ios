@@ -621,7 +621,9 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
         return CGSizeMake(CGRectGetWidth(collectionView.frame) - 2 * kLayoutHorizontalInset, 200.f);
     }
     else if ([self isDisplayingMediasInSection:indexPath.section]) {
-        if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
+        UIDeviceOrientation deviceOrientation = UIDevice.currentDevice.orientation;
+        BOOL isLandscape = UIDeviceOrientationIsValidInterfaceOrientation(deviceOrientation) ? UIDeviceOrientationIsLandscape(deviceOrientation) : UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation);
+        if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && ! isLandscape) {
             CGFloat height = (SRGAppearanceCompareContentSizeCategories(contentSizeCategory, UIContentSizeCategoryExtraLarge) == NSOrderedAscending) ? 86.f : 100.f;
             return CGSizeMake(CGRectGetWidth(collectionView.frame) - 2 * kLayoutHorizontalInset, height);
         }

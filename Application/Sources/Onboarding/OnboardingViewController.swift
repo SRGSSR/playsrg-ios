@@ -80,7 +80,7 @@ import SRGAppearance
     // MARK: Rotation
     
     public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if (UIDevice.play_deviceType == .pad) {
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
             return .all
         }
         else {

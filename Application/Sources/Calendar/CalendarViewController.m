@@ -158,7 +158,7 @@
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> _Nonnull context) {
-        if (UIDevice.play_deviceType == DeviceTypePhonePlus && size.width > size.height) {
+        if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone && size.width > size.height) {
             [self.calendar setScope:FSCalendarScopeWeek animated:NO];
         }
         
@@ -325,7 +325,7 @@
     }
     
     CGSize size = self.view.frame.size;
-    if (UIDevice.play_deviceType == DeviceTypePhonePlus && size.width > size.height) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone && size.width > size.height) {
         return NO;
     }
     

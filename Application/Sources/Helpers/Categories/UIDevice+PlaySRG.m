@@ -24,21 +24,10 @@ static void lockComplete(CFNotificationCenterRef center, void *observer, CFStrin
     return s_locked;
 }
 
-+ (DeviceType)play_deviceType
++ (BOOL)play_isLandscape
 {
-    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
-        CGRect screenBounds = UIScreen.mainScreen.bounds;
-        CGFloat screenLength = fmaxf(CGRectGetWidth(screenBounds), CGRectGetHeight(screenBounds));
-        if (screenLength == 736.f) {
-            return DeviceTypePhonePlus;
-        }
-        else {
-            return DeviceTypePhoneOther;
-        }
-    }
-    else {
-        return DeviceTypePad;
-    }
+    UIDeviceOrientation deviceOrientation = UIDevice.currentDevice.orientation;
+    return UIDeviceOrientationIsValidInterfaceOrientation(deviceOrientation) ? UIDeviceOrientationIsLandscape(deviceOrientation) : UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation);
 }
 
 #pragma mark Notifications

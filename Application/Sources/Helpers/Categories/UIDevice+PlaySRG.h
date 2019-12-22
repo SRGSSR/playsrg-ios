@@ -6,15 +6,6 @@
 
 #import <UIKit/UIKit.h>
 
-/**
- *  Major types of devices we support slightly differently.
- */
-typedef NS_ENUM(NSInteger, DeviceType) {
-    DeviceTypePhonePlus = 1,                     // iPhone Plus devices
-    DeviceTypePhoneOther,                        // Other iPhone devices
-    DeviceTypePad                                // iPad devices
-};
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIDevice (PlaySRG)
@@ -25,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, nonatomic, readonly) BOOL play_isLocked;
 
 /**
- *  The type of the current device.
+ *  Return YES when the device is in landscape.
  */
-@property (class, nonatomic, readonly) DeviceType play_deviceType;
+@property (class, nonatomic, readonly) BOOL play_isLandscape;
 
 @end
 

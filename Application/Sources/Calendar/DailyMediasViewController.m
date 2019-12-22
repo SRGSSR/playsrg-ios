@@ -99,7 +99,7 @@
 
 - (void)updateAppearanceForSize:(CGSize)size
 {
-    if (UIDevice.play_deviceType == DeviceTypePhonePlus && size.width > size.height) {
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone && size.width > size.height) {
         self.emptyCollectionImage = nil;
     }
     else {
