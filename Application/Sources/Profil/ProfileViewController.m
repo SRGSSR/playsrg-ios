@@ -17,6 +17,8 @@
 #import "ProfileAccountHeaderView.h"
 #import "ProfileHeaderSectionView.h"
 #import "ProfileTableViewCell.h"
+#import "PushService.h"
+#import "UIColor+PlaySRG.h"
 #import "UIDevice+PlaySRG.h"
 #import "UIScrollView+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
@@ -74,6 +76,22 @@
                                            selector:@selector(applicationConfigurationDidChange:)
                                                name:ApplicationConfigurationDidChangeNotification
                                              object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(didReceiveNotification:)
+                                               name:PushServiceDidReceiveNotification
+                                             object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(badgeDidChange:)
+                                               name:PushServiceBadgeDidChangeNotification
+                                             object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Ensure correct notification badge on notification cell
+    [self.tableView reloadData];
 }
 
 #pragma mark Rotation
@@ -267,6 +285,26 @@
     
     // Do not update selectedMenuItemInfo. If now invalid, it must not be visibly selected after all. A correct value
     // will be set the next time the user selects a menu item
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+    // Ensure correct notification badge on notification cell availability after:
+    //   - Dismissal of the initial system alert (displayed once at most), asking the user to enable push notifications.
+    //   - Returning from system settings, where the user might have updated push notification authorizations.
+    [self.tableView reloadData];
+}
+
+- (void)didReceiveNotification:(NSNotification *)notification
+{
+    // Ensure correct notification badge on notification cell
+    [self.tableView reloadData];
+}
+
+- (void)badgeDidChange:(NSNotification *)notification
+{
+    // Ensure correct notification badge on notification cell
+    [self.tableView reloadData];
 }
 
 @end

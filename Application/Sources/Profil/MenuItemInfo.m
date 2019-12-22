@@ -7,6 +7,7 @@
 #import "MenuItemInfo.h"
 
 #import "ApplicationConfiguration.h"
+#import "PushService.h"
 
 MenuItemOptionKey const MenuItemOptionSearchMediaTypeOptionKey = @"MenuItemOptionSearchMediaTypeOption";
 MenuItemOptionKey const MenuItemOptionSearchQueryKey = @"MenuItemOptionSearchQuery";
@@ -116,7 +117,7 @@ MenuItemOptionKey const MenuItemOptionShowByDateDateKey = @"MenuItemOptionShowBy
         }
             
         case MenuItemNotifications: {
-            image = [UIImage imageNamed:@"subscription-22"];
+            image = PushService.sharedService.enabled ? [UIImage imageNamed:@"subscription_full-22"] : [UIImage imageNamed:@"subscription-22"];
             break;
         }
             

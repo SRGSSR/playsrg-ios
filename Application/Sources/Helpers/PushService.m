@@ -18,6 +18,7 @@
 #import <UserNotifications/UserNotifications.h>
 
 NSString * const PushServiceDidReceiveNotification = @"PushServiceDidReceiveNotification";
+NSString * const PushServiceBadgeDidChangeNotification = @"PushServiceBadgeDidChangeNotification";
 
 @interface PushService () <UAPushNotificationDelegate>
 
@@ -184,6 +185,7 @@ NSString * const PushServiceDidReceiveNotification = @"PushServiceDidReceiveNoti
 - (void)resetApplicationBadge
 {
     [[UAirship push] resetBadge];
+    [NSNotificationCenter.defaultCenter postNotificationName:PushServiceBadgeDidChangeNotification object:self];
 }
 
 - (void)updateApplicationBadge
@@ -192,6 +194,7 @@ NSString * const PushServiceDidReceiveNotification = @"PushServiceDidReceiveNoti
     
     if (UIApplication.sharedApplication.applicationIconBadgeNumber > unreadNotificationCount) {
         [[UAirship push] setBadgeNumber:unreadNotificationCount];
+        [NSNotificationCenter.defaultCenter postNotificationName:PushServiceBadgeDidChangeNotification object:self];
     }
 }
 
