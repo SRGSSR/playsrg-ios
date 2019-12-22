@@ -17,7 +17,6 @@
 #import "ProfileAccountHeaderView.h"
 #import "ProfileHeaderSectionView.h"
 #import "ProfileTableViewCell.h"
-#import "SettingsViewController.h"
 #import "UIDevice+PlaySRG.h"
 #import "UIScrollView+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
@@ -228,11 +227,6 @@
                 webView.scrollView.scrollEnabled = NO;
             } decisionHandler:nil analyticsPageType:AnalyticsPageTypeSystem];
             viewController.title = NSLocalizedString(@"Your feedback", @"Title displayed at the top of the feedback view");
-            break;
-        }
-            
-        case MenuItemSettings: {
-            viewController = [[SettingsViewController alloc] init];
             break;
         }
             

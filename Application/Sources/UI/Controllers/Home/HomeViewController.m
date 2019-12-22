@@ -19,6 +19,7 @@
 #import "NavigationController.h"
 #import "NSBundle+PlaySRG.h"
 #import "SearchViewController.h"
+#import "SettingsViewController.h"
 #import "UIColor+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 
@@ -127,6 +128,13 @@
                                            selector:@selector(preferencesStateDidChange:)
                                                name:SRGPreferencesDidChangeNotification
                                              object:SRGUserData.currentUserData.preferences];
+    
+    UIBarButtonItem *settingsBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings-22"]
+                                                                           style:UIBarButtonItemStyleDone
+                                                                          target:self
+                                                                          action:@selector(settings:)];
+    settingsBarButtonItem.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Settings", @"Settings button label on home view");
+    self.navigationItem.rightBarButtonItem = settingsBarButtonItem;
     
     [self updateStatusHeaderViewLayout];
     [self.tableView reloadData];
@@ -544,6 +552,12 @@
     NavigationController *navigationController = [[NavigationController alloc] initWithRootViewController:searchViewController];
     navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)settings:(id)sender
+{
+    SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
+    [self.navigationController pushViewController:settingsViewController animated:YES];
 }
 
 #pragma mark Notifications

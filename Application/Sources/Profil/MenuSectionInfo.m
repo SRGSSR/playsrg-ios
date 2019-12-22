@@ -45,15 +45,14 @@
     if (applicationConfiguration.feedbackURL) {
         [otherItemInfos addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemFeedback]];
     }
-    
-    [otherItemInfos addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemSettings]];
-    
     if (applicationConfiguration.impressumURL) {
         [otherItemInfos addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemHelp]];
     }
-    [sectionInfos addObject:[[MenuSectionInfo alloc] initWithTitle:NSLocalizedString(@"Miscellaneous", @"Miscellaneous menu section header label")
-                                                     menuItemInfos:otherItemInfos.copy
-                                                        headerless:YES]];
+    if (otherItemInfos.count > 0) {
+        [sectionInfos addObject:[[MenuSectionInfo alloc] initWithTitle:NSLocalizedString(@"Miscellaneous", @"Miscellaneous menu section header label")
+                                                         menuItemInfos:otherItemInfos.copy
+                                                            headerless:YES]];
+    }
     
     return sectionInfos.copy;
 }
