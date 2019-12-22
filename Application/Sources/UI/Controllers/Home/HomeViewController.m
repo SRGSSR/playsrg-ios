@@ -18,7 +18,6 @@
 #import "HomeStatusHeaderView.h"
 #import "NavigationController.h"
 #import "NSBundle+PlaySRG.h"
-#import "SearchViewController.h"
 #import "SettingsViewController.h"
 #import "UIColor+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
@@ -537,21 +536,6 @@
 - (void)refresh:(id)sender
 {
     [self refresh];
-}
-
-- (void)search:(id)sender
-{
-    SearchViewController *searchViewController = [[SearchViewController alloc] initWithQuery:nil settings:nil];
-    
-    @weakify(self)
-    searchViewController.closeBlock = ^{
-        @strongify(self);
-        [self dismissViewControllerAnimated:YES completion:nil];
-    };
-    
-    NavigationController *navigationController = [[NavigationController alloc] initWithRootViewController:searchViewController];
-    navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)settings:(id)sender

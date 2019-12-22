@@ -164,18 +164,6 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
         self.searchController.hidesNavigationBarDuringPresentation = NO;
     }
     
-    if (self.closeBlock) {
-        UIBarButtonItem *closeBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close-22"]
-                                                                               style:UIBarButtonItemStyleDone
-                                                                              target:self
-                                                                              action:@selector(close:)];
-        closeBarButtonItem.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Close", @"Close button label on search view");
-        self.navigationItem.leftBarButtonItem = closeBarButtonItem;
-    }
-    else {
-        self.navigationItem.leftBarButtonItem = nil;
-    }
-    
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(accessibilityVoiceOverStatusChanged:)
                                                name:UIAccessibilityVoiceOverStatusChanged
@@ -729,14 +717,6 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
     if (scrollView.dragging && ! scrollView.decelerating) {
         [self.searchController.searchBar resignFirstResponder];
     }
-}
-
-#pragma mark Actions
-
-- (void)close:(id)sender
-{
-    NSAssert(self.closeBlock, @"Close must only be available if a close block has been defined");
-    self.closeBlock();
 }
 
 #pragma mark Notifications
