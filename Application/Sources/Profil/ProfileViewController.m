@@ -25,10 +25,12 @@
 #import "WatchLaterViewController.h"
 #import "WebViewController.h"
 
+#import <SRGAppearance/SRGAppearance.h>
 #import <SRGIdentity/SRGIdentity.h>
 
 @interface ProfileViewController ()
 
+@property (nonatomic) NSArray<Notification *> *unreadNotifications;
 @property (nonatomic) NSArray<MenuSectionInfo *> *sectionInfos;
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -43,7 +45,6 @@
 {
     if (self = [super init]) {
         self.title = NSLocalizedString(@"Profile", @"Title displayed at the top of the profile view");
-        self.sectionInfos = MenuSectionInfo.profileMenuSectionInfos;
     }
     return self;
 }
@@ -68,6 +69,10 @@
     Class headerClass = ProfileHeaderSectionView.class;
     [self.tableView registerClass:ProfileHeaderSectionView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(headerClass)];
     
+    NSString *cellIdentifier = NSStringFromClass(NotificationTableViewCell.class);
+    UINib *cellNib = [UINib nibWithNibName:cellIdentifier bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
+    
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(accessibilityVoiceOverStatusChanged:)
                                                name:UIAccessibilityVoiceOverStatusChanged
@@ -91,7 +96,7 @@
     [super viewWillAppear:animated];
     
     // Ensure correct notification badge on notification cell
-    [self.tableView reloadData];
+    [self reloadData];
 }
 
 #pragma mark Rotation
@@ -145,31 +150,61 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.sectionInfos[section].menuItemInfos.count;
+    if (self.unreadNotifications && section == 0) {
+        return self.unreadNotifications.count;
+    }
+    else {
+        return self.sectionInfos[section].menuItemInfos.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ProfileTableViewCell.class) forIndexPath:indexPath];
+    if (self.unreadNotifications && indexPath.section == 0) {
+        return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(NotificationTableViewCell.class) forIndexPath:indexPath];
+    }
+    else {
+        return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ProfileTableViewCell.class) forIndexPath:indexPath];
+    }
 }
 
 #pragma mark UITableViewDelegate protocol
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50.f;
+    if (self.unreadNotifications && indexPath.section == 0) {
+        NSString *contentSizeCategory = UIApplication.sharedApplication.preferredContentSizeCategory;
+        return (SRGAppearanceCompareContentSizeCategories(contentSizeCategory, UIContentSizeCategoryExtraLarge) == NSOrderedAscending) ? 94.f : 110.f;
+    }
+    else {
+        return 50.f;
+    }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(ProfileTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuItemInfo *menuItemInfo = self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row];
-    cell.menuItemInfo = menuItemInfo;
+    if (self.unreadNotifications && indexPath.section == 0) {
+        NotificationTableViewCell *notificationTableViewCell = (NotificationTableViewCell *)cell;
+        notificationTableViewCell.notification = self.unreadNotifications[indexPath.row];
+    }
+    else {
+        ProfileTableViewCell *profileTableViewCell = (ProfileTableViewCell *)cell;
+        MenuItemInfo *menuItemInfo = self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row];
+        profileTableViewCell.menuItemInfo = menuItemInfo;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuItemInfo *menuItemInfo = self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row];
-    [self openMenuItemInfo:menuItemInfo animated:YES];
+    if (self.unreadNotifications && indexPath.section == 0) {
+        Notification *notification = self.unreadNotifications[indexPath.row];
+        [NotificationsViewController openNotification:notification fromViewController:self];
+        [tableView reloadData];
+    }
+    else {
+        MenuItemInfo *menuItemInfo = self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row];
+        [self openMenuItemInfo:menuItemInfo animated:YES];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -186,6 +221,23 @@
 }
 
 #pragma mark Actions
+
+- (void)reloadData
+{
+    NSArray<Notification *> *unreadNotifications = Notification.unreadNotifications;
+    self.unreadNotifications = unreadNotifications.count > 3 ? @[ unreadNotifications[0], unreadNotifications[1], unreadNotifications[2] ] : unreadNotifications.count > 0 ? unreadNotifications : nil;
+    
+    self.sectionInfos = MenuSectionInfo.profileMenuSectionInfos;
+    
+    if (self.unreadNotifications) {
+        MenuSectionInfo *unreadNotificationsSectionInfo = [[MenuSectionInfo alloc] initWithTitle:NSLocalizedString(@"Latest notifications", @"Miscellaneous menu section header label")
+                                                                                   menuItemInfos:@[]
+                                                                                      headerless:YES];
+        self.sectionInfos = [@[ unreadNotificationsSectionInfo ] arrayByAddingObjectsFromArray:self.sectionInfos];
+    }
+    
+    [self.tableView reloadData];
+}
 
 - (void)openMenuItemInfo:(MenuItemInfo *)menuItemInfo animated:(BOOL)animated
 {
@@ -275,16 +327,13 @@
 
 - (void)accessibilityVoiceOverStatusChanged:(NSNotification *)notification
 {
-    [self.tableView reloadData];
+    [self reloadData];
 }
 
 - (void)applicationConfigurationDidChange:(NSNotification *)notification
 {
-    self.sectionInfos = MenuSectionInfo.profileMenuSectionInfos;
-    [self.tableView reloadData];
-    
-    // Do not update selectedMenuItemInfo. If now invalid, it must not be visibly selected after all. A correct value
-    // will be set the next time the user selects a menu item
+    // Update sections.
+    [self reloadData];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification
@@ -292,19 +341,19 @@
     // Ensure correct notification badge on notification cell availability after:
     //   - Dismissal of the initial system alert (displayed once at most), asking the user to enable push notifications.
     //   - Returning from system settings, where the user might have updated push notification authorizations.
-    [self.tableView reloadData];
+    [self reloadData];
 }
 
 - (void)didReceiveNotification:(NSNotification *)notification
 {
     // Ensure correct notification badge on notification cell
-    [self.tableView reloadData];
+    [self reloadData];
 }
 
 - (void)badgeDidChange:(NSNotification *)notification
 {
     // Ensure correct notification badge on notification cell
-    [self.tableView reloadData];
+    [self reloadData];
 }
 
 @end

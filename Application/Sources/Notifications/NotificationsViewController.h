@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NotificationsViewController : DataViewController <ContentInsets, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, NotificationTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
 
++ (void)openNotification:(Notification *)notification fromViewController:(UIViewController *)viewController;
+
 @end
 
 NS_ASSUME_NONNULL_END

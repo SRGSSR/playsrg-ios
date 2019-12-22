@@ -249,16 +249,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Notification *notification = self.notifications[indexPath.row];
+    
+    [NotificationsViewController openNotification:notification fromViewController:self];
+    
+    [tableView reloadData];
+}
+
+#pragma mark Actions
+
+- (void)refresh:(id)sender
+{
+    [self refresh];
+}
+
++ (void)openNotification:(Notification *)notification fromViewController:(UIViewController *)viewController
+{
     [Notification saveNotification:notification read:YES];
     
     if (notification.mediaURN) {
         [[SRGDataProvider.currentDataProvider mediaWithURN:notification.mediaURN completionBlock:^(SRGMedia * _Nullable media, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
             if (error) {
-                [Banner showError:error inViewController:self];
+                [Banner showError:error inViewController:viewController];
                 return;
             }
             
-            [self play_presentMediaPlayerWithMedia:media position:nil airPlaySuggestions:YES fromPushNotification:NO animated:YES completion:^{
+            [viewController play_presentMediaPlayerWithMedia:media position:nil airPlaySuggestions:YES fromPushNotification:NO animated:YES completion:^{
                 SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
                 labels.source = notification.showURN ?: AnalyticsSourceNotification;
                 labels.type = NotificationTypeString(notification.type) ?: AnalyticsTypeActionPlayMedia;
@@ -270,12 +285,12 @@
     else if (notification.showURN) {
         [[SRGDataProvider.currentDataProvider showWithURN:notification.showURN completionBlock:^(SRGShow * _Nullable show, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
             if (error) {
-                [Banner showError:error inViewController:self];
+                [Banner showError:error inViewController:viewController];
                 return;
             }
             
             ShowViewController *showViewController = [[ShowViewController alloc] initWithShow:show fromPushNotification:NO];
-            [self.navigationController pushViewController:showViewController animated:YES];
+            [viewController.navigationController pushViewController:showViewController animated:YES];
             
             SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
             labels.source = AnalyticsSourceNotification;
@@ -291,15 +306,6 @@
         labels.value = notification.body;
         [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:AnalyticsTitleNotificationOpen labels:labels];
     }
-    
-    [tableView reloadData];
-}
-
-#pragma mark Actions
-
-- (void)refresh:(id)sender
-{
-    [self refresh];
 }
 
 #pragma mark Notifications
