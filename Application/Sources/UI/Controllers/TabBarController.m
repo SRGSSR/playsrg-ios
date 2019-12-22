@@ -274,16 +274,6 @@ static const CGFloat MiniPlayerOffset = 5.f;
     }
 }
 
-- (void)displayAccountHeaderAnimated:(BOOL)animated
-{
-    self.selectedIndex = self.viewControllers.count - 1;
-    UINavigationController *navigationController = self.selectedViewController;
-    [navigationController popToRootViewControllerAnimated:animated];
-    
-    ProfileViewController *profileViewController = navigationController.viewControllers.firstObject;
-    [profileViewController scrollToTopAnimated:animated];
-}
-
 - (void)updateProfileTabBarItem
 {
     if (@available(iOS 10, *)) {

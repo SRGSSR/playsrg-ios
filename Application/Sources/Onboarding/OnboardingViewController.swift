@@ -198,12 +198,7 @@ import SRGAppearance
         if (self.onboarding.uid == "favorites" || self.onboarding.uid == "favorites_account") {
             PushService.shared?.presentSystemAlertForPushNotifications()
         }
-        self.dismiss(animated: true, completion: {
-            if (self.onboarding.uid == "account") {
-                let playAppDelegate = UIApplication.shared.delegate as! PlayAppDelegate
-                playAppDelegate.playTabBarController.displayAccountHeader(animated: true)
-            }
-        });
+        self.dismiss(animated: true, completion: nil);
     }
     
     @IBAction private func nextPage(_ sender: UIButton) {

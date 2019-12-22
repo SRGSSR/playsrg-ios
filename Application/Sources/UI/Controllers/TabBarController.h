@@ -23,11 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
 
-/**
- *  Display the account header.
- */
-- (void)displayAccountHeaderAnimated:(BOOL)animated;
-
 @end
 
 NS_ASSUME_NONNULL_END
