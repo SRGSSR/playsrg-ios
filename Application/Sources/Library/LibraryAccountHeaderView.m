@@ -4,7 +4,7 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "ProfileAccountHeaderView.h"
+#import "LibraryAccountHeaderView.h"
 
 #import "ApplicationSettings.h"
 #import "AnalyticsConstants.h"
@@ -22,14 +22,14 @@
 #import <SRGUserData/SRGUserData.h>
 #import <YYWebImage/YYWebImage.h>
 
-@interface ProfileAccountHeaderView ()
+@interface LibraryAccountHeaderView ()
 
 @property (nonatomic, weak) IBOutlet UIImageView *avatarImageView;
 @property (nonatomic, weak) IBOutlet UILabel *accountLabel;
 
 @end
 
-@implementation ProfileAccountHeaderView
+@implementation LibraryAccountHeaderView
 
 #pragma mark Overrides
 

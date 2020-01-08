@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ProfileViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>
+@interface LibraryViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 - (void)scrollToTopAnimated:(BOOL)animated;
 

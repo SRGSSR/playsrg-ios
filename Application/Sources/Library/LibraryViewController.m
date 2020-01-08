@@ -4,19 +4,19 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "ProfileViewController.h"
+#import "LibraryViewController.h"
 
 #import "ApplicationConfiguration.h"
 #import "ContentInsets.h"
 #import "DownloadsViewController.h"
 #import "FavoritesViewController.h"
 #import "HistoryViewController.h"
+#import "LibraryAccountHeaderView.h"
+#import "LibraryHeaderSectionView.h"
+#import "LibraryTableViewCell.h"
 #import "MenuSectionInfo.h"
 #import "NotificationsViewController.h"
 #import "NSBundle+PlaySRG.h"
-#import "ProfileAccountHeaderView.h"
-#import "ProfileHeaderSectionView.h"
-#import "ProfileTableViewCell.h"
 #import "PushService.h"
 #import "UIColor+PlaySRG.h"
 #import "UIDevice+PlaySRG.h"
@@ -28,7 +28,7 @@
 #import <SRGAppearance/SRGAppearance.h>
 #import <SRGIdentity/SRGIdentity.h>
 
-@interface ProfileViewController ()
+@interface LibraryViewController ()
 
 @property (nonatomic) NSArray<Notification *> *unreadNotifications;
 @property (nonatomic) NSArray<MenuSectionInfo *> *sectionInfos;
@@ -37,14 +37,14 @@
 
 @end
 
-@implementation ProfileViewController
+@implementation LibraryViewController
 
 #pragma mark Object lifecycle
 
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.title = NSLocalizedString(@"Profile", @"Title displayed at the top of the profile view");
+        self.title = NSLocalizedString(@"Library", @"Title displayed at the top of the library view");
     }
     return self;
 }
@@ -63,11 +63,11 @@
     self.tableView.delegate = self;
     
     if (SRGIdentityService.currentIdentityService) {
-        self.tableView.tableHeaderView = [ProfileAccountHeaderView view];
+        self.tableView.tableHeaderView = [LibraryAccountHeaderView view];
     }
     
-    Class headerClass = ProfileHeaderSectionView.class;
-    [self.tableView registerClass:ProfileHeaderSectionView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(headerClass)];
+    Class headerClass = LibraryHeaderSectionView.class;
+    [self.tableView registerClass:LibraryHeaderSectionView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(headerClass)];
     
     NSString *cellIdentifier = NSStringFromClass(NotificationTableViewCell.class);
     UINib *cellNib = [UINib nibWithNibName:cellIdentifier bundle:nil];
@@ -133,7 +133,7 @@
 
 - (NSString *)srg_pageViewTitle
 {
-    return NSLocalizedString(@"Profile", @"[Technical] Title for profile analytics measurements");
+    return NSLocalizedString(@"Library", @"[Technical] Title for library analytics measurements");
 }
 
 - (NSArray<NSString *> *)srg_pageViewLevels
@@ -164,7 +164,7 @@
         return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(NotificationTableViewCell.class) forIndexPath:indexPath];
     }
     else {
-        return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ProfileTableViewCell.class) forIndexPath:indexPath];
+        return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(LibraryTableViewCell.class) forIndexPath:indexPath];
     }
 }
 
@@ -188,9 +188,9 @@
         notificationTableViewCell.notification = self.unreadNotifications[indexPath.row];
     }
     else {
-        ProfileTableViewCell *profileTableViewCell = (ProfileTableViewCell *)cell;
+        LibraryTableViewCell *libraryTableViewCell = (LibraryTableViewCell *)cell;
         MenuItemInfo *menuItemInfo = self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row];
-        profileTableViewCell.menuItemInfo = menuItemInfo;
+        libraryTableViewCell.menuItemInfo = menuItemInfo;
     }
 }
 
@@ -210,12 +210,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     MenuSectionInfo *sectionInfo = self.sectionInfos[section];
-    return [ProfileHeaderSectionView heightForMenuSectionInfo:sectionInfo];
+    return [LibraryHeaderSectionView heightForMenuSectionInfo:sectionInfo];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    ProfileHeaderSectionView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(ProfileHeaderSectionView.class)];
+    LibraryHeaderSectionView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(LibraryHeaderSectionView.class)];
     headerView.menuSectionInfo = self.sectionInfos[section];
     return headerView;
 }
@@ -227,7 +227,7 @@
     NSArray<Notification *> *unreadNotifications = Notification.unreadNotifications;
     self.unreadNotifications = unreadNotifications.count > 3 ? @[ unreadNotifications[0], unreadNotifications[1], unreadNotifications[2] ] : unreadNotifications.count > 0 ? unreadNotifications : nil;
     
-    self.sectionInfos = MenuSectionInfo.profileMenuSectionInfos;
+    self.sectionInfos = MenuSectionInfo.libraryMenuSectionInfos;
     
     if (self.unreadNotifications) {
         MenuSectionInfo *unreadNotificationsSectionInfo = [[MenuSectionInfo alloc] initWithTitle:NSLocalizedString(@"Latest notifications", @"Miscellaneous menu section header label")

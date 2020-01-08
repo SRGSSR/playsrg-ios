@@ -7,9 +7,9 @@
 #import "TabBarController.h"
 
 #import "HomeViewController.h"
+#import "LibraryViewController.h"
 #import "LivesViewController.h"
 #import "MiniPlayerView.h"
-#import "ProfileViewController.h"
 #import "PushService.h"
 #import "AudiosViewController.h"
 #import "SearchViewController.h"
@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, TabBarItemTag) {
     TabBarItemTagAudios,
     TabBarItemTagLives,
     TabBarItemTagSearch,
-    TabBarItemTagProfile
+    TabBarItemTagLibrary
 };
 
 static const CGFloat MiniPlayerHeight = 50.f;
@@ -72,9 +72,9 @@ static const CGFloat MiniPlayerOffset = 5.f;
         [viewControllers addObject:viewController];
         [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"search-25"] tag:TabBarItemTagSearch]];
         
-        viewController = [[ProfileViewController alloc] init];
+        viewController = [[LibraryViewController alloc] init];
         [viewControllers addObject:viewController];
-        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"profile-25"] tag:TabBarItemTagProfile]];
+        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"library-25"] tag:TabBarItemTagLibrary]];
         
         NSMutableArray<UINavigationController *> *navigationControllers = NSMutableArray.array;
         [viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -165,27 +165,27 @@ static const CGFloat MiniPlayerOffset = 5.f;
         }
             
         case MenuItemFavorites: {
-            tabBarItemTag = TabBarItemTagProfile;
+            tabBarItemTag = TabBarItemTagLibrary;
             break;
         }
             
         case MenuItemWatchLater: {
-            tabBarItemTag = TabBarItemTagProfile;
+            tabBarItemTag = TabBarItemTagLibrary;
             break;
         }
             
         case MenuItemDownloads: {
-            tabBarItemTag = TabBarItemTagProfile;
+            tabBarItemTag = TabBarItemTagLibrary;
             break;
         }
             
         case MenuItemHistory: {
-            tabBarItemTag = TabBarItemTagProfile;
+            tabBarItemTag = TabBarItemTagLibrary;
             break;
         }
             
         case MenuItemNotifications: {
-            tabBarItemTag = TabBarItemTagProfile;
+            tabBarItemTag = TabBarItemTagLibrary;
             break;
         }
             
@@ -221,6 +221,40 @@ static const CGFloat MiniPlayerOffset = 5.f;
             break;
         }
     }
+}
+
+#pragma mark Rotation
+
+- (BOOL)shouldAutorotate
+{
+    if (! [super shouldAutorotate]) {
+        return NO;
+    }
+    
+    return [self.selectedViewController shouldAutorotate];
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    UIInterfaceOrientationMask supportedInterfaceOrientations = [super supportedInterfaceOrientations];
+    return supportedInterfaceOrientations & [self.selectedViewController supportedInterfaceOrientations];
+}
+
+#pragma mark Status bar
+
+- (BOOL)prefersStatusBarHidden
+{
+    return [self.selectedViewController prefersStatusBarHidden];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return [self.selectedViewController preferredStatusBarStyle];
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
+{
+    return [self.selectedViewController preferredStatusBarUpdateAnimation];
 }
 
 #pragma mark Layout
@@ -274,18 +308,18 @@ static const CGFloat MiniPlayerOffset = 5.f;
     }
 }
 
-- (void)updateProfileTabBarItem
+- (void)updateLibraryTabBarItem
 {
     if (@available(iOS 10, *)) {
-        UITabBarItem *profileTabBarItem = [self tabBarItemForTag:TabBarItemTagProfile];
+        UITabBarItem *libraryTabBarItem = [self tabBarItemForTag:TabBarItemTagLibrary];
         NSInteger badgeNumber = UIApplication.sharedApplication.applicationIconBadgeNumber;
         
-        if (PushService.sharedService.enabled && profileTabBarItem && badgeNumber != 0) {
-            profileTabBarItem.badgeValue = @"";
-            profileTabBarItem.badgeColor = UIColor.play_notificationRedColor;
+        if (PushService.sharedService.enabled && libraryTabBarItem && badgeNumber != 0) {
+            libraryTabBarItem.badgeValue = @"";
+            libraryTabBarItem.badgeColor = UIColor.play_notificationRedColor;
         }
         else {
-            profileTabBarItem.badgeValue = nil;
+            libraryTabBarItem.badgeValue = nil;
         }
     }
 }
@@ -319,17 +353,17 @@ static const CGFloat MiniPlayerOffset = 5.f;
     // Ensure correct notification button availability after:
     //   - Dismissal of the initial system alert (displayed once at most), asking the user to enable push notifications.
     //   - Returning from system settings, where the user might have updated push notification authorizations.
-    [self updateProfileTabBarItem];
+    [self updateLibraryTabBarItem];
 }
 
 - (void)didReceiveNotification:(NSNotification *)notification
 {
-    [self updateProfileTabBarItem];
+    [self updateLibraryTabBarItem];
 }
 
 - (void)badgeDidChange:(NSNotification *)notification
 {
-    [self updateProfileTabBarItem];
+    [self updateLibraryTabBarItem];
 }
 
 @end

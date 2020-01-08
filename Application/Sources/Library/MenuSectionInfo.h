@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MenuSectionInfo : NSObject
 
 /**
- *  Return the menu sections corresponding to the current configuration
+ *  Return the library sections corresponding to the current configuration
  */
-@property (class, nonatomic, readonly) NSArray<MenuSectionInfo *> *profileMenuSectionInfos;
+@property (class, nonatomic, readonly) NSArray<MenuSectionInfo *> *libraryMenuSectionInfos;
 
 /**
  *  Instantiate an entry describing a menu section

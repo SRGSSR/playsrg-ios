@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ProfileHeaderSectionView : UITableViewHeaderFooterView
+@interface LibraryHeaderSectionView : UITableViewHeaderFooterView
 
 + (CGFloat)heightForMenuSectionInfo:(MenuSectionInfo *)menuSectionInfo;
 

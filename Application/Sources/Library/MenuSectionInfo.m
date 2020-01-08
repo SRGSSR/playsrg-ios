@@ -20,7 +20,7 @@
 
 #pragma mark Class methods
 
-+ (NSArray<MenuSectionInfo *> *)profileMenuSectionInfos
++ (NSArray<MenuSectionInfo *> *)libraryMenuSectionInfos
 {
     ApplicationConfiguration *applicationConfiguration = ApplicationConfiguration.sharedApplicationConfiguration;
     
