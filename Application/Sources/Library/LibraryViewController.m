@@ -18,6 +18,7 @@
 #import "NotificationsViewController.h"
 #import "NSBundle+PlaySRG.h"
 #import "PushService.h"
+#import "SettingsViewController.h"
 #import "UIColor+PlaySRG.h"
 #import "UIDevice+PlaySRG.h"
 #import "UIScrollView+PlaySRG.h"
@@ -89,6 +90,13 @@
                                            selector:@selector(badgeDidChange:)
                                                name:PushServiceBadgeDidChangeNotification
                                              object:nil];
+    
+    UIBarButtonItem *settingsBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings-22"]
+                                                                              style:UIBarButtonItemStyleDone
+                                                                             target:self
+                                                                             action:@selector(settings:)];
+       settingsBarButtonItem.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Settings", @"Settings button label on home view");
+       self.navigationItem.rightBarButtonItem = settingsBarButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -237,6 +245,12 @@
     }
     
     [self.tableView reloadData];
+}
+
+- (void)settings:(id)sender
+{
+    SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
+    [self.navigationController pushViewController:settingsViewController animated:YES];
 }
 
 - (void)openMenuItemInfo:(MenuItemInfo *)menuItemInfo animated:(BOOL)animated
