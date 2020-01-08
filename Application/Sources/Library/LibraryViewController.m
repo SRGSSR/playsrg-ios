@@ -58,6 +58,8 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = UIColor.play_blackColor;
+    
     self.tableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     
     self.tableView.dataSource = self;

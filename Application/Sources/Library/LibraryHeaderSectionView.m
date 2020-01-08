@@ -47,7 +47,7 @@
         
         // Setting the background view installs it in the view hierarchy
         self.backgroundView = [[UIView alloc] initWithFrame:self.bounds];
-        self.backgroundView.backgroundColor = UIColor.blackColor;
+        self.backgroundView.backgroundColor = UIColor.play_blackColor;
         [self.backgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);
         }];
@@ -64,11 +64,11 @@
 {
     [super awakeFromNib];
     
-    UIColor *backgroundColor = UIColor.blackColor;
+    UIColor *backgroundColor = UIColor.play_blackColor;
     self.contentView.backgroundColor = backgroundColor;
     
     self.titleLabel.backgroundColor = backgroundColor;
-    self.titleLabel.textColor = UIColor.play_lightGrayColor;
+    self.titleLabel.textColor = UIColor.whiteColor;
 }
 
 #pragma mark Getters and setters

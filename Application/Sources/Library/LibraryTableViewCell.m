@@ -43,11 +43,8 @@
 {
     [super awakeFromNib];
     
-    UIColor *backgroundColor = UIColor.blackColor;
+    UIColor *backgroundColor = UIColor.play_blackColor;
     self.backgroundColor = backgroundColor;
-    
-    self.titleLabel.backgroundColor = backgroundColor;
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 - (void)prepareForReuse
@@ -86,7 +83,7 @@
 
 - (void)updateAppearanceHighlighted:(BOOL)highlighted
 {
-    UIColor *color = highlighted ? UIColor.whiteColor : UIColor.play_grayColor;
+    UIColor *color = highlighted ? UIColor.play_grayColor : UIColor.whiteColor;
     self.titleLabel.textColor = color;
     self.iconImageView.tintColor = color;
 }
