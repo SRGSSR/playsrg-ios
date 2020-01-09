@@ -315,7 +315,7 @@ static const CGFloat MiniPlayerOffset = 5.f;
         NSInteger badgeNumber = UIApplication.sharedApplication.applicationIconBadgeNumber;
         
         if (PushService.sharedService.enabled && libraryTabBarItem && badgeNumber != 0) {
-            libraryTabBarItem.badgeValue = @"";
+            libraryTabBarItem.badgeValue = (badgeNumber > 99) ? @"99+" : @(badgeNumber).stringValue;
             libraryTabBarItem.badgeColor = UIColor.play_notificationRedColor;
         }
         else {
