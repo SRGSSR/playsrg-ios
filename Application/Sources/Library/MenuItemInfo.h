@@ -8,11 +8,13 @@
 #import <UIKit/UIKit.h>
 
 #import "ApplicationConfiguration.h"
+#import "Notification.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NSString * MenuItemOptionKey NS_STRING_ENUM;
 
+OBJC_EXPORT MenuItemOptionKey const MenuItemOptionNotificationKey;                              // Key to access the notification key, as an `Notification`.
 OBJC_EXPORT MenuItemOptionKey const MenuItemOptionSearchMediaTypeOptionKey;                     // Key to access the search media type option key, as an `NSNUmber`.
 OBJC_EXPORT MenuItemOptionKey const MenuItemOptionSearchQueryKey;                               // Key to access the search query key, as a `NSString`.
 OBJC_EXPORT MenuItemOptionKey const MenuItemOptionShowAZIndexKey;                               // Key to access the A-Z index key, as a `NSString`.
@@ -21,6 +23,7 @@ OBJC_EXPORT MenuItemOptionKey const MenuItemOptionShowByDateDateKey;            
 @interface MenuItemInfo : NSObject
 
 + (MenuItemInfo *)menuItemInfoWithMenuItem:(MenuItem)menuItem;
++ (MenuItemInfo *)menuItemInfoWithNotification:(Notification *)notification;
 + (MenuItemInfo *)menuItemInfoWithRadioChannel:(RadioChannel *)radioChannel;
 
 + (MenuItemInfo *)menuItemInfoWithMenuItem:(MenuItem)menuItem options:(nullable NSDictionary<MenuItemOptionKey, id> *)options;

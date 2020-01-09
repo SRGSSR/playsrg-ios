@@ -30,6 +30,12 @@
     NSMutableArray<MenuItemInfo *> *myContentMenuItems = [NSMutableArray array];
     if (@available(iOS 10, *)) {
         [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemNotifications]];
+        
+        NSArray<Notification *> *unreadNotifications = Notification.unreadNotifications;
+        unreadNotifications = unreadNotifications.count > 3 ? @[ unreadNotifications[0], unreadNotifications[1], unreadNotifications[2] ] : unreadNotifications.count > 0 ? unreadNotifications : nil;
+        for (Notification *notification in unreadNotifications) {
+            [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithNotification:notification]];
+        }
     }
     [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemHistory]];
     [myContentMenuItems addObject:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemFavorites]];

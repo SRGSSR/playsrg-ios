@@ -31,7 +31,6 @@
 
 @interface LibraryViewController ()
 
-@property (nonatomic) NSArray<Notification *> *unreadNotifications;
 @property (nonatomic) NSArray<MenuSectionInfo *> *sectionInfos;
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -160,17 +159,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.unreadNotifications && section == 0) {
-        return self.unreadNotifications.count;
-    }
-    else {
-        return self.sectionInfos[section].menuItemInfos.count;
-    }
+    return self.sectionInfos[section].menuItemInfos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.unreadNotifications && indexPath.section == 0) {
+    if ([self isNotificationForIndex:indexPath]) {
         return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(NotificationTableViewCell.class) forIndexPath:indexPath];
     }
     else {
@@ -182,7 +176,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.unreadNotifications && indexPath.section == 0) {
+    if ([self isNotificationForIndex:indexPath]) {
         NSString *contentSizeCategory = UIApplication.sharedApplication.preferredContentSizeCategory;
         return (SRGAppearanceCompareContentSizeCategories(contentSizeCategory, UIContentSizeCategoryExtraLarge) == NSOrderedAscending) ? 94.f : 110.f;
     }
@@ -193,9 +187,10 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.unreadNotifications && indexPath.section == 0) {
+    Notification *notification = [self notificationForIndex:indexPath];
+    if (notification) {
         NotificationTableViewCell *notificationTableViewCell = (NotificationTableViewCell *)cell;
-        notificationTableViewCell.notification = self.unreadNotifications[indexPath.row];
+        notificationTableViewCell.notification = notification;
     }
     else {
         LibraryTableViewCell *libraryTableViewCell = (LibraryTableViewCell *)cell;
@@ -206,8 +201,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.unreadNotifications && indexPath.section == 0) {
-        Notification *notification = self.unreadNotifications[indexPath.row];
+    Notification *notification = [self notificationForIndex:indexPath];
+    if (notification) {
         [NotificationsViewController openNotification:notification fromViewController:self];
         [tableView reloadData];
     }
@@ -229,23 +224,29 @@
     headerView.menuSectionInfo = self.sectionInfos[section];
     return headerView;
 }
+#pragma mark Helpers
+
+- (BOOL)isNotificationForIndex:(NSIndexPath *)indexPath
+{
+    return self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row].menuItem == MenuItemNotification;
+}
+
+- (Notification *)notificationForIndex:(NSIndexPath *)indexPath
+{
+    if ([self isNotificationForIndex:indexPath]) {
+        MenuItemInfo *menuItemInfo = self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row];
+        return menuItemInfo.options[MenuItemOptionNotificationKey];
+    }
+    else {
+        return nil;
+    }
+}
 
 #pragma mark Actions
 
 - (void)reloadData
 {
-    NSArray<Notification *> *unreadNotifications = Notification.unreadNotifications;
-    self.unreadNotifications = unreadNotifications.count > 3 ? @[ unreadNotifications[0], unreadNotifications[1], unreadNotifications[2] ] : unreadNotifications.count > 0 ? unreadNotifications : nil;
-    
     self.sectionInfos = MenuSectionInfo.libraryMenuSectionInfos;
-    
-    if (self.unreadNotifications) {
-        MenuSectionInfo *unreadNotificationsSectionInfo = [[MenuSectionInfo alloc] initWithTitle:NSLocalizedString(@"Latest notifications", @"Miscellaneous menu section header label")
-                                                                                   menuItemInfos:@[]
-                                                                                      headerless:YES];
-        self.sectionInfos = [@[ unreadNotificationsSectionInfo ] arrayByAddingObjectsFromArray:self.sectionInfos];
-    }
-    
     [self.tableView reloadData];
 }
 

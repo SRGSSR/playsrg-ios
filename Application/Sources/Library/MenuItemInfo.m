@@ -9,6 +9,7 @@
 #import "ApplicationConfiguration.h"
 #import "PushService.h"
 
+MenuItemOptionKey const MenuItemOptionNotificationKey = @"MenuItemOptionNotification";
 MenuItemOptionKey const MenuItemOptionSearchMediaTypeOptionKey = @"MenuItemOptionSearchMediaTypeOption";
 MenuItemOptionKey const MenuItemOptionSearchQueryKey = @"MenuItemOptionSearchQuery";
 MenuItemOptionKey const MenuItemOptionShowAZIndexKey = @"MenuItemOptionShowAZIndex";
@@ -40,6 +41,14 @@ MenuItemOptionKey const MenuItemOptionShowByDateDateKey = @"MenuItemOptionShowBy
     return [[MenuItemInfo alloc] initWithMenuItem:menuItem
                                             title:TitleForMenuItem(menuItem)
                                           options:options];
+}
+
++ (MenuItemInfo *)menuItemInfoWithNotification:(Notification *)notification
+{
+    return [[MenuItemInfo alloc] initWithMenuItem:MenuItemNotification
+                                            title:notification.title
+                                              uid:notification.identifier
+                                          options:@{ MenuItemOptionNotificationKey : notification }];
 }
 
 + (MenuItemInfo *)menuItemInfoWithRadioChannel:(RadioChannel *)radioChannel
