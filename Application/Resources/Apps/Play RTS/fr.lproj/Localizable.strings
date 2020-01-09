@@ -368,6 +368,9 @@
 /* Title of the button to proceed to the previous onboarding page */
 "Previous" = "Précédent";
 
+/* Text displayed in library view, for the account header */
+"Profile" = "Profil";
+
 /* [Technical] Title for programmes A-Z analytics measurements
    [Technical] Title for programmes A-Z page view analytics measurements
    Label in the left menu to present shows A to Z (radio or TV)
