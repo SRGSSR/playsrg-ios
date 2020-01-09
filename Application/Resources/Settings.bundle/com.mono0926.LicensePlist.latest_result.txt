@@ -338,36 +338,6 @@ name: paper-onboarding, nameSpecified:
 body: The MIT License (MIT…
 version: 6.1.3
 
-name: PPBadgeView, nameSpecified: 
-body: MIT License
-
-Copyrig…
-version: 2.1.0
-
-name: PPBadgeView, nameSpecified: 
-body: MIT License
-
-Copyrig…
-version: 2.1.0
-
-name: PPBadgeView, nameSpecified: 
-body: MIT License
-
-Copyrig…
-version: 2.1.0
-
-name: PPBadgeView, nameSpecified: 
-body: MIT License
-
-Copyrig…
-version: 2.1.0
-
-name: PPBadgeView, nameSpecified: 
-body: MIT License
-
-Copyrig…
-version: 2.1.0
-
 name: Protobuf, nameSpecified: 
 body: Copyright 2008 Googl…
 version: 3.6.1

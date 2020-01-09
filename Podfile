@@ -12,7 +12,6 @@ abstract_target 'PlaySRG' do
   pod 'InAppSettingsKit', '~> 2.10.0'
   pod 'MGSwipeTableCell', '~> 1.6.8'
   pod 'paper-onboarding', '~> 6.1.3'
-  pod 'PPBadgeView', '~> 2.1.0'
   pod 'SwiftMessages', '~> 7.0.0'
   pod 'UrbanAirship-iOS-SDK', '9.4.0'
   

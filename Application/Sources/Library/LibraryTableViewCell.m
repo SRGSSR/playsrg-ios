@@ -11,7 +11,6 @@
 #import "UIColor+PlaySRG.h"
 #import "UIImageView+PlaySRG.h"
 
-#import <PPBadgeView/PPBadgeView.h>
 #import <SRGAppearance/SRGAppearance.h>
 
 @interface LibraryTableViewCell ()
@@ -34,7 +33,6 @@
     
     self.iconImageView.image = menuItemInfo.image;
     [self updateIconImageViewAnimation];
-    [self updateIconImageViewBadge];
 }
 
 #pragma mark Overrides
@@ -52,7 +50,6 @@
     [super prepareForReuse];
     
     [self.iconImageView play_stopAnimating];
-    [self.iconImageView pp_hiddenBadge];
 }
 
 - (void)willMoveToWindow:(UIWindow *)window
@@ -104,25 +101,6 @@
             }
         }
         self.iconImageView.image = self.menuItemInfo.image;
-    }
-}
-
-- (void)updateIconImageViewBadge
-{
-    if (@available(iOS 10, *)) {
-        if (self.menuItemInfo.menuItem == MenuItemNotifications && PushService.sharedService.enabled) {
-            NSInteger badgeNumber = UIApplication.sharedApplication.applicationIconBadgeNumber;
-            if (badgeNumber != 0) {
-                NSString *badgeText = (badgeNumber > 99) ? @"99+" : @(badgeNumber).stringValue;
-                [self.iconImageView pp_addBadgeWithText:badgeText];
-                [self.iconImageView pp_moveBadgeWithX:-6.f Y:7.f];
-                [self.iconImageView pp_setBadgeHeight:14.f];
-                [self.iconImageView pp_setBadgeLabelAttributes:^(PPBadgeLabel *badgeLabel) {
-                    badgeLabel.font = [UIFont boldSystemFontOfSize:13.f];
-                    badgeLabel.backgroundColor = UIColor.play_notificationRedColor;
-                }];
-            }
-        }
     }
 }
 
