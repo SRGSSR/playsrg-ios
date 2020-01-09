@@ -327,6 +327,10 @@
 - (void)didReceiveNotification:(NSNotification *)notification
 {
     [self refresh];
+    
+    if (self.viewVisible) {
+        [PushService.sharedService resetApplicationBadge];
+    }
 }
 
 @end

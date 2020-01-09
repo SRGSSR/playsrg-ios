@@ -49,8 +49,6 @@
     return self;
 }
 
-#pragma mark Getters and setters
-
 #pragma mark View lifecycle
 
 - (void)viewDidLoad
@@ -88,6 +86,14 @@
                                                name:PushServiceDidReceiveNotification
                                              object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(applicationDidBecomeActive:)
+                                               name:UIApplicationDidBecomeActiveNotification
+                                             object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(applicationWillResignActive:)
+                                               name:UIApplicationWillResignActiveNotification
+                                             object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(badgeDidChange:)
                                                name:PushServiceBadgeDidChangeNotification
                                              object:nil];
@@ -104,8 +110,19 @@
 {
     [super viewWillAppear:animated];
     
-    // Ensure correct notification badge on notification cell
+    [PushService.sharedService resetApplicationBadge];
+    
+    // Ensure correct latest notifications displayed
     [self reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    if ([self play_isMovingFromParentViewController]) {
+        [PushService.sharedService resetApplicationBadge];
+    }
 }
 
 #pragma mark Rotation
@@ -355,21 +372,32 @@
 
 - (void)applicationDidBecomeActive:(NSNotification *)notification
 {
-    // Ensure correct notification badge on notification cell availability after:
-    //   - Dismissal of the initial system alert (displayed once at most), asking the user to enable push notifications.
-    //   - Returning from system settings, where the user might have updated push notification authorizations.
-    [self reloadData];
+    if (self.viewVisible) {
+        [PushService.sharedService resetApplicationBadge];
+        
+        // Ensure correct notification badge on notification cell availability after:
+        //   - Dismissal of the initial system alert (displayed once at most), asking the user to enable push notifications.
+        //   - Returning from system settings, where the user might have updated push notification authorizations.
+        [self reloadData];
+    }
+}
+
+- (void)applicationWillResignActive:(NSNotification *)notification
+{
+    if (self.viewVisible) {
+        [PushService.sharedService resetApplicationBadge];
+    }
 }
 
 - (void)didReceiveNotification:(NSNotification *)notification
 {
-    // Ensure correct notification badge on notification cell
+    // Ensure correct latest notifications displayed
     [self reloadData];
 }
 
 - (void)badgeDidChange:(NSNotification *)notification
 {
-    // Ensure correct notification badge on notification cell
+    // Ensure correct latest notifications displayed
     [self reloadData];
 }
 
