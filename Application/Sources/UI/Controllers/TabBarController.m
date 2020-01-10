@@ -10,6 +10,7 @@
 #import "LibraryViewController.h"
 #import "LivesViewController.h"
 #import "MiniPlayerView.h"
+#import "NavigationController.h"
 #import "PushService.h"
 #import "AudiosViewController.h"
 #import "SearchViewController.h"
@@ -76,9 +77,9 @@ static const CGFloat MiniPlayerOffset = 5.f;
         [viewControllers addObject:viewController];
         [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"library-25"] tag:TabBarItemTagLibrary]];
         
-        NSMutableArray<UINavigationController *> *navigationControllers = NSMutableArray.array;
+        NSMutableArray<NavigationController *> *navigationControllers = NSMutableArray.array;
         [viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
-            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+            NavigationController *navigationController = [[NavigationController alloc] initWithRootViewController:viewController];
             navigationController.delegate = self;
             navigationController.tabBarItem = tabBarItems[idx];
             [navigationControllers addObject:navigationController];

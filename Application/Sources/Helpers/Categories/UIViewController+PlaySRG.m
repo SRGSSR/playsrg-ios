@@ -56,7 +56,7 @@ static id<UIViewControllerPreviewing> swizzle_registerForPreviewingWithDelegate_
 {
     switch (UIDevice.currentDevice.userInterfaceIdiom) {
         case UIUserInterfaceIdiomPhone: {
-            return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape;
+            return UIInterfaceOrientationMaskPortrait;
             break;
         }
             
