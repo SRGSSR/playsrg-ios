@@ -24,14 +24,14 @@
 
 #pragma mark Getters and setters
 
-- (void)setMenuItemInfo:(MenuItemInfo *)menuItemInfo
+- (void)setApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    _menuItemInfo = menuItemInfo;
+    _applicationSectionInfo = applicationSectionInfo;
     
     self.titleLabel.font = [UIFont srg_regularFontWithTextStyle:SRGAppearanceFontTextStyleHeadline];
-    self.titleLabel.text = menuItemInfo.title;
+    self.titleLabel.text = applicationSectionInfo.title;
     
-    self.iconImageView.image = menuItemInfo.image;
+    self.iconImageView.image = applicationSectionInfo.image;
     [self updateIconImageViewAnimation];
 }
 
@@ -89,7 +89,7 @@
 {
     [self.iconImageView play_stopAnimating];
     
-    if (self.menuItemInfo.menuItem == MenuItemDownloads) {
+    if (self.applicationSectionInfo.applicationSection == ApplicationSectionDownloads) {
         switch (DownloadSession.sharedDownloadSession.state) {
             case DownloadSessionStateDownloading: {
                 [self.iconImageView play_startAnimatingDownloading22WithTintColor:self.iconImageView.tintColor];
@@ -100,7 +100,7 @@
                 break;
             }
         }
-        self.iconImageView.image = self.menuItemInfo.image;
+        self.iconImageView.image = self.applicationSectionInfo.image;
     }
 }
 

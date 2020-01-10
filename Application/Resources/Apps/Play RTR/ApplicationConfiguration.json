@@ -21,8 +21,6 @@
   "minimumSocialViewCount": 50,
   "dataProtectionURL": "https://www.rtr.ch/general/cundiziuns-d-utilisaziun-e-decl-davart-la-protecziun-da-datas",
   "whatsNewURL": "https://pastebin.com/raw/rmJY7QL7",
-  "tvMenuItems": "showAZ,byDate",
-  "radioMenuItems": "showAZ",
   "radioChannels": "[   {     \"uid\": \"12fb886e-b7aa-4e55-beb2-45dbc619f3c4\",     \"name\": \"Emissiuns e live\",     \"resourceUid\": \"radio_rtr\",     \"color\": \"#AF001D\"   } ]",
   "tvChannels": "[   {     \"uid\": \"f5dc82ed-4564-4223-903f-0bf6a13c5620\",     \"name\": \"RTR auf SRF 1\",     \"resourceUid\": \"rtr_srf1\"   },   {     \"uid\": \"80bdf859-b58d-421d-bb27-ce1fba4637a7\",     \"name\": \"RTR auf SRF Info\",     \"resourceUid\": \"rtr_srf_info\"   },   {     \"uid\": \"2541c864-f883-4b80-9459-e1026e0e692e\",     \"name\": \"RTR auf SRF 2\",     \"resourceUid\": \"rtr_srf2\"   } ]",
   "moduleDefaultLinkColor": "#D2D2D2",

@@ -1718,10 +1718,10 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     PlayAppDelegate *appDelegate = (PlayAppDelegate *)UIApplication.sharedApplication.delegate;
     RadioChannel *radioChannel = [self radioChannel];
     if (radioChannel) {
-        [appDelegate.playTabBarController openMenuItemInfo:[MenuItemInfo menuItemInfoWithRadioChannel:radioChannel]];
+        [appDelegate.playTabBarController openApplicationSectionInfo:[ApplicationSectionInfo applicationSectionInfoWithRadioChannel:radioChannel]];
     }
     else {
-        [appDelegate.playTabBarController openMenuItemInfo:[MenuItemInfo menuItemInfoWithMenuItem:MenuItemTVOverview]];
+        [appDelegate.playTabBarController openApplicationSectionInfo:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview]];
     }
     
     ShowViewController *showViewController = [[ShowViewController alloc] initWithShow:show fromPushNotification:NO];
@@ -1737,7 +1737,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     }
     
     PlayAppDelegate *appDelegate = (PlayAppDelegate *)UIApplication.sharedApplication.delegate;
-    [appDelegate.playTabBarController openMenuItemInfo:[MenuItemInfo menuItemInfoWithRadioChannel:radioChannel]];
+    [appDelegate.playTabBarController openApplicationSectionInfo:[ApplicationSectionInfo applicationSectionInfoWithRadioChannel:radioChannel]];
     [appDelegate.window play_dismissAllViewControllersAnimated:YES completion:nil];
 }
 

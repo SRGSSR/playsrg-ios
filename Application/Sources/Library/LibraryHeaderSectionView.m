@@ -22,11 +22,11 @@
 
 #pragma mark Class methods
 
-+ (CGFloat)heightForMenuSectionInfo:(MenuSectionInfo *)menuSectionInfo
++ (CGFloat)heightForApplicationSectionGroup:(ApplicationSectionGroup *)applicationSectionGroup
 {
     static CGFloat kStandardHeight = 64.f;
     
-    if (menuSectionInfo.headerless) {
+    if (applicationSectionGroup.headerless) {
         return UIAccessibilityIsVoiceOverRunning() ? kStandardHeight : 10.f;
     }
     else {
@@ -73,15 +73,15 @@
 
 #pragma mark Getters and setters
 
-- (void)setMenuSectionInfo:(MenuSectionInfo *)menuSectionInfo
+- (void)setApplicationSectionGroup:(ApplicationSectionGroup *)applicationSectionInfo
 {
-    _menuSectionInfo = menuSectionInfo;
+    _applicationSectionGroup = applicationSectionInfo;
     
-    if (menuSectionInfo.headerless) {
-        self.titleLabel.text = UIAccessibilityIsVoiceOverRunning() ? menuSectionInfo.title : nil;
+    if (applicationSectionInfo.headerless) {
+        self.titleLabel.text = UIAccessibilityIsVoiceOverRunning() ? applicationSectionInfo.title : nil;
     }
     else {
-        self.titleLabel.text = menuSectionInfo.title;
+        self.titleLabel.text = applicationSectionInfo.title;
     }
     
     self.titleLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleTitle];
@@ -91,7 +91,7 @@
 
 - (NSString *)accessibilityLabel
 {
-    return self.menuSectionInfo.title;
+    return self.applicationSectionGroup.title;
 }
 
 @end

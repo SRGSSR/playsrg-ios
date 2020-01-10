@@ -7,6 +7,7 @@
 #import "LibraryViewController.h"
 
 #import "ApplicationConfiguration.h"
+#import "ApplicationSectionGroup.h"
 #import "ContentInsets.h"
 #import "DownloadsViewController.h"
 #import "FavoritesViewController.h"
@@ -14,7 +15,6 @@
 #import "LibraryAccountHeaderView.h"
 #import "LibraryHeaderSectionView.h"
 #import "LibraryTableViewCell.h"
-#import "MenuSectionInfo.h"
 #import "NotificationsViewController.h"
 #import "NSBundle+PlaySRG.h"
 #import "PushService.h"
@@ -30,7 +30,7 @@
 
 @interface LibraryViewController ()
 
-@property (nonatomic) NSArray<MenuSectionInfo *> *sectionInfos;
+@property (nonatomic) NSArray<ApplicationSectionGroup *> *sectionInfos;
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
@@ -180,7 +180,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.sectionInfos[section].menuItemInfos.count;
+    return self.sectionInfos[section].applicationSectionInfos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -215,8 +215,8 @@
     }
     else {
         LibraryTableViewCell *libraryTableViewCell = (LibraryTableViewCell *)cell;
-        MenuItemInfo *menuItemInfo = self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row];
-        libraryTableViewCell.menuItemInfo = menuItemInfo;
+        ApplicationSectionInfo *applicationSectionInfo = self.sectionInfos[indexPath.section].applicationSectionInfos[indexPath.row];
+        libraryTableViewCell.applicationSectionInfo = applicationSectionInfo;
     }
 }
 
@@ -228,35 +228,35 @@
         [tableView reloadData];
     }
     else {
-        MenuItemInfo *menuItemInfo = self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row];
-        [self openMenuItemInfo:menuItemInfo animated:YES];
+        ApplicationSectionInfo *applicationSectionInfo = self.sectionInfos[indexPath.section].applicationSectionInfos[indexPath.row];
+        [self openApplicationSectionInfo:applicationSectionInfo animated:YES];
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    MenuSectionInfo *sectionInfo = self.sectionInfos[section];
-    return [LibraryHeaderSectionView heightForMenuSectionInfo:sectionInfo];
+    ApplicationSectionGroup *sectionGroup = self.sectionInfos[section];
+    return [LibraryHeaderSectionView heightForApplicationSectionGroup:sectionGroup];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     LibraryHeaderSectionView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(LibraryHeaderSectionView.class)];
-    headerView.menuSectionInfo = self.sectionInfos[section];
+    headerView.applicationSectionGroup = self.sectionInfos[section];
     return headerView;
 }
 #pragma mark Helpers
 
 - (BOOL)isNotificationForIndex:(NSIndexPath *)indexPath
 {
-    return self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row].menuItem == MenuItemNotification;
+    return self.sectionInfos[indexPath.section].applicationSectionInfos[indexPath.row].applicationSection == ApplicationSectionNotification;
 }
 
 - (Notification *)notificationForIndex:(NSIndexPath *)indexPath
 {
     if ([self isNotificationForIndex:indexPath]) {
-        MenuItemInfo *menuItemInfo = self.sectionInfos[indexPath.section].menuItemInfos[indexPath.row];
-        return menuItemInfo.options[MenuItemOptionNotificationKey];
+        ApplicationSectionInfo *applicationSectionInfo = self.sectionInfos[indexPath.section].applicationSectionInfos[indexPath.row];
+        return applicationSectionInfo.options[ApplicationSectionOptionNotificationKey];
     }
     else {
         return nil;
@@ -267,7 +267,7 @@
 
 - (void)reloadData
 {
-    self.sectionInfos = MenuSectionInfo.libraryMenuSectionInfos;
+    self.sectionInfos = ApplicationSectionGroup.libraryApplicationSectionGroups;
     [self.tableView reloadData];
 }
 
@@ -277,38 +277,38 @@
     [self.navigationController pushViewController:settingsViewController animated:YES];
 }
 
-- (void)openMenuItemInfo:(MenuItemInfo *)menuItemInfo animated:(BOOL)animated
+- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo animated:(BOOL)animated
 {
     ApplicationConfiguration *applicationConfiguration = ApplicationConfiguration.sharedApplicationConfiguration;
     
     UIViewController *viewController = nil;
-    switch (menuItemInfo.menuItem) {
-        case MenuItemNotifications: {
+    switch (applicationSectionInfo.applicationSection) {
+        case ApplicationSectionNotifications: {
             viewController = [[NotificationsViewController alloc] init];
             break;
         }
             
-        case MenuItemHistory: {
+        case ApplicationSectionHistory: {
             viewController = [[HistoryViewController alloc] init];
             break;
         }
             
-        case MenuItemFavorites: {
+        case ApplicationSectionFavorites: {
             viewController = [[FavoritesViewController alloc] init];
             break;
         }
             
-        case MenuItemWatchLater: {
+        case ApplicationSectionWatchLater: {
             viewController = [[WatchLaterViewController alloc] init];
             break;
         }
             
-        case MenuItemDownloads: {
+        case ApplicationSectionDownloads: {
             viewController = [[DownloadsViewController alloc] init];
             break;
         }
             
-        case MenuItemFeedback: {
+        case ApplicationSectionFeedback: {
             NSAssert(applicationConfiguration.feedbackURL, @"Feedback URL expected");
             
             NSMutableArray *queryItems = [NSMutableArray array];
@@ -338,7 +338,7 @@
             break;
         }
             
-        case MenuItemHelp: {
+        case ApplicationSectionHelp: {
             NSAssert(applicationConfiguration.impressumURL, @"Impressum URL expected");
             NSURLRequest *request = [NSURLRequest requestWithURL:applicationConfiguration.impressumURL];
             WebViewController *impressumWebViewController = [[WebViewController alloc] initWithRequest:request customizationBlock:^(WKWebView * _Nonnull webView) {

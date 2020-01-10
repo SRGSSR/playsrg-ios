@@ -6,15 +6,15 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MenuSectionInfo.h"
+#import "ApplicationSectionGroup.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LibraryHeaderSectionView : UITableViewHeaderFooterView
 
-+ (CGFloat)heightForMenuSectionInfo:(MenuSectionInfo *)menuSectionInfo;
++ (CGFloat)heightForApplicationSectionGroup:(ApplicationSectionGroup *)applicationSectionGroup;
 
-@property (nonatomic) MenuSectionInfo *menuSectionInfo;
+@property (nonatomic) ApplicationSectionGroup *applicationSectionGroup;
 
 @end
 

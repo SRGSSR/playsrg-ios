@@ -147,7 +147,7 @@
         self.accountLabel.text = identityService.account.displayName ?: emailAddress ?: NSLocalizedString(@"My account", @"Text displayed when a user is logged in but no information has been retrieved yet");
     }
     else {
-        self.accountLabel.text = NSLocalizedString(@"Login / Sign up", @"Text displayed within the login / sign up menu header when no user is displayed");
+        self.accountLabel.text = NSLocalizedString(@"Login / Sign up", @"Text displayed within the login / sign up library header when no user is displayed");
     }
 }
 

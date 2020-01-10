@@ -297,16 +297,16 @@
 		08754F48201BB00400458F3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08754F45201BB00000458F3A /* InfoPlist.strings */; };
 		08754F4B201BB01000458F3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08754F49201BB01000458F3A /* InfoPlist.strings */; };
 		08754F4F201BB02900458F3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08754F4C201BB02300458F3A /* InfoPlist.strings */; };
-		087584E523A0008500FA7207 /* MenuSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* MenuSectionInfo.m */; };
-		087584E623A0008500FA7207 /* MenuSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* MenuSectionInfo.m */; };
-		087584E723A0008500FA7207 /* MenuSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* MenuSectionInfo.m */; };
-		087584E823A0008500FA7207 /* MenuSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* MenuSectionInfo.m */; };
-		087584E923A0008500FA7207 /* MenuSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* MenuSectionInfo.m */; };
-		087584EF23A0008500FA7207 /* MenuItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* MenuItemInfo.m */; };
-		087584F023A0008500FA7207 /* MenuItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* MenuItemInfo.m */; };
-		087584F123A0008500FA7207 /* MenuItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* MenuItemInfo.m */; };
-		087584F223A0008500FA7207 /* MenuItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* MenuItemInfo.m */; };
-		087584F323A0008500FA7207 /* MenuItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* MenuItemInfo.m */; };
+		087584E523A0008500FA7207 /* ApplicationSectionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */; };
+		087584E623A0008500FA7207 /* ApplicationSectionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */; };
+		087584E723A0008500FA7207 /* ApplicationSectionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */; };
+		087584E823A0008500FA7207 /* ApplicationSectionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */; };
+		087584E923A0008500FA7207 /* ApplicationSectionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */; };
+		087584EF23A0008500FA7207 /* ApplicationSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */; };
+		087584F023A0008500FA7207 /* ApplicationSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */; };
+		087584F123A0008500FA7207 /* ApplicationSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */; };
+		087584F223A0008500FA7207 /* ApplicationSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */; };
+		087584F323A0008500FA7207 /* ApplicationSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */; };
 		0875850E23A0025F00FA7207 /* LibraryAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* LibraryAccountHeaderView.xib */; };
 		0875850F23A0025F00FA7207 /* LibraryAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* LibraryAccountHeaderView.xib */; };
 		0875851023A0025F00FA7207 /* LibraryAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850323A0025E00FA7207 /* LibraryAccountHeaderView.xib */; };
@@ -1805,10 +1805,10 @@
 		08754F46201BB00000458F3A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08754F4A201BB01000458F3A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08754F4D201BB02300458F3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		087584C723A0008500FA7207 /* MenuItemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemInfo.h; sourceTree = "<group>"; };
-		087584CC23A0008500FA7207 /* MenuSectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuSectionInfo.m; sourceTree = "<group>"; };
-		087584CF23A0008500FA7207 /* MenuItemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemInfo.m; sourceTree = "<group>"; };
-		087584D523A0008500FA7207 /* MenuSectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSectionInfo.h; sourceTree = "<group>"; };
+		087584C723A0008500FA7207 /* ApplicationSectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSectionInfo.h; sourceTree = "<group>"; };
+		087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSectionGroup.m; sourceTree = "<group>"; };
+		087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSectionInfo.m; sourceTree = "<group>"; };
+		087584D523A0008500FA7207 /* ApplicationSectionGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSectionGroup.h; sourceTree = "<group>"; };
 		0875850323A0025E00FA7207 /* LibraryAccountHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryAccountHeaderView.xib; sourceTree = "<group>"; };
 		0875850423A0025E00FA7207 /* LibraryAccountHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryAccountHeaderView.h; sourceTree = "<group>"; };
 		0875850523A0025E00FA7207 /* LibraryHeaderSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryHeaderSectionView.h; sourceTree = "<group>"; };
@@ -2630,6 +2630,10 @@
 				6FE1B4951DCB84F00094D5BA /* AnalyticsConstants.h */,
 				6FE1B4961DCB84F00094D5BA /* AnalyticsConstants.m */,
 				6F4760181EB37BD1003021EA /* Categories */,
+				087584D523A0008500FA7207 /* ApplicationSectionGroup.h */,
+				087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */,
+				087584C723A0008500FA7207 /* ApplicationSectionInfo.h */,
+				087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */,
 				6FE686DF1EB9D57400067D40 /* ChannelService.h */,
 				6FE686E01EB9D57400067D40 /* ChannelService.m */,
 				6FE1B9171FAC34D600A58F3B /* ContentInsets.h */,
@@ -2718,10 +2722,6 @@
 				0875850823A0025E00FA7207 /* LibraryViewController.h */,
 				0875850A23A0025E00FA7207 /* LibraryViewController.m */,
 				0875850923A0025E00FA7207 /* LibraryViewController.storyboard */,
-				087584C723A0008500FA7207 /* MenuItemInfo.h */,
-				087584CF23A0008500FA7207 /* MenuItemInfo.m */,
-				087584D523A0008500FA7207 /* MenuSectionInfo.h */,
-				087584CC23A0008500FA7207 /* MenuSectionInfo.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -5802,7 +5802,7 @@
 				0887824A23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
 				6F4855A91E3A38D600B0141C /* SRGLetterboxDesignables.m in Sources */,
 				6FD633DE1FFBC0BE00875BE5 /* GoogleCastMiniPlayerView.m in Sources */,
-				087584E523A0008500FA7207 /* MenuSectionInfo.m in Sources */,
+				087584E523A0008500FA7207 /* ApplicationSectionGroup.m in Sources */,
 				0804916E22831DEF00E4CEC2 /* HomeShowListTableViewCell.m in Sources */,
 				6FAF43001EF7CD8A0074E033 /* HomeTopicViewController.m in Sources */,
 				E6AE51181D3F54AA00572CE4 /* HomeSectionInfo.m in Sources */,
@@ -5821,7 +5821,7 @@
 				0821D53E227F5ED300FC091F /* DeepLinkService.m in Sources */,
 				0875851823A0025F00FA7207 /* LibraryTableViewCell.m in Sources */,
 				081DAA1F1E099A3A00018623 /* DownloadFooterSectionView.m in Sources */,
-				087584EF23A0008500FA7207 /* MenuItemInfo.m in Sources */,
+				087584EF23A0008500FA7207 /* ApplicationSectionInfo.m in Sources */,
 				6FAAF77C20CABA3A00BB58A3 /* Notification.m in Sources */,
 				6FC8866B1EC58BD5000BC3FF /* SRGProgram+PlaySRG.m in Sources */,
 				089EA018201148D70070E11A /* TimerTarget.m in Sources */,
@@ -5897,7 +5897,7 @@
 				08C68F951D38DEA100BB8AAA /* HomeViewController.m in Sources */,
 				6F0A41701F6FAB6E000533E7 /* Calendar.m in Sources */,
 				6FDF08FB218B126700B2AF2C /* DeprecatedFavorite.m in Sources */,
-				087584E623A0008500FA7207 /* MenuSectionInfo.m in Sources */,
+				087584E623A0008500FA7207 /* ApplicationSectionGroup.m in Sources */,
 				6F47600A1EB37BC6003021EA /* TranslucentTitleHeaderView.m in Sources */,
 				08AA55A51D49EF8E00C5026E /* ApplicationConfiguration.m in Sources */,
 				0887824B23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
@@ -5970,7 +5970,7 @@
 				08C68F8B1D38DEA100BB8AAA /* PlayAppDelegate.m in Sources */,
 				0875851423A0025F00FA7207 /* LibraryAccountHeaderView.m in Sources */,
 				6F4760821EB37DF1003021EA /* UIImageView+PlaySRG.m in Sources */,
-				087584F023A0008500FA7207 /* MenuItemInfo.m in Sources */,
+				087584F023A0008500FA7207 /* ApplicationSectionInfo.m in Sources */,
 				6F4760301EB37BD1003021EA /* PlayDurationFormatter.m in Sources */,
 				6F4760811EB37DF1003021EA /* UIImage+PlaySRG.m in Sources */,
 				6F85E4B81EEA8F9B00552256 /* UIView+PlaySRG.m in Sources */,
@@ -6060,7 +6060,7 @@
 				08C68F961D38DEA100BB8AAA /* HomeViewController.m in Sources */,
 				6F0A41711F6FAB6E000533E7 /* Calendar.m in Sources */,
 				6FDF08FC218B126700B2AF2C /* DeprecatedFavorite.m in Sources */,
-				087584E723A0008500FA7207 /* MenuSectionInfo.m in Sources */,
+				087584E723A0008500FA7207 /* ApplicationSectionGroup.m in Sources */,
 				6F47600B1EB37BC6003021EA /* TranslucentTitleHeaderView.m in Sources */,
 				08AA55A61D49EF8E00C5026E /* ApplicationConfiguration.m in Sources */,
 				0887824C23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
@@ -6133,7 +6133,7 @@
 				08C68F8C1D38DEA100BB8AAA /* PlayAppDelegate.m in Sources */,
 				0875851523A0025F00FA7207 /* LibraryAccountHeaderView.m in Sources */,
 				6F4760891EB37DF1003021EA /* UIImageView+PlaySRG.m in Sources */,
-				087584F123A0008500FA7207 /* MenuItemInfo.m in Sources */,
+				087584F123A0008500FA7207 /* ApplicationSectionInfo.m in Sources */,
 				6F4760311EB37BD1003021EA /* PlayDurationFormatter.m in Sources */,
 				6F4760881EB37DF1003021EA /* UIImage+PlaySRG.m in Sources */,
 				6F85E4B91EEA8F9B00552256 /* UIView+PlaySRG.m in Sources */,
@@ -6223,7 +6223,7 @@
 				08C68F971D38DEA100BB8AAA /* HomeViewController.m in Sources */,
 				6F0A41721F6FAB6E000533E7 /* Calendar.m in Sources */,
 				6FDF08FD218B126700B2AF2C /* DeprecatedFavorite.m in Sources */,
-				087584E823A0008500FA7207 /* MenuSectionInfo.m in Sources */,
+				087584E823A0008500FA7207 /* ApplicationSectionGroup.m in Sources */,
 				6F47600C1EB37BC6003021EA /* TranslucentTitleHeaderView.m in Sources */,
 				08AA55A71D49EF8E00C5026E /* ApplicationConfiguration.m in Sources */,
 				0887824D23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
@@ -6296,7 +6296,7 @@
 				08C68F8D1D38DEA100BB8AAA /* PlayAppDelegate.m in Sources */,
 				0875851623A0025F00FA7207 /* LibraryAccountHeaderView.m in Sources */,
 				6F4760901EB37DF1003021EA /* UIImageView+PlaySRG.m in Sources */,
-				087584F223A0008500FA7207 /* MenuItemInfo.m in Sources */,
+				087584F223A0008500FA7207 /* ApplicationSectionInfo.m in Sources */,
 				6F4760321EB37BD1003021EA /* PlayDurationFormatter.m in Sources */,
 				6F47608F1EB37DF1003021EA /* UIImage+PlaySRG.m in Sources */,
 				6F85E4BA1EEA8F9B00552256 /* UIView+PlaySRG.m in Sources */,
@@ -6386,7 +6386,7 @@
 				08C68F981D38DEA100BB8AAA /* HomeViewController.m in Sources */,
 				6F0A41731F6FAB6E000533E7 /* Calendar.m in Sources */,
 				6FDF08FE218B126700B2AF2C /* DeprecatedFavorite.m in Sources */,
-				087584E923A0008500FA7207 /* MenuSectionInfo.m in Sources */,
+				087584E923A0008500FA7207 /* ApplicationSectionGroup.m in Sources */,
 				6F47600D1EB37BC6003021EA /* TranslucentTitleHeaderView.m in Sources */,
 				08AA55A81D49EF8F00C5026E /* ApplicationConfiguration.m in Sources */,
 				0887824E23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
@@ -6459,7 +6459,7 @@
 				08C68F8E1D38DEA100BB8AAA /* PlayAppDelegate.m in Sources */,
 				0875851723A0025F00FA7207 /* LibraryAccountHeaderView.m in Sources */,
 				6F4760971EB37DF2003021EA /* UIImageView+PlaySRG.m in Sources */,
-				087584F323A0008500FA7207 /* MenuItemInfo.m in Sources */,
+				087584F323A0008500FA7207 /* ApplicationSectionInfo.m in Sources */,
 				6F4760331EB37BD1003021EA /* PlayDurationFormatter.m in Sources */,
 				6F4760961EB37DF2003021EA /* UIImage+PlaySRG.m in Sources */,
 				6F85E4BB1EEA8F9B00552256 /* UIView+PlaySRG.m in Sources */,

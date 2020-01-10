@@ -125,47 +125,26 @@ static TopicSection TopicSectionWithString(NSString *string)
     return s_topicSections[string].integerValue ?: TopicSectionUnknown;
 }
 
-NSString *TitleForMenuItem(MenuItem menuItem)
+NSString *TitleForApplicationSection(ApplicationSection applicationSection)
 {
     static NSDictionary<NSNumber *, NSString *> *s_names;
     static dispatch_once_t s_onceToken;
     dispatch_once(&s_onceToken, ^{
-        s_names = @{ @(MenuItemDownloads) : NSLocalizedString(@"Downloads", @"Label to present downloads"),
-                     @(MenuItemFavorites) : NSLocalizedString(@"Favorites", @"Label to present Favorites"),
-                     @(MenuItemFeedback) : NSLocalizedString(@"Feedback", @"Label to display the feedback form"),
-                     @(MenuItemHistory) : NSLocalizedString(@"History", @"Label to present history"),
-                     @(MenuItemHelp) : NSLocalizedString(@"Help and copyright", @"Label to present the help page"),
-                     @(MenuItemNotifications) : NSLocalizedString(@"Notifications", @"Label to present the help page"),
-                     @(MenuItemRadioShowAZ) : NSLocalizedString(@"Programmes A-Z", @"Label to present shows A to Z (radio or TV)"),
-                     @(MenuItemSearch) : NSLocalizedString(@"Search", @"Label to present the search view"),
-                     @(MenuItemSettings) : NSLocalizedString(@"Settings", @"Label to present settings"),
-                     @(MenuItemTVByDate) : NSLocalizedString(@"Programmes by date", @"Label to present programmes by date"),
-                     @(MenuItemTVOverview) : NSLocalizedString(@"Overview", @"Label to present the main TV view"),
-                     @(MenuItemTVShowAZ) : NSLocalizedString(@"Programmes A-Z", @"Label to present shows A to Z (radio or TV)"),
-                     @(MenuItemWatchLater) : NSLocalizedString(@"Watch later", @"Label to present the watch later list") };
+        s_names = @{ @(ApplicationSectionDownloads) : NSLocalizedString(@"Downloads", @"Label to present downloads"),
+                     @(ApplicationSectionFavorites) : NSLocalizedString(@"Favorites", @"Label to present Favorites"),
+                     @(ApplicationSectionFeedback) : NSLocalizedString(@"Feedback", @"Label to display the feedback form"),
+                     @(ApplicationSectionHistory) : NSLocalizedString(@"History", @"Label to present history"),
+                     @(ApplicationSectionHelp) : NSLocalizedString(@"Help and copyright", @"Label to present the help page"),
+                     @(ApplicationSectionNotifications) : NSLocalizedString(@"Notifications", @"Label to present the help page"),
+                     @(ApplicationSectionRadioShowAZ) : NSLocalizedString(@"Programmes A-Z", @"Label to present shows A to Z (radio or TV)"),
+                     @(ApplicationSectionSearch) : NSLocalizedString(@"Search", @"Label to present the search view"),
+                     @(ApplicationSectionSettings) : NSLocalizedString(@"Settings", @"Label to present settings"),
+                     @(ApplicationSectionTVByDate) : NSLocalizedString(@"Programmes by date", @"Label to present programmes by date"),
+                     @(ApplicationSectionTVOverview) : NSLocalizedString(@"Overview", @"Label to present the main TV view"),
+                     @(ApplicationSectionTVShowAZ) : NSLocalizedString(@"Programmes A-Z", @"Label to present shows A to Z (radio or TV)"),
+                     @(ApplicationSectionWatchLater) : NSLocalizedString(@"Watch later", @"Label to present the watch later list") };
     });
-    return s_names[@(menuItem)];
-}
-
-static MenuItem TVMenuItemWithString(NSString *string)
-{
-    static dispatch_once_t s_onceToken;
-    static NSDictionary<NSString *, NSNumber *> *s_menuItems;
-    dispatch_once(&s_onceToken, ^{
-        s_menuItems = @{ @"byDate" : @(MenuItemTVByDate),
-                         @"showAZ" : @(MenuItemTVShowAZ) };
-    });
-    return s_menuItems[string].integerValue ?: MenuItemUnknown;
-}
-
-static MenuItem RadioMenuItemWithString(NSString *string)
-{
-    static dispatch_once_t s_onceToken;
-    static NSDictionary<NSString *, NSNumber *> *s_menuItems;
-    dispatch_once(&s_onceToken, ^{
-        s_menuItems = @{ @"showAZ" : @(MenuItemRadioShowAZ) };
-    });
-    return s_menuItems[string].integerValue ?: MenuItemUnknown;
+    return s_names[@(applicationSection)];
 }
 
 void ApplicationConfigurationApplyControllerSettings(SRGLetterboxController *controller)
@@ -229,7 +208,6 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
 
 @property (nonatomic) NSArray<NSNumber *> *searchOptions;
 
-@property (nonatomic) NSArray<NSNumber *> *tvMenuItems;
 @property (nonatomic) NSArray<NSNumber *> *videoSections;
 @property (nonatomic) NSArray<NSNumber *> *liveSections;
 
@@ -246,13 +224,11 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
 @property (nonatomic) NSArray<NSNumber *> *topicSectionsWithSubtopics;
 
 @property (nonatomic) NSArray<RadioChannel *> *radioChannels;
-@property (nonatomic) NSArray<NSNumber *> *audioSections;
+@property (nonatomic) NSArray<NSNumber *> *audioSections;                               // wrap `HomeSection` values
 
 @property (nonatomic) NSArray<TVChannel *> *tvChannels;
 
 @property (nonatomic, getter=isRadioFeaturedHomeSectionHeaderHidden) BOOL radioFeaturedHomeSectionHeaderHidden;
-
-@property (nonatomic) NSArray<NSNumber *> *radioMenuItems;
 
 @property (nonatomic) NSUInteger pageSize;
 
@@ -542,23 +518,6 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
     }
     self.topicSectionsWithSubtopics = topicSectionsWithSubtopics.copy;
     
-    // The TV overview is always present as first item and not configurable
-    NSMutableArray<NSNumber *> *tvMenuItems = [NSMutableArray arrayWithObject:@(MenuItemTVOverview)];
-    NSString *tvMenuItemsString = [self.remoteConfig configValueForKey:@"tvMenuItems"].stringValue;
-    if (tvMenuItemsString.length != 0) {
-        NSArray<NSString *> *tvMenuItemIdentifiers = [tvMenuItemsString componentsSeparatedByString:@","];
-        for (NSString *identifier in tvMenuItemIdentifiers) {
-            MenuItem menuItem = TVMenuItemWithString(identifier);
-            if (menuItem != MenuItemUnknown) {
-                [tvMenuItems addObject:@(menuItem)];
-            }
-            else {
-                PlayLogWarning(@"configuration", @"Unknown TV menu item identifier %@. Skipped.", identifier);
-            }
-        }
-    }
-    self.tvMenuItems = tvMenuItems.copy;
-    
     NSString *audioSectionsString = [self.remoteConfig configValueForKey:@"audioSections"].stringValue;
     self.audioSections = [self homeSectionsFromString:audioSectionsString];
     
@@ -602,22 +561,6 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
         }
     }
     self.radioChannels = radioChannels.copy;
-    
-    NSMutableArray<NSNumber *> *radioMenuItems = [NSMutableArray array];
-    NSString *radioMenuItemIdentifiersString = [self.remoteConfig configValueForKey:@"radioMenuItems"].stringValue;
-    if (radioMenuItemIdentifiersString.length != 0) {
-        NSArray<NSString *> *radioMenuItemIdentifiers = [radioMenuItemIdentifiersString componentsSeparatedByString:@","];
-        for (NSString *identifier in radioMenuItemIdentifiers) {
-            MenuItem menuItem = RadioMenuItemWithString(identifier);
-            if (menuItem != MenuItemUnknown) {
-                [radioMenuItems addObject:@(menuItem)];
-            }
-            else {
-                PlayLogWarning(@"configuration", @"Unknown radio menu item identifier %@. Skipped.", identifier);
-            }
-        }
-    }
-    self.radioMenuItems = radioMenuItems.copy;
     
     NSMutableArray<TVChannel *> *tvChannels = [NSMutableArray array];
     if ([self.remoteConfig configValueForKey:@"tvChannels"].stringValue.length) {
@@ -863,14 +806,13 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %p; tvMenuItems = %@; videoSections: = %@; radioChannels = %@; audioSections = %@; radioMenuItems = %@>",
+    return [NSString stringWithFormat:@"<%@: %p; videoSections: = %@; liveSections: = %@; radioChannels = %@; audioSections = %@>",
             self.class,
             self,
-            self.tvMenuItems,
             self.videoSections,
+            self.liveSections,
             self.radioChannels,
-            self.audioSections,
-            self.radioMenuItems];
+            self.audioSections];
 }
 
 @end

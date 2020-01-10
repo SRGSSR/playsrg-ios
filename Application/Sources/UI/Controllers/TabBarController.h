@@ -4,8 +4,8 @@
 //  License information is available from the LICENSE file.
 //
 
+#import "ApplicationSectionInfo.h"
 #import "ContentInsets.h"
-#import "MenuItemInfo.h"
 
 #import <UIKit/UIKit.h>
 
@@ -14,9 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TabBarController : UITabBarController <ContainerContentInsets, UINavigationControllerDelegate>
 
 /**
- *  Open the menu item.
+ *  Open the application section.
  */
-- (void)openMenuItemInfo:(MenuItemInfo *)menuItemInfo;
+- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo;
 
 /**
  *  Push the specified view controller into the center navigation controller.

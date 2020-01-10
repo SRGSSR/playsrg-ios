@@ -59,7 +59,7 @@
 
 static void *s_kvoContext = &s_kvoContext;
 
-static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
+static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *channelUid);
 
 @implementation PlayAppDelegate
 
@@ -417,8 +417,8 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 {
     NSParameterAssert(mediaURN);
     
-    MenuItemInfo *menuItemInfo = MenuItemInfoForChannelUid(channelUid);
-    [self resetWithMenuItemInfo:menuItemInfo completionBlock:^{
+    ApplicationSectionInfo *applicationSectionInfo = ApplicationSectionInfoForChannelUid(channelUid);
+    [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         CMTime time = (startTime > 0) ? CMTimeMakeWithSeconds(startTime, NSEC_PER_SEC) : kCMTimeZero;
         [self playURN:mediaURN media:nil atPosition:[SRGPosition positionAtTime:time] fromPushNotification:fromPushNotification completion:nil];
         completionBlock ? completionBlock() : nil;
@@ -429,8 +429,8 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 {
     NSParameterAssert(showURN);
     
-    MenuItemInfo *menuItemInfo = MenuItemInfoForChannelUid(channelUid);
-    [self resetWithMenuItemInfo:menuItemInfo completionBlock:^{
+    ApplicationSectionInfo *applicationSectionInfo = ApplicationSectionInfoForChannelUid(channelUid);
+    [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         [self openShowURN:showURN show:nil fromPushNotification:fromPushNotification];
         completionBlock ? completionBlock() : nil;
     }];
@@ -440,18 +440,18 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 {
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
     if (radioChannel) {
-        MenuItemInfo *menuItemInfo = MenuItemInfoForChannelUid(channelUid);
-        [self resetWithMenuItemInfo:menuItemInfo completionBlock:^{
+        ApplicationSectionInfo *applicationSectionInfo = ApplicationSectionInfoForChannelUid(channelUid);
+        [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
             [self openShowListWithRadioChannel:radioChannel atIndex:index];
             completionBlock ? completionBlock() : nil;
         }];
     }
     else {
         NSMutableDictionary *options = [NSMutableDictionary dictionary];
-        options[MenuItemOptionShowAZIndexKey] = index;
+        options[ApplicationSectionOptionShowAZIndexKey] = index;
         
-        MenuItemInfo *menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:MenuItemTVShowAZ options:options.copy];
-        [self resetWithMenuItemInfo:menuItemInfo completionBlock:completionBlock];
+        ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVShowAZ options:options.copy];
+        [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
     }
 }
 
@@ -459,35 +459,35 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 {
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
     if (radioChannel) {
-        MenuItemInfo *menuItemInfo = MenuItemInfoForChannelUid(channelUid);
-        [self resetWithMenuItemInfo:menuItemInfo completionBlock:^{
+        ApplicationSectionInfo *applicationSectionInfo = ApplicationSectionInfoForChannelUid(channelUid);
+        [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
             [self openCalendarAtDate:date withRadioChannel:radioChannel];
             completionBlock ? completionBlock() : nil;
         }];
     }
     else {
         NSMutableDictionary *options = [NSMutableDictionary dictionary];
-        options[MenuItemOptionShowByDateDateKey] = date;
+        options[ApplicationSectionOptionShowByDateDateKey] = date;
         
-        MenuItemInfo *menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:MenuItemTVByDate options:options.copy];
-        [self resetWithMenuItemInfo:menuItemInfo completionBlock:completionBlock];
+        ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVByDate options:options.copy];
+        [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
     }
 }
 
 - (void)openSearchWithQuery:(NSString *)query mediaType:(SRGMediaType)mediaType completionBlock:(void (^)(void))completionBlock
 {
     NSMutableDictionary *options = [NSMutableDictionary dictionary];
-    options[MenuItemOptionSearchMediaTypeOptionKey] = @(mediaType);
-    options[MenuItemOptionSearchQueryKey] = query;
+    options[ApplicationSectionOptionSearchMediaTypeOptionKey] = @(mediaType);
+    options[ApplicationSectionOptionSearchQueryKey] = query;
     
-    MenuItemInfo *menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:MenuItemSearch options:options.copy];
-    [self resetWithMenuItemInfo:menuItemInfo completionBlock:completionBlock];
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionSearch options:options.copy];
+    [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
 }
 
 - (void)openHomeWithChannelUid:(NSString *)channelUid completionBlock:(void (^)(void))completionBlock
 {
-    MenuItemInfo *menuItemInfo = MenuItemInfoForChannelUid(channelUid);
-    [self resetWithMenuItemInfo:menuItemInfo completionBlock:completionBlock];
+    ApplicationSectionInfo *applicationSectionInfo = ApplicationSectionInfoForChannelUid(channelUid);
+    [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
 }
 
 - (void)openPageWithAction:(DeeplinkAction)action channelUid:(NSString *)channelUid URLComponents:(NSURLComponents *)URLComponents completionBlock:(void (^)(void))completionBlock
@@ -527,8 +527,8 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 {
     NSParameterAssert(topicURN);
     
-    MenuItemInfo *menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:MenuItemTVOverview];
-    [self resetWithMenuItemInfo:menuItemInfo completionBlock:^{
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview];
+    [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         [self openTopicURN:topicURN];
         completionBlock ? completionBlock() : nil;
     }];
@@ -538,8 +538,8 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 {
     NSParameterAssert(moduleURN);
     
-    MenuItemInfo *menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:MenuItemTVOverview];
-    [self resetWithMenuItemInfo:menuItemInfo completionBlock:^{
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview];
+    [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         [self openModuleURN:moduleURN];
         completionBlock ? completionBlock() : nil;
     }];
@@ -582,8 +582,8 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
         NSString *showURN = userActivity.userInfo[@"URNString"];
         if (showURN) {
             SRGShow *show = [NSKeyedUnarchiver unarchiveObjectWithData:userActivity.userInfo[@"SRGShowData"]];
-            MenuItemInfo *menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:MenuItemTVOverview];
-            [self resetWithMenuItemInfo:menuItemInfo completionBlock:^{
+            ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview];
+            [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
                 [self openShowURN:showURN show:show fromPushNotification:NO];
             }];
             
@@ -711,11 +711,11 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
                                               identityService:SRGIdentityService.currentIdentityService];
 }
 
-// Reset the app view controller hierachy to display the specified menu item, executing the provided completion block when done.
-- (void)resetWithMenuItemInfo:(MenuItemInfo *)menuItemInfo completionBlock:(void (^)(void))completionBlock
+// Reset the app view controller hierachy to display the specified application section, executing the provided completion block when done.
+- (void)resetWithApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo completionBlock:(void (^)(void))completionBlock
 {
-    void (^openMenuItemInfo)(void) = ^{
-        [self.playTabBarController openMenuItemInfo:menuItemInfo];
+    void (^openApplicationSectionInfo)(void) = ^{
+        [self.playTabBarController openApplicationSectionInfo:applicationSectionInfo];
         completionBlock ? completionBlock() : nil;
     };
     
@@ -726,11 +726,11 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
         [UIView setAnimationsEnabled:NO];
         [self.playTabBarController dismissViewControllerAnimated:YES completion:^{
             [UIView setAnimationsEnabled:YES];
-            openMenuItemInfo();
+            openApplicationSectionInfo();
         }];
     }
     else {
-        openMenuItemInfo();
+        openApplicationSectionInfo();
     }
 }
 
@@ -973,23 +973,23 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 
 - (BOOL)handleShortcutItem:(UIApplicationShortcutItem *)shortcutItem
 {
-    MenuItemInfo *menuItemInfo = nil;
+    ApplicationSectionInfo *applicationSectionInfo = nil;
     SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
     
     if ([shortcutItem.type isEqualToString:@"favorites"]) {
-        menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:MenuItemFavorites];
+        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionFavorites];
         labels.type = AnalyticsTypeActionFavorites;
     }
     else if ([shortcutItem.type isEqualToString:@"downloads"]) {
-        menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:MenuItemDownloads];
+        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionDownloads];
         labels.type = AnalyticsTypeActionDownloads;
     }
     else if ([shortcutItem.type isEqualToString:@"history"]) {
-        menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:MenuItemHistory];
+        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionHistory];
         labels.type = AnalyticsTypeActionHistory;
     }
     else if ([shortcutItem.type isEqualToString:@"search"]) {
-        menuItemInfo = [MenuItemInfo menuItemInfoWithMenuItem:MenuItemSearch];
+        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionSearch];
         labels.type = AnalyticsTypeActionSearch;
     }
     else {
@@ -998,7 +998,7 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
     
     [SRGAnalyticsTracker.sharedTracker trackHiddenEventWithName:AnalyticsTitleQuickActions labels:labels];
     
-    [self resetWithMenuItemInfo:menuItemInfo completionBlock:nil];
+    [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:nil];
     return YES;
 }
 
@@ -1107,13 +1107,13 @@ static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid);
 
 #pragma mark Static functions
 
-static MenuItemInfo *MenuItemInfoForChannelUid(NSString *channelUid)
+static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *channelUid)
 {
     if (channelUid) {
         RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
         if (radioChannel) {
-            return [MenuItemInfo menuItemInfoWithRadioChannel:radioChannel];
+            return [ApplicationSectionInfo applicationSectionInfoWithRadioChannel:radioChannel];
         }
     }
-    return [MenuItemInfo menuItemInfoWithMenuItem:MenuItemTVOverview];
+    return [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview];
 }

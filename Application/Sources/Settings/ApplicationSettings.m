@@ -227,26 +227,26 @@ SRGMedia *ApplicationSettingSelectedLivestreamMediaForChannelUid(NSString *chann
     return [medias filteredArrayUsingPredicate:predicate].firstObject;
 }
 
-MenuItemInfo *ApplicationSettingLastOpenHomepageMenuItemInfo(void)
+ApplicationSectionInfo *ApplicationSettingLastOpenHomepageApplicationSectionInfo(void)
 {
     NSString *lastOpenHomepageUid = [NSUserDefaults.standardUserDefaults stringForKey:PlaySRGSettingLastOpenHomepageUid];
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:lastOpenHomepageUid];
     if (radioChannel) {
-        return [MenuItemInfo menuItemInfoWithRadioChannel:radioChannel];
+        return [ApplicationSectionInfo applicationSectionInfoWithRadioChannel:radioChannel];
     }
     else {
-        return [MenuItemInfo menuItemInfoWithMenuItem:MenuItemTVOverview];
+        return [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview];
     }
 }
 
-void ApplicationSettingSetLastOpenHomepageMenuItemInfo(MenuItemInfo *menuItemInfo)
+void ApplicationSettingSetLastOpenHomepageApplicationSectionInfo(ApplicationSectionInfo *applicationSectionInfo)
 {
     // Save only radio home page or set to nil if it's the TV home page
-    if (menuItemInfo.radioChannel || menuItemInfo.menuItem == MenuItemTVOverview
-            || menuItemInfo.menuItem == MenuItemTVByDate || menuItemInfo.menuItem == MenuItemTVShowAZ) {
+    if (applicationSectionInfo.radioChannel || applicationSectionInfo.applicationSection == ApplicationSectionTVOverview
+            || applicationSectionInfo.applicationSection == ApplicationSectionTVByDate || applicationSectionInfo.applicationSection == ApplicationSectionTVShowAZ) {
         
         NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-        [userDefaults setObject:menuItemInfo.radioChannel.uid forKey:PlaySRGSettingLastOpenHomepageUid];
+        [userDefaults setObject:applicationSectionInfo.radioChannel.uid forKey:PlaySRGSettingLastOpenHomepageUid];
         [userDefaults synchronize];
     }
 }

@@ -4,7 +4,7 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "MenuItemInfo.h"
+#import "ApplicationSectionInfo.h"
 
 #import <SRGLetterbox/SRGLetterbox.h>
 
@@ -67,8 +67,8 @@ OBJC_EXPORT void ApplicationSettingSetSelectedLiveStreamURNForChannelUid(NSStrin
 
 OBJC_EXPORT SRGMedia * _Nullable ApplicationSettingSelectedLivestreamMediaForChannelUid(NSString * _Nullable channelUid, NSArray<SRGMedia *> * _Nullable medias);
 
-OBJC_EXPORT MenuItemInfo * ApplicationSettingLastOpenHomepageMenuItemInfo(void);
-OBJC_EXPORT void ApplicationSettingSetLastOpenHomepageMenuItemInfo(MenuItemInfo * _Nullable menuItem);
+OBJC_EXPORT ApplicationSectionInfo * ApplicationSettingLastOpenHomepageApplicationSectionInfo(void);
+OBJC_EXPORT void ApplicationSettingSetLastOpenHomepageApplicationSectionInfo(ApplicationSectionInfo * _Nullable applicationSectionInfo);
 
 OBJC_EXPORT NSURL * _Nullable ApplicationSettingServiceURLForKey(NSString *key);
 OBJC_EXPORT NSString * _Nullable ApplicationSettingServiceNameForKey(NSString *key);

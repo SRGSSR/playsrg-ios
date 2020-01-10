@@ -48,31 +48,31 @@ typedef NS_ENUM(NSInteger, TopicSection) {
     TopicSectionMostPopular
 };
 
-typedef NS_ENUM(NSInteger, MenuItem) {
-    MenuItemUnknown,
+typedef NS_ENUM(NSInteger, ApplicationSection) {
+    ApplicationSectionUnknown,
     
-    MenuItemSearch,
-    MenuItemFavorites,
-    MenuItemWatchLater,
-    MenuItemDownloads,
-    MenuItemHistory,
-    MenuItemNotifications,
-    MenuItemNotification,
+    ApplicationSectionSearch,
+    ApplicationSectionFavorites,
+    ApplicationSectionWatchLater,
+    ApplicationSectionDownloads,
+    ApplicationSectionHistory,
+    ApplicationSectionNotifications,
+    ApplicationSectionNotification,
     
-    MenuItemTVOverview,
-    MenuItemTVByDate,
-    MenuItemTVShowAZ,
+    ApplicationSectionTVOverview,
+    ApplicationSectionTVByDate,
+    ApplicationSectionTVShowAZ,
     
-    MenuItemRadio,
-    MenuItemRadioShowAZ,
+    ApplicationSectionRadio,
+    ApplicationSectionRadioShowAZ,
     
-    MenuItemFeedback,
-    MenuItemSettings,
-    MenuItemHelp
+    ApplicationSectionFeedback,
+    ApplicationSectionSettings,
+    ApplicationSectionHelp
 };
 
+OBJC_EXPORT NSString *TitleForApplicationSection(ApplicationSection applicationSection);
 OBJC_EXPORT NSString *TitleForHomeSection(HomeSection homeSection);
-OBJC_EXPORT NSString *TitleForMenuItem(MenuItem menuItem);
 OBJC_EXPORT NSString *TitleForTopicSection(TopicSection topicSection);
 
 OBJC_EXPORT void ApplicationConfigurationApplyControllerSettings(SRGLetterboxController *controller);
@@ -122,10 +122,8 @@ OBJC_EXPORT NSString * const ApplicationConfigurationDidChangeNotification;
 @property (nonatomic, readonly) UIColor *moduleDefaultLinkColor;
 @property (nonatomic, readonly) UIColor *moduleDefaultTextColor;
 
-@property (nonatomic, readonly) NSArray<NSNumber *> *tvMenuItems;                       // wrap `MenuItem` values
-
-@property (nonatomic, readonly) NSArray<NSNumber *> *videoSections;
-@property (nonatomic, readonly) NSArray<NSNumber *> *liveSections;
+@property (nonatomic, readonly) NSArray<NSNumber *> *videoSections;                     // wrap `HomeSection` values
+@property (nonatomic, readonly) NSArray<NSNumber *> *liveSections;                      // wrap `HomeSection` values
 
 @property (nonatomic, readonly) BOOL tvTrendingEpisodesOnly;
 @property (nonatomic, readonly, nullable) NSNumber *tvTrendingEditorialLimit;
@@ -144,8 +142,6 @@ OBJC_EXPORT NSString * const ApplicationConfigurationDidChangeNotification;
 @property (nonatomic, readonly) NSArray<TVChannel *> *tvChannels;
 
 @property (nonatomic, readonly, getter=isRadioFeaturedHomeSectionHeaderHidden) BOOL radioFeaturedHomeSectionHeaderHidden;
-
-@property (nonatomic, readonly) NSArray<NSNumber *> *radioMenuItems;                    // wrap `MenuItem` values
 
 @property (nonatomic, readonly) NSUInteger pageSize;                                    // page size to be used in general throughout the app
 

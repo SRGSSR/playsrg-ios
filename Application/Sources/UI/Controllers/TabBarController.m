@@ -156,63 +156,63 @@ static const CGFloat MiniPlayerOffset = 5.f;
 
 #pragma mark Changing content
 
-- (void)openMenuItemInfo:(MenuItemInfo *)menuItemInfo
+- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
     TabBarItemTag tabBarItemTag = TabBarItemTagNone;
-    switch (menuItemInfo.menuItem) {
-        case MenuItemSearch: {
+    switch (applicationSectionInfo.applicationSection) {
+        case ApplicationSectionSearch: {
             tabBarItemTag = TabBarItemTagSearch;
             break;
         }
             
-        case MenuItemFavorites: {
+        case ApplicationSectionFavorites: {
             tabBarItemTag = TabBarItemTagLibrary;
             break;
         }
             
-        case MenuItemWatchLater: {
+        case ApplicationSectionWatchLater: {
             tabBarItemTag = TabBarItemTagLibrary;
             break;
         }
             
-        case MenuItemDownloads: {
+        case ApplicationSectionDownloads: {
             tabBarItemTag = TabBarItemTagLibrary;
             break;
         }
             
-        case MenuItemHistory: {
+        case ApplicationSectionHistory: {
             tabBarItemTag = TabBarItemTagLibrary;
             break;
         }
             
-        case MenuItemNotifications: {
+        case ApplicationSectionNotifications: {
             tabBarItemTag = TabBarItemTagLibrary;
             break;
         }
             
-        case MenuItemTVOverview: {
+        case ApplicationSectionTVOverview: {
             tabBarItemTag = TabBarItemTagVideos;
             break;
         }
             
-        case MenuItemTVByDate: {
+        case ApplicationSectionTVByDate: {
             tabBarItemTag = TabBarItemTagVideos;
             break;
         }
             
-        case MenuItemTVShowAZ: {
+        case ApplicationSectionTVShowAZ: {
             tabBarItemTag = TabBarItemTagVideos;
             break;
         }
             
-        case MenuItemRadio: {
-            NSAssert(menuItemInfo.radioChannel, @"RadioChannel expected");
+        case ApplicationSectionRadio: {
+            NSAssert(applicationSectionInfo.radioChannel, @"RadioChannel expected");
             tabBarItemTag = TabBarItemTagAudios;
             break;
         }
             
-        case MenuItemRadioShowAZ: {
-            NSAssert(menuItemInfo.radioChannel, @"RadioChannel expected");
+        case ApplicationSectionRadioShowAZ: {
+            NSAssert(applicationSectionInfo.radioChannel, @"RadioChannel expected");
             tabBarItemTag = TabBarItemTagAudios;
             break;
         }
