@@ -226,6 +226,9 @@
 /* Explains that a content has expired, will expire or will be available in less than one hour. Displayed in the media player view. */
 "less than 1 hour" = "< 1 Stunde";
 
+/* Title displayed at the top of the library view */
+"Library" = "Bibliothek";
+
 /* Short label identifying a livestream. Display in uppercase. */
 "Live" = "Live";
 
