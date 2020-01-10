@@ -155,6 +155,18 @@
     [self.tableView play_scrollToTopAnimated:animated];
 }
 
+#pragma mark ContentInsets protocol
+
+- (NSArray<UIScrollView *> *)play_contentScrollViews
+{
+    return self.tableView ? @[self.tableView] : nil;
+}
+
+- (UIEdgeInsets)play_paddingContentInsets
+{
+    return UIEdgeInsetsZero;
+}
+
 #pragma mark SRGAnalyticsViewTracking protocol
 
 - (NSString *)srg_pageViewTitle
