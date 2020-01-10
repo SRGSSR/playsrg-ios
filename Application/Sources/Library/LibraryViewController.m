@@ -21,7 +21,6 @@
 #import "SettingsViewController.h"
 #import "UIColor+PlaySRG.h"
 #import "UIDevice+PlaySRG.h"
-#import "UIScrollView+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 #import "WatchLaterViewController.h"
 #import "WebViewController.h"
@@ -146,13 +145,6 @@
     [super updateForContentSizeCategory];
     
     [self.tableView reloadData];
-}
-
-#pragma mark UI
-
-- (void)scrollToTopAnimated:(BOOL)animated
-{
-    [self.tableView play_scrollToTopAnimated:animated];
 }
 
 #pragma mark ContentInsets protocol
