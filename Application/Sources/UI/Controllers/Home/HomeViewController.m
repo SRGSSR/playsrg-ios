@@ -528,6 +528,28 @@
     return 10e-6f;
 }
 
+#pragma mark PlayApplicationNavigation protocol
+
+- (NSArray<NSNumber *> *)supportedApplicationSections
+{
+    if (self.radioChannel) {
+        return @[ @(ApplicationSectionRadio),
+                  @(ApplicationSectionRadioShowAZ) ];
+    }
+    else {
+        return @[ @(ApplicationSectionTVOverview),
+                  @(ApplicationSectionTVByDate),
+                  @(ApplicationSectionTVShowAZ) ];
+    }
+}
+
+- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
+{
+    if ([self.supportedApplicationSections containsObject:@(applicationSectionInfo.applicationSection)]) {
+        // TODO: show AZ, show by date, radio channel.
+    }
+}
+
 #pragma mark Actions
 
 - (void)refresh:(id)sender

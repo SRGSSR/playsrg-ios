@@ -44,4 +44,18 @@
     return @[ AnalyticsNameForPageType(AnalyticsPageTypeRadio) ];
 }
 
+#pragma mark PlayApplicationNavigation protocol
+
+- (NSArray<NSNumber *> *)supportedApplicationSections
+{
+    return @[];
+}
+
+- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
+{
+    if ([self.supportedApplicationSections containsObject:@(applicationSectionInfo.applicationSection)]) {
+        // TODO: select correct section.
+    }
+}
+
 @end

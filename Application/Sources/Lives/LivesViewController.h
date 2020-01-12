@@ -6,12 +6,13 @@
 
 #import "HomeSectionInfo.h"
 #import "PageViewController.h"
+#import "PlayApplicationNavigation.h"
 
 #import <SRGAnalytics/SRGAnalytics.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LivesViewController : PageViewController <SRGAnalyticsViewTracking>
+@interface LivesViewController : PageViewController <PlayApplicationNavigation, SRGAnalyticsViewTracking>
 
 - (instancetype)initWithSections:(NSArray<NSNumber *> *)sections;
 

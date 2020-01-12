@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LibraryViewController : BaseViewController <PlayApplicationNavigation, ContentInsets, UITableViewDataSource, UITableViewDelegate>
+@interface LibraryViewController : BaseViewController <ContentInsets, PlayApplicationNavigation, UITableViewDataSource, UITableViewDelegate>
 
 @end
 

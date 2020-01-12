@@ -5,13 +5,14 @@
 //
 
 #import "PageViewController.h"
+#import "PlayApplicationNavigation.h"
 #import "RadioChannel.h"
 
 #import <SRGAnalytics/SRGAnalytics.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AudiosViewController : PageViewController <SRGAnalyticsViewTracking>
+@interface AudiosViewController : PageViewController <PlayApplicationNavigation, SRGAnalyticsViewTracking>
 
 - (instancetype)initWithRadioChannels:(NSArray<RadioChannel *> *)radioChannels;
 
