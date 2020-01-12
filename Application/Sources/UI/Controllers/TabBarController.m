@@ -159,80 +159,18 @@ static const CGFloat MiniPlayerOffset = 5.f;
 
 - (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    TabBarItemTag tabBarItemTag = TabBarItemTagNone;
-    switch (applicationSectionInfo.applicationSection) {
-        case ApplicationSectionSearch: {
-            tabBarItemTag = TabBarItemTagSearch;
-            break;
-        }
-            
-        case ApplicationSectionFavorites: {
-            tabBarItemTag = TabBarItemTagLibrary;
-            break;
-        }
-            
-        case ApplicationSectionWatchLater: {
-            tabBarItemTag = TabBarItemTagLibrary;
-            break;
-        }
-            
-        case ApplicationSectionDownloads: {
-            tabBarItemTag = TabBarItemTagLibrary;
-            break;
-        }
-            
-        case ApplicationSectionHistory: {
-            tabBarItemTag = TabBarItemTagLibrary;
-            break;
-        }
-            
-        case ApplicationSectionNotifications: {
-            tabBarItemTag = TabBarItemTagLibrary;
-            break;
-        }
-            
-        case ApplicationSectionTVOverview: {
-            tabBarItemTag = TabBarItemTagVideos;
-            break;
-        }
-            
-        case ApplicationSectionTVByDate: {
-            tabBarItemTag = TabBarItemTagVideos;
-            break;
-        }
-            
-        case ApplicationSectionTVShowAZ: {
-            tabBarItemTag = TabBarItemTagVideos;
-            break;
-        }
-            
-        case ApplicationSectionRadio: {
-            NSAssert(applicationSectionInfo.radioChannel, @"RadioChannel expected");
-            tabBarItemTag = TabBarItemTagAudios;
-            break;
-        }
-            
-        case ApplicationSectionRadioShowAZ: {
-            NSAssert(applicationSectionInfo.radioChannel, @"RadioChannel expected");
-            tabBarItemTag = TabBarItemTagAudios;
-            break;
-        }
-            
-        default: {
-            break;
+    UIViewController<PlayApplicationNavigation> *selectedViewController = nil;
+    for (UIViewController *viewController in self.viewControllers) {
+        if ([viewController conformsToProtocol:@protocol(PlayApplicationNavigation)]
+            && [((UIViewController<PlayApplicationNavigation> *)viewController).supportedApplicationSections containsObject:@(applicationSectionInfo.applicationSection)]) {
+            selectedViewController = (UIViewController<PlayApplicationNavigation> *)viewController;
+            continue;
         }
     }
     
-    UITabBarItem *tabBarItem = [self tabBarItemForTag:tabBarItemTag];
-    if (tabBarItemTag) {
-        NSInteger tabBarItemIndex =[self.tabBar.items indexOfObject:tabBarItem];
-        if (tabBarItemIndex != NSNotFound) {
-            UIViewController *viewController = self.viewControllers[tabBarItemIndex];
-            if ([viewController conformsToProtocol:@protocol(PlayApplicationNavigation)]) {
-                [((UIViewController<PlayApplicationNavigation> *)viewController) openApplicationSectionInfo:applicationSectionInfo];
-            }
-            [self setSelectedViewController:viewController];
-        }
+    if (selectedViewController) {
+        [selectedViewController openApplicationSectionInfo:applicationSectionInfo];
+        [self setSelectedViewController:selectedViewController];
     }
 }
 
