@@ -1852,6 +1852,7 @@
 		08BAABD81E7613F0007644D7 /* HomeMediasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMediasViewController.m; sourceTree = "<group>"; };
 		08BAABD91E7613F0007644D7 /* HomeMediasViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeMediasViewController.storyboard; sourceTree = "<group>"; };
 		08BDB5B1228D520000335898 /* PushService+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PushService+Private.h"; sourceTree = "<group>"; };
+		08C33ED423CB5CBE00D422C1 /* PlayApplicationNavigation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayApplicationNavigation.h; sourceTree = "<group>"; };
 		08C68D891D38D6F400BB8AAA /* Play SRF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Play SRF.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08C68DC01D38D70D00BB8AAA /* Play RTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Play RTS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		08C68DF71D38D72000BB8AAA /* Play RSI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Play RSI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2625,11 +2626,12 @@
 		08654B921D3CDA160040EF04 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6F4760181EB37BD1003021EA /* Categories */,
+				08C33ED323CB5C6500D422C1 /* Protocols */,
 				08AF947E217D27E40028B082 /* ActivityItemSource.h */,
 				08AF947F217D27E40028B082 /* ActivityItemSource.m */,
 				6FE1B4951DCB84F00094D5BA /* AnalyticsConstants.h */,
 				6FE1B4961DCB84F00094D5BA /* AnalyticsConstants.m */,
-				6F4760181EB37BD1003021EA /* Categories */,
 				087584D523A0008500FA7207 /* ApplicationSectionGroup.h */,
 				087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */,
 				087584C723A0008500FA7207 /* ApplicationSectionInfo.h */,
@@ -2774,6 +2776,14 @@
 				6F475FA81EB37BC6003021EA /* Views */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		08C33ED323CB5C6500D422C1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				08C33ED423CB5CBE00D422C1 /* PlayApplicationNavigation.h */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		08C68D461D38D49600BB8AAA = {

@@ -245,6 +245,29 @@
     headerView.applicationSectionGroup = self.sectionInfos[section];
     return headerView;
 }
+
+#pragma mark PlayApplicationNavigation protocol
+
+- (NSArray<NSNumber *> *)supportedApplicationSections
+{
+    return @[ @(ApplicationSectionSettings),
+              @(ApplicationSectionNotifications),
+              @(ApplicationSectionNotification),
+              @(ApplicationSectionHistory),
+              @(ApplicationSectionFavorites),
+              @(ApplicationSectionWatchLater),
+              @(ApplicationSectionDownloads),
+              @(ApplicationSectionFeedback),
+              @(ApplicationSectionHelp) ];
+}
+
+- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
+{
+    if ([self.supportedApplicationSections containsObject:@(applicationSectionInfo.applicationSection)]) {
+        [self openApplicationSectionInfo:applicationSectionInfo animated:NO];
+    }
+}
+
 #pragma mark Helpers
 
 - (BOOL)isNotificationForIndex:(NSIndexPath *)indexPath
@@ -357,7 +380,7 @@
     }
     
     if (viewController) {
-        [self.navigationController pushViewController:viewController animated:YES];
+        [self.navigationController pushViewController:viewController animated:animated];
     }
 }
 

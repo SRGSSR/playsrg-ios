@@ -6,12 +6,13 @@
 
 #import "BaseViewController.h"
 #import "ContentInsets.h"
+#import "PlayApplicationNavigation.h"
 
 #import <CoconutKit/CoconutKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LibraryViewController : BaseViewController <ContentInsets, UITableViewDataSource, UITableViewDelegate>
+@interface LibraryViewController : BaseViewController <PlayApplicationNavigation, ContentInsets, UITableViewDataSource, UITableViewDelegate>
 
 @end
 

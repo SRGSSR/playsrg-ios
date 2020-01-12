@@ -6,13 +6,14 @@
 
 #import "TabBarController.h"
 
+#import "AudiosViewController.h"
 #import "HomeViewController.h"
 #import "LibraryViewController.h"
 #import "LivesViewController.h"
 #import "MiniPlayerView.h"
 #import "NavigationController.h"
+#import "PlayApplicationNavigation.h"
 #import "PushService.h"
-#import "AudiosViewController.h"
 #import "SearchViewController.h"
 #import "UIColor+PlaySRG.h"
 
@@ -226,7 +227,11 @@ static const CGFloat MiniPlayerOffset = 5.f;
     if (tabBarItemTag) {
         NSInteger tabBarItemIndex =[self.tabBar.items indexOfObject:tabBarItem];
         if (tabBarItemIndex != NSNotFound) {
-            [self setSelectedIndex:tabBarItemIndex];
+            UIViewController *viewController = self.viewControllers[tabBarItemIndex];
+            if ([viewController conformsToProtocol:@protocol(PlayApplicationNavigation)]) {
+                [((UIViewController<PlayApplicationNavigation> *)viewController) openApplicationSectionInfo:applicationSectionInfo];
+            }
+            [self setSelectedViewController:viewController];
         }
     }
 }

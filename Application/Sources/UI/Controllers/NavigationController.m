@@ -130,4 +130,25 @@
     }
 }
 
+#pragma mark PlayApplicationNavigation protocol
+
+- (NSArray<NSNumber *> *)supportedApplicationSections
+{
+    if (self.viewControllers[0] && [self.viewControllers[0] conformsToProtocol:@protocol(PlayApplicationNavigation)]) {
+        return ((UIViewController<PlayApplicationNavigation> *)self.viewControllers[0]).supportedApplicationSections;
+    }
+    else {
+        return @[];
+    }
+}
+
+- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
+{
+    [self popToRootViewControllerAnimated:NO];
+    
+    if (self.viewControllers[0] && [self.viewControllers[0] conformsToProtocol:@protocol(PlayApplicationNavigation)]) {
+        [((UIViewController<PlayApplicationNavigation> *)self.viewControllers[0]) openApplicationSectionInfo:applicationSectionInfo];
+    }
+}
+
 @end
