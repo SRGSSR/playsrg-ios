@@ -13,16 +13,16 @@
 
 #pragma mark Object lifecycle
 
-- (instancetype)initWithSections:(NSArray<NSNumber *> *)sections
+- (instancetype)initWithHomeSections:(NSArray<NSNumber *> *)homeSections
 {
-    NSAssert(sections.count > 0, @"1 live section at least expected");
+    NSAssert(homeSections.count > 0, @"1 live section at least expected");
     
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
-    for (NSNumber *sectionNumber in sections) {
-        HomeSection section = sectionNumber.integerValue;
-        HomeMediasViewController *viewController = [[HomeMediasViewController alloc] initWithHomeSectionInfo:[[HomeSectionInfo alloc] initWithHomeSection:section]];
+    for (NSNumber *homeSectionNumber in homeSections) {
+        HomeSection homeSection = homeSectionNumber.integerValue;
+        HomeMediasViewController *viewController = [[HomeMediasViewController alloc] initWithHomeSectionInfo:[[HomeSectionInfo alloc] initWithHomeSection:homeSection]];
         viewController.liveLargeCell = YES;
-        viewController.play_pageItem = [[PageItem alloc] initWithTitle:TitleForHomeSection(section) image:nil];
+        viewController.play_pageItem = [[PageItem alloc] initWithTitle:TitleForHomeSection(homeSection) image:nil];
         [viewControllers addObject:viewController];
     }
     

@@ -63,9 +63,9 @@ static const CGFloat MiniPlayerOffset = 5.f;
             [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"audio-25"] tag:TabBarItemTagAudios]];
         }
         
-        NSArray<NSNumber *> *liveSections = ApplicationConfiguration.sharedApplicationConfiguration.liveSections;
-        if (liveSections.count > 0) {
-            viewController = [[LivesViewController alloc] initWithSections:liveSections];
+        NSArray<NSNumber *> *liveHomeSections = ApplicationConfiguration.sharedApplicationConfiguration.liveHomeSections;
+        if (liveHomeSections.count > 0) {
+            viewController = [[LivesViewController alloc] initWithHomeSections:liveHomeSections];
             [viewControllers addObject:viewController];
             [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"lives-25"] tag:TabBarItemTagLives]];
         }

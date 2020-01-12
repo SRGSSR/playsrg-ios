@@ -56,7 +56,7 @@
 - (instancetype)initWithRadioChannel:(RadioChannel *)radioChannel
 {
     if (self = [super init]) {
-        self.homeSections = (radioChannel) ? radioChannel.sections : ApplicationConfiguration.sharedApplicationConfiguration.videoSections;
+        self.homeSections = (radioChannel) ? radioChannel.homeSections : ApplicationConfiguration.sharedApplicationConfiguration.videoHomeSections;
         self.radioChannel = radioChannel;
         
         if (self.radioChannel) {

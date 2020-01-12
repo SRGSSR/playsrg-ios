@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LivesViewController : PageViewController <PlayApplicationNavigation, SRGAnalyticsViewTracking>
 
-- (instancetype)initWithSections:(NSArray<NSNumber *> *)sections;
+- (instancetype)initWithHomeSections:(NSArray<NSNumber *> *)homeSections;
 
 @end
 
