@@ -59,6 +59,13 @@
         self.homeSections = (radioChannel) ? radioChannel.sections : ApplicationConfiguration.sharedApplicationConfiguration.videoSections;
         self.radioChannel = radioChannel;
         
+        if (self.radioChannel) {
+            self.title = self.radioChannel.name;
+        }
+        else {
+            self.title = NSLocalizedString(@"Videos", @"Videos home page title");
+        }
+        
         [self synchronizeHomeSections];
     }
     return self;
@@ -71,11 +78,9 @@
     [super viewDidLoad];
     
     if (self.radioChannel) {
-        self.title = self.radioChannel.name;
         self.navigationItem.titleView = [[UIImageView alloc] initWithImage:RadioChannelNavigationBarImage(self.radioChannel)];
     }
     else {
-        self.title = NSLocalizedString(@"Videos", @"Videos home page title");
         self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_play-20"]];
     }
     
