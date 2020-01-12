@@ -70,7 +70,7 @@ static const CGFloat MiniPlayerOffset = 5.f;
             [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"lives-25"] tag:TabBarItemTagLives]];
         }
         
-        viewController = [[SearchViewController alloc] initWithQuery:nil settings:nil];
+        viewController = [[SearchViewController alloc] init];
         [viewControllers addObject:viewController];
         [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"search-25"] tag:TabBarItemTagSearch]];
         

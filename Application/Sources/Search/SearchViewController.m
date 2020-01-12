@@ -58,41 +58,34 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 
 #pragma mark Object lifecycle
 
-- (instancetype)initWithQuery:(NSString *)query settings:(SRGMediaSearchSettings *)settings
+- (instancetype)init
 {
     if (self = [super init]) {
-        self.query = query;
-        
-        // A BU supporting aggregation but not displaying search settings can lead to longer response times.
-        // (@see `-mediasForVendor:matchingQuery:withSettings:completionBlock:` in `SRGDataProvider`).
-        ApplicationConfiguration *applicationConfiguration = ApplicationConfiguration.sharedApplicationConfiguration;
-        if (! applicationConfiguration.searchSettingsHidden) {
-            self.settings = settings ?: SearchSettingsViewController.defaultSettings;
-            self.settings.aggregationsEnabled = NO;
-        }
-        else {
-            self.settings = nil;
-        }
+        // Set default settings. @see `setSettings:`.
+        self.settings = nil;
     }
     return self;
 }
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
-
-- (instancetype)init
-{
-    [self doesNotRecognizeSelector:_cmd];
-    return [self initWithQuery:nil settings:nil];
-}
-
-#pragma clang diagnostic pop
 
 #pragma mark Getters and setters
 
 - (NSString *)title
 {
     return NSLocalizedString(@"Search", @"Search page title");
+}
+
+- (void)setSettings:(SRGMediaSearchSettings *)settings
+{
+    // A BU supporting aggregation but not displaying search settings can lead to longer response times.
+    // (@see `-mediasForVendor:matchingQuery:withSettings:completionBlock:` in `SRGDataProvider`).
+    ApplicationConfiguration *applicationConfiguration = ApplicationConfiguration.sharedApplicationConfiguration;
+    if (! applicationConfiguration.searchSettingsHidden) {
+        _settings = settings ?: SearchSettingsViewController.defaultSettings;
+        _settings.aggregationsEnabled = NO;
+    }
+    else {
+        _settings = nil;
+    }
 }
 
 #pragma mark View lifecycle
@@ -716,6 +709,32 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
     
     if (scrollView.dragging && ! scrollView.decelerating) {
         [self.searchController.searchBar resignFirstResponder];
+    }
+}
+
+#pragma mark PlayApplicationNavigation protocol
+
+- (NSArray<NSNumber *> *)supportedApplicationSections
+{
+    return @[ @(ApplicationSectionSearch) ];
+}
+
+- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
+{
+    if ([self.supportedApplicationSections containsObject:@(applicationSectionInfo.applicationSection)]) {
+        self.settings = [[SRGMediaSearchSettings alloc] init];
+        self.settings.mediaType = [applicationSectionInfo.options[ApplicationSectionOptionSearchMediaTypeOptionKey] integerValue];
+        
+        NSString *query = applicationSectionInfo.options[ApplicationSectionOptionSearchQueryKey];
+        if (self.searchController) {
+            self.searchController.searchBar.text = query;
+            [self.searchController.searchBar resignFirstResponder];
+            
+            [self search];
+        }
+        else {
+            self.query = query;
+        }
     }
 }
 
