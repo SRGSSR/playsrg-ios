@@ -806,8 +806,14 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
         [self.channelInfoStackView play_setHidden:YES];
         
         self.dateLabel.font = [UIFont srg_lightFontWithTextStyle:SRGAppearanceFontTextStyleSubtitle];
-        self.dateLabel.text = [NSDateFormatter.play_relativeDateAndTimeFormatter stringFromDate:media.date].play_localizedUppercaseFirstLetterString;
-        self.dateLabel.accessibilityLabel = PlayAccessibilityRelativeDateAndTimeFromDate(media.date);
+        if (media.date) {
+            self.dateLabel.text = [NSDateFormatter.play_relativeDateAndTimeFormatter stringFromDate:media.date].play_localizedUppercaseFirstLetterString;
+            self.dateLabel.accessibilityLabel = PlayAccessibilityRelativeDateAndTimeFromDate(media.date);
+        }
+        else {
+            self.dateLabel.text = nil;
+            self.dateLabel.accessibilityLabel = nil;
+        }
         
         self.viewCountLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleSubtitle];
         
