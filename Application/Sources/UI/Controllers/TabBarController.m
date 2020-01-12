@@ -218,8 +218,15 @@ static const CGFloat MiniPlayerOffset = 5.f;
         }
             
         default: {
-            return;
             break;
+        }
+    }
+    
+    UITabBarItem *tabBarItem = [self tabBarItemForTag:tabBarItemTag];
+    if (tabBarItemTag) {
+        NSInteger tabBarItemIndex =[self.tabBar.items indexOfObject:tabBarItem];
+        if (tabBarItemIndex != NSNotFound) {
+            [self setSelectedIndex:tabBarItemIndex];
         }
     }
 }
