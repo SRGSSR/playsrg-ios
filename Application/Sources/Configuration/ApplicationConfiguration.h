@@ -18,28 +18,30 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSInteger, HomeSection) {
     HomeSectionUnknown,
     
-    // TV sections
+    // Video sections
     HomeSectionTVTrending,
-    HomeSectionTVLive,
     HomeSectionTVEvents,
     HomeSectionTVTopics,
     HomeSectionTVLatest,
     HomeSectionTVMostPopular,
     HomeSectionTVSoonExpiring,
-    HomeSectionTVScheduledLivestreams,
-    HomeSectionTVLiveCenter,
     HomeSectionTVShowsAccess,
     HomeSectionTVFavoriteShows,
     
-    // Radio sections
-    HomeSectionRadioLive,
+    // Audio sections
     HomeSectionRadioLatestEpisodes,
     HomeSectionRadioMostPopular,
     HomeSectionRadioLatest,
     HomeSectionRadioLatestVideos,
     HomeSectionRadioAllShows,
     HomeSectionRadioShowsAccess,
-    HomeSectionRadioFavoriteShows
+    HomeSectionRadioFavoriteShows,
+    
+    // Live sections
+    HomeSectionTVLive,
+    HomeSectionRadioLive,
+    HomeSectionTVLiveCenter,
+    HomeSectionTVScheduledLivestreams
 };
 
 typedef NS_ENUM(NSInteger, TopicSection) {
