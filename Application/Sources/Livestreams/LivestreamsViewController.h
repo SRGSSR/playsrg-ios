@@ -12,13 +12,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LivesViewController : PageViewController <PlayApplicationNavigation, SRGAnalyticsViewTracking>
+@interface LivestreamsViewController : PageViewController <PlayApplicationNavigation, SRGAnalyticsViewTracking>
 
 - (instancetype)initWithHomeSections:(NSArray<NSNumber *> *)homeSections;
 
 @end
 
-@interface LivesViewController (Unavailable)
+@interface LivestreamsViewController (Unavailable)
 
 - (instancetype)init NS_UNAVAILABLE;
 

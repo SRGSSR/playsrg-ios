@@ -4,12 +4,12 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "LivesViewController.h"
+#import "LivestreamsViewController.h"
 
 #import "ApplicationConfiguration.h"
 #import "HomeMediasViewController.h"
 
-@implementation LivesViewController
+@implementation LivestreamsViewController
 
 #pragma mark Object lifecycle
 
@@ -27,7 +27,7 @@
     }
     
     if (self = [super initWithViewControllers:viewControllers.copy]) {
-        self.title = NSLocalizedString(@"Lives", @"Title displayed at the top of the lives view");
+        self.title = NSLocalizedString(@"Livestreams", @"Title displayed at the top of the livestreams view");
     }
     return self;
 }
@@ -36,7 +36,7 @@
 
 - (NSString *)srg_pageViewTitle
 {
-    return NSLocalizedString(@"Lives", @"[Technical] Title for lives analytics measurements");
+    return NSLocalizedString(@"Livestreams", @"[Technical] Title for livestreams analytics measurements");
 }
 
 - (NSArray<NSString *> *)srg_pageViewLevels

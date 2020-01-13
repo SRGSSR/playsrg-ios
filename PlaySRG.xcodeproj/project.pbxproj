@@ -342,11 +342,11 @@
 		0875852E23A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */; };
 		0875852F23A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */; };
 		0875853023A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */; };
-		0875853623A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
-		0875853723A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
-		0875853823A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
-		0875853923A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
-		0875853A23A3DEFD00FA7207 /* LivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivesViewController.m */; };
+		0875853623A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */; };
+		0875853723A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */; };
+		0875853823A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */; };
+		0875853923A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */; };
+		0875853A23A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */; };
 		087A88351EAA610500525C2A /* LiveAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 087A88341EAA610500525C2A /* LiveAccessView.m */; };
 		087A88371EAA82D100525C2A /* LiveAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 087A88341EAA610500525C2A /* LiveAccessView.m */; };
 		087A88381EAA82D100525C2A /* LiveAccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 087A88341EAA610500525C2A /* LiveAccessView.m */; };
@@ -1820,8 +1820,8 @@
 		0875850B23A0025F00FA7207 /* LibraryHeaderSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryHeaderSectionView.xib; sourceTree = "<group>"; };
 		0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryHeaderSectionView.m; sourceTree = "<group>"; };
 		0875850D23A0025F00FA7207 /* LibraryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTableViewCell.h; sourceTree = "<group>"; };
-		0875853423A3DEFC00FA7207 /* LivesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivesViewController.h; sourceTree = "<group>"; };
-		0875853523A3DEFC00FA7207 /* LivesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivesViewController.m; sourceTree = "<group>"; };
+		0875853423A3DEFC00FA7207 /* LivestreamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivestreamsViewController.h; sourceTree = "<group>"; };
+		0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivestreamsViewController.m; sourceTree = "<group>"; };
 		087A88331EAA610500525C2A /* LiveAccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveAccessView.h; sourceTree = "<group>"; };
 		087A88341EAA610500525C2A /* LiveAccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveAccessView.m; sourceTree = "<group>"; };
 		087BC6611EDF1B7B00EED89B /* UILabel+PlaySRG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+PlaySRG.h"; sourceTree = "<group>"; };
@@ -2728,13 +2728,13 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
-		0875853123A3DDB700FA7207 /* Lives */ = {
+		0875853123A3DDB700FA7207 /* Livestreams */ = {
 			isa = PBXGroup;
 			children = (
-				0875853423A3DEFC00FA7207 /* LivesViewController.h */,
-				0875853523A3DEFC00FA7207 /* LivesViewController.m */,
+				0875853423A3DEFC00FA7207 /* LivestreamsViewController.h */,
+				0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */,
 			);
-			path = Lives;
+			path = Livestreams;
 			sourceTree = "<group>";
 		};
 		0875853223A3DDB800FA7207 /* Videos */ = {
@@ -2856,7 +2856,7 @@
 				08654B921D3CDA160040EF04 /* Helpers */,
 				6F9CEA6321884ACC007DE35F /* History */,
 				087584C623A0008500FA7207 /* Library */,
-				0875853123A3DDB700FA7207 /* Lives */,
+				0875853123A3DDB700FA7207 /* Livestreams */,
 				086BDE111EA63D3800965F45 /* MiniPlayer */,
 				6FDF08C4218B126700B2AF2C /* Model */,
 				08DD9D531FFE6EDA00115906 /* Module */,
@@ -3330,10 +3330,10 @@
 		6FAAF77520CAB6ED00BB58A3 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				08C68EC91D38DEA100BB8AAA /* Sources */,
+				08C68E981D38DEA100BB8AAA /* Resources */,
 				6FBA2ECF20D11A65005EB21D /* Application-Info.plist */,
 				082092FC208E272E00711DE4 /* Application.entitlements */,
-				08C68E981D38DEA100BB8AAA /* Resources */,
-				08C68EC91D38DEA100BB8AAA /* Sources */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -5754,7 +5754,7 @@
 				6F488ACB22EED363002B1150 /* PlayAccessibilityFormatter.m in Sources */,
 				086BDE151EA63D3800965F45 /* PlayMiniPlayerView.m in Sources */,
 				6F7EEBF322DC7AA7005E5A97 /* SearchSettingMultiSelectionCell.m in Sources */,
-				0875853623A3DEFD00FA7207 /* LivesViewController.m in Sources */,
+				0875853623A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */,
 				6FEC91A921A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6FE1B4971DCB84F00094D5BA /* AnalyticsConstants.m in Sources */,
 				088899452077627900242654 /* TVChannel.m in Sources */,
@@ -5847,7 +5847,7 @@
 			files = (
 				0859ADC722D72F4F00511F7F /* SearchSettingsMultiSelectionItem.m in Sources */,
 				082590F21F054ACD00BB527C /* HomeMediaCollectionHeaderView.m in Sources */,
-				0875853723A3DEFD00FA7207 /* LivesViewController.m in Sources */,
+				0875853723A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */,
 				6F80106A20443230009FE197 /* PlayApplication.m in Sources */,
 				6F4760801EB37DF1003021EA /* UIDevice+PlaySRG.m in Sources */,
 				0804917C22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,
@@ -6010,7 +6010,7 @@
 			files = (
 				0859ADC822D72F4F00511F7F /* SearchSettingsMultiSelectionItem.m in Sources */,
 				082590F41F054ACE00BB527C /* HomeMediaCollectionHeaderView.m in Sources */,
-				0875853823A3DEFD00FA7207 /* LivesViewController.m in Sources */,
+				0875853823A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */,
 				6F80106B20443230009FE197 /* PlayApplication.m in Sources */,
 				6F4760871EB37DF1003021EA /* UIDevice+PlaySRG.m in Sources */,
 				0804917D22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,
@@ -6173,7 +6173,7 @@
 			files = (
 				0859ADC922D72F4F00511F7F /* SearchSettingsMultiSelectionItem.m in Sources */,
 				082590F61F054ACE00BB527C /* HomeMediaCollectionHeaderView.m in Sources */,
-				0875853923A3DEFD00FA7207 /* LivesViewController.m in Sources */,
+				0875853923A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */,
 				6F80106C20443230009FE197 /* PlayApplication.m in Sources */,
 				6F47608E1EB37DF1003021EA /* UIDevice+PlaySRG.m in Sources */,
 				0804917E22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,
@@ -6336,7 +6336,7 @@
 			files = (
 				0859ADCA22D72F4F00511F7F /* SearchSettingsMultiSelectionItem.m in Sources */,
 				082590F81F054ACF00BB527C /* HomeMediaCollectionHeaderView.m in Sources */,
-				0875853A23A3DEFD00FA7207 /* LivesViewController.m in Sources */,
+				0875853A23A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */,
 				6F80106D20443230009FE197 /* PlayApplication.m in Sources */,
 				6F4760951EB37DF2003021EA /* UIDevice+PlaySRG.m in Sources */,
 				0804917F22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,

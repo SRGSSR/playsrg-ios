@@ -9,7 +9,7 @@
 #import "AudiosViewController.h"
 #import "HomeViewController.h"
 #import "LibraryViewController.h"
-#import "LivesViewController.h"
+#import "LivestreamsViewController.h"
 #import "MiniPlayerView.h"
 #import "NavigationController.h"
 #import "PlayApplicationNavigation.h"
@@ -65,9 +65,9 @@ static const CGFloat MiniPlayerOffset = 5.f;
         
         NSArray<NSNumber *> *liveHomeSections = ApplicationConfiguration.sharedApplicationConfiguration.liveHomeSections;
         if (liveHomeSections.count > 0) {
-            viewController = [[LivesViewController alloc] initWithHomeSections:liveHomeSections];
+            viewController = [[LivestreamsViewController alloc] initWithHomeSections:liveHomeSections];
             [viewControllers addObject:viewController];
-            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"lives-25"] tag:TabBarItemTagLives]];
+            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"live-25"] tag:TabBarItemTagLives]];
         }
         
         viewController = [[SearchViewController alloc] init];
