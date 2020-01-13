@@ -70,7 +70,7 @@ OBJC_EXPORT NSString * _Nullable RadioChannelImageOverridePath(RadioChannel * _N
 @property (nonatomic, readonly) NSInteger numberOfLivePlaceholders;
 
 /**
- *  The sections ordered list.
+ *  The home sections ordered list.
  */
 @property (nonatomic, readonly) NSArray<NSNumber *> *homeSections;                      // wrap `HomeSection` values
 

@@ -4,12 +4,12 @@
 //  License information is available from the LICENSE file.
 //
 
-#import "AudiosViewController.h"
+#import "RadioChannelsViewController.h"
 
 #import "HomeViewController.h"
 #import "NSBundle+PlaySRG.h"
 
-@implementation AudiosViewController
+@implementation RadioChannelsViewController
 
 #pragma mark Object lifecycle
 

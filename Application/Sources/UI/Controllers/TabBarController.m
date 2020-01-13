@@ -6,7 +6,7 @@
 
 #import "TabBarController.h"
 
-#import "AudiosViewController.h"
+#import "RadioChannelsViewController.h"
 #import "HomeViewController.h"
 #import "LibraryViewController.h"
 #import "LivestreamsViewController.h"
@@ -58,9 +58,9 @@ static const CGFloat MiniPlayerOffset = 5.f;
         
         NSArray<RadioChannel *> *radioChannels = applicationConfiguration.radioChannels;
         if (radioChannels.count > 0) {
-            viewController = [[AudiosViewController alloc] initWithRadioChannels:radioChannels];
+            viewController = [[RadioChannelsViewController alloc] initWithRadioChannels:radioChannels];
             [viewControllers addObject:viewController];
-            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"audio-25"] tag:TabBarItemTagAudios]];
+            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"audios-25"] tag:TabBarItemTagAudios]];
         }
         
         NSArray<NSNumber *> *liveHomeSections = ApplicationConfiguration.sharedApplicationConfiguration.liveHomeSections;

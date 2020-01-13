@@ -12,13 +12,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AudiosViewController : PageViewController <PlayApplicationNavigation, SRGAnalyticsViewTracking>
+@interface RadioChannelsViewController : PageViewController <PlayApplicationNavigation, SRGAnalyticsViewTracking>
 
 - (instancetype)initWithRadioChannels:(NSArray<RadioChannel *> *)radioChannels;
 
 @end
 
-@interface AudiosViewController (Unavailable)
+@interface RadioChannelsViewController (Unavailable)
 
 - (instancetype)init NS_UNAVAILABLE;
 

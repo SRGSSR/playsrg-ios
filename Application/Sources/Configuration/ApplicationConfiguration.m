@@ -530,7 +530,7 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
         if ([radioChannelsJSONObject isKindOfClass:NSArray.class]) {
             for (id radioChannelDictionary in radioChannelsJSONObject) {
                 if ([radioChannelDictionary isKindOfClass:NSDictionary.class]) {
-                    // Transform sections string to a homeSection array, or use the default one
+                    // Transform homeSections string to a homeSection array, or use the default one
                     NSArray<NSNumber *> *homeSections = self.audioHomeSections;
                     
                     id audioHomeSectionsValue = radioChannelDictionary[@"homeSections"];

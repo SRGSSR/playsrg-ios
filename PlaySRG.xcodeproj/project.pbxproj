@@ -127,11 +127,11 @@
 		082910B0239E90D200D168F4 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910AD239E90D200D168F4 /* TabBarController.m */; };
 		082910B1239E90D200D168F4 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910AD239E90D200D168F4 /* TabBarController.m */; };
 		082910B2239E90D200D168F4 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910AD239E90D200D168F4 /* TabBarController.m */; };
-		082910B5239EA69C00D168F4 /* AudiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* AudiosViewController.m */; };
-		082910B6239EA69C00D168F4 /* AudiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* AudiosViewController.m */; };
-		082910B7239EA69C00D168F4 /* AudiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* AudiosViewController.m */; };
-		082910B8239EA69C00D168F4 /* AudiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* AudiosViewController.m */; };
-		082910B9239EA69C00D168F4 /* AudiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* AudiosViewController.m */; };
+		082910B5239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* RadioChannelsViewController.m */; };
+		082910B6239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* RadioChannelsViewController.m */; };
+		082910B7239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* RadioChannelsViewController.m */; };
+		082910B8239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* RadioChannelsViewController.m */; };
+		082910B9239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 082910B3239EA69B00D168F4 /* RadioChannelsViewController.m */; };
 		0832BF1022BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832BF0E22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m */; };
 		0832BF1122BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832BF0E22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m */; };
 		0832BF1222BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0832BF0E22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m */; };
@@ -1752,8 +1752,8 @@
 		0828BB3922E62831009617A7 /* parsePlayUrl.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = parsePlayUrl.js; sourceTree = "<group>"; };
 		082910AC239E90D200D168F4 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		082910AD239E90D200D168F4 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
-		082910B3239EA69B00D168F4 /* AudiosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudiosViewController.m; sourceTree = "<group>"; };
-		082910B4239EA69C00D168F4 /* AudiosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudiosViewController.h; sourceTree = "<group>"; };
+		082910B3239EA69B00D168F4 /* RadioChannelsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioChannelsViewController.m; sourceTree = "<group>"; };
+		082910B4239EA69C00D168F4 /* RadioChannelsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioChannelsViewController.h; sourceTree = "<group>"; };
 		0832BF0D22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchLoadingCollectionViewCell.h; sourceTree = "<group>"; };
 		0832BF0E22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchLoadingCollectionViewCell.m; sourceTree = "<group>"; };
 		0832BF0F22BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchLoadingCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -2737,20 +2737,13 @@
 			path = Livestreams;
 			sourceTree = "<group>";
 		};
-		0875853223A3DDB800FA7207 /* Videos */ = {
+		0875853323A3DDB800FA7207 /* RadioChannels */ = {
 			isa = PBXGroup;
 			children = (
+				082910B4239EA69C00D168F4 /* RadioChannelsViewController.h */,
+				082910B3239EA69B00D168F4 /* RadioChannelsViewController.m */,
 			);
-			path = Videos;
-			sourceTree = "<group>";
-		};
-		0875853323A3DDB800FA7207 /* Audios */ = {
-			isa = PBXGroup;
-			children = (
-				082910B4239EA69C00D168F4 /* AudiosViewController.h */,
-				082910B3239EA69B00D168F4 /* AudiosViewController.m */,
-			);
-			path = Audios;
+			path = RadioChannels;
 			sourceTree = "<group>";
 		};
 		08AA551A1D49EBF600C5026E /* Configuration */ = {
@@ -2845,7 +2838,6 @@
 			isa = PBXGroup;
 			children = (
 				08C68ECA1D38DEA100BB8AAA /* Appplication */,
-				0875853323A3DDB800FA7207 /* Audios */,
 				E62459EC1D488CEF00482BE9 /* Bridges */,
 				E6E673221D4A423E000C3CB9 /* Browser */,
 				E694A9F11D65F02700372DF0 /* Calendar */,
@@ -2863,11 +2855,11 @@
 				6FA9ECA920C7A9F300D3D6C2 /* Notifications */,
 				6F00BFD320A9C630009795AF /* Onboarding */,
 				E66BEC181DA7FCC000AD4450 /* Player */,
+				0875853323A3DDB800FA7207 /* RadioChannels */,
 				E694A9D61D65EFF300372DF0 /* Search */,
 				0806E7B41D50D8DD002ED406 /* Settings */,
 				E6DB5F181D66E07A0057094B /* Shows */,
 				08AA55971D49EC2300C5026E /* UI */,
-				0875853223A3DDB800FA7207 /* Videos */,
 				086320F22258C6CF00C719A6 /* WatchLater */,
 			);
 			path = Sources;
@@ -5741,7 +5733,7 @@
 				6F475FE11EB37BC6003021EA /* ModalTransition.m in Sources */,
 				6FD633EA1FFD151000875BE5 /* MiniPlayerView.m in Sources */,
 				089EA00A201011FB0070E11A /* SRGBaseTopic+PlaySRG.m in Sources */,
-				082910B5239EA69C00D168F4 /* AudiosViewController.m in Sources */,
+				082910B5239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */,
 				6F7EEBDE22DC40B7005E5A97 /* SearchBar.m in Sources */,
 				E64BA3FA1D4A587E002C10D5 /* WebViewController.m in Sources */,
 				0827DA1E1F0D36D900A31A42 /* NSBundle+PlaySRG.m in Sources */,
@@ -5962,7 +5954,7 @@
 				087A88381EAA82D100525C2A /* LiveAccessView.m in Sources */,
 				087BC6641EDF1B7C00EED89B /* UILabel+PlaySRG.m in Sources */,
 				6F47603F1EB37BD1003021EA /* UICollectionView+PlaySRG.m in Sources */,
-				082910B6239EA69C00D168F4 /* AudiosViewController.m in Sources */,
+				082910B6239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */,
 				E694A9F61D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8B22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F53220DA99B00778CA3 /* History.m in Sources */,
@@ -6125,7 +6117,7 @@
 				087A88371EAA82D100525C2A /* LiveAccessView.m in Sources */,
 				087BC6651EDF1B7C00EED89B /* UILabel+PlaySRG.m in Sources */,
 				6F4760401EB37BD1003021EA /* UICollectionView+PlaySRG.m in Sources */,
-				082910B7239EA69C00D168F4 /* AudiosViewController.m in Sources */,
+				082910B7239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */,
 				E694A9F71D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8C22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F54220DA99B00778CA3 /* History.m in Sources */,
@@ -6288,7 +6280,7 @@
 				087A88391EAA82D200525C2A /* LiveAccessView.m in Sources */,
 				087BC6661EDF1B7C00EED89B /* UILabel+PlaySRG.m in Sources */,
 				6F4760411EB37BD1003021EA /* UICollectionView+PlaySRG.m in Sources */,
-				082910B8239EA69C00D168F4 /* AudiosViewController.m in Sources */,
+				082910B8239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */,
 				E694A9F81D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8D22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F55220DA99B00778CA3 /* History.m in Sources */,
@@ -6451,7 +6443,7 @@
 				087A883A1EAA82D200525C2A /* LiveAccessView.m in Sources */,
 				087BC6671EDF1B7D00EED89B /* UILabel+PlaySRG.m in Sources */,
 				6F4760421EB37BD1003021EA /* UICollectionView+PlaySRG.m in Sources */,
-				082910B9239EA69C00D168F4 /* AudiosViewController.m in Sources */,
+				082910B9239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */,
 				E694A9F91D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8E22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F56220DA99B00778CA3 /* History.m in Sources */,
