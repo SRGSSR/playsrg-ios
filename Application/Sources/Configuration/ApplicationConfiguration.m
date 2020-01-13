@@ -473,11 +473,11 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
     self.subtitleAvailabilityHidden = [self.remoteConfig configValueForKey:@"subtitleAvailabilityHidden"].boolValue;
     self.audioDescriptionAvailabilityHidden = [self.remoteConfig configValueForKey:@"audioDescriptionAvailabilityHidden"].boolValue;
     
-    NSString *videoSectionsString = [self.remoteConfig configValueForKey:@"videoSections"].stringValue;
-    self.videoHomeSections = [self homeSectionsFromString:videoSectionsString];
+    NSString *videoHomeSectionsString = [self.remoteConfig configValueForKey:@"videoHomeSections"].stringValue;
+    self.videoHomeSections = [self homeSectionsFromString:videoHomeSectionsString];
     
-    NSString *liveSectionsString = [self.remoteConfig configValueForKey:@"liveSections"].stringValue;
-    self.liveHomeSections = [self homeSectionsFromString:liveSectionsString];
+    NSString *liveHomeSectionsString = [self.remoteConfig configValueForKey:@"liveHomeSections"].stringValue;
+    self.liveHomeSections = [self homeSectionsFromString:liveHomeSectionsString];
     
     self.tvTrendingEpisodesOnly = [self.remoteConfig configValueForKey:@"tvTrendingEpisodesOnly"].boolValue;
     
@@ -518,8 +518,8 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
     }
     self.topicSectionsWithSubtopics = topicSectionsWithSubtopics.copy;
     
-    NSString *audioSectionsString = [self.remoteConfig configValueForKey:@"audioSections"].stringValue;
-    self.audioHomeSections = [self homeSectionsFromString:audioSectionsString];
+    NSString *audioHomeSectionsString = [self.remoteConfig configValueForKey:@"audioHomeSections"].stringValue;
+    self.audioHomeSections = [self homeSectionsFromString:audioHomeSectionsString];
     
     self.radioFeaturedHomeSectionHeaderHidden = [self.remoteConfig configValueForKey:@"radioFeaturedHomeSectionHeaderHidden"].boolValue;
     
@@ -533,16 +533,16 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
                     // Transform sections string to a homeSection array, or use the default one
                     NSArray<NSNumber *> *homeSections = self.audioHomeSections;
                     
-                    id audioSectionsValue = radioChannelDictionary[@"sections"];
-                    if ([audioSectionsValue isKindOfClass:NSString.class]) {
-                        NSArray<NSNumber *> *homeSectionsOverrides = [self homeSectionsFromString:audioSectionsValue];
+                    id audioHomeSectionsValue = radioChannelDictionary[@"homeSections"];
+                    if ([audioHomeSectionsValue isKindOfClass:NSString.class]) {
+                        NSArray<NSNumber *> *homeSectionsOverrides = [self homeSectionsFromString:audioHomeSectionsValue];
                         if (homeSectionsOverrides.count != 0) {
                             homeSections = homeSectionsOverrides;
                         }
                     }
                     
                     NSMutableDictionary *mutableRadioChannelDictionary = [radioChannelDictionary mutableCopy];
-                    mutableRadioChannelDictionary[@"sections"] = homeSections;
+                    mutableRadioChannelDictionary[@"homeSections"] = homeSections;
                     RadioChannel *radioChannel = [[RadioChannel alloc] initWithDictionary:mutableRadioChannelDictionary.copy];
                     if (radioChannel) {
                         [radioChannels addObject:radioChannel];
@@ -806,7 +806,7 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %p; videoSections: = %@; liveSections: = %@; radioChannels = %@; audioSections = %@>",
+    return [NSString stringWithFormat:@"<%@: %p; videoHomeSections = %@; liveHomeSections = %@; radioChannels = %@; audioHomeSections = %@>",
             self.class,
             self,
             self.videoHomeSections,

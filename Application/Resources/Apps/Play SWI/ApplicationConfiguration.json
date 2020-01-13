@@ -10,7 +10,7 @@
   "middlewareURL": "https://playfff.herokuapp.com",
   "feedbackURL": "https://play.typeform.com/to/bR8TQq",
   "searchOptions": "videos",
-  "videoSections": "tvTrending,tvFavoriteShows,tvTopics",
+  "videoHomeSections": "tvTrending,tvFavoriteShows,tvTopics",
   "tvTrendingEpisodesOnly": true,
   "tvTrendingEditorialLimit": 2,
   "tvFeaturedHomeSectionHeaderHidden": true,

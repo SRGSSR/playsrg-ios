@@ -56,7 +56,7 @@
             return nil;
         }
         
-        self.homeSections = dictionary[@"sections"];
+        self.homeSections = dictionary[@"homeSections"];
         if (! [self.homeSections isKindOfClass:NSArray.class] || self.homeSections.count == 0) {
             return nil;
         }
