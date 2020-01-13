@@ -11,7 +11,7 @@
 
 @interface AudiosViewController ()
 
-@property (nonatomic)  NSArray<NSNumber *> *applicationSections;
+@property (nonatomic) NSArray<NSNumber *> *applicationSections;
 
 @end
 

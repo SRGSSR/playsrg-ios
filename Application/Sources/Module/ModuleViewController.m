@@ -183,7 +183,7 @@
         UIApplication *application = UIApplication.sharedApplication;
         PlayAppDelegate *appDelegate = (PlayAppDelegate *)application.delegate;
         __kindof UIViewController *viewController = self.play_previewingContext.sourceView.nearestViewController;
-        UINavigationController *navigationController = [viewController isKindOfClass:UINavigationController.class] ? viewController : appDelegate.playTabBarController.selectedViewController;
+        UINavigationController *navigationController = [viewController isKindOfClass:UINavigationController.class] ? viewController : appDelegate.rootTabBarController.selectedViewController;
         [navigationController pushViewController:self animated:YES];
     }];
     [previewActionItems addObject:openAction];

@@ -65,7 +65,7 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 
 #pragma mark Getters and setters
 
-- (TabBarController *)playTabBarController
+- (TabBarController *)rootTabBarController
 {
     return (TabBarController *)self.window.rootViewController;
 }
@@ -715,16 +715,16 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 - (void)resetWithApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo completionBlock:(void (^)(void))completionBlock
 {
     void (^openApplicationSectionInfo)(void) = ^{
-        [self.playTabBarController openApplicationSectionInfo:applicationSectionInfo];
+        [self.rootTabBarController openApplicationSectionInfo:applicationSectionInfo];
         completionBlock ? completionBlock() : nil;
     };
     
     // When dismissing a view controller with a transitioning delegate while the app is in the background, with animated = NO, there
     // is a bug leading to an incorrect final state. The bug does not occur if animated = YES, but the transition is visible. To get
     // a perfect result, we completely disable animations during the transition
-    if (self.playTabBarController.presentedViewController) {
+    if (self.rootTabBarController.presentedViewController) {
         [UIView setAnimationsEnabled:NO];
-        [self.playTabBarController dismissViewControllerAnimated:YES completion:^{
+        [self.rootTabBarController dismissViewControllerAnimated:YES completion:^{
             [UIView setAnimationsEnabled:YES];
             openApplicationSectionInfo();
         }];
@@ -737,12 +737,12 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 - (void)playURN:(NSString *)mediaURN media:(SRGMedia *)media atPosition:(SRGPosition *)position fromPushNotification:(BOOL)fromPushNotification completion:(void (^)(void))completion
 {
     if (media) {
-        [self.playTabBarController play_presentMediaPlayerWithMedia:media position:position airPlaySuggestions:YES fromPushNotification:fromPushNotification animated:YES completion:completion];
+        [self.rootTabBarController play_presentMediaPlayerWithMedia:media position:position airPlaySuggestions:YES fromPushNotification:fromPushNotification animated:YES completion:completion];
     }
     else {
         [[SRGDataProvider.currentDataProvider mediaWithURN:mediaURN completionBlock:^(SRGMedia * _Nullable media, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
             if (media) {
-                [self.playTabBarController play_presentMediaPlayerWithMedia:media position:position airPlaySuggestions:YES fromPushNotification:fromPushNotification animated:YES completion:completion];
+                [self.rootTabBarController play_presentMediaPlayerWithMedia:media position:position airPlaySuggestions:YES fromPushNotification:fromPushNotification animated:YES completion:completion];
             }
             else {
                 NSError *error = [NSError errorWithDomain:PlayErrorDomain
@@ -758,13 +758,13 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 {
     if (show) {
         ShowViewController *showViewController = [[ShowViewController alloc] initWithShow:show fromPushNotification:fromPushNotification];
-        [self.playTabBarController pushViewController:showViewController animated:YES];
+        [self.rootTabBarController pushViewController:showViewController animated:YES];
     }
     else {
         [[SRGDataProvider.currentDataProvider showWithURN:showURN completionBlock:^(SRGShow * _Nullable show, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
             if (show) {
                 ShowViewController *showViewController = [[ShowViewController alloc] initWithShow:show fromPushNotification:fromPushNotification];
-                [self.playTabBarController pushViewController:showViewController animated:YES];
+                [self.rootTabBarController pushViewController:showViewController animated:YES];
             }
             else {
                 NSError *error = [NSError errorWithDomain:PlayErrorDomain
@@ -783,7 +783,7 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
         SRGTopic *topic = [topics filteredArrayUsingPredicate:predicate].firstObject;
         if (topic) {
             HomeTopicViewController *homeTopicViewController = [[HomeTopicViewController alloc] initWithTopic:topic];
-            [self.playTabBarController pushViewController:homeTopicViewController animated:YES];
+            [self.rootTabBarController pushViewController:homeTopicViewController animated:YES];
         }
         else {
             NSError *error = [NSError errorWithDomain:PlayErrorDomain
@@ -801,7 +801,7 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
         SRGModule *module = [modules filteredArrayUsingPredicate:predicate].firstObject;
         if (module) {
             ModuleViewController *moduleViewController = [[ModuleViewController alloc] initWithModule:module];
-            [self.playTabBarController pushViewController:moduleViewController animated:YES];
+            [self.rootTabBarController pushViewController:moduleViewController animated:YES];
         }
         else {
             NSError *error = [NSError errorWithDomain:PlayErrorDomain
@@ -815,13 +815,13 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 - (void)openShowListWithRadioChannel:(RadioChannel *)radioChannel atIndex:(NSString *)index
 {
     ShowsViewController *showsViewController = [[ShowsViewController alloc] initWithRadioChannel:radioChannel alphabeticalIndex:index];
-    [self.playTabBarController pushViewController:showsViewController animated:YES];
+    [self.rootTabBarController pushViewController:showsViewController animated:YES];
 }
 
 - (void)openCalendarAtDate:(NSDate *)date withRadioChannel:(RadioChannel *)radioChannel
 {
     CalendarViewController *calendarViewController = [[CalendarViewController alloc] initWithRadioChannel:radioChannel date:date];
-    [self.playTabBarController pushViewController:calendarViewController animated:YES];
+    [self.rootTabBarController pushViewController:calendarViewController animated:YES];
 }
 
 #pragma mark What's new
