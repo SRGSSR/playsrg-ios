@@ -25,7 +25,7 @@
     }
     
     if (self = [super initWithViewControllers:viewControllers.copy]) {
-        self.title = NSLocalizedString(@"Audio", @"Title displayed at the top of the audio view");
+        self.title = NSLocalizedString(@"Audios", @"Title displayed at the top of the audio view");
     }
     return self;
 }
@@ -34,7 +34,7 @@
 
 - (NSString *)srg_pageViewTitle
 {
-    return NSLocalizedString(@"Audio", @"[Technical] Title for audio analytics measurements");
+    return NSLocalizedString(@"Audios", @"[Technical] Title for audio analytics measurements");
 }
 
 - (NSArray<NSString *> *)srg_pageViewLevels
