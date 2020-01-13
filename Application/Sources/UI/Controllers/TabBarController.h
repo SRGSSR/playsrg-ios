@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Open the application section.
  */
-- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo;
+- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo;
 
 /**
  *  Push the specified view controller into the center navigation controller.

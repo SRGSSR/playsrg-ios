@@ -248,24 +248,9 @@
 
 #pragma mark PlayApplicationNavigation protocol
 
-- (NSArray<NSNumber *> *)supportedApplicationSections
+- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    return @[ @(ApplicationSectionSettings),
-              @(ApplicationSectionNotifications),
-              @(ApplicationSectionNotification),
-              @(ApplicationSectionHistory),
-              @(ApplicationSectionFavorites),
-              @(ApplicationSectionWatchLater),
-              @(ApplicationSectionDownloads),
-              @(ApplicationSectionFeedback),
-              @(ApplicationSectionHelp) ];
-}
-
-- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
-{
-    if ([self.supportedApplicationSections containsObject:@(applicationSectionInfo.applicationSection)]) {
-        [self openApplicationSectionInfo:applicationSectionInfo animated:NO];
-    }
+    return [self openApplicationSectionInfo:applicationSectionInfo animated:NO];
 }
 
 #pragma mark Helpers
@@ -301,7 +286,7 @@
     [self presentViewController:settingsNavigationController animated:YES completion:nil];
 }
 
-- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo animated:(BOOL)animated
+- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo animated:(BOOL)animated
 {
     ApplicationConfiguration *applicationConfiguration = ApplicationConfiguration.sharedApplicationConfiguration;
     
@@ -375,13 +360,16 @@
         }
             
         default: {
-            return;
             break;
         }
     }
     
     if (viewController) {
         [self.navigationController pushViewController:viewController animated:animated];
+        return YES;
+    }
+    else {
+        return NO;
     }
 }
 

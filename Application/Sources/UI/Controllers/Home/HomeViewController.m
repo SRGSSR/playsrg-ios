@@ -530,24 +530,10 @@
 
 #pragma mark PlayApplicationNavigation protocol
 
-- (NSArray<NSNumber *> *)supportedApplicationSections
+- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    if (self.radioChannel) {
-        return @[ @(ApplicationSectionRadio),
-                  @(ApplicationSectionRadioShowAZ) ];
-    }
-    else {
-        return @[ @(ApplicationSectionTVOverview),
-                  @(ApplicationSectionTVByDate),
-                  @(ApplicationSectionTVShowAZ) ];
-    }
-}
-
-- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
-{
-    if ([self.supportedApplicationSections containsObject:@(applicationSectionInfo.applicationSection)]) {
-        // TODO: show AZ, show by date, radio channel.
-    }
+    // TODO: show AZ, show by date, radio channel.
+    return NO;
 }
 
 #pragma mark Actions

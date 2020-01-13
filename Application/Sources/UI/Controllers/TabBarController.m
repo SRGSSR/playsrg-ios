@@ -155,25 +155,6 @@ static const CGFloat MiniPlayerOffset = 5.f;
     [self updateLayoutAnimated:NO];
 }
 
-#pragma mark Changing content
-
-- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
-{
-    UIViewController<PlayApplicationNavigation> *selectedViewController = nil;
-    for (UIViewController *viewController in self.viewControllers) {
-        if ([viewController conformsToProtocol:@protocol(PlayApplicationNavigation)]
-            && [((UIViewController<PlayApplicationNavigation> *)viewController).supportedApplicationSections containsObject:@(applicationSectionInfo.applicationSection)]) {
-            selectedViewController = (UIViewController<PlayApplicationNavigation> *)viewController;
-            continue;
-        }
-    }
-    
-    if (selectedViewController) {
-        [selectedViewController openApplicationSectionInfo:applicationSectionInfo];
-        [self setSelectedViewController:selectedViewController];
-    }
-}
-
 #pragma mark Rotation
 
 - (BOOL)shouldAutorotate
@@ -295,6 +276,22 @@ static const CGFloat MiniPlayerOffset = 5.f;
 - (UIEdgeInsets)play_additionalContentInsets
 {
     return UIEdgeInsetsMake(0.f, 0.f, self.miniPlayerView.active ? (MiniPlayerHeight + MiniPlayerOffset) : 0.f, 0.f);
+}
+
+#pragma mark PlayApplicationNavigation protocol
+
+- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
+{
+    for (UIViewController *viewController in self.viewControllers) {
+        if ([viewController conformsToProtocol:@protocol(PlayApplicationNavigation)]) {
+            UIViewController<PlayApplicationNavigation> *navigableViewController = (UIViewController<PlayApplicationNavigation> *)viewController;
+            if ([navigableViewController openApplicationSectionInfo:applicationSectionInfo]) {
+                self.selectedViewController = navigableViewController;
+                return YES;
+            }
+        }
+    }
+    return NO;
 }
 
 #pragma mark Notifications

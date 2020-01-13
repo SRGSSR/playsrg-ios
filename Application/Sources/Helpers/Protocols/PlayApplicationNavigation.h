@@ -14,14 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol PlayApplicationNavigation <NSObject>
 
 /**
- *  Supported application sections.
+ *  Open an application section described by the provided information. If the section is supported by the class
+ *  implementing this protocol, this method must be implemented to display the section and return `YES`. If the
+ *  section is not supported the method must not display anything and return `NO`.
  */
-@property (nonatomic, readonly) NSArray<NSNumber *> *supportedApplicationSections;
-
-/**
- *  Open the application section.
- */
-- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo;
+- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo;
 
 @end
 

@@ -714,28 +714,27 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 
 #pragma mark PlayApplicationNavigation protocol
 
-- (NSArray<NSNumber *> *)supportedApplicationSections
+- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    return @[ @(ApplicationSectionSearch) ];
-}
-
-- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
-{
-    if ([self.supportedApplicationSections containsObject:@(applicationSectionInfo.applicationSection)]) {
-        self.settings = [[SRGMediaSearchSettings alloc] init];
-        self.settings.mediaType = [applicationSectionInfo.options[ApplicationSectionOptionSearchMediaTypeOptionKey] integerValue];
-        
-        NSString *query = applicationSectionInfo.options[ApplicationSectionOptionSearchQueryKey];
-        if (self.searchController) {
-            self.searchController.searchBar.text = query;
-            [self.searchController.searchBar resignFirstResponder];
-            
-            [self search];
-        }
-        else {
-            self.query = query;
-        }
+    if (applicationSectionInfo.applicationSection != ApplicationSectionSearch) {
+        return NO;
     }
+    
+    self.settings = [[SRGMediaSearchSettings alloc] init];
+    self.settings.mediaType = [applicationSectionInfo.options[ApplicationSectionOptionSearchMediaTypeOptionKey] integerValue];
+    
+    NSString *query = applicationSectionInfo.options[ApplicationSectionOptionSearchQueryKey];
+    if (self.searchController) {
+        self.searchController.searchBar.text = query;
+        [self.searchController.searchBar resignFirstResponder];
+        
+        [self search];
+    }
+    else {
+        self.query = query;
+    }
+    
+    return YES;
 }
 
 #pragma mark Notifications

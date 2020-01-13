@@ -46,16 +46,10 @@
 
 #pragma mark PlayApplicationNavigation protocol
 
-- (NSArray<NSNumber *> *)supportedApplicationSections
+- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    return @[];
-}
-
-- (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
-{
-    if ([self.supportedApplicationSections containsObject:@(applicationSectionInfo.applicationSection)]) {
-        // TODO: select correct section.
-    }
+    // TODO: select correct section.
+    return NO;
 }
 
 @end
