@@ -297,7 +297,8 @@
 - (void)settings:(id)sender
 {
     SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
-    [self.navigationController pushViewController:settingsViewController animated:YES];
+    UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    [self presentViewController:settingsNavigationController animated:YES completion:nil];
 }
 
 - (void)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo animated:(BOOL)animated

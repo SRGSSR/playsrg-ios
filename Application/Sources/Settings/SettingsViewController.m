@@ -97,6 +97,16 @@ static NSString * const SettingsFLEXButton = @"Button_FLEX";
     
     [self updateSettingsVisibility];
     
+    if (self.navigationController.viewControllers.firstObject == self) {
+        UIBarButtonItem *closeBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"close-22"]
+                                                                 landscapeImagePhone:nil
+                                                                               style:UIBarButtonItemStyleDone
+                                                                              target:self
+                                                                              action:@selector(close:)];
+        closeBarButtonItem.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Close", @"Close button label on settings view");
+        self.navigationItem.leftBarButtonItem = closeBarButtonItem;
+    }
+    
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(settingDidChange:)
                                                name:kIASKAppSettingChanged
@@ -394,6 +404,13 @@ static NSString * const SettingsFLEXButton = @"Button_FLEX";
 - (NSString *)srg_pageViewTitle
 {
     return self.title;
+}
+
+#pragma mark Actions
+
+- (void)close:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark Notifications
