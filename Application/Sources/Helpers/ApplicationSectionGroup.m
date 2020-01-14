@@ -11,7 +11,7 @@
 @interface ApplicationSectionGroup ()
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic) NSArray<ApplicationSectionInfo *> *applicationSectionInfos;
+@property (nonatomic) NSArray<ApplicationSectionInfo *> *sectionInfos;
 @property (nonatomic, getter=isHeaderless) BOOL headerless;
 
 @end
@@ -43,7 +43,7 @@
     [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionDownloads]];
     
     [sectionInfos addObject:[[ApplicationSectionGroup alloc] initWithTitle:NSLocalizedString(@"My content", @"Library section header label for user personal content")
-                                                   applicationSectionInfos:myContentApplicationSections.copy
+                                                   sectionInfos:myContentApplicationSections.copy
                                                                 headerless:YES]];
     
     // Other item sections
@@ -56,7 +56,7 @@
     }
     if (otherSectionInfos.count > 0) {
         [sectionInfos addObject:[[ApplicationSectionGroup alloc] initWithTitle:NSLocalizedString(@"Miscellaneous", @"Miscellaneous library section header label")
-                                                       applicationSectionInfos:otherSectionInfos.copy
+                                                       sectionInfos:otherSectionInfos.copy
                                                                     headerless:YES]];
     }
     
@@ -65,11 +65,18 @@
 
 #pragma Object lifecycle
 
-- (instancetype)initWithTitle:(NSString *)title applicationSectionInfos:(NSArray<ApplicationSectionInfo *> *)applicationSectionInfos headerless:(BOOL)headerless
+/**
+ *  Instantiate a group.
+ *
+ *  @param title        The title of the group
+ *  @param sectionInfos The items within the group
+ *  @param headerless   If set to `YES`, the group header will not be displayed, except when accessibility is used.
+ */
+- (instancetype)initWithTitle:(NSString *)title sectionInfos:(NSArray<ApplicationSectionInfo *> *)sectionInfos headerless:(BOOL)headerless
 {
     if (self = [super init]) {
         self.title = title;
-        self.applicationSectionInfos = applicationSectionInfos;
+        self.sectionInfos = sectionInfos;
         self.headerless = headerless;
     }
     return self;
@@ -78,18 +85,18 @@
 - (instancetype)init
 {
     [self doesNotRecognizeSelector:_cmd];
-    return [self initWithTitle:@"" applicationSectionInfos:@[] headerless:YES];
+    return [self initWithTitle:@"" sectionInfos:@[] headerless:YES];
 }
 
 #pragma mark Description
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %p; title = %@; applicationSectionInfos = %@>",
+    return [NSString stringWithFormat:@"<%@: %p; title = %@; sectionInfos = %@>",
             self.class,
             self,
             self.title,
-            self.applicationSectionInfos];
+            self.sectionInfos];
 }
 
 @end

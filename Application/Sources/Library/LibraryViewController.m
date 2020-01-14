@@ -30,7 +30,7 @@
 
 @interface LibraryViewController ()
 
-@property (nonatomic) NSArray<ApplicationSectionGroup *> *sectionInfos;
+@property (nonatomic) NSArray<ApplicationSectionGroup *> *sectionGroups;
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
@@ -175,12 +175,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.sectionInfos.count;
+    return self.sectionGroups.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.sectionInfos[section].applicationSectionInfos.count;
+    return self.sectionGroups[section].sectionInfos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -215,7 +215,7 @@
     }
     else {
         LibraryTableViewCell *libraryTableViewCell = (LibraryTableViewCell *)cell;
-        ApplicationSectionInfo *applicationSectionInfo = self.sectionInfos[indexPath.section].applicationSectionInfos[indexPath.row];
+        ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
         libraryTableViewCell.applicationSectionInfo = applicationSectionInfo;
     }
 }
@@ -228,21 +228,21 @@
         [tableView reloadData];
     }
     else {
-        ApplicationSectionInfo *applicationSectionInfo = self.sectionInfos[indexPath.section].applicationSectionInfos[indexPath.row];
+        ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
         [self openApplicationSectionInfo:applicationSectionInfo animated:YES];
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    ApplicationSectionGroup *sectionGroup = self.sectionInfos[section];
+    ApplicationSectionGroup *sectionGroup = self.sectionGroups[section];
     return [LibraryHeaderSectionView heightForApplicationSectionGroup:sectionGroup];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     LibraryHeaderSectionView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(LibraryHeaderSectionView.class)];
-    headerView.applicationSectionGroup = self.sectionInfos[section];
+    headerView.applicationSectionGroup = self.sectionGroups[section];
     return headerView;
 }
 
@@ -257,13 +257,13 @@
 
 - (BOOL)isNotificationForIndex:(NSIndexPath *)indexPath
 {
-    return self.sectionInfos[indexPath.section].applicationSectionInfos[indexPath.row].applicationSection == ApplicationSectionNotification;
+    return self.sectionGroups[indexPath.section].sectionInfos[indexPath.row].applicationSection == ApplicationSectionNotification;
 }
 
 - (Notification *)notificationForIndex:(NSIndexPath *)indexPath
 {
     if ([self isNotificationForIndex:indexPath]) {
-        ApplicationSectionInfo *applicationSectionInfo = self.sectionInfos[indexPath.section].applicationSectionInfos[indexPath.row];
+        ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
         return applicationSectionInfo.options[ApplicationSectionOptionNotificationKey];
     }
     else {
@@ -275,7 +275,7 @@
 
 - (void)reloadData
 {
-    self.sectionInfos = ApplicationSectionGroup.libraryApplicationSectionGroups;
+    self.sectionGroups = ApplicationSectionGroup.libraryApplicationSectionGroups;
     [self.tableView reloadData];
 }
 
