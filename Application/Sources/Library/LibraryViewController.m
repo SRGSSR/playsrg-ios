@@ -185,7 +185,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self isNotificationForIndex:indexPath]) {
+    if ([self notificationAtIndexPath:indexPath]) {
         return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(NotificationTableViewCell.class) forIndexPath:indexPath];
     }
     else {
@@ -197,7 +197,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self isNotificationForIndex:indexPath]) {
+    if ([self notificationAtIndexPath:indexPath]) {
         NSString *contentSizeCategory = UIApplication.sharedApplication.preferredContentSizeCategory;
         return (SRGAppearanceCompareContentSizeCategories(contentSizeCategory, UIContentSizeCategoryExtraLarge) == NSOrderedAscending) ? 94.f : 110.f;
     }
@@ -208,7 +208,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Notification *notification = [self notificationForIndex:indexPath];
+    Notification *notification = [self notificationAtIndexPath:indexPath];
     if (notification) {
         NotificationTableViewCell *notificationTableViewCell = (NotificationTableViewCell *)cell;
         notificationTableViewCell.notification = notification;
@@ -222,7 +222,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Notification *notification = [self notificationForIndex:indexPath];
+    Notification *notification = [self notificationAtIndexPath:indexPath];
     if (notification) {
         [NotificationsViewController openNotification:notification fromViewController:self];
         [tableView reloadData];
@@ -255,20 +255,14 @@
 
 #pragma mark Helpers
 
-- (BOOL)isNotificationForIndex:(NSIndexPath *)indexPath
+- (Notification *)notificationAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.sectionGroups[indexPath.section].sectionInfos[indexPath.row].applicationSection == ApplicationSectionNotification;
-}
-
-- (Notification *)notificationForIndex:(NSIndexPath *)indexPath
-{
-    if ([self isNotificationForIndex:indexPath]) {
-        ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
-        return applicationSectionInfo.options[ApplicationSectionOptionNotificationKey];
-    }
-    else {
+    ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
+    if (applicationSectionInfo.applicationSection != ApplicationSectionNotifications) {
         return nil;
     }
+    
+    return applicationSectionInfo.options[ApplicationSectionOptionNotificationKey];
 }
 
 #pragma mark Actions

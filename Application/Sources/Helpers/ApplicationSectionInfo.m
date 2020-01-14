@@ -56,7 +56,7 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
 
 + (ApplicationSectionInfo *)applicationSectionInfoWithNotification:(Notification *)notification
 {
-    return [[ApplicationSectionInfo alloc] initWithApplicationSection:ApplicationSectionNotification
+    return [[ApplicationSectionInfo alloc] initWithApplicationSection:ApplicationSectionNotifications
                                                                 title:notification.title
                                                                   uid:notification.identifier
                                                               options:@{ ApplicationSectionOptionNotificationKey : notification }];
