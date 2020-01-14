@@ -4,12 +4,15 @@
 //  License information is available from the LICENSE file.
 //
 
-#import <Foundation/Foundation.h>
-
 #import "ApplicationSectionInfo.h"
+
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ *  Groups several sections of the application.
+ */
 @interface ApplicationSectionGroup : NSObject
 
 /**
@@ -17,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (class, nonatomic, readonly) NSArray<ApplicationSectionGroup *> *libraryApplicationSectionGroups;
 
+/**
+ *  Properties.
+ */
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly) NSArray<ApplicationSectionInfo *> *sectionInfos;
 

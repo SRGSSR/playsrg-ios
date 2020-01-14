@@ -27,45 +27,42 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
 
 @implementation ApplicationSectionInfo
 
-#pragma Object lifecycle
+#pragma mark Class methods
 
 + (ApplicationSectionInfo *)applicationSectionInfoWithApplicationSection:(ApplicationSection)applicationSection
 {
-    return [[ApplicationSectionInfo alloc] initWithApplicationSection:applicationSection
-                                            title:TitleForApplicationSection(applicationSection)
-                                          options:nil];
+    return [self applicationSectionInfoWithApplicationSection:applicationSection options:nil];
 }
 
 + (ApplicationSectionInfo *)applicationSectionInfoWithApplicationSection:(ApplicationSection)applicationSection options:(NSDictionary<ApplicationSectionOptionKey, id> *)options
 {
     return [[ApplicationSectionInfo alloc] initWithApplicationSection:applicationSection
-                                            title:TitleForApplicationSection(applicationSection)
-                                          options:options];
-}
-
-+ (ApplicationSectionInfo *)applicationSectionInfoWithNotification:(Notification *)notification
-{
-    return [[ApplicationSectionInfo alloc] initWithApplicationSection:ApplicationSectionNotification
-                                            title:notification.title
-                                              uid:notification.identifier
-                                          options:@{ ApplicationSectionOptionNotificationKey : notification }];
+                                                                title:TitleForApplicationSection(applicationSection)
+                                                              options:options];
 }
 
 + (ApplicationSectionInfo *)applicationSectionInfoWithRadioChannel:(RadioChannel *)radioChannel
 {
-    return [[ApplicationSectionInfo alloc] initWithApplicationSection:ApplicationSectionRadio
-                                            title:radioChannel.name
-                                              uid:radioChannel.uid
-                                          options:nil];
+    return [self applicationSectionInfoWithRadioChannel:radioChannel options:nil];
 }
 
 + (ApplicationSectionInfo *)applicationSectionInfoWithRadioChannel:(RadioChannel *)radioChannel options:(NSDictionary<ApplicationSectionOptionKey, id> *)options
 {
     return [[ApplicationSectionInfo alloc] initWithApplicationSection:ApplicationSectionRadio
-                                            title:radioChannel.name
-                                              uid:radioChannel.uid
-                                          options:options];
+                                                                title:radioChannel.name
+                                                                  uid:radioChannel.uid
+                                                              options:options];
 }
+
++ (ApplicationSectionInfo *)applicationSectionInfoWithNotification:(Notification *)notification
+{
+    return [[ApplicationSectionInfo alloc] initWithApplicationSection:ApplicationSectionNotification
+                                                                title:notification.title
+                                                                  uid:notification.identifier
+                                                              options:@{ ApplicationSectionOptionNotificationKey : notification }];
+}
+
+#pragma Object lifecycle
 
 - (instancetype)initWithApplicationSection:(ApplicationSection)applicationSection title:(NSString *)title uid:(NSString *)uid options:(NSDictionary<ApplicationSectionOptionKey, id> *)options
 {
