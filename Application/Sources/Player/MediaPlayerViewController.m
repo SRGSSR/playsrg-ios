@@ -361,7 +361,8 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     // iPhone devices: Set full screen in landscape orientation (done before the view is actually displayed. This
     // avoids status bar hiccups)
     if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
-        BOOL isLandscape = UIDevice.play_isLandscape;
+        UIDeviceOrientation deviceOrientation = UIDevice.currentDevice.orientation;
+        BOOL isLandscape = UIDeviceOrientationIsValidInterfaceOrientation(deviceOrientation) ? UIDeviceOrientationIsLandscape(deviceOrientation) : UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation);
         
         self.statusBarHidden = isLandscape;
         self.transitioning = isLandscape;

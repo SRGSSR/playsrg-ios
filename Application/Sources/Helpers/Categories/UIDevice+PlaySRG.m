@@ -24,12 +24,6 @@ static void lockComplete(CFNotificationCenterRef center, void *observer, CFStrin
     return s_locked;
 }
 
-+ (BOOL)play_isLandscape
-{
-    UIDeviceOrientation deviceOrientation = UIDevice.currentDevice.orientation;
-    return UIDeviceOrientationIsValidInterfaceOrientation(deviceOrientation) ? UIDeviceOrientationIsLandscape(deviceOrientation) : UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation);
-}
-
 #pragma mark Notifications
 
 + (void)play_applicationDidBecomeActive:(NSNotification *)notification
