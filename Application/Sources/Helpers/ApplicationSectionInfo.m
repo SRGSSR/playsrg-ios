@@ -38,6 +38,7 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
 {
     return [[ApplicationSectionInfo alloc] initWithApplicationSection:applicationSection
                                                                 title:TitleForApplicationSection(applicationSection)
+                                                                  uid:nil
                                                               options:options];
 }
 
@@ -75,11 +76,6 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
     return self;
 }
 
-- (instancetype)initWithApplicationSection:(ApplicationSection)applicationSection title:(NSString *)title options:(NSDictionary<ApplicationSectionOptionKey, id> *)options
-{
-    return [self initWithApplicationSection:applicationSection title:title uid:nil options:options];
-}
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-implementations"
 
@@ -95,85 +91,73 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
 
 - (UIImage *)image
 {
-    UIImage *image = nil;
     switch (self.applicationSection) {
         case ApplicationSectionSearch: {
-            image = [UIImage imageNamed:@"search-22"];
+            return [UIImage imageNamed:@"search-22"];
             break;
         }
             
         case ApplicationSectionFavorites: {
-            image = [UIImage imageNamed:@"favorite-22"];
+            return [UIImage imageNamed:@"favorite-22"];
             break;
         }
             
         case ApplicationSectionWatchLater: {
-            image = [UIImage imageNamed:@"watch_later-22"];
+            return [UIImage imageNamed:@"watch_later-22"];
             break;
         }
             
         case ApplicationSectionDownloads: {
-            image = [UIImage imageNamed:@"download-22"];
+            return [UIImage imageNamed:@"download-22"];
             break;
         }
             
         case ApplicationSectionHistory: {
-            image = [UIImage imageNamed:@"history-22"];
+            return [UIImage imageNamed:@"history-22"];
             break;
         }
             
         case ApplicationSectionNotifications: {
-            image = PushService.sharedService.enabled ? [UIImage imageNamed:@"subscription_full-22"] : [UIImage imageNamed:@"subscription-22"];
+            return PushService.sharedService.enabled ? [UIImage imageNamed:@"subscription_full-22"] : [UIImage imageNamed:@"subscription-22"];
             break;
         }
             
         case ApplicationSectionTVOverview: {
-            image = [UIImage imageNamed:@"home-22"];
+            return [UIImage imageNamed:@"home-22"];
             break;
         }
             
         case ApplicationSectionTVByDate: {
-            image = [UIImage imageNamed:@"calendar-22"];
+            return [UIImage imageNamed:@"calendar-22"];
             break;
         }
             
         case ApplicationSectionTVShowAZ: {
-            image = [UIImage imageNamed:@"atoz-22"];
+            return [UIImage imageNamed:@"atoz-22"];
             break;
         }
             
         case ApplicationSectionRadio: {
             RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:self.uid];
-            image = RadioChannelLogo22Image(radioChannel);
-            break;
-        }
-            
-        case ApplicationSectionRadioShowAZ: {
-            image = [UIImage imageNamed:@"atoz-22"];
+            return RadioChannelLogo22Image(radioChannel);
             break;
         }
             
         case ApplicationSectionFeedback: {
-            image = [UIImage imageNamed:@"feedback-22"];
-            break;
-        }
-            
-        case ApplicationSectionSettings: {
-            image = [UIImage imageNamed:@"settings-22"];
+            return [UIImage imageNamed:@"feedback-22"];
             break;
         }
             
         case ApplicationSectionHelp: {
-            image = [UIImage imageNamed:@"help-22"];
+            return [UIImage imageNamed:@"help-22"];
             break;
         }
             
         default: {
+            return nil;
             break;
         }
     }
-    
-    return image;
 }
 
 - (RadioChannel *)radioChannel

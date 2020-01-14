@@ -60,15 +60,15 @@ typedef NS_ENUM(NSInteger, ApplicationSection) {
     ApplicationSectionHistory,
     ApplicationSectionNotifications,
     
+    // FIXME: Probably not needed anymore, or in another form (ApplicationSectionVideos?) + cleanup icons
     ApplicationSectionTVOverview,
     ApplicationSectionTVByDate,
     ApplicationSectionTVShowAZ,
     
+    // FIXME: Probably not needed anymore, or in another form (ApplicationSectionAudios?) + cleanup icons
     ApplicationSectionRadio,
-    ApplicationSectionRadioShowAZ,
     
     ApplicationSectionFeedback,
-    ApplicationSectionSettings,
     ApplicationSectionHelp
 };
 

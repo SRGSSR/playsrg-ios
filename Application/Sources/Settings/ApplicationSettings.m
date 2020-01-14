@@ -244,7 +244,6 @@ void ApplicationSettingSetLastOpenHomepageApplicationSectionInfo(ApplicationSect
     // Save only radio home page or set to nil if it's the TV home page
     if (applicationSectionInfo.radioChannel || applicationSectionInfo.applicationSection == ApplicationSectionTVOverview
             || applicationSectionInfo.applicationSection == ApplicationSectionTVByDate || applicationSectionInfo.applicationSection == ApplicationSectionTVShowAZ) {
-        
         NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
         [userDefaults setObject:applicationSectionInfo.radioChannel.uid forKey:PlaySRGSettingLastOpenHomepageUid];
         [userDefaults synchronize];
