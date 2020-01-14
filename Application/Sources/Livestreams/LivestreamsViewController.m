@@ -7,7 +7,7 @@
 #import "LivestreamsViewController.h"
 
 #import "ApplicationConfiguration.h"
-#import "HomeMediasViewController.h"
+#import "HomeLivestreamsViewController.h"
 
 @implementation LivestreamsViewController
 
@@ -20,8 +20,7 @@
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     for (NSNumber *homeSectionNumber in homeSections) {
         HomeSection homeSection = homeSectionNumber.integerValue;
-        HomeMediasViewController *viewController = [[HomeMediasViewController alloc] initWithHomeSectionInfo:[[HomeSectionInfo alloc] initWithHomeSection:homeSection]];
-        viewController.play_pageItem = [[PageItem alloc] initWithTitle:TitleForHomeSection(homeSection) image:nil];
+        HomeLivestreamsViewController *viewController = [[HomeLivestreamsViewController alloc] initWithHomeSectionInfo:[[HomeSectionInfo alloc] initWithHomeSection:homeSection]];
         [viewControllers addObject:viewController];
     }
     

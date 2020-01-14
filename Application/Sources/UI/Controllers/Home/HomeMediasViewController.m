@@ -82,7 +82,7 @@
 
 - (BOOL)srg_isTrackedAutomatically
 {
-    // Only tracked if standalone
+    // Only tracked if presented directly without containment
     return ! self.play_pageViewController;
 }
 
