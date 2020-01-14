@@ -6,7 +6,6 @@
 
 #import "MediasViewController.h"
 
-#import "LiveMediaCollectionViewCell.h"
 #import "MediaCollectionViewCell.h"
 #import "UIViewController+PlaySRG.h"
 
@@ -28,10 +27,6 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
     UINib *cellNib = [UINib nibWithNibName:cellIdentifier bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:cellIdentifier];
     
-    NSString *liveCellIdentifier = NSStringFromClass(LiveMediaCollectionViewCell.class);
-    UINib *liveCellNib = [UINib nibWithNibName:liveCellIdentifier bundle:nil];
-    [self.collectionView registerNib:liveCellNib forCellWithReuseIdentifier:liveCellIdentifier];
-    
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(accessibilityVoiceOverStatusChanged:)
                                                name:UIAccessibilityVoiceOverStatusChanged
@@ -47,7 +42,7 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [collectionView dequeueReusableCellWithReuseIdentifier:self.liveLargeCell ? NSStringFromClass(LiveMediaCollectionViewCell.class) : NSStringFromClass(MediaCollectionViewCell.class)
+    return [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(MediaCollectionViewCell.class)
                                                      forIndexPath:indexPath];
 }
 
@@ -55,14 +50,8 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.liveLargeCell) {
-        LiveMediaCollectionViewCell *liveMediaCell = (LiveMediaCollectionViewCell *)cell;
-        [liveMediaCell setMedia:self.items[indexPath.row]];
-    }
-    else {
-        MediaCollectionViewCell *mediaCell = (MediaCollectionViewCell *)cell;
-        [mediaCell setMedia:self.items[indexPath.row] withDateFormatter:self.dateFormatter];
-    }
+    MediaCollectionViewCell *mediaCell = (MediaCollectionViewCell *)cell;
+    [mediaCell setMedia:self.items[indexPath.row] withDateFormatter:self.dateFormatter];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

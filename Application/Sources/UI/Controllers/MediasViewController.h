@@ -13,8 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 // An optional date formatter to use when displaying media information (if `nil`, a standard formatting will be applied).
 @property (nonatomic, nullable) NSDateFormatter *dateFormatter;
 
-@property (nonatomic, getter=isLiveLargeCell) BOOL liveLargeCell;
-
 @end
 
 NS_ASSUME_NONNULL_END

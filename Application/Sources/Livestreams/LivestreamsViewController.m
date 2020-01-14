@@ -21,7 +21,6 @@
     for (NSNumber *homeSectionNumber in homeSections) {
         HomeSection homeSection = homeSectionNumber.integerValue;
         HomeMediasViewController *viewController = [[HomeMediasViewController alloc] initWithHomeSectionInfo:[[HomeSectionInfo alloc] initWithHomeSection:homeSection]];
-        viewController.liveLargeCell = YES;
         viewController.play_pageItem = [[PageItem alloc] initWithTitle:TitleForHomeSection(homeSection) image:nil];
         [viewControllers addObject:viewController];
     }
