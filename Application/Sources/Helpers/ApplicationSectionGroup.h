@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly) NSArray<ApplicationSectionInfo *> *sectionInfos;
-@property (nonatomic, readonly, getter=isHeaderless) BOOL headerless;
 
 @end
 

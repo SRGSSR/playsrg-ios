@@ -12,7 +12,6 @@
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic) NSArray<ApplicationSectionInfo *> *sectionInfos;
-@property (nonatomic, getter=isHeaderless) BOOL headerless;
 
 @end
 
@@ -43,8 +42,7 @@
     [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionDownloads]];
     
     [sectionInfos addObject:[[ApplicationSectionGroup alloc] initWithTitle:NSLocalizedString(@"My content", @"Library group header label for user personal content")
-                                                              sectionInfos:myContentApplicationSections.copy
-                                                                headerless:YES]];
+                                                              sectionInfos:myContentApplicationSections.copy]];
     
     // Other item sections
     NSMutableArray<ApplicationSectionInfo *> *otherSectionInfos = [NSMutableArray array];
@@ -56,8 +54,7 @@
     }
     if (otherSectionInfos.count > 0) {
         [sectionInfos addObject:[[ApplicationSectionGroup alloc] initWithTitle:NSLocalizedString(@"Miscellaneous", @"Miscellaneous library group header label")
-                                                                  sectionInfos:otherSectionInfos.copy
-                                                                    headerless:YES]];
+                                                                  sectionInfos:otherSectionInfos.copy]];
     }
     
     return sectionInfos.copy;
@@ -70,14 +67,12 @@
  *
  *  @param title        The title of the group
  *  @param sectionInfos The items within the group
- *  @param headerless   If set to `YES`, the group header will not be displayed, except when accessibility is used.
  */
-- (instancetype)initWithTitle:(NSString *)title sectionInfos:(NSArray<ApplicationSectionInfo *> *)sectionInfos headerless:(BOOL)headerless
+- (instancetype)initWithTitle:(NSString *)title sectionInfos:(NSArray<ApplicationSectionInfo *> *)sectionInfos
 {
     if (self = [super init]) {
         self.title = title;
         self.sectionInfos = sectionInfos;
-        self.headerless = headerless;
     }
     return self;
 }
@@ -85,7 +80,7 @@
 - (instancetype)init
 {
     [self doesNotRecognizeSelector:_cmd];
-    return [self initWithTitle:@"" sectionInfos:@[] headerless:YES];
+    return [self initWithTitle:@"" sectionInfos:@[]];
 }
 
 #pragma mark Description

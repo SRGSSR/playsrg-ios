@@ -24,14 +24,7 @@
 
 + (CGFloat)heightForApplicationSectionGroup:(ApplicationSectionGroup *)applicationSectionGroup
 {
-    static CGFloat kStandardHeight = 64.f;
-    
-    if (applicationSectionGroup.headerless) {
-        return UIAccessibilityIsVoiceOverRunning() ? kStandardHeight : 10.f;
-    }
-    else {
-        return kStandardHeight;
-    }
+    return UIAccessibilityIsVoiceOverRunning() ? 64.f : 10.f;
 }
 
 #pragma mark Object lifecycle
@@ -77,13 +70,7 @@
 {
     _applicationSectionGroup = applicationSectionInfo;
     
-    if (applicationSectionInfo.headerless) {
-        self.titleLabel.text = UIAccessibilityIsVoiceOverRunning() ? applicationSectionInfo.title : nil;
-    }
-    else {
-        self.titleLabel.text = applicationSectionInfo.title;
-    }
-    
+    self.titleLabel.text = UIAccessibilityIsVoiceOverRunning() ? applicationSectionInfo.title : nil;
     self.titleLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleTitle];
 }
 
