@@ -32,8 +32,8 @@
         [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionNotifications]];
         
         NSArray<Notification *> *unreadNotifications = Notification.unreadNotifications;
-        unreadNotifications = unreadNotifications.count > 3 ? @[ unreadNotifications[0], unreadNotifications[1], unreadNotifications[2] ] : unreadNotifications.count > 0 ? unreadNotifications : nil;
-        for (Notification *notification in unreadNotifications) {
+        NSArray<Notification *> *previewNotifications = [unreadNotifications subarrayWithRange:NSMakeRange(0, MIN(3, unreadNotifications.count))];
+        for (Notification *notification in previewNotifications) {
             [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithNotification:notification]];
         }
     }
@@ -42,8 +42,8 @@
     [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionWatchLater]];
     [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionDownloads]];
     
-    [sectionInfos addObject:[[ApplicationSectionGroup alloc] initWithTitle:NSLocalizedString(@"My content", @"Library section header label for user personal content")
-                                                   sectionInfos:myContentApplicationSections.copy
+    [sectionInfos addObject:[[ApplicationSectionGroup alloc] initWithTitle:NSLocalizedString(@"My content", @"Library group header label for user personal content")
+                                                              sectionInfos:myContentApplicationSections.copy
                                                                 headerless:YES]];
     
     // Other item sections
@@ -55,8 +55,8 @@
         [otherSectionInfos addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionHelp]];
     }
     if (otherSectionInfos.count > 0) {
-        [sectionInfos addObject:[[ApplicationSectionGroup alloc] initWithTitle:NSLocalizedString(@"Miscellaneous", @"Miscellaneous library section header label")
-                                                       sectionInfos:otherSectionInfos.copy
+        [sectionInfos addObject:[[ApplicationSectionGroup alloc] initWithTitle:NSLocalizedString(@"Miscellaneous", @"Miscellaneous library group header label")
+                                                                  sectionInfos:otherSectionInfos.copy
                                                                     headerless:YES]];
     }
     
