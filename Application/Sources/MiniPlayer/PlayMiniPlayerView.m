@@ -97,7 +97,7 @@
     [self reloadData];
     
     if (controller) {
-        [self registerForUserInterfaceUpdatesWithController:controller];
+        [self registerUserInterfaceUpdatesWithController:controller];
         
         [NSNotificationCenter.defaultCenter addObserver:self
                                                selector:@selector(mediaMetadataDidChange:)
@@ -272,7 +272,7 @@
 
 #pragma mark Controller registration for playback-related UI updates
 
-- (void)registerForUserInterfaceUpdatesWithController:(SRGLetterboxController *)controller
+- (void)registerUserInterfaceUpdatesWithController:(SRGLetterboxController *)controller
 {
     self.media = controller.media;
     self.playbackButton.mediaPlayerController = controller.mediaPlayerController;
@@ -390,12 +390,12 @@
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification
 {
-    [self registerForUserInterfaceUpdatesWithController:self.controller];
+    [self unregisterUserInterfaceUpdatesWithController:self.controller];
 }
 
 - (void)applicationWillEnterForeground:(NSNotification *)notification
 {
-    [self unregisterUserInterfaceUpdatesWithController:self.controller];
+    [self registerUserInterfaceUpdatesWithController:self.controller];
 }
 
 - (void)audioSessionRouteDidChange:(NSNotification *)notification
