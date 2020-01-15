@@ -4,6 +4,7 @@
 //  License information is available from the LICENSE file.
 //
 
+#import "ApplicationConfiguration.h"
 #import "ContentInsets.h"
 
 #import <CoconutKit/CoconutKit.h>
@@ -16,9 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PageItem : NSObject
 
 /**
- *  Create a page item with the specified information.
+ *  Create a page item with the specified informations.
  */
-- (instancetype)initWithTitle:(NSString *)title image:(nullable UIImage *)image;
+- (instancetype)initWithTitle:(NSString *)title image:(nullable UIImage *)image applicationSection:(ApplicationSection)applicationSection radioChannel:(nullable RadioChannel *)radioChannel;
 
 /**
  *  Item title.
@@ -29,6 +30,16 @@ NS_ASSUME_NONNULL_BEGIN
  *  Item image.
  */
 @property (nonatomic, readonly, nullable) UIImage *image;
+
+/**
+ *  Application section.
+ */
+@property (nonatomic, readonly) ApplicationSection applicationSection;
+
+/**
+ *  Radio channel.
+ */
+@property (nonatomic, readonly, nullable) RadioChannel *radioChannel;
 
 @end
 

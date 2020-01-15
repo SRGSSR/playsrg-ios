@@ -125,6 +125,31 @@ static TopicSection TopicSectionWithString(NSString *string)
     return s_topicSections[string].integerValue ?: TopicSectionUnknown;
 }
 
+ApplicationSection ApplicationSectionForHomeSection(HomeSection homeSection)
+{
+    switch (homeSection) {
+        case HomeSectionTVLive:
+            return ApplicationSectionTVLive;
+            break;
+            
+        case HomeSectionRadioLive:
+            return ApplicationSectionRadioLive;
+            break;
+            
+        case HomeSectionTVLiveCenter:
+            return ApplicationSectionLiveCenter;
+            break;
+            
+        case HomeSectionTVScheduledLivestreams:
+            return ApplicationSectionScheduledLivestreams;
+            break;
+            
+        default:
+            return ApplicationSectionUnknown;
+            break;
+    }
+}
+
 NSString *TitleForApplicationSection(ApplicationSection applicationSection)
 {
     static NSDictionary<NSNumber *, NSString *> *s_names;
@@ -137,9 +162,9 @@ NSString *TitleForApplicationSection(ApplicationSection applicationSection)
                      @(ApplicationSectionHelp) : NSLocalizedString(@"Help and copyright", @"Label to present the help page"),
                      @(ApplicationSectionNotifications) : NSLocalizedString(@"Notifications", @"Label to present the help page"),
                      @(ApplicationSectionSearch) : NSLocalizedString(@"Search", @"Label to present the search view"),
-                     @(ApplicationSectionTVByDate) : NSLocalizedString(@"Programmes by date", @"Label to present programmes by date"),
-                     @(ApplicationSectionTVOverview) : NSLocalizedString(@"Overview", @"Label to present the main TV view"),
-                     @(ApplicationSectionTVShowAZ) : NSLocalizedString(@"Programmes A-Z", @"Label to present shows A to Z (radio or TV)"),
+                     @(ApplicationSectionShowByDate) : NSLocalizedString(@"Programmes by date", @"Label to present programmes by date"),
+                     @(ApplicationSectionVideos) : NSLocalizedString(@"Overview", @"Label to present the main TV view"),
+                     @(ApplicationSectionShowAZ) : NSLocalizedString(@"Programmes A-Z", @"Label to present shows A to Z (radio or TV)"),
                      @(ApplicationSectionWatchLater) : NSLocalizedString(@"Watch later", @"Label to present the watch later list") };
     });
     return s_names[@(applicationSection)];

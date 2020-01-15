@@ -60,17 +60,23 @@ typedef NS_ENUM(NSInteger, ApplicationSection) {
     ApplicationSectionHistory,
     ApplicationSectionNotifications,
     
-    // FIXME: Probably not needed anymore, or in another form (ApplicationSectionVideos?) + cleanup icons
-    ApplicationSectionTVOverview,
-    ApplicationSectionTVByDate,
-    ApplicationSectionTVShowAZ,
+    ApplicationSectionVideos,
+    ApplicationSectionAudios,
+    ApplicationSectionShowByDate,
+    ApplicationSectionShowAZ,
     
-    // FIXME: Probably not needed anymore, or in another form (ApplicationSectionAudios?) + cleanup icons
-    ApplicationSectionRadio,
+    ApplicationSectionTVLive,
+    ApplicationSectionRadioLive,
+    ApplicationSectionLiveCenter,
+    ApplicationSectionScheduledLivestreams,
     
     ApplicationSectionFeedback,
     ApplicationSectionHelp
+    
+    // FIXME: cleanup icons related to unsused sections.
 };
+
+OBJC_EXPORT ApplicationSection ApplicationSectionForHomeSection(HomeSection homeSection);
 
 OBJC_EXPORT NSString *TitleForApplicationSection(ApplicationSection applicationSection);
 OBJC_EXPORT NSString *TitleForHomeSection(HomeSection homeSection);

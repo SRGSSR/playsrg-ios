@@ -30,7 +30,7 @@
     NSMutableArray<ApplicationSectionInfo *> *myContentApplicationSections = [NSMutableArray array];
     if (@available(iOS 10, *)) {
         if (PushService.sharedService.enabled) {
-            [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionNotifications]];
+            [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionNotifications radioChannel:nil]];
             
             NSArray<Notification *> *unreadNotifications = Notification.unreadNotifications;
             NSArray<Notification *> *previewNotifications = [unreadNotifications subarrayWithRange:NSMakeRange(0, MIN(3, unreadNotifications.count))];
@@ -39,10 +39,10 @@
             }
         }
     }
-    [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionHistory]];
-    [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionFavorites]];
-    [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionWatchLater]];
-    [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionDownloads]];
+    [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionHistory radioChannel:nil]];
+    [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionFavorites radioChannel:nil]];
+    [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionWatchLater radioChannel:nil]];
+    [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionDownloads radioChannel:nil]];
     
     [sectionInfos addObject:[[ApplicationSectionGroup alloc] initWithTitle:NSLocalizedString(@"My content", @"Library group header label for user personal content")
                                                               sectionInfos:myContentApplicationSections.copy]];
@@ -50,10 +50,10 @@
     // Other item sections
     NSMutableArray<ApplicationSectionInfo *> *otherSectionInfos = [NSMutableArray array];
     if (applicationConfiguration.feedbackURL) {
-        [otherSectionInfos addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionFeedback]];
+        [otherSectionInfos addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionFeedback radioChannel:nil]];
     }
     if (applicationConfiguration.impressumURL) {
-        [otherSectionInfos addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionHelp]];
+        [otherSectionInfos addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionHelp radioChannel:nil]];
     }
     if (otherSectionInfos.count > 0) {
         [sectionInfos addObject:[[ApplicationSectionGroup alloc] initWithTitle:NSLocalizedString(@"Miscellaneous", @"Miscellaneous library group header label")

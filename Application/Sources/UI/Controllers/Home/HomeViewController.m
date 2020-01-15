@@ -8,6 +8,7 @@
 
 #import "ApplicationConfiguration.h"
 #import "ApplicationSettings.h"
+#import "CalendarViewController.h"
 #import "Favorites.h"
 #import "HomeSectionHeaderView.h"
 #import "HomeMediaListTableViewCell.h"
@@ -18,9 +19,11 @@
 #import "HomeStatusHeaderView.h"
 #import "NavigationController.h"
 #import "NSBundle+PlaySRG.h"
+#import "ShowsViewController.h"
 #import "UIColor+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 
+#import <CoconutKit/CoconutKit.h>
 #import <libextobjc/libextobjc.h>
 #import <SRGAppearance/SRGAppearance.h>
 #import <SRGDataProvider/SRGDataProvider.h>
@@ -532,8 +535,28 @@
 
 - (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    // TODO: show AZ, show by date, radio channel.
-    return NO;
+    BOOL sameChannel = (! self.radioChannel && ! applicationSectionInfo.radioChannel) || (self.radioChannel && [self.radioChannel isEqual:applicationSectionInfo.radioChannel]);
+    if (applicationSectionInfo.applicationSection == ApplicationSectionShowByDate && sameChannel) {
+        NSDate *date = applicationSectionInfo.options[ApplicationSectionOptionShowByDateDateKey];
+        CalendarViewController *calendarViewController = [[CalendarViewController alloc] initWithRadioChannel:applicationSectionInfo.radioChannel date:date];
+        [self.navigationController pushViewController:calendarViewController animated:NO];
+        return YES;
+    }
+    else if (applicationSectionInfo.applicationSection == ApplicationSectionShowAZ && sameChannel) {
+        NSString *index = applicationSectionInfo.options[ApplicationSectionOptionShowAZIndexKey];
+        ShowsViewController *showsViewController = [[ShowsViewController alloc] initWithRadioChannel:applicationSectionInfo.radioChannel alphabeticalIndex:index];
+        [self.navigationController pushViewController:showsViewController animated:NO];
+        return YES;
+    }
+    else if (! self.radioChannel && sameChannel) {
+        return applicationSectionInfo.applicationSection == ApplicationSectionVideos;
+    }
+    else if (sameChannel) {
+        return applicationSectionInfo.applicationSection == ApplicationSectionAudios;
+    }
+    else {
+        return NO;
+    }
 }
 
 #pragma mark Actions

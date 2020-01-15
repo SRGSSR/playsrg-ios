@@ -29,28 +29,15 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
 
 #pragma mark Class methods
 
-+ (ApplicationSectionInfo *)applicationSectionInfoWithApplicationSection:(ApplicationSection)applicationSection
++ (ApplicationSectionInfo *)applicationSectionInfoWithApplicationSection:(ApplicationSection)applicationSection radioChannel:(RadioChannel *)radioChannel
 {
-    return [self applicationSectionInfoWithApplicationSection:applicationSection options:nil];
+    return [self applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel options:nil];
 }
 
-+ (ApplicationSectionInfo *)applicationSectionInfoWithApplicationSection:(ApplicationSection)applicationSection options:(NSDictionary<ApplicationSectionOptionKey, id> *)options
++ (ApplicationSectionInfo *)applicationSectionInfoWithApplicationSection:(ApplicationSection)applicationSection radioChannel:(RadioChannel *)radioChannel options:(NSDictionary<ApplicationSectionOptionKey, id> *)options
 {
     return [[ApplicationSectionInfo alloc] initWithApplicationSection:applicationSection
                                                                 title:TitleForApplicationSection(applicationSection)
-                                                                  uid:nil
-                                                              options:options];
-}
-
-+ (ApplicationSectionInfo *)applicationSectionInfoWithRadioChannel:(RadioChannel *)radioChannel
-{
-    return [self applicationSectionInfoWithRadioChannel:radioChannel options:nil];
-}
-
-+ (ApplicationSectionInfo *)applicationSectionInfoWithRadioChannel:(RadioChannel *)radioChannel options:(NSDictionary<ApplicationSectionOptionKey, id> *)options
-{
-    return [[ApplicationSectionInfo alloc] initWithApplicationSection:ApplicationSectionRadio
-                                                                title:radioChannel.name
                                                                   uid:radioChannel.uid
                                                               options:options];
 }
@@ -122,22 +109,22 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
             break;
         }
             
-        case ApplicationSectionTVOverview: {
+        case ApplicationSectionVideos: {
             return [UIImage imageNamed:@"home-22"];
             break;
         }
             
-        case ApplicationSectionTVByDate: {
+        case ApplicationSectionShowByDate: {
             return [UIImage imageNamed:@"calendar-22"];
             break;
         }
             
-        case ApplicationSectionTVShowAZ: {
+        case ApplicationSectionShowAZ: {
             return [UIImage imageNamed:@"atoz-22"];
             break;
         }
             
-        case ApplicationSectionRadio: {
+        case ApplicationSectionRadioLive: {
             RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:self.uid];
             return RadioChannelLogo22Image(radioChannel);
             break;
@@ -162,12 +149,7 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
 
 - (RadioChannel *)radioChannel
 {
-    if (self.applicationSection == ApplicationSectionRadio) {
-        return [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:self.uid];
-    }
-    else {
-        return nil;
-    }
+    return [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:self.uid];
 }
 
 #pragma mark Equality
@@ -179,7 +161,7 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
     }
     
     ApplicationSectionInfo *otherApplicationSectionInfo = object;
-    return (self.applicationSection == otherApplicationSectionInfo.applicationSection && (self.applicationSection != ApplicationSectionRadio || [self.uid isEqualToString:otherApplicationSectionInfo.uid]));
+    return (self.applicationSection == otherApplicationSectionInfo.applicationSection && (self.applicationSection != ApplicationSectionAudios || [self.uid isEqualToString:otherApplicationSectionInfo.uid]));
 }
 
 - (NSUInteger)hash

@@ -9,6 +9,8 @@
 #import "ApplicationConfiguration.h"
 #import "HomeLivestreamsViewController.h"
 
+#import <libextobjc/libextobjc.h>
+
 @implementation LivestreamsViewController
 
 #pragma mark Object lifecycle
@@ -46,8 +48,16 @@
 
 - (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    // TODO: select correct section.
-    return NO;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(UIViewController.new, play_pageItem.applicationSection), @(applicationSectionInfo.applicationSection)];
+    UIViewController *viewController = [self.viewControllers filteredArrayUsingPredicate:predicate].firstObject;
+    
+    if (viewController) {
+        
+        return YES;
+    }
+    else {
+        return NO;
+    }
 }
 
 @end

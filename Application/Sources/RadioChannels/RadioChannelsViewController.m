@@ -9,6 +9,8 @@
 #import "HomeViewController.h"
 #import "NSBundle+PlaySRG.h"
 
+#import <libextobjc/libextobjc.h>
+
 @implementation RadioChannelsViewController
 
 #pragma mark Object lifecycle
@@ -20,7 +22,7 @@
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     for (RadioChannel *radioChannel in radioChannels) {
         HomeViewController *viewController = [[HomeViewController alloc] initWithRadioChannel:radioChannel];
-        viewController.play_pageItem = [[PageItem alloc] initWithTitle:radioChannel.name image:RadioChannelLogo22Image(radioChannel)];
+        viewController.play_pageItem = [[PageItem alloc] initWithTitle:radioChannel.name image:RadioChannelLogo22Image(radioChannel) applicationSection:ApplicationSectionAudios radioChannel:radioChannel];
         [viewControllers addObject:viewController];
     }
     
@@ -46,8 +48,26 @@
 
 - (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    // TODO: select correct section.
-    return NO;
+    if (! applicationSectionInfo.radioChannel) {
+        return NO;
+    }
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(UIViewController.new, play_pageItem.radioChannel), applicationSectionInfo.radioChannel];
+    UIViewController *viewController = [self.viewControllers filteredArrayUsingPredicate:predicate].firstObject;
+    
+    if (! viewController || ![viewController conformsToProtocol:@protocol(PlayApplicationNavigation)]) {
+        return NO;
+    }
+    
+    UIViewController<PlayApplicationNavigation> *navigableRootViewController = (UIViewController<PlayApplicationNavigation> *)viewController;
+    BOOL navigable = [navigableRootViewController openApplicationSectionInfo:applicationSectionInfo];
+    if (navigable) {
+        // TODO: Select correct page
+        return YES;
+    }
+    else {
+        return NO;
+    }
 }
 
 @end

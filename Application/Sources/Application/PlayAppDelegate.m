@@ -59,8 +59,6 @@
 
 static void *s_kvoContext = &s_kvoContext;
 
-static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *channelUid);
-
 @implementation PlayAppDelegate
 
 #pragma mark Getters and setters
@@ -417,7 +415,10 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 {
     NSParameterAssert(mediaURN);
     
-    ApplicationSectionInfo *applicationSectionInfo = ApplicationSectionInfoForChannelUid(channelUid);
+    RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
+    ApplicationSection applicationSection = radioChannel ? ApplicationSectionAudios : ApplicationSectionVideos;
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel options:nil];
+    
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         CMTime time = (startTime > 0) ? CMTimeMakeWithSeconds(startTime, NSEC_PER_SEC) : kCMTimeZero;
         [self playURN:mediaURN media:nil atPosition:[SRGPosition positionAtTime:time] fromPushNotification:fromPushNotification completion:nil];
@@ -429,7 +430,10 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 {
     NSParameterAssert(showURN);
     
-    ApplicationSectionInfo *applicationSectionInfo = ApplicationSectionInfoForChannelUid(channelUid);
+    RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
+    ApplicationSection applicationSection = radioChannel ? ApplicationSectionAudios : ApplicationSectionVideos;
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel options:nil];
+    
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         [self openShowURN:showURN show:nil fromPushNotification:fromPushNotification];
         completionBlock ? completionBlock() : nil;
@@ -438,40 +442,22 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 
 - (void)openShowListAtIndex:(NSString *)index withChannelUid:(NSString *)channelUid completionBlock:(void (^)(void))completionBlock
 {
+    NSMutableDictionary *options = [NSMutableDictionary dictionary];
+    options[ApplicationSectionOptionShowAZIndexKey] = index;
+    
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
-    if (radioChannel) {
-        ApplicationSectionInfo *applicationSectionInfo = ApplicationSectionInfoForChannelUid(channelUid);
-        [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
-            [self openShowListWithRadioChannel:radioChannel atIndex:index];
-            completionBlock ? completionBlock() : nil;
-        }];
-    }
-    else {
-        NSMutableDictionary *options = [NSMutableDictionary dictionary];
-        options[ApplicationSectionOptionShowAZIndexKey] = index;
-        
-        ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVShowAZ options:options.copy];
-        [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
-    }
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionShowAZ radioChannel:radioChannel options:options.copy];
+    [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
 }
 
 - (void)openCalendarAtDate:(NSDate *)date withChannelUid:(NSString *)channelUid completionBlock:(void (^)(void))completionBlock
 {
+    NSMutableDictionary *options = [NSMutableDictionary dictionary];
+    options[ApplicationSectionOptionShowByDateDateKey] = date;
+    
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
-    if (radioChannel) {
-        ApplicationSectionInfo *applicationSectionInfo = ApplicationSectionInfoForChannelUid(channelUid);
-        [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
-            [self openCalendarAtDate:date withRadioChannel:radioChannel];
-            completionBlock ? completionBlock() : nil;
-        }];
-    }
-    else {
-        NSMutableDictionary *options = [NSMutableDictionary dictionary];
-        options[ApplicationSectionOptionShowByDateDateKey] = date;
-        
-        ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVByDate options:options.copy];
-        [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
-    }
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionShowByDate radioChannel:radioChannel options:options.copy];
+    [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
 }
 
 - (void)openSearchWithQuery:(NSString *)query mediaType:(SRGMediaType)mediaType completionBlock:(void (^)(void))completionBlock
@@ -480,13 +466,15 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
     options[ApplicationSectionOptionSearchMediaTypeOptionKey] = @(mediaType);
     options[ApplicationSectionOptionSearchQueryKey] = query;
     
-    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionSearch options:options.copy];
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionSearch radioChannel:nil options:options.copy];
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
 }
 
 - (void)openHomeWithChannelUid:(NSString *)channelUid completionBlock:(void (^)(void))completionBlock
 {
-    ApplicationSectionInfo *applicationSectionInfo = ApplicationSectionInfoForChannelUid(channelUid);
+    RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
+    ApplicationSection applicationSection = radioChannel ? ApplicationSectionAudios : ApplicationSectionVideos;
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel];
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
 }
 
@@ -527,7 +515,7 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 {
     NSParameterAssert(topicURN);
     
-    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview];
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionVideos radioChannel:nil];
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         [self openTopicURN:topicURN];
         completionBlock ? completionBlock() : nil;
@@ -538,7 +526,7 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 {
     NSParameterAssert(moduleURN);
     
-    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview];
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionVideos radioChannel:nil];
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         [self openModuleURN:moduleURN];
         completionBlock ? completionBlock() : nil;
@@ -582,7 +570,11 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
         NSString *showURN = userActivity.userInfo[@"URNString"];
         if (showURN) {
             SRGShow *show = [NSKeyedUnarchiver unarchiveObjectWithData:userActivity.userInfo[@"SRGShowData"]];
-            ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview];
+            
+            RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:show.primaryChannelUid];
+            ApplicationSection applicationSection = radioChannel ? ApplicationSectionAudios : ApplicationSectionVideos;
+            ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel options:nil];
+            
             [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
                 [self openShowURN:showURN show:show fromPushNotification:NO];
             }];
@@ -977,19 +969,19 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
     SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
     
     if ([shortcutItem.type isEqualToString:@"favorites"]) {
-        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionFavorites];
+        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionFavorites radioChannel:nil];
         labels.type = AnalyticsTypeActionFavorites;
     }
     else if ([shortcutItem.type isEqualToString:@"downloads"]) {
-        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionDownloads];
+        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionDownloads radioChannel:nil];
         labels.type = AnalyticsTypeActionDownloads;
     }
     else if ([shortcutItem.type isEqualToString:@"history"]) {
-        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionHistory];
+        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionHistory radioChannel:nil];
         labels.type = AnalyticsTypeActionHistory;
     }
     else if ([shortcutItem.type isEqualToString:@"search"]) {
-        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionSearch];
+        applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionSearch radioChannel:nil];
         labels.type = AnalyticsTypeActionSearch;
     }
     else {
@@ -1104,16 +1096,3 @@ static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *cha
 }
 
 @end
-
-#pragma mark Static functions
-
-static ApplicationSectionInfo *ApplicationSectionInfoForChannelUid(NSString *channelUid)
-{
-    if (channelUid) {
-        RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
-        if (radioChannel) {
-            return [ApplicationSectionInfo applicationSectionInfoWithRadioChannel:radioChannel];
-        }
-    }
-    return [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview];
-}

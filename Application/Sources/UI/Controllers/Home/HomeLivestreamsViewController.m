@@ -32,7 +32,7 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
         
         NSString *title = TitleForHomeSection(homeSectionInfo.homeSection);
         self.title = title;
-        self.play_pageItem = [[PageItem alloc] initWithTitle:title image:nil];
+        self.play_pageItem = [[PageItem alloc] initWithTitle:title image:nil applicationSection:ApplicationSectionForHomeSection(homeSectionInfo.homeSection) radioChannel:nil];
     }
     return self;
 }

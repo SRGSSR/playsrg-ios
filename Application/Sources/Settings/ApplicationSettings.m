@@ -230,20 +230,17 @@ SRGMedia *ApplicationSettingSelectedLivestreamMediaForChannelUid(NSString *chann
 ApplicationSectionInfo *ApplicationSettingLastOpenHomepageApplicationSectionInfo(void)
 {
     NSString *lastOpenHomepageUid = [NSUserDefaults.standardUserDefaults stringForKey:PlaySRGSettingLastOpenHomepageUid];
+    
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:lastOpenHomepageUid];
-    if (radioChannel) {
-        return [ApplicationSectionInfo applicationSectionInfoWithRadioChannel:radioChannel];
-    }
-    else {
-        return [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionTVOverview];
-    }
+    ApplicationSection applicationSection = radioChannel ? ApplicationSectionAudios : ApplicationSectionVideos;
+    return [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel];
 }
 
 void ApplicationSettingSetLastOpenHomepageApplicationSectionInfo(ApplicationSectionInfo *applicationSectionInfo)
 {
     // Save only radio home page or set to nil if it's the TV home page
-    if (applicationSectionInfo.radioChannel || applicationSectionInfo.applicationSection == ApplicationSectionTVOverview
-            || applicationSectionInfo.applicationSection == ApplicationSectionTVByDate || applicationSectionInfo.applicationSection == ApplicationSectionTVShowAZ) {
+    if (applicationSectionInfo.radioChannel || applicationSectionInfo.applicationSection == ApplicationSectionVideos
+            || applicationSectionInfo.applicationSection == ApplicationSectionShowByDate || applicationSectionInfo.applicationSection == ApplicationSectionShowAZ) {
         NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
         [userDefaults setObject:applicationSectionInfo.radioChannel.uid forKey:PlaySRGSettingLastOpenHomepageUid];
         [userDefaults synchronize];

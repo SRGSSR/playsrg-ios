@@ -28,11 +28,8 @@ OBJC_EXPORT ApplicationSectionOptionKey const ApplicationSectionOptionShowByDate
 /**
  *  Standard sections.
  */
-+ (ApplicationSectionInfo *)applicationSectionInfoWithApplicationSection:(ApplicationSection)applicationSection;
-+ (ApplicationSectionInfo *)applicationSectionInfoWithApplicationSection:(ApplicationSection)applicationSection options:(nullable NSDictionary<ApplicationSectionOptionKey, id> *)options;
-
-+ (ApplicationSectionInfo *)applicationSectionInfoWithRadioChannel:(RadioChannel *)radioChannel;
-+ (ApplicationSectionInfo *)applicationSectionInfoWithRadioChannel:(RadioChannel *)radioChannel options:(nullable NSDictionary<ApplicationSectionOptionKey, id> *)options;
++ (ApplicationSectionInfo *)applicationSectionInfoWithApplicationSection:(ApplicationSection)applicationSection radioChannel:(nullable RadioChannel *)radioChannel;
++ (ApplicationSectionInfo *)applicationSectionInfoWithApplicationSection:(ApplicationSection)applicationSection radioChannel:(nullable RadioChannel *)radioChannel options:(nullable NSDictionary<ApplicationSectionOptionKey, id> *)options;
 
 + (ApplicationSectionInfo *)applicationSectionInfoWithNotification:(Notification *)notification;
 
