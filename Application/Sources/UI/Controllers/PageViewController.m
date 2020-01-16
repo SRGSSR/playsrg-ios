@@ -124,11 +124,16 @@ static void *s_pageItemKey = &s_pageItemKey;
         UIViewController *currentViewController = self.pageViewController.viewControllers.firstObject;
         NSUInteger currentIndex = [self.viewControllers indexOfObject:currentViewController];
         
-        self.tabStrip.selectedIndex = index;
-        
         UIViewController *newViewController = self.viewControllers[index];
         UIPageViewControllerNavigationDirection direction = (currentIndex < index) ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
         [self.pageViewController setViewControllers:@[newViewController] direction:direction animated:animated completion:nil];
+        
+        if (self.tabStrip) {
+            self.tabStrip.selectedIndex = index;
+        }
+        else {
+            self.initialPage = index;
+        }
     }
 }
 
