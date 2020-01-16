@@ -393,9 +393,12 @@
 
 - (void)audioSessionRouteDidChange:(NSNotification *)notification
 {
-    if (self.media.mediaType == SRGMediaTypeVideo && ! AVAudioSession.srg_isAirPlayActive) {
-        [self.controller stop];
-    }
+    // Called on a background thread!
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.media.mediaType == SRGMediaTypeVideo && ! AVAudioSession.srg_isAirPlayActive) {
+            [self.controller stop];
+        }
+    });
 }
 
 - (void)contentSizeCategoryDidChange:(NSNotification *)notification
