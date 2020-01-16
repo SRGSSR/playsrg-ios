@@ -67,6 +67,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers;
 
 /**
+ *  Switch to an index.
+ *
+ *  @discussion If the index is not valid, nothing change.
+ */
+- (void)switchToIndex:(NSInteger)index animated:(BOOL)animated;
+
+/**
  *  The view controllers loaded as pages.
  */
 @property (nonatomic, readonly) NSArray<UIViewController *> *viewControllers;

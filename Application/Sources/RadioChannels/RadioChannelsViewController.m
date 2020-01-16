@@ -53,21 +53,19 @@
     }
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(UIViewController.new, play_pageItem.radioChannel), applicationSectionInfo.radioChannel];
-    UIViewController *viewController = [self.viewControllers filteredArrayUsingPredicate:predicate].firstObject;
+    UIViewController *radioChannelViewController = [self.viewControllers filteredArrayUsingPredicate:predicate].firstObject;
     
-    if (! viewController || ![viewController conformsToProtocol:@protocol(PlayApplicationNavigation)]) {
+    if (! radioChannelViewController || ! [radioChannelViewController conformsToProtocol:@protocol(PlayApplicationNavigation)]) {
         return NO;
     }
     
-    UIViewController<PlayApplicationNavigation> *navigableRootViewController = (UIViewController<PlayApplicationNavigation> *)viewController;
-    BOOL navigable = [navigableRootViewController openApplicationSectionInfo:applicationSectionInfo];
-    if (navigable) {
-        // TODO: Select correct page
-        return YES;
-    }
-    else {
-        return NO;
-    }
+    // Add the selected view controller to the controller stack.
+    // Next `openApplicationSectionInfo:` will be able to push other view controllers in the navigation controller.
+    NSInteger pageIndex = [self.viewControllers indexOfObject:radioChannelViewController];
+    [self switchToIndex:pageIndex animated:NO];
+    
+    UIViewController<PlayApplicationNavigation> *navigableRootViewController = (UIViewController<PlayApplicationNavigation> *)radioChannelViewController;
+    return [navigableRootViewController openApplicationSectionInfo:applicationSectionInfo];
 }
 
 @end

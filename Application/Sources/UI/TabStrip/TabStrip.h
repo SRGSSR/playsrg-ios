@@ -20,6 +20,8 @@ IB_DESIGNABLE
 
 - (void)setPageViewController:(PageViewController *)pageViewController withInitialSelectedIndex:(NSInteger)initialSelectedIndex;
 
+@property (nonatomic) NSInteger selectedIndex;
+
 @end
 
 NS_ASSUME_NONNULL_END

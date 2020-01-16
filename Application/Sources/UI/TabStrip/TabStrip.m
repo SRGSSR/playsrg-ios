@@ -23,7 +23,6 @@ static void commonInit(TabStrip *self);
 @interface TabStrip ()
 
 @property (nonatomic) NSArray<PageItem *> *items;
-@property (nonatomic) NSInteger selectedIndex;
 
 @property (nonatomic, weak) UICollectionView *collectionView;
 @property (nonatomic, weak) UIView *indicatorView;

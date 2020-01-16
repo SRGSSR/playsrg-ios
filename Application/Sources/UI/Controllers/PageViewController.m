@@ -119,6 +119,22 @@ static void *s_pageItemKey = &s_pageItemKey;
     [self.pageViewController setViewControllers:@[initialViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
+#pragma mark Actions
+
+- (void)switchToIndex:(NSInteger)index animated:(BOOL)animated
+{
+    if (index >= 0 && index < self.viewControllers.count) {
+        UIViewController *currentViewController = self.pageViewController.viewControllers.firstObject;
+        NSUInteger currentIndex = [self.viewControllers indexOfObject:currentViewController];
+        
+        self.tabStrip.selectedIndex = index;
+        
+        UIViewController *newViewController = self.viewControllers[index];
+        UIPageViewControllerNavigationDirection direction = (currentIndex < index) ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
+        [self.pageViewController setViewControllers:@[newViewController] direction:direction animated:animated completion:nil];
+    }
+}
+
 #pragma mark Rotation
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
