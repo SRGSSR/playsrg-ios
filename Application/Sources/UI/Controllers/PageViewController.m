@@ -39,18 +39,12 @@ static void *s_pageItemKey = &s_pageItemKey;
 
 #pragma mark Object lifecycle
 
-- (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers initialPage:(NSInteger)initialPage
+- (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers
 {
     NSAssert(viewControllers.count != 0, @"At least one view controller is required");
     
     if (self = [super init]) {
         self.viewControllers = viewControllers;
-        
-        if (initialPage < 0 || initialPage >= viewControllers.count) {
-            PlayLogWarning(@"pageViewController", @"Invalid page. Fixed to 0");
-            initialPage = 0;
-        }
-        self.initialPage = initialPage;
         
         UIPageViewController *pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                                    navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
@@ -65,11 +59,6 @@ static void *s_pageItemKey = &s_pageItemKey;
         self.pageViewController = pageViewController;
     }
     return self;
-}
-
-- (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers
-{
-    return [self initWithViewControllers:viewControllers initialPage:0];
 }
 
 #pragma mark View lifecycle
