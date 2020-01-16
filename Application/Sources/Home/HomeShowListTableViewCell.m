@@ -171,12 +171,10 @@ static const CGFloat HomeStandardMargin = 10.f;
 
 #pragma mark UICollectionViewDelegate protocol
 
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(HomeShowCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SRGShow *show = ! [self isEmpty] ? self.homeSectionInfo.items[indexPath.row] : nil;
-    
-    HomeShowCollectionViewCell *showCell = (HomeShowCollectionViewCell *)cell;
-    [showCell setShow:show featured:self.featured];
+    [cell setShow:show featured:self.featured];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

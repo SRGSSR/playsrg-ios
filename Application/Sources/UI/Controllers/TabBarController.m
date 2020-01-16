@@ -6,7 +6,6 @@
 
 #import "TabBarController.h"
 
-#import "RadioChannelsViewController.h"
 #import "HomeViewController.h"
 #import "LibraryViewController.h"
 #import "LivestreamsViewController.h"
@@ -14,6 +13,7 @@
 #import "NavigationController.h"
 #import "PlayApplicationNavigation.h"
 #import "PushService.h"
+#import "RadioChannelsViewController.h"
 #import "SearchViewController.h"
 #import "UIColor+PlaySRG.h"
 

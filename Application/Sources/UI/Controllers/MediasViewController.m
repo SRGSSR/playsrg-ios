@@ -48,10 +48,9 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 
 #pragma mark UICollectionViewDelegate protocol
 
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(MediaCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    MediaCollectionViewCell *mediaCell = (MediaCollectionViewCell *)cell;
-    [mediaCell setMedia:self.items[indexPath.row] withDateFormatter:self.dateFormatter];
+    [cell setMedia:self.items[indexPath.row] withDateFormatter:self.dateFormatter];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

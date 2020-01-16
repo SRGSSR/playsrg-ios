@@ -123,10 +123,9 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 
 #pragma mark UICollectionViewDelegate protocol
 
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(LiveMediaCollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    LiveMediaCollectionViewCell *liveMediaCell = (LiveMediaCollectionViewCell *)cell;
-    [liveMediaCell setMedia:self.items[indexPath.row]];
+    [cell setMedia:self.items[indexPath.row]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

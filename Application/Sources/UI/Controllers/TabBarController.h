@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo;
 
 /**
- *  Push the specified view controller into the center navigation controller.
+ *  Push the specified view controller into the currently selected view controller.
  */
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
 
