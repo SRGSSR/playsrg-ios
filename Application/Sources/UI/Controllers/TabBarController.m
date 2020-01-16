@@ -214,9 +214,7 @@ static const CGFloat MiniPlayerOffset = 5.f;
             }
         }];
         
-        [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
-            [viewController play_setNeedsContentInsetsUpdate];
-        }];
+        [self play_setNeedsContentInsetsUpdate];
     };
     
     if (animated) {

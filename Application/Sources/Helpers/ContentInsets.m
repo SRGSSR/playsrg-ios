@@ -31,6 +31,10 @@ static void UpdateContentInsetsForViewController(UIViewController *viewControlle
 - (void)play_setNeedsContentInsetsUpdate
 {
     UpdateContentInsetsForViewController(self);
+    
+    [self.childViewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
+        [viewController play_setNeedsContentInsetsUpdate];
+    }];
 }
 
 @end
