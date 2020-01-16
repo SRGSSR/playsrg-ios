@@ -22,7 +22,7 @@
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     for (RadioChannel *radioChannel in radioChannels) {
         HomeViewController *viewController = [[HomeViewController alloc] initWithRadioChannel:radioChannel];
-        viewController.play_pageItem = [[PageItem alloc] initWithTitle:radioChannel.name image:RadioChannelLogo22Image(radioChannel) applicationSection:ApplicationSectionAudios radioChannel:radioChannel];
+        viewController.play_pageItem = [[PageItem alloc] initWithTitle:radioChannel.name image:RadioChannelLogo22Image(radioChannel) applicationSection:ApplicationSectionRadioChannelOverview radioChannel:radioChannel];
         [viewControllers addObject:viewController];
     }
     

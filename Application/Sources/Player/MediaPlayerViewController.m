@@ -1725,7 +1725,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     PlayAppDelegate *appDelegate = (PlayAppDelegate *)UIApplication.sharedApplication.delegate;
     RadioChannel *radioChannel = [self radioChannel];
     
-    ApplicationSection applicationSection = radioChannel ? ApplicationSectionAudios : ApplicationSectionVideos;
+    ApplicationSection applicationSection = radioChannel ? ApplicationSectionRadioChannelOverview : ApplicationSectionVideos;
     ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel];
     [appDelegate.rootTabBarController openApplicationSectionInfo:applicationSectionInfo];
     
@@ -1741,7 +1741,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
         return;
     }
     
-    ApplicationSection applicationSection = radioChannel ? ApplicationSectionAudios : ApplicationSectionVideos;
+    ApplicationSection applicationSection = radioChannel ? ApplicationSectionRadioChannelOverview : ApplicationSectionVideos;
     ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel];
     
     PlayAppDelegate *appDelegate = (PlayAppDelegate *)UIApplication.sharedApplication.delegate;

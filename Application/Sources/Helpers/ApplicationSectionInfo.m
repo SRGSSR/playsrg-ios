@@ -161,7 +161,7 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
     }
     
     ApplicationSectionInfo *otherApplicationSectionInfo = object;
-    return (self.applicationSection == otherApplicationSectionInfo.applicationSection && (self.applicationSection != ApplicationSectionAudios || [self.uid isEqualToString:otherApplicationSectionInfo.uid]));
+    return (self.applicationSection == otherApplicationSectionInfo.applicationSection && (self.applicationSection != ApplicationSectionRadioChannelOverview || [self.uid isEqualToString:otherApplicationSectionInfo.uid]));
 }
 
 - (NSUInteger)hash

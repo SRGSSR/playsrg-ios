@@ -232,7 +232,7 @@ ApplicationSectionInfo *ApplicationSettingLastOpenHomepageApplicationSectionInfo
     NSString *lastOpenHomepageUid = [NSUserDefaults.standardUserDefaults stringForKey:PlaySRGSettingLastOpenHomepageUid];
     
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:lastOpenHomepageUid];
-    ApplicationSection applicationSection = radioChannel ? ApplicationSectionAudios : ApplicationSectionVideos;
+    ApplicationSection applicationSection = radioChannel ? ApplicationSectionRadioChannelOverview : ApplicationSectionVideos;
     return [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel];
 }
 

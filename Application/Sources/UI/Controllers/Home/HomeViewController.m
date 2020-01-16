@@ -552,7 +552,7 @@
         return applicationSectionInfo.applicationSection == ApplicationSectionVideos;
     }
     else if (sameChannel) {
-        return applicationSectionInfo.applicationSection == ApplicationSectionAudios;
+        return applicationSectionInfo.applicationSection == ApplicationSectionRadioChannelOverview;
     }
     else {
         return NO;

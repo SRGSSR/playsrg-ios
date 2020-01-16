@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, ApplicationSection) {
     ApplicationSectionNotifications,
     
     ApplicationSectionVideos,
-    ApplicationSectionAudios,
+    ApplicationSectionRadioChannelOverview,
     ApplicationSectionShowByDate,
     ApplicationSectionShowAZ,
     
