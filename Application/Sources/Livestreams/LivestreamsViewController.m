@@ -51,13 +51,17 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(UIViewController.new, play_pageItem.applicationSection), @(applicationSectionInfo.applicationSection)];
     UIViewController *viewController = [self.viewControllers filteredArrayUsingPredicate:predicate].firstObject;
     
-    if (viewController) {
-        
-        return YES;
-    }
-    else {
+    if (! viewController || ! [viewController conformsToProtocol:@protocol(PlayApplicationNavigation)]) {
         return NO;
     }
+    
+    // Add the selected view controller to the controller stack.
+    // Next `openApplicationSectionInfo:` will be able to push other view controllers in the navigation controller.
+    NSInteger pageIndex = [self.viewControllers indexOfObject:viewController];
+    [self switchToIndex:pageIndex animated:NO];
+    
+    UIViewController<PlayApplicationNavigation> *navigableRootViewController = (UIViewController<PlayApplicationNavigation> *)viewController;
+    return [navigableRootViewController openApplicationSectionInfo:applicationSectionInfo];
 }
 
 @end
