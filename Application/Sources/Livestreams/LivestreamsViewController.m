@@ -25,7 +25,7 @@
     }
     
     if (self = [super initWithViewControllers:viewControllers.copy]) {
-        self.title = NSLocalizedString(@"Livestreams", @"Title displayed at the top of the livestreams view");
+        self.title = NSLocalizedString(@"Live", @"Title displayed at the top of the livestreams view");
     }
     return self;
 }
@@ -34,7 +34,7 @@
 
 - (NSString *)srg_pageViewTitle
 {
-    return NSLocalizedString(@"Livestreams", @"[Technical] Title for livestreams analytics measurements");
+    return NSLocalizedString(@"Live", @"[Technical] Title for livestreams analytics measurements");
 }
 
 - (NSArray<NSString *> *)srg_pageViewLevels
