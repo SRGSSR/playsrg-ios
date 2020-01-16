@@ -2869,6 +2869,7 @@
 				086F8D4C22984B29001BE2F4 /* Favorites */,
 				08654B921D3CDA160040EF04 /* Helpers */,
 				6F9CEA6321884ACC007DE35F /* History */,
+				08C68ECE1D38DEA100BB8AAA /* Home */,
 				087584C623A0008500FA7207 /* Library */,
 				0875853123A3DDB700FA7207 /* Livestreams */,
 				086BDE111EA63D3800965F45 /* MiniPlayer */,
@@ -3135,7 +3136,6 @@
 		6F475F8B1EB37BC6003021EA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				08C68ECE1D38DEA100BB8AAA /* Home */,
 				6F475F8C1EB37BC6003021EA /* BaseViewController.h */,
 				6F475F8D1EB37BC6003021EA /* BaseViewController.m */,
 				6F475F8E1EB37BC6003021EA /* CollectionRequestViewController.h */,
