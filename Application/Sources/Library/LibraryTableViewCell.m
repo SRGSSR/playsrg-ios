@@ -43,6 +43,9 @@
     
     UIColor *backgroundColor = UIColor.play_blackColor;
     self.backgroundColor = backgroundColor;
+    
+    // Cell highlighting is custom
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)prepareForReuse
