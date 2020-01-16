@@ -207,7 +207,7 @@
     return VerticalOffsetForEmptyDataSet(scrollView);
 }
 
-#pragma mark NotificationTableViewCellDelegate protocol
+#pragma mark NotificationTableViewDeletionDelegate protocol
 
 - (void)notificationTableViewCell:(NotificationTableViewCell *)cell willDeleteNotification:(Notification *)notification
 {
@@ -243,7 +243,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(NotificationTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.notification = self.notifications[indexPath.row];
-    cell.cellDelegate = self;
+    cell.deletionDelegate = self;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

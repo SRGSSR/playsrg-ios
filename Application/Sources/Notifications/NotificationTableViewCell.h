@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class NotificationTableViewCell;
 
-@protocol NotificationTableViewCellDelegate <NSObject>
+@protocol NotificationTableViewDeletionDelegate <NSObject>
 
 - (void)notificationTableViewCell:(NotificationTableViewCell *)cell willDeleteNotification:(Notification *)notification;
 
@@ -23,7 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, nullable) Notification *notification;
 
-@property (nonatomic, weak, nullable) id<NotificationTableViewCellDelegate> cellDelegate;
+// If not set, deletion with a swipe is not available.
+@property (nonatomic, weak, nullable) id<NotificationTableViewDeletionDelegate> deletionDelegate;
 
 @end
 
