@@ -509,9 +509,9 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     
     if ([self play_isMovingFromParentViewController]) {
         if (self.letterboxController.media.mediaType != SRGMediaTypeAudio
-            && ! self.letterboxController.pictureInPictureActive
-            && ! AVAudioSession.srg_isAirPlayActive
-            && ! ApplicationSettingBackgroundVideoPlaybackEnabled()) {
+                && ! self.letterboxController.pictureInPictureActive
+                && ! AVAudioSession.srg_isAirPlayActive
+                && ! ApplicationSettingBackgroundVideoPlaybackEnabled()) {
             [SRGLetterboxService.sharedService disableForController:self.letterboxController];
         }
         

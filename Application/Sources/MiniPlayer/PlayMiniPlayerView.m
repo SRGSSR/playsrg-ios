@@ -346,7 +346,9 @@
 
 - (IBAction)close:(id)sender
 {
+    [SRGLetterboxService.sharedService disableForController:self.controller];
     [self.controller reset];
+    
     self.media = nil;
 }
 
