@@ -121,7 +121,7 @@ static const CGFloat MiniPlayerOffset = 5.f;
     
     // The mini player is not available for all BUs
     MiniPlayerView *miniPlayerView = [[MiniPlayerView alloc] initWithFrame:CGRectZero];
-    [self.view addSubview:miniPlayerView];
+    [self.view insertSubview:miniPlayerView belowSubview:self.tabBar];
     
     // iOS 10 bug: Cannot apply a shadow to a blurred view without breaking the blur effect
     // Probably related to radar 27189321.
@@ -205,12 +205,12 @@ static const CGFloat MiniPlayerOffset = 5.f;
             }
             
             if (self.miniPlayerView.active) {
+                make.height.equalTo(@(MiniPlayerHeight));
                 make.bottom.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset);
-                make.top.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset - MiniPlayerHeight);
             }
             else {
-                make.bottom.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset);
                 make.height.equalTo(@0);
+                make.bottom.equalTo(self.tabBar.mas_top);
             }
         }];
         
