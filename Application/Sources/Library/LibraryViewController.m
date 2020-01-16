@@ -338,6 +338,8 @@
     Notification *notification = [self notificationAtIndexPath:indexPath];
     if (notification) {
         [NotificationsViewController openNotification:notification fromViewController:self];
+        
+        // Update the cell dot right away
         [tableView reloadData];
     }
     else {

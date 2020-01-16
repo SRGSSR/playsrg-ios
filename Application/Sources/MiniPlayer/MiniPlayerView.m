@@ -49,7 +49,6 @@
         @weakify(self)
         [self.playMiniPlayerView addObserver:self keyPath:@keypath(PlayMiniPlayerView.new, media) options:0 block:^(MAKVONotification *notification) {
             @strongify(self)
-            
             [self updateLayoutAnimated:YES];
         }];
         

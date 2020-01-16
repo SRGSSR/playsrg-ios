@@ -30,7 +30,6 @@
 @property (nonatomic) SRGLetterboxController *controller;
 
 @property (nonatomic, weak) IBOutlet UIProgressView *progressView;
-@property (nonatomic, weak) IBOutlet UIButton *closeButton;
 
 // FIXME: Do not use SRGPlaybackButton! To have it work requires exposing private implementation details (see below)
 //        and why this can work is difficult to understand (since a hidden action calling -togglePlayPause on the media
@@ -134,7 +133,6 @@
                                            selector:@selector(contentSizeCategoryDidChange:)
                                                name:UIContentSizeCategoryDidChangeNotification
                                              object:nil];
-    
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(audioSessionRouteDidChange:)
                                                name:AVAudioSessionRouteChangeNotification
@@ -248,7 +246,6 @@
     else {
         self.thumbnailImageView.image = (self.media.contentType == SRGContentTypeLivestream || self.media.contentType == SRGContentTypeScheduledLivestream) ? [UIImage imageNamed:@"tv-22"] : [UIImage imageNamed:@"video-22"];
     }
-
     
     [self updateProgress];
 }
