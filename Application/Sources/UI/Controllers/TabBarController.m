@@ -194,34 +194,25 @@ static const CGFloat MiniPlayerOffset = 5.f;
 - (void)updateLayoutAnimated:(BOOL)animated
 {
     void (^animations)(void) = ^{
-        if (self.miniPlayerView.active) {
-            [self.miniPlayerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        [self.miniPlayerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            if (@available(iOS 11, *)) {
+                make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft).with.offset(MiniPlayerOffset);
+                make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight).with.offset(-MiniPlayerOffset);
+            }
+            else {
                 make.left.equalTo(self.view).with.offset(MiniPlayerOffset);
                 make.right.equalTo(self.view).with.offset(-MiniPlayerOffset);
-                
-                if (@available(iOS 11, *)) {
-                    make.bottom.equalTo(self.tabBar.mas_safeAreaLayoutGuideTop).with.offset(-MiniPlayerOffset);
-                    make.top.equalTo(self.tabBar.mas_safeAreaLayoutGuideTop).with.offset(-MiniPlayerOffset - MiniPlayerHeight);
-                }
-                else {
-                    make.bottom.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset);
-                    make.height.equalTo(@(MiniPlayerHeight));
-                }
-            }];
-        }
-        else {
-            [self.miniPlayerView mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(self.view).with.offset(MiniPlayerOffset);
-                make.right.equalTo(self.view).with.offset(-MiniPlayerOffset);
-                if (@available(iOS 11, *)) {
-                    make.bottom.equalTo(self.tabBar.mas_safeAreaLayoutGuideTop).with.offset(-MiniPlayerOffset);
-                }
-                else {
-                    make.bottom.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset);
-                }
+            }
+            
+            if (self.miniPlayerView.active) {
+                make.bottom.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset);
+                make.top.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset - MiniPlayerHeight);
+            }
+            else {
+                make.bottom.equalTo(self.tabBar.mas_top).with.offset(-MiniPlayerOffset);
                 make.height.equalTo(@0);
-            }];
-        }
+            }
+        }];
         
         [self.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
             [viewController play_setNeedsContentInsetsUpdate];
@@ -255,8 +246,6 @@ static const CGFloat MiniPlayerOffset = 5.f;
         }
     }
 }
-
-#pragma mark Getters
 
 - (UITabBarItem *)tabBarItemForTag:(TabBarItemTag)tabBarItemTag
 {
