@@ -31,7 +31,14 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        UIBlurEffectStyle blurEffectStyle;
+        if (@available(iOS 13, *)) {
+            blurEffectStyle = UIBlurEffectStyleSystemMaterialDark;
+        }
+        else {
+            blurEffectStyle = UIBlurEffectStyleDark;
+        }
+        UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:blurEffectStyle];
         UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
         [self addSubview:blurView];
         
