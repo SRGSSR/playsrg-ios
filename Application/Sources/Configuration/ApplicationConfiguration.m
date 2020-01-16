@@ -89,65 +89,56 @@ static SRGVendor DataProviderVendor(NSString *businessUnitIdentifier)
 static HomeSection HomeSectionWithString(NSString *string)
 {
     static dispatch_once_t s_onceToken;
-    static NSDictionary<NSString *, NSNumber *> *s_homeSections;
+    static NSDictionary<NSString *, NSNumber *> *s_sections;
     dispatch_once(&s_onceToken, ^{
-        s_homeSections = @{ @"tvTrending" : @(HomeSectionTVTrending),
-                            @"tvLive" : @(HomeSectionTVLive),
-                            @"tvEvents" : @(HomeSectionTVEvents),
-                            @"tvTopics" : @(HomeSectionTVTopics),
-                            @"tvLatest" : @(HomeSectionTVLatest),
-                            @"tvMostPopular" : @(HomeSectionTVMostPopular),
-                            @"tvSoonExpiring" : @(HomeSectionTVSoonExpiring),
-                            @"tvScheduledLivestreams" : @(HomeSectionTVScheduledLivestreams),
-                            @"tvLiveCenter" : @(HomeSectionTVLiveCenter),
-                            @"tvShowsAccess" : @(HomeSectionTVShowsAccess),
-                            @"tvFavoriteShows" : @(HomeSectionTVFavoriteShows),
-                            @"radioLive" : @(HomeSectionRadioLive),
-                            @"radioLatestEpisodes" : @(HomeSectionRadioLatestEpisodes),
-                            @"radioMostPopular" : @(HomeSectionRadioMostPopular),
-                            @"radioLatest" : @(HomeSectionRadioLatest),
-                            @"radioLatestVideos" : @(HomeSectionRadioLatestVideos),
-                            @"radioAllShows" : @(HomeSectionRadioAllShows),
-                            @"radioShowsAccess" : @(HomeSectionRadioShowsAccess),
-                            @"radioFavoriteShows" : @(HomeSectionRadioFavoriteShows) };
+        s_sections = @{ @"tvTrending" : @(HomeSectionTVTrending),
+                        @"tvLive" : @(HomeSectionTVLive),
+                        @"tvEvents" : @(HomeSectionTVEvents),
+                        @"tvTopics" : @(HomeSectionTVTopics),
+                        @"tvLatest" : @(HomeSectionTVLatest),
+                        @"tvMostPopular" : @(HomeSectionTVMostPopular),
+                        @"tvSoonExpiring" : @(HomeSectionTVSoonExpiring),
+                        @"tvScheduledLivestreams" : @(HomeSectionTVScheduledLivestreams),
+                        @"tvLiveCenter" : @(HomeSectionTVLiveCenter),
+                        @"tvShowsAccess" : @(HomeSectionTVShowsAccess),
+                        @"tvFavoriteShows" : @(HomeSectionTVFavoriteShows),
+                        @"radioLive" : @(HomeSectionRadioLive),
+                        @"radioLatestEpisodes" : @(HomeSectionRadioLatestEpisodes),
+                        @"radioMostPopular" : @(HomeSectionRadioMostPopular),
+                        @"radioLatest" : @(HomeSectionRadioLatest),
+                        @"radioLatestVideos" : @(HomeSectionRadioLatestVideos),
+                        @"radioAllShows" : @(HomeSectionRadioAllShows),
+                        @"radioShowsAccess" : @(HomeSectionRadioShowsAccess),
+                        @"radioFavoriteShows" : @(HomeSectionRadioFavoriteShows) };
     });
-    return s_homeSections[string].integerValue ?: HomeSectionUnknown;
+    NSNumber *section = s_sections[string];
+    return section ? section.integerValue : HomeSectionUnknown;
 }
 
 static TopicSection TopicSectionWithString(NSString *string)
 {
     static dispatch_once_t s_onceToken;
-    static NSDictionary<NSString *, NSNumber *> *s_topicSections;
+    static NSDictionary<NSString *, NSNumber *> *s_sections;
     dispatch_once(&s_onceToken, ^{
-        s_topicSections = @{ @"latest" : @(TopicSectionLatest),
-                             @"mostPopular" : @(TopicSectionMostPopular) };
+        s_sections = @{ @"latest" : @(TopicSectionLatest),
+                        @"mostPopular" : @(TopicSectionMostPopular) };
     });
-    return s_topicSections[string].integerValue ?: TopicSectionUnknown;
+    NSNumber *section = s_sections[string];
+    return section ? section.integerValue : TopicSectionUnknown;
 }
 
 ApplicationSection ApplicationSectionForHomeSection(HomeSection homeSection)
 {
-    switch (homeSection) {
-        case HomeSectionTVLive:
-            return ApplicationSectionTVLive;
-            break;
-            
-        case HomeSectionRadioLive:
-            return ApplicationSectionRadioLive;
-            break;
-            
-        case HomeSectionTVLiveCenter:
-            return ApplicationSectionLiveCenter;
-            break;
-            
-        case HomeSectionTVScheduledLivestreams:
-            return ApplicationSectionScheduledLivestreams;
-            break;
-            
-        default:
-            return ApplicationSectionUnknown;
-            break;
-    }
+    static dispatch_once_t s_onceToken;
+    static NSDictionary<NSNumber *, NSNumber *> *s_sections;
+    dispatch_once(&s_onceToken, ^{
+        s_sections = @{ @(HomeSectionTVLive) : @(ApplicationSectionTVLive),
+                        @(HomeSectionRadioLive) : @(ApplicationSectionRadioLive),
+                        @(HomeSectionTVLiveCenter) : @(ApplicationSectionLiveCenter),
+                        @(HomeSectionTVScheduledLivestreams) : @(ApplicationSectionScheduledLivestreams) };
+    });
+    NSNumber *section = s_sections[@(homeSection)];
+    return section ? section.integerValue : ApplicationSectionUnknown;
 }
 
 NSString *TitleForApplicationSection(ApplicationSection applicationSection)

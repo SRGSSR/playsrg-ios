@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PageItem : NSObject
 
 /**
- *  Create a page item with the specified informations.
+ *  Create a page item with the specified information.
  */
 - (instancetype)initWithTitle:(NSString *)title image:(nullable UIImage *)image applicationSection:(ApplicationSection)applicationSection radioChannel:(nullable RadioChannel *)radioChannel;
 
