@@ -345,12 +345,6 @@
         [controller playMedia:media atPosition:position withPreferredSettings:ApplicationSettingPlaybackSettings()];
         [SRGLetterboxService.sharedService enableWithController:controller pictureInPictureDelegate:nil];
     }
-    
-    if (media.mediaType == SRGMediaTypeVideo
-            && ! controller.pictureInPictureActive
-            && ! AVAudioSession.srg_isAirPlayActive) {
-        [self.nearestViewController play_presentMediaPlayerFromLetterboxController:controller withAirPlaySuggestions:NO fromPushNotification:NO animated:YES completion:nil];
-    }
 }
 
 - (IBAction)close:(id)sender
