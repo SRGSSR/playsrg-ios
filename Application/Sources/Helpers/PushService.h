@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 OBJC_EXPORT NSString * const PushServiceDidReceiveNotification;
 
 /**
- *  Notitfication sent when the badge number has been changed on the device.
+ *  Notitfication sent when the badge number has changed on the device.
  */
 OBJC_EXPORT NSString * const PushServiceBadgeDidChangeNotification;
 

@@ -17,8 +17,6 @@ static void lockComplete(CFNotificationCenterRef center, void *observer, CFStrin
 
 #pragma mark Class methods
 
-#pragma mark Class methods
-
 + (BOOL)play_isLocked
 {
     return s_locked;

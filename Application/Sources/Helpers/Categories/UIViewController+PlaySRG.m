@@ -54,16 +54,11 @@ static id<UIViewControllerPreviewing> swizzle_registerForPreviewingWithDelegate_
 
 + (UIInterfaceOrientationMask)play_supportedInterfaceOrientations
 {
-    switch (UIDevice.currentDevice.userInterfaceIdiom) {
-        case UIUserInterfaceIdiomPhone: {
-            return UIInterfaceOrientationMaskPortrait;
-            break;
-        }
-            
-        default: {
-            return UIInterfaceOrientationMaskAll;
-            break;
-        }
+    if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    else {
+        return UIInterfaceOrientationMaskAll;
     }
 }
 
