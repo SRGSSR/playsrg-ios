@@ -48,7 +48,7 @@
 
 - (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(UIViewController.new, play_pageItem.applicationSection), @(applicationSectionInfo.applicationSection)];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(HomeLivestreamsViewController.new, homeSectionInfo.homeSection), @(HomeSectionForApplicationSection(applicationSectionInfo.applicationSection))];
     UIViewController *viewController = [self.viewControllers filteredArrayUsingPredicate:predicate].firstObject;
     
     if (! viewController || ! [viewController conformsToProtocol:@protocol(PlayApplicationNavigation)]) {

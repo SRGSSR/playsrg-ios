@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (instancetype)initWithRadioChannel:(nullable RadioChannel *)radioChannel NS_DESIGNATED_INITIALIZER;
 
+@property (nonatomic, readonly, nullable) RadioChannel *radioChannel;
+
 @end
 
 @interface HomeViewController (Unavailable)

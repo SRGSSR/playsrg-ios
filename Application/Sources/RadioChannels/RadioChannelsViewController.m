@@ -22,7 +22,7 @@
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     for (RadioChannel *radioChannel in radioChannels) {
         HomeViewController *viewController = [[HomeViewController alloc] initWithRadioChannel:radioChannel];
-        viewController.play_pageItem = [[PageItem alloc] initWithTitle:radioChannel.name image:RadioChannelLogo22Image(radioChannel) applicationSection:ApplicationSectionRadioChannelOverview radioChannel:radioChannel];
+        viewController.play_pageItem = [[PageItem alloc] initWithTitle:radioChannel.name image:RadioChannelLogo22Image(radioChannel)];
         [viewControllers addObject:viewController];
     }
     
@@ -52,7 +52,7 @@
         return NO;
     }
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(UIViewController.new, play_pageItem.radioChannel), applicationSectionInfo.radioChannel];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(HomeViewController.new, radioChannel), applicationSectionInfo.radioChannel];
     UIViewController *radioChannelViewController = [self.viewControllers filteredArrayUsingPredicate:predicate].firstObject;
     
     if (! radioChannelViewController || ! [radioChannelViewController conformsToProtocol:@protocol(PlayApplicationNavigation)]) {

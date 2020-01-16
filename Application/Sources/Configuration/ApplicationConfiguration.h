@@ -76,7 +76,7 @@ typedef NS_ENUM(NSInteger, ApplicationSection) {
     // FIXME: cleanup icons related to unsused sections.
 };
 
-OBJC_EXPORT ApplicationSection ApplicationSectionForHomeSection(HomeSection homeSection);
+OBJC_EXPORT HomeSection HomeSectionForApplicationSection(ApplicationSection applicationSection);
 
 OBJC_EXPORT NSString *TitleForApplicationSection(ApplicationSection applicationSection);
 OBJC_EXPORT NSString *TitleForHomeSection(HomeSection homeSection);

@@ -127,18 +127,18 @@ static TopicSection TopicSectionWithString(NSString *string)
     return section ? section.integerValue : TopicSectionUnknown;
 }
 
-ApplicationSection ApplicationSectionForHomeSection(HomeSection homeSection)
+HomeSection HomeSectionForApplicationSection(ApplicationSection applicationSection)
 {
     static dispatch_once_t s_onceToken;
     static NSDictionary<NSNumber *, NSNumber *> *s_sections;
     dispatch_once(&s_onceToken, ^{
-        s_sections = @{ @(HomeSectionTVLive) : @(ApplicationSectionTVLive),
-                        @(HomeSectionRadioLive) : @(ApplicationSectionRadioLive),
-                        @(HomeSectionTVLiveCenter) : @(ApplicationSectionLiveCenter),
-                        @(HomeSectionTVScheduledLivestreams) : @(ApplicationSectionScheduledLivestreams) };
+        s_sections = @{ @(ApplicationSectionTVLive) : @(HomeSectionTVLive),
+                        @(ApplicationSectionRadioLive) : @(HomeSectionRadioLive),
+                        @(ApplicationSectionLiveCenter) : @(HomeSectionTVLiveCenter),
+                        @(ApplicationSectionScheduledLivestreams) : @(HomeSectionTVScheduledLivestreams) };
     });
-    NSNumber *section = s_sections[@(homeSection)];
-    return section ? section.integerValue : ApplicationSectionUnknown;
+    NSNumber *section = s_sections[@(applicationSection)];
+    return section ? section.integerValue : HomeSectionUnknown;
 }
 
 NSString *TitleForApplicationSection(ApplicationSection applicationSection)

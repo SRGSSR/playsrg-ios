@@ -219,7 +219,7 @@ static void commonInit(TabStrip *self);
             [items addObject:viewController.play_pageItem];
         }
         else {
-            PageItem *item = [[PageItem alloc] initWithTitle:@"Untitled" image:nil applicationSection:ApplicationSectionUnknown radioChannel:nil];
+            PageItem *item = [[PageItem alloc] initWithTitle:@"Untitled" image:nil];
             [items addObject:item];
         }
     }
@@ -374,13 +374,13 @@ static void commonInit(TabStrip *self);
     
     NSMutableArray<PageItem *> *items = [NSMutableArray array];
     
-    PageItem *item1 = [[PageItem alloc] initWithTitle:@"Page 1" image:nil applicationSection:ApplicationSectionUnknown radioChannel:nil];
+    PageItem *item1 = [[PageItem alloc] initWithTitle:@"Page 1" image:nil];
     [items addObject:item1];
     
-    PageItem *item2 = [[PageItem alloc] initWithTitle:@"Page 2" image:nil applicationSection:ApplicationSectionUnknown radioChannel:nil];
+    PageItem *item2 = [[PageItem alloc] initWithTitle:@"Page 2" image:nil];
     [items addObject:item2];
     
-    PageItem *item3 = [[PageItem alloc] initWithTitle:@"Page 3" image:nil applicationSection:ApplicationSectionUnknown radioChannel:nil];
+    PageItem *item3 = [[PageItem alloc] initWithTitle:@"Page 3" image:nil];
     [items addObject:item3];
     
     self.items = items.copy;

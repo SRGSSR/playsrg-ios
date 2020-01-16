@@ -33,9 +33,6 @@ static void *s_pageItemKey = &s_pageItemKey;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic) UIImage *image;
 
-@property (nonatomic) ApplicationSection applicationSection;
-@property (nonatomic) RadioChannel *radioChannel;
-
 @end
 
 @implementation PageViewController
@@ -201,26 +198,22 @@ static void *s_pageItemKey = &s_pageItemKey;
 
 @implementation PageItem
 
-- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image applicationSection:(ApplicationSection)applicationSection radioChannel:(RadioChannel *)radioChannel
+- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image
 {
     if (self = [super init]) {
         self.title = title;
         self.image = image;
-        self.applicationSection = applicationSection;
-        self.radioChannel = radioChannel;
     }
     return self;
 }
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %p; title = %@; image = %@; applicationSection = %zd; radioChannel = %@>",
+    return [NSString stringWithFormat:@"<%@: %p; title = %@; image = %@>",
             self.class,
             self,
             self.title,
-            self.image,
-            self.applicationSection,
-            self.radioChannel];
+            self.image];
 }
 
 @end
