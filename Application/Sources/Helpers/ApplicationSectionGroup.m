@@ -7,6 +7,7 @@
 #import "ApplicationSectionGroup.h"
 
 #import "ApplicationConfiguration.h"
+#import "PushService.h"
 
 @interface ApplicationSectionGroup ()
 
@@ -28,12 +29,14 @@
     // My content section
     NSMutableArray<ApplicationSectionInfo *> *myContentApplicationSections = [NSMutableArray array];
     if (@available(iOS 10, *)) {
-        [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionNotifications]];
-        
-        NSArray<Notification *> *unreadNotifications = Notification.unreadNotifications;
-        NSArray<Notification *> *previewNotifications = [unreadNotifications subarrayWithRange:NSMakeRange(0, MIN(3, unreadNotifications.count))];
-        for (Notification *notification in previewNotifications) {
-            [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithNotification:notification]];
+        if (PushService.sharedService.enabled) {
+            [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionNotifications]];
+            
+            NSArray<Notification *> *unreadNotifications = Notification.unreadNotifications;
+            NSArray<Notification *> *previewNotifications = [unreadNotifications subarrayWithRange:NSMakeRange(0, MIN(3, unreadNotifications.count))];
+            for (Notification *notification in previewNotifications) {
+                [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithNotification:notification]];
+            }
         }
     }
     [myContentApplicationSections addObject:[ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionHistory]];
