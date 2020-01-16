@@ -8,7 +8,6 @@
 
 #import "ApplicationConfiguration.h"
 #import "ApplicationSectionGroup.h"
-#import "ContentInsets.h"
 #import "DownloadsViewController.h"
 #import "FavoritesViewController.h"
 #import "HistoryViewController.h"
@@ -101,8 +100,8 @@
                                                                               style:UIBarButtonItemStyleDone
                                                                              target:self
                                                                              action:@selector(settings:)];
-       settingsBarButtonItem.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Settings", @"Settings button label on home view");
-       self.navigationItem.rightBarButtonItem = settingsBarButtonItem;
+    settingsBarButtonItem.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Settings", @"Settings button label on home view");
+    self.navigationItem.rightBarButtonItem = settingsBarButtonItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -147,110 +146,12 @@
     [self.tableView reloadData];
 }
 
-#pragma mark ContentInsets protocol
+#pragma mark Data
 
-- (NSArray<UIScrollView *> *)play_contentScrollViews
+- (void)reloadData
 {
-    return self.tableView ? @[self.tableView] : nil;
-}
-
-- (UIEdgeInsets)play_paddingContentInsets
-{
-    return UIEdgeInsetsZero;
-}
-
-#pragma mark SRGAnalyticsViewTracking protocol
-
-- (NSString *)srg_pageViewTitle
-{
-    return NSLocalizedString(@"Library", @"[Technical] Title for library analytics measurements");
-}
-
-- (NSArray<NSString *> *)srg_pageViewLevels
-{
-    return @[ AnalyticsNameForPageType(AnalyticsPageTypeUser) ];
-}
-
-#pragma mark UITableViewDataSource protocol
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return self.sectionGroups.count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.sectionGroups[section].sectionInfos.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([self notificationAtIndexPath:indexPath]) {
-        return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(NotificationTableViewCell.class) forIndexPath:indexPath];
-    }
-    else {
-        return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(LibraryTableViewCell.class) forIndexPath:indexPath];
-    }
-}
-
-#pragma mark UITableViewDelegate protocol
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([self notificationAtIndexPath:indexPath]) {
-        NSString *contentSizeCategory = UIApplication.sharedApplication.preferredContentSizeCategory;
-        return (SRGAppearanceCompareContentSizeCategories(contentSizeCategory, UIContentSizeCategoryExtraLarge) == NSOrderedAscending) ? 94.f : 110.f;
-    }
-    else {
-        return 50.f;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    Notification *notification = [self notificationAtIndexPath:indexPath];
-    if (notification) {
-        NotificationTableViewCell *notificationTableViewCell = (NotificationTableViewCell *)cell;
-        notificationTableViewCell.notification = notification;
-    }
-    else {
-        LibraryTableViewCell *libraryTableViewCell = (LibraryTableViewCell *)cell;
-        ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
-        libraryTableViewCell.applicationSectionInfo = applicationSectionInfo;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    Notification *notification = [self notificationAtIndexPath:indexPath];
-    if (notification) {
-        [NotificationsViewController openNotification:notification fromViewController:self];
-        [tableView reloadData];
-    }
-    else {
-        ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
-        [self openApplicationSectionInfo:applicationSectionInfo animated:YES];
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    ApplicationSectionGroup *sectionGroup = self.sectionGroups[section];
-    return [LibraryHeaderSectionView heightForApplicationSectionGroup:sectionGroup];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    LibraryHeaderSectionView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(LibraryHeaderSectionView.class)];
-    headerView.applicationSectionGroup = self.sectionGroups[section];
-    return headerView;
-}
-
-#pragma mark PlayApplicationNavigation protocol
-
-- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
-{
-    return [self openApplicationSectionInfo:applicationSectionInfo animated:NO];
+    self.sectionGroups = ApplicationSectionGroup.libraryApplicationSectionGroups;
+    [self.tableView reloadData];
 }
 
 #pragma mark Helpers
@@ -263,21 +164,6 @@
     }
     
     return applicationSectionInfo.options[ApplicationSectionOptionNotificationKey];
-}
-
-#pragma mark Actions
-
-- (void)reloadData
-{
-    self.sectionGroups = ApplicationSectionGroup.libraryApplicationSectionGroups;
-    [self.tableView reloadData];
-}
-
-- (void)settings:(id)sender
-{
-    SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
-    UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
-    [self presentViewController:settingsNavigationController animated:YES completion:nil];
 }
 
 - (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo animated:(BOOL)animated
@@ -367,6 +253,121 @@
     }
 }
 
+#pragma mark ContentInsets protocol
+
+- (NSArray<UIScrollView *> *)play_contentScrollViews
+{
+    return self.tableView ? @[self.tableView] : nil;
+}
+
+- (UIEdgeInsets)play_paddingContentInsets
+{
+    return UIEdgeInsetsZero;
+}
+
+#pragma mark PlayApplicationNavigation protocol
+
+- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
+{
+    return [self openApplicationSectionInfo:applicationSectionInfo animated:NO];
+}
+
+#pragma mark SRGAnalyticsViewTracking protocol
+
+- (NSString *)srg_pageViewTitle
+{
+    return NSLocalizedString(@"Library", @"[Technical] Title for library analytics measurements");
+}
+
+- (NSArray<NSString *> *)srg_pageViewLevels
+{
+    return @[ AnalyticsNameForPageType(AnalyticsPageTypeUser) ];
+}
+
+#pragma mark UITableViewDataSource protocol
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.sectionGroups.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.sectionGroups[section].sectionInfos.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self notificationAtIndexPath:indexPath]) {
+        return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(NotificationTableViewCell.class) forIndexPath:indexPath];
+    }
+    else {
+        return [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(LibraryTableViewCell.class) forIndexPath:indexPath];
+    }
+}
+
+#pragma mark UITableViewDelegate protocol
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self notificationAtIndexPath:indexPath]) {
+        NSString *contentSizeCategory = UIApplication.sharedApplication.preferredContentSizeCategory;
+        return (SRGAppearanceCompareContentSizeCategories(contentSizeCategory, UIContentSizeCategoryExtraLarge) == NSOrderedAscending) ? 94.f : 110.f;
+    }
+    else {
+        return 50.f;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Notification *notification = [self notificationAtIndexPath:indexPath];
+    if (notification) {
+        NotificationTableViewCell *notificationTableViewCell = (NotificationTableViewCell *)cell;
+        notificationTableViewCell.notification = notification;
+    }
+    else {
+        LibraryTableViewCell *libraryTableViewCell = (LibraryTableViewCell *)cell;
+        ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
+        libraryTableViewCell.applicationSectionInfo = applicationSectionInfo;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Notification *notification = [self notificationAtIndexPath:indexPath];
+    if (notification) {
+        [NotificationsViewController openNotification:notification fromViewController:self];
+        [tableView reloadData];
+    }
+    else {
+        ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
+        [self openApplicationSectionInfo:applicationSectionInfo animated:YES];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    ApplicationSectionGroup *sectionGroup = self.sectionGroups[section];
+    return [LibraryHeaderSectionView heightForApplicationSectionGroup:sectionGroup];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    LibraryHeaderSectionView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(LibraryHeaderSectionView.class)];
+    headerView.applicationSectionGroup = self.sectionGroups[section];
+    return headerView;
+}
+
+#pragma mark Actions
+
+- (void)settings:(id)sender
+{
+    SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
+    UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    [self presentViewController:settingsNavigationController animated:YES completion:nil];
+}
+
 #pragma mark Notifications
 
 - (void)accessibilityVoiceOverStatusChanged:(NSNotification *)notification
@@ -376,7 +377,6 @@
 
 - (void)applicationConfigurationDidChange:(NSNotification *)notification
 {
-    // Update sections.
     [self reloadData];
 }
 
