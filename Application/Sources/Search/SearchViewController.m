@@ -61,8 +61,7 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 - (instancetype)init
 {
     if (self = [super init]) {
-        // Set default settings. @see `setSettings:`.
-        self.settings = nil;
+        self.settings = [self supportedMediaSearchSettingsFromSettings:nil];
     }
     return self;
 }
@@ -74,17 +73,20 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
     return NSLocalizedString(@"Search", @"Search page title");
 }
 
-- (void)setSettings:(SRGMediaSearchSettings *)settings
+#pragma mark Helpers
+
+- (SRGMediaSearchSettings *)supportedMediaSearchSettingsFromSettings:(SRGMediaSearchSettings *)settings
 {
     // A BU supporting aggregation but not displaying search settings can lead to longer response times.
     // (@see `-mediasForVendor:matchingQuery:withSettings:completionBlock:` in `SRGDataProvider`).
     ApplicationConfiguration *applicationConfiguration = ApplicationConfiguration.sharedApplicationConfiguration;
     if (! applicationConfiguration.searchSettingsHidden) {
-        _settings = settings ?: SearchSettingsViewController.defaultSettings;
-        _settings.aggregationsEnabled = NO;
+        SRGMediaSearchSettings *supportedSettings = settings ?: SearchSettingsViewController.defaultSettings;
+        supportedSettings.aggregationsEnabled = NO;
+        return supportedSettings;
     }
     else {
-        _settings = nil;
+        return nil;
     }
 }
 
@@ -397,8 +399,10 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
         return NO;
     }
     
-    self.settings = [[SRGMediaSearchSettings alloc] init];
-    self.settings.mediaType = [applicationSectionInfo.options[ApplicationSectionOptionSearchMediaTypeOptionKey] integerValue];
+    SRGMediaSearchSettings *settings = [[SRGMediaSearchSettings alloc] init];
+    settings.mediaType = [applicationSectionInfo.options[ApplicationSectionOptionSearchMediaTypeOptionKey] integerValue];
+    
+    self.settings = [self supportedMediaSearchSettingsFromSettings:settings];
     
     NSString *query = applicationSectionInfo.options[ApplicationSectionOptionSearchQueryKey];
     if (self.searchController) {
