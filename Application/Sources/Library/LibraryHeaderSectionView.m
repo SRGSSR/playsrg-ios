@@ -66,11 +66,11 @@
 
 #pragma mark Getters and setters
 
-- (void)setApplicationSectionGroup:(ApplicationSectionGroup *)applicationSectionInfo
+- (void)setApplicationSectionGroup:(ApplicationSectionGroup *)applicationSectionGroup
 {
-    _applicationSectionGroup = applicationSectionInfo;
+    _applicationSectionGroup = applicationSectionGroup;
     
-    self.titleLabel.text = UIAccessibilityIsVoiceOverRunning() ? applicationSectionInfo.title : nil;
+    self.titleLabel.text = UIAccessibilityIsVoiceOverRunning() ? applicationSectionGroup.title : nil;
     self.titleLabel.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleTitle];
 }
 
