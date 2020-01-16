@@ -282,7 +282,7 @@ static NSString * const SettingsFLEXButton = @"Button_FLEX";
     }
 }
 
-- (CGFloat)tableView:(UITableView*)tableView heightForSpecifier:(IASKSpecifier *)specifier
+- (CGFloat)tableView:(UITableView *)tableView heightForSpecifier:(IASKSpecifier *)specifier
 {
     if ([specifier.key isEqualToString:SettingsApplicationVersionCell]) {
         return 44.f;
@@ -292,7 +292,7 @@ static NSString * const SettingsFLEXButton = @"Button_FLEX";
     }
 }
 
-- (UITableViewCell*)tableView:(UITableView*)tableView cellForSpecifier:(IASKSpecifier *)specifier
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForSpecifier:(IASKSpecifier *)specifier
 {
     if ([specifier.key isEqualToString:SettingsApplicationVersionCell]) {
         static NSString * const kApplicationVersionCellIdentifier = @"Cell_ApplicationVersion";

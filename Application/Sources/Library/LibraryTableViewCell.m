@@ -75,18 +75,14 @@
 {
     [super setHighlighted:highlighted animated:animated];
     
-    [self updateAppearanceHighlighted:highlighted];
+    UIColor *color = highlighted ? UIColor.play_grayColor : UIColor.whiteColor;
+    self.titleLabel.textColor = color;
+    self.iconImageView.tintColor = color;
+    
     [self updateIconImageViewAnimation];
 }
 
 #pragma mark User interface
-
-- (void)updateAppearanceHighlighted:(BOOL)highlighted
-{
-    UIColor *color = highlighted ? UIColor.play_grayColor : UIColor.whiteColor;
-    self.titleLabel.textColor = color;
-    self.iconImageView.tintColor = color;
-}
 
 - (void)updateIconImageViewAnimation
 {

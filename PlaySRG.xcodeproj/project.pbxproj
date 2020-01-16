@@ -824,6 +824,11 @@
 		6F3A47B31DD19A7B00C79E67 /* RTSResources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3A47B21DD19A7B00C79E67 /* RTSResources.xcassets */; };
 		6F3A47B51DD19A8500C79E67 /* SRFResources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3A47B41DD19A8500C79E67 /* SRFResources.xcassets */; };
 		6F3A47B71DD19A9100C79E67 /* SWIResources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3A47B61DD19A9100C79E67 /* SWIResources.xcassets */; };
+		6F3E0A0123D055DD009B00C1 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E0A0023D055DD009B00C1 /* SettingTableViewCell.m */; };
+		6F3E0A0223D055DD009B00C1 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E0A0023D055DD009B00C1 /* SettingTableViewCell.m */; };
+		6F3E0A0323D055DD009B00C1 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E0A0023D055DD009B00C1 /* SettingTableViewCell.m */; };
+		6F3E0A0423D055DD009B00C1 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E0A0023D055DD009B00C1 /* SettingTableViewCell.m */; };
+		6F3E0A0523D055DD009B00C1 /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3E0A0023D055DD009B00C1 /* SettingTableViewCell.m */; };
 		6F40920022DCF43D005F3850 /* Previewing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4091FF22DCF43D005F3850 /* Previewing.m */; };
 		6F40920122DCF43D005F3850 /* Previewing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4091FF22DCF43D005F3850 /* Previewing.m */; };
 		6F40920222DCF43D005F3850 /* Previewing.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4091FF22DCF43D005F3850 /* Previewing.m */; };
@@ -2030,6 +2035,8 @@
 		6F3A47B21DD19A7B00C79E67 /* RTSResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RTSResources.xcassets; sourceTree = "<group>"; };
 		6F3A47B41DD19A8500C79E67 /* SRFResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SRFResources.xcassets; sourceTree = "<group>"; };
 		6F3A47B61DD19A9100C79E67 /* SWIResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SWIResources.xcassets; sourceTree = "<group>"; };
+		6F3E09FF23D055DD009B00C1 /* SettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
+		6F3E0A0023D055DD009B00C1 /* SettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
 		6F4091FF22DCF43D005F3850 /* Previewing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Previewing.m; sourceTree = "<group>"; };
 		6F40920522DCFE2A005F3850 /* MostSearchedShowCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MostSearchedShowCollectionViewCell.h; sourceTree = "<group>"; };
 		6F40920622DCFE2B005F3850 /* MostSearchedShowCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MostSearchedShowCollectionViewCell.m; sourceTree = "<group>"; };
@@ -2583,6 +2590,8 @@
 				6F556B371DDC419800B5DEA2 /* SettingsBaseViewController.m */,
 				0806E7B51D50D918002ED406 /* SettingsViewController.h */,
 				0806E7B61D50D918002ED406 /* SettingsViewController.m */,
+				6F3E09FF23D055DD009B00C1 /* SettingTableViewCell.h */,
+				6F3E0A0023D055DD009B00C1 /* SettingTableViewCell.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -5771,6 +5780,7 @@
 				6FEC91A921A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6FE1B4971DCB84F00094D5BA /* AnalyticsConstants.m in Sources */,
 				088899452077627900242654 /* TVChannel.m in Sources */,
+				6F3E0A0123D055DD009B00C1 /* SettingTableViewCell.m in Sources */,
 				0827DA251F0D437400A31A42 /* SRGMedia+PlaySRG.m in Sources */,
 				6FF7BB9C22A78DE400FA758A /* SearchSettingSegmentCell.m in Sources */,
 				6F5F4FC41DB10CFD0011CCA3 /* RelatedContentView.m in Sources */,
@@ -5897,6 +5907,7 @@
 				081220C21DD0ADAC00BF8326 /* DownloadSession.m in Sources */,
 				6F93DE1B20AE9BE600B71572 /* OnboardingTableViewCell.m in Sources */,
 				6F7EEBDF22DC40B7005E5A97 /* SearchBar.m in Sources */,
+				6F3E0A0223D055DD009B00C1 /* SettingTableViewCell.m in Sources */,
 				6F7EEBF422DC7AA7005E5A97 /* SearchSettingMultiSelectionCell.m in Sources */,
 				6F475FDD1EB37BC6003021EA /* RequestViewController.m in Sources */,
 				0841E70722F0953A009D8304 /* SRGDay+PlaySRG.m in Sources */,
@@ -6061,6 +6072,7 @@
 				081220C31DD0ADAC00BF8326 /* DownloadSession.m in Sources */,
 				6F93DE1C20AE9BE600B71572 /* OnboardingTableViewCell.m in Sources */,
 				6F7EEBE022DC40B7005E5A97 /* SearchBar.m in Sources */,
+				6F3E0A0323D055DD009B00C1 /* SettingTableViewCell.m in Sources */,
 				6F7EEBF522DC7AA7005E5A97 /* SearchSettingMultiSelectionCell.m in Sources */,
 				6F475FDE1EB37BC6003021EA /* RequestViewController.m in Sources */,
 				0841E70822F0953A009D8304 /* SRGDay+PlaySRG.m in Sources */,
@@ -6225,6 +6237,7 @@
 				081220C41DD0ADAC00BF8326 /* DownloadSession.m in Sources */,
 				6F93DE1D20AE9BE600B71572 /* OnboardingTableViewCell.m in Sources */,
 				6F7EEBE122DC40B7005E5A97 /* SearchBar.m in Sources */,
+				6F3E0A0423D055DD009B00C1 /* SettingTableViewCell.m in Sources */,
 				6F7EEBF622DC7AA7005E5A97 /* SearchSettingMultiSelectionCell.m in Sources */,
 				6F475FDF1EB37BC6003021EA /* RequestViewController.m in Sources */,
 				0841E70922F0953A009D8304 /* SRGDay+PlaySRG.m in Sources */,
@@ -6389,6 +6402,7 @@
 				081220C51DD0ADAC00BF8326 /* DownloadSession.m in Sources */,
 				6F93DE1E20AE9BE600B71572 /* OnboardingTableViewCell.m in Sources */,
 				6F7EEBE222DC40B7005E5A97 /* SearchBar.m in Sources */,
+				6F3E0A0523D055DD009B00C1 /* SettingTableViewCell.m in Sources */,
 				6F7EEBF722DC7AA7005E5A97 /* SearchSettingMultiSelectionCell.m in Sources */,
 				6F475FE01EB37BC6003021EA /* RequestViewController.m in Sources */,
 				0841E70A22F0953A009D8304 /* SRGDay+PlaySRG.m in Sources */,

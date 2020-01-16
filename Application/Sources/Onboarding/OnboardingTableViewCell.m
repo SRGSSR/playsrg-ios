@@ -7,6 +7,7 @@
 #import "OnboardingTableViewCell.h"
 
 #import "NSBundle+PlaySRG.h"
+#import "UIColor+PlaySRG.h"
 
 #import <SRGAppearance/SRGAppearance.h>
 
@@ -37,6 +38,18 @@
 {
     [super awakeFromNib];
     self.backgroundColor = UIColor.clearColor;
+    
+    // Cell highlighting is custom
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [super setHighlighted:highlighted animated:animated];
+    
+    UIColor *color = highlighted ? UIColor.play_grayColor : UIColor.whiteColor;
+    self.titleLabel.textColor = color;
+    self.iconImageView.tintColor = color;
 }
 
 @end

@@ -6,10 +6,12 @@
 
 #import "SettingsBaseViewController.h"
 
+#import "SettingTableViewCell.h"
 #import "UIColor+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 
 #import "InAppSettingsKit/IASKSettingsReader.h"
+#import <objc/runtime.h>
 #import <SRGAppearance/SRGAppearance.h>
 
 @implementation SettingsBaseViewController
@@ -91,6 +93,18 @@
 }
 
 #pragma mark UITableViewDelegate protocol
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // For cells with a standard (in our case ugly) selection effect, replace with a custom cell subclass
+    // providing a better effect.
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    if (cell.selectionStyle != UITableViewCellSelectionStyleNone) {
+        object_setClass(cell, SettingTableViewCell.class);
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    return cell;
+}
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
