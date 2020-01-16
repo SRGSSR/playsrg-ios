@@ -1170,11 +1170,6 @@
 		6F93DE1C20AE9BE600B71572 /* OnboardingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F93DE1920AE9BE600B71572 /* OnboardingTableViewCell.m */; };
 		6F93DE1D20AE9BE600B71572 /* OnboardingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F93DE1920AE9BE600B71572 /* OnboardingTableViewCell.m */; };
 		6F93DE1E20AE9BE600B71572 /* OnboardingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F93DE1920AE9BE600B71572 /* OnboardingTableViewCell.m */; };
-		6F962FAA1FD5149F00EA42C1 /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F962FA91FD5149F00EA42C1 /* MainNavigationController.m */; };
-		6F962FAB1FD5149F00EA42C1 /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F962FA91FD5149F00EA42C1 /* MainNavigationController.m */; };
-		6F962FAC1FD5149F00EA42C1 /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F962FA91FD5149F00EA42C1 /* MainNavigationController.m */; };
-		6F962FAD1FD5149F00EA42C1 /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F962FA91FD5149F00EA42C1 /* MainNavigationController.m */; };
-		6F962FAE1FD5149F00EA42C1 /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F962FA91FD5149F00EA42C1 /* MainNavigationController.m */; };
 		6F9D2743203AD99C00FDE899 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D2742203AD99C00FDE899 /* Playlist.m */; };
 		6F9D2744203AD99C00FDE899 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D2742203AD99C00FDE899 /* Playlist.m */; };
 		6F9D2745203AD99C00FDE899 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9D2742203AD99C00FDE899 /* Playlist.m */; };
@@ -2159,8 +2154,6 @@
 		6F93DE1220AE9A9900B71572 /* OnboardingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingsViewController.storyboard; sourceTree = "<group>"; };
 		6F93DE1820AE9BE600B71572 /* OnboardingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnboardingTableViewCell.h; sourceTree = "<group>"; };
 		6F93DE1920AE9BE600B71572 /* OnboardingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnboardingTableViewCell.m; sourceTree = "<group>"; };
-		6F962FA81FD5149F00EA42C1 /* MainNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainNavigationController.h; sourceTree = "<group>"; };
-		6F962FA91FD5149F00EA42C1 /* MainNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainNavigationController.m; sourceTree = "<group>"; };
 		6F9D2741203AD99C00FDE899 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		6F9D2742203AD99C00FDE899 /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		6FA5D15B1F2077B10059E4E2 /* NSString+PlaySRG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PlaySRG.h"; sourceTree = "<group>"; };
@@ -3144,8 +3137,6 @@
 				6F475F911EB37BC6003021EA /* DataViewController.m */,
 				6F475F921EB37BC6003021EA /* ListRequestViewController.h */,
 				6F475F931EB37BC6003021EA /* ListRequestViewController.m */,
-				6F962FA81FD5149F00EA42C1 /* MainNavigationController.h */,
-				6F962FA91FD5149F00EA42C1 /* MainNavigationController.m */,
 				6F475F941EB37BC6003021EA /* MediasViewController.h */,
 				6F475F951EB37BC6003021EA /* MediasViewController.m */,
 				6F475F961EB37BC6003021EA /* NavigationController.h */,
@@ -5798,7 +5789,6 @@
 				081220AA1DD079BB00BF8326 /* DownloadsViewController.m in Sources */,
 				0804917B22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,
 				6FB0AEFC217F4975009D707A /* SRGMediaComposition+PlaySRG.m in Sources */,
-				6F962FAA1FD5149F00EA42C1 /* MainNavigationController.m in Sources */,
 				088F6C5B1E4B72BF00FC792D /* LiveAccessButton.m in Sources */,
 				6F475FE61EB37BC6003021EA /* TabStrip.m in Sources */,
 				6FF7BB9722A78DE400FA758A /* SearchSettingSwitchCell.m in Sources */,
@@ -6019,7 +6009,6 @@
 				6F488ACC22EED363002B1150 /* PlayAccessibilityFormatter.m in Sources */,
 				6F4C0A7620DCBC9D00069A85 /* HomeShowVerticalListTableViewCell.m in Sources */,
 				6F4760001EB37BC6003021EA /* MediaCollectionViewCell.m in Sources */,
-				6F962FAB1FD5149F00EA42C1 /* MainNavigationController.m in Sources */,
 				6FD88F8422D476CF008859EF /* UIScrollView+PlaySRG.m in Sources */,
 				0837CEAB1D3FAEE100A1E089 /* HomeMediaCollectionViewCell.m in Sources */,
 				6F475FBA1EB37BC6003021EA /* CollectionRequestViewController.m in Sources */,
@@ -6184,7 +6173,6 @@
 				6F488ACD22EED363002B1150 /* PlayAccessibilityFormatter.m in Sources */,
 				6F4C0A7720DCBC9D00069A85 /* HomeShowVerticalListTableViewCell.m in Sources */,
 				6F4760011EB37BC6003021EA /* MediaCollectionViewCell.m in Sources */,
-				6F962FAC1FD5149F00EA42C1 /* MainNavigationController.m in Sources */,
 				6FD88F8522D476CF008859EF /* UIScrollView+PlaySRG.m in Sources */,
 				0837CEAD1D3FAEE200A1E089 /* HomeMediaCollectionViewCell.m in Sources */,
 				6F475FBB1EB37BC6003021EA /* CollectionRequestViewController.m in Sources */,
@@ -6349,7 +6337,6 @@
 				6F488ACE22EED363002B1150 /* PlayAccessibilityFormatter.m in Sources */,
 				6F4C0A7820DCBC9D00069A85 /* HomeShowVerticalListTableViewCell.m in Sources */,
 				6F4760021EB37BC6003021EA /* MediaCollectionViewCell.m in Sources */,
-				6F962FAD1FD5149F00EA42C1 /* MainNavigationController.m in Sources */,
 				6FD88F8622D476CF008859EF /* UIScrollView+PlaySRG.m in Sources */,
 				0837CEAF1D3FAEE200A1E089 /* HomeMediaCollectionViewCell.m in Sources */,
 				6F475FBC1EB37BC6003021EA /* CollectionRequestViewController.m in Sources */,
@@ -6514,7 +6501,6 @@
 				6F488ACF22EED363002B1150 /* PlayAccessibilityFormatter.m in Sources */,
 				6F4C0A7920DCBC9D00069A85 /* HomeShowVerticalListTableViewCell.m in Sources */,
 				6F4760031EB37BC6003021EA /* MediaCollectionViewCell.m in Sources */,
-				6F962FAE1FD5149F00EA42C1 /* MainNavigationController.m in Sources */,
 				6FD88F8722D476CF008859EF /* UIScrollView+PlaySRG.m in Sources */,
 				0837CEB11D3FAEE300A1E089 /* HomeMediaCollectionViewCell.m in Sources */,
 				6F475FBD1EB37BC6003021EA /* CollectionRequestViewController.m in Sources */,
