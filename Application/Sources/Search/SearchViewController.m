@@ -389,6 +389,31 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
     return self.shows.count == 0 || section != 0;
 }
 
+#pragma mark PlayApplicationNavigation protocol
+
+- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
+{
+    if (applicationSectionInfo.applicationSection != ApplicationSectionSearch) {
+        return NO;
+    }
+    
+    self.settings = [[SRGMediaSearchSettings alloc] init];
+    self.settings.mediaType = [applicationSectionInfo.options[ApplicationSectionOptionSearchMediaTypeOptionKey] integerValue];
+    
+    NSString *query = applicationSectionInfo.options[ApplicationSectionOptionSearchQueryKey];
+    if (self.searchController) {
+        self.searchController.searchBar.text = query;
+        [self.searchController.searchBar resignFirstResponder];
+        
+        [self search];
+    }
+    else {
+        self.query = query;
+    }
+    
+    return YES;
+}
+
 #pragma mark SearchSettingsViewControllerDelegate protocol
 
 - (void)searchSettingsViewController:(SearchSettingsViewController *)searchSettingsViewController didUpdateSettings:(SRGMediaSearchSettings *)settings
@@ -710,31 +735,6 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
     if (scrollView.dragging && ! scrollView.decelerating) {
         [self.searchController.searchBar resignFirstResponder];
     }
-}
-
-#pragma mark PlayApplicationNavigation protocol
-
-- (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
-{
-    if (applicationSectionInfo.applicationSection != ApplicationSectionSearch) {
-        return NO;
-    }
-    
-    self.settings = [[SRGMediaSearchSettings alloc] init];
-    self.settings.mediaType = [applicationSectionInfo.options[ApplicationSectionOptionSearchMediaTypeOptionKey] integerValue];
-    
-    NSString *query = applicationSectionInfo.options[ApplicationSectionOptionSearchQueryKey];
-    if (self.searchController) {
-        self.searchController.searchBar.text = query;
-        [self.searchController.searchBar resignFirstResponder];
-        
-        [self search];
-    }
-    else {
-        self.query = query;
-    }
-    
-    return YES;
 }
 
 #pragma mark Notifications

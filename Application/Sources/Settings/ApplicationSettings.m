@@ -238,7 +238,7 @@ ApplicationSectionInfo *ApplicationSettingLastOpenHomepageApplicationSectionInfo
 
 void ApplicationSettingSetLastOpenHomepageApplicationSectionInfo(ApplicationSectionInfo *applicationSectionInfo)
 {
-    // Save only radio home page or set to nil if it's the TV home page
+    // Save only radio home page or set to nil if it's the video home page
     if (applicationSectionInfo.radioChannel || applicationSectionInfo.applicationSection == ApplicationSectionVideos
             || applicationSectionInfo.applicationSection == ApplicationSectionShowByDate || applicationSectionInfo.applicationSection == ApplicationSectionShowAZ) {
         NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
