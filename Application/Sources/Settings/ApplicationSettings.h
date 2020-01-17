@@ -28,6 +28,18 @@ typedef NS_ENUM(NSInteger, SettingUserLocation) {
     SettingUserLocationIgnored
 };
 
+/**
+ *  Tab bar item identifier.
+ */
+typedef NS_ENUM(NSInteger, TabBarItemIdentifier) {
+    TabBarItemIdentifierNone = 0,
+    TabBarItemIdentifierVideos,
+    TabBarItemIdentifierAudios,
+    TabBarItemIdentifierLives,
+    TabBarItemIdentifierSearch,
+    TabBarItemIdentifierLibrary
+};
+
 OBJC_EXPORT NSString * const PlaySRGSettingHDOverCellularEnabled;
 OBJC_EXPORT NSString * const PlaySRGSettingOriginalImagesOnlyEnabled;
 OBJC_EXPORT NSString * const PlaySRGSettingPresenterModeEnabled;
@@ -64,6 +76,9 @@ OBJC_EXPORT NSString * _Nullable ApplicationSettingSelectedLiveStreamURNForChann
 OBJC_EXPORT void ApplicationSettingSetSelectedLiveStreamURNForChannelUid(NSString * channelUid, NSString * _Nullable mediaURN);
 
 OBJC_EXPORT SRGMedia * _Nullable ApplicationSettingSelectedLivestreamMediaForChannelUid(NSString * _Nullable channelUid, NSArray<SRGMedia *> * _Nullable medias);
+
+OBJC_EXPORT TabBarItemIdentifier ApplicationSettingLastOpenedTabBarItemIdentifier(void);
+OBJC_EXPORT void ApplicationSettingSetLastOpenedTabBarItemIdentifier(TabBarItemIdentifier tabBarItemIdentifier);
 
 OBJC_EXPORT RadioChannel * _Nullable ApplicationSettingLastOpenedRadioChannel(void);
 OBJC_EXPORT void ApplicationSettingSetLastOpenedRadioChannel(RadioChannel * radioChannel);

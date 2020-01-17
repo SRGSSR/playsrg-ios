@@ -15,21 +15,13 @@
 #import "PushService.h"
 #import "RadioChannelsViewController.h"
 #import "SearchViewController.h"
+#import "ApplicationSettings.h"
 #import "UIColor+PlaySRG.h"
 
 #import <libextobjc/libextobjc.h>
 #import <MAKVONotificationCenter/MAKVONotificationCenter.h>
 #import <Masonry/Masonry.h>
 #import <SRGAppearance/SRGAppearance.h>
-
-typedef NS_ENUM(NSInteger, TabBarItemTag) {
-    TabBarItemTagNone = 0,
-    TabBarItemTagVideos,
-    TabBarItemTagAudios,
-    TabBarItemTagLives,
-    TabBarItemTagSearch,
-    TabBarItemTagLibrary
-};
 
 static const CGFloat MiniPlayerHeight = 50.f;
 static const CGFloat MiniPlayerOffset = 5.f;
@@ -54,39 +46,50 @@ static const CGFloat MiniPlayerOffset = 5.f;
 
         UIViewController *viewController = [[HomeViewController alloc] initWithRadioChannel:nil];
         [viewControllers addObject:viewController];
-        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"videos-25"] tag:TabBarItemTagVideos]];
+        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"videos-25"] tag:TabBarItemIdentifierVideos]];
         
         NSArray<RadioChannel *> *radioChannels = applicationConfiguration.radioChannels;
         if (radioChannels.count > 0) {
             viewController = [[RadioChannelsViewController alloc] initWithRadioChannels:radioChannels];
             [viewControllers addObject:viewController];
-            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"audios-25"] tag:TabBarItemTagAudios]];
+            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"audios-25"] tag:TabBarItemIdentifierAudios]];
         }
         
         NSArray<NSNumber *> *liveHomeSections = ApplicationConfiguration.sharedApplicationConfiguration.liveHomeSections;
         if (liveHomeSections.count > 0) {
             viewController = [[LivestreamsViewController alloc] initWithHomeSections:liveHomeSections];
             [viewControllers addObject:viewController];
-            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"live-25"] tag:TabBarItemTagLives]];
+            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"live-25"] tag:TabBarItemIdentifierLives]];
         }
         
         viewController = [[SearchViewController alloc] init];
         [viewControllers addObject:viewController];
-        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"search-25"] tag:TabBarItemTagSearch]];
+        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"search-25"] tag:TabBarItemIdentifierSearch]];
         
         viewController = [[LibraryViewController alloc] init];
         [viewControllers addObject:viewController];
-        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"library-25"] tag:TabBarItemTagLibrary]];
+        [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"library-25"] tag:TabBarItemIdentifierLibrary]];
+        
+        TabBarItemIdentifier lastOpenedTabBarItemIdentifier = ApplicationSettingLastOpenedTabBarItemIdentifier();
         
         NSMutableArray<NavigationController *> *navigationControllers = NSMutableArray.array;
+        __block NSInteger initialTabIndex = 0;
         [viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
+            UITabBarItem *tabBarItem = tabBarItems[idx];
+            
             NavigationController *navigationController = [[NavigationController alloc] initWithRootViewController:viewController];
             navigationController.delegate = self;
-            navigationController.tabBarItem = tabBarItems[idx];
+            navigationController.tabBarItem = tabBarItem;
             [navigationControllers addObject:navigationController];
+            
+            if (tabBarItem.tag == lastOpenedTabBarItemIdentifier) {
+                initialTabIndex = idx;
+            }
         }];
         
         self.viewControllers = navigationControllers.copy;
+        
+        self.selectedIndex = initialTabIndex;
     }
     return self;
 }
@@ -189,6 +192,16 @@ static const CGFloat MiniPlayerOffset = 5.f;
     return [self.selectedViewController preferredStatusBarUpdateAnimation];
 }
 
+#pragma mark Overrides
+
+- (void)setSelectedViewController:(UIViewController *)selectedViewController
+{
+    [super setSelectedViewController:selectedViewController];
+    
+    ApplicationSettingSetLastOpenedTabBarItemIdentifier(selectedViewController.tabBarItem.tag);
+}
+
+
 #pragma mark Layout
 
 - (void)updateLayoutAnimated:(BOOL)animated
@@ -232,7 +245,7 @@ static const CGFloat MiniPlayerOffset = 5.f;
 - (void)updateLibraryTabBarItem
 {
     if (@available(iOS 10, *)) {
-        UITabBarItem *libraryTabBarItem = [self tabBarItemForTag:TabBarItemTagLibrary];
+        UITabBarItem *libraryTabBarItem = [self tabBarItemForIdentifier:TabBarItemIdentifierLibrary];
         NSInteger badgeNumber = UIApplication.sharedApplication.applicationIconBadgeNumber;
         
         if (PushService.sharedService.enabled && libraryTabBarItem && badgeNumber != 0) {
@@ -245,9 +258,9 @@ static const CGFloat MiniPlayerOffset = 5.f;
     }
 }
 
-- (UITabBarItem *)tabBarItemForTag:(TabBarItemTag)tabBarItemTag
+- (UITabBarItem *)tabBarItemForIdentifier:(TabBarItemIdentifier)TabBarItemIdentifier
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(UITabBarItem.new, tag), @(tabBarItemTag)];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(UITabBarItem.new, tag), @(TabBarItemIdentifier)];
     return [self.tabBar.items filteredArrayUsingPredicate:predicate].firstObject;
 }
 

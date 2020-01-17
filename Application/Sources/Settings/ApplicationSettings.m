@@ -30,6 +30,7 @@ NSString * const PlaySRGSettingAudioDescriptionAvailabilityDisplayed = @"PlaySRG
 NSString * const PlaySRGSettingLastLoggedInEmailAddress = @"PlaySRGSettingLastLoggedInEmailAddress";
 NSString * const PlaySRGSettingLastOpenedLiveSection = @"PlaySRGSettingLastOpenedRadioChannelUid";
 NSString * const PlaySRGSettingLastOpenedRadioChannelUid = @"PlaySRGSettingLastOpenedRadioChannelUid";
+NSString * const PlaySRGSettingLastOpenedTabBarItem = @"PlaySRGSettingLastOpenedTabBarItem";
 NSString * const PlaySRGSettingSelectedLiveStreamURNForChannels = @"PlaySRGSettingSelectedLiveStreamURNForChannels";
 NSString * const PlaySRGSettingServiceURL = @"PlaySRGSettingServiceURL";
 NSString * const PlaySRGSettingUserLocation = @"PlaySRGSettingUserLocation";
@@ -57,6 +58,22 @@ NSValueTransformer *SettingLiveSectionTransformer(void)
                                                                                          @"livecenter" : @(HomeSectionTVLiveCenter),
                                                                                          @"scheduled_livestreams" : @(HomeSectionTVScheduledLivestreams) }
                                                                          defaultValue:@(HomeSectionUnknown)
+                                                                  reverseDefaultValue:nil];
+    });
+    return s_transformer;
+}
+
+NSValueTransformer *TabBarItemIdentifierTransformer(void)
+{
+    static NSValueTransformer *s_transformer;
+    static dispatch_once_t s_onceToken;
+    dispatch_once(&s_onceToken, ^{
+        s_transformer = [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{ @"videos" : @(TabBarItemIdentifierVideos),
+                                                                                         @"audios" : @(TabBarItemIdentifierAudios),
+                                                                                         @"lives" : @(TabBarItemIdentifierLives),
+                                                                                         @"search" : @(TabBarItemIdentifierSearch),
+                                                                                         @"library" : @(TabBarItemIdentifierLibrary) }
+                                                                         defaultValue:@(TabBarItemIdentifierNone)
                                                                   reverseDefaultValue:nil];
     });
     return s_transformer;
@@ -235,6 +252,22 @@ SRGMedia *ApplicationSettingSelectedLivestreamMediaForChannelUid(NSString *chann
     NSString *selectedLiveStreamURN = ApplicationSettingSelectedLiveStreamURNForChannelUid(channelUid);
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @keypath(SRGMedia.new, URN), selectedLiveStreamURN];
     return [medias filteredArrayUsingPredicate:predicate].firstObject;
+}
+
+TabBarItemIdentifier ApplicationSettingLastOpenedTabBarItemIdentifier(void)
+{
+    return [[TabBarItemIdentifierTransformer() transformedValue:[NSUserDefaults.standardUserDefaults stringForKey:PlaySRGSettingLastOpenedTabBarItem]] integerValue];
+}
+
+void ApplicationSettingSetLastOpenedTabBarItemIdentifier(TabBarItemIdentifier tabBarItemIdentifier)
+{
+    if (tabBarItemIdentifier == TabBarItemIdentifierVideos || tabBarItemIdentifier == TabBarItemIdentifierAudios || tabBarItemIdentifier == TabBarItemIdentifierLives) {
+        NSString *tabBarItemIdentifierString = [TabBarItemIdentifierTransformer() reverseTransformedValue:@(tabBarItemIdentifier)];
+        
+        NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+        [userDefaults setObject:tabBarItemIdentifierString forKey:PlaySRGSettingLastOpenedTabBarItem];
+        [userDefaults synchronize];
+    }
 }
 
 RadioChannel *ApplicationSettingLastOpenedRadioChannel(void)
