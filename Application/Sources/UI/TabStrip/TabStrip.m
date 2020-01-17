@@ -317,13 +317,7 @@ static void commonInit(TabStrip *self);
     }];
     
     // Animate the page
-    UIViewController *currentViewController = self.pageViewController.pageViewController.viewControllers.firstObject;
-    NSUInteger currentIndex = [self.pageViewController.viewControllers indexOfObject:currentViewController];
-    
-    UIViewController *newViewController = self.pageViewController.viewControllers[newIndex];
-    UIPageViewControllerNavigationDirection direction = (currentIndex < newIndex) ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
-    
-    [self.pageViewController.pageViewController setViewControllers:@[newViewController] direction:direction animated:YES completion:nil];
+    [self.pageViewController switchToIndex:newIndex animated:YES];
 }
 
 #pragma mark UICollectionViewDelegateFlowLayout protocol
