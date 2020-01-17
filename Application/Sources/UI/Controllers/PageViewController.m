@@ -125,7 +125,7 @@ static void *s_pageItemKey = &s_pageItemKey;
 
 #pragma mark Actions
 
-- (void)switchToIndex:(NSInteger)index animated:(BOOL)animated
+- (BOOL)switchToIndex:(NSInteger)index animated:(BOOL)animated
 {
     if (index >= 0 && index < self.viewControllers.count) {
         UIViewController *currentViewController = self.pageViewController.viewControllers.firstObject;
@@ -141,6 +141,10 @@ static void *s_pageItemKey = &s_pageItemKey;
         else {
             self.initialPage = index;
         }
+        return YES;
+    }
+    else {
+        return NO;
     }
 }
 

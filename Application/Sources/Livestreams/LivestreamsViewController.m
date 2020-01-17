@@ -7,6 +7,7 @@
 #import "LivestreamsViewController.h"
 
 #import "ApplicationConfiguration.h"
+#import "ApplicationSettings.h"
 #import "HomeLivestreamsViewController.h"
 
 #import <GoogleCast/GoogleCast.h>
@@ -20,14 +21,21 @@
 {
     NSAssert(homeSections.count > 0, @"1 live section at least expected");
     
+    HomeSection lastOpenedHomeSection = ApplicationSettingLastOpenedLiveHomeSection();
+    NSInteger initialPage = 0;
+    
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     for (NSNumber *homeSectionNumber in homeSections) {
         HomeSection homeSection = homeSectionNumber.integerValue;
-        HomeLivestreamsViewController *viewController = [[HomeLivestreamsViewController alloc] initWithHomeSectionInfo:[[HomeSectionInfo alloc] initWithHomeSection:homeSection]];
+        HomeLivestreamsViewController *viewController = [[HomeLivestreamsViewController alloc] initWithHomeSectionInfo: [[HomeSectionInfo alloc] initWithHomeSection:homeSection]];
         [viewControllers addObject:viewController];
+        
+        if (homeSection == lastOpenedHomeSection) {
+            initialPage = [homeSections indexOfObject:@(homeSection)];
+        }
     }
     
-    if (self = [super initWithViewControllers:viewControllers.copy]) {
+    if (self = [super initWithViewControllers:viewControllers.copy initialPage:initialPage]) {
         self.title = NSLocalizedString(@"Live", @"Title displayed at the top of the livestreams view");
     }
     return self;
@@ -42,6 +50,34 @@
     GCKUICastButton *castButton = [[GCKUICastButton alloc] init];
     castButton.tintColor = self.navigationController.navigationBar.tintColor;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:castButton];
+}
+
+#pragma mark Override
+
+- (BOOL)switchToIndex:(NSInteger)index animated:(BOOL)animated
+{
+    BOOL switched = [super switchToIndex:index animated:animated];
+    if (switched) {
+        HomeLivestreamsViewController *selectedHomeLivestreamsViewController = (HomeLivestreamsViewController *)self.viewControllers[index];
+        ApplicationSettingSetLastOpenedLiveHomeSection(selectedHomeLivestreamsViewController.homeSectionInfo.homeSection);
+    }
+    return switched;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    HomeLivestreamsViewController *currentHomeLivestreamsViewController = (HomeLivestreamsViewController *)viewController;
+    ApplicationSettingSetLastOpenedLiveHomeSection(currentHomeLivestreamsViewController.homeSectionInfo.homeSection);
+    
+    return [super pageViewController:pageViewController viewControllerBeforeViewController:viewController];
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
+{
+    HomeLivestreamsViewController *currentHomeLivestreamsViewController = (HomeLivestreamsViewController *)viewController;
+    ApplicationSettingSetLastOpenedLiveHomeSection(currentHomeLivestreamsViewController.homeSectionInfo.homeSection);
+    
+    return [super pageViewController:pageViewController viewControllerAfterViewController:viewController];
 }
 
 #pragma mark SRGAnalyticsViewTracking protocol

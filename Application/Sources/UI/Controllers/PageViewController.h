@@ -56,9 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Switch to an index.
  *
- *  @discussion If the index is not valid, nothing change.
+ *  @discussion If the index is not valid, nothing change, and it returns `NO`. Otherwise, `YES`.
  */
-- (void)switchToIndex:(NSInteger)index animated:(BOOL)animated;
+- (BOOL)switchToIndex:(NSInteger)index animated:(BOOL)animated;
 
 /**
  *  The view controllers loaded as pages.

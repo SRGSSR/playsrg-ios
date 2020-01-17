@@ -28,7 +28,8 @@ NSString * const PlaySRGSettingSubtitleAvailabilityDisplayed = @"PlaySRGSettingS
 NSString * const PlaySRGSettingAudioDescriptionAvailabilityDisplayed = @"PlaySRGSettingAudioDescriptionAvailabilityDisplayed";
 
 NSString * const PlaySRGSettingLastLoggedInEmailAddress = @"PlaySRGSettingLastLoggedInEmailAddress";
-NSString * const PlaySRGSettingLastOpenHomepageUid = @"PlaySRGSettingLastOpenHomepageUid";
+NSString * const PlaySRGSettingLastOpenedLiveSection = @"PlaySRGSettingLastOpenedRadioChannelUid";
+NSString * const PlaySRGSettingLastOpenedRadioChannelUid = @"PlaySRGSettingLastOpenedRadioChannelUid";
 NSString * const PlaySRGSettingSelectedLiveStreamURNForChannels = @"PlaySRGSettingSelectedLiveStreamURNForChannels";
 NSString * const PlaySRGSettingServiceURL = @"PlaySRGSettingServiceURL";
 NSString * const PlaySRGSettingUserLocation = @"PlaySRGSettingUserLocation";
@@ -45,6 +46,22 @@ NSValueTransformer *SettingUserLocationTransformer(void)
     });
     return s_transformer;
 }
+
+NSValueTransformer *SettingLiveSectionTransformer(void)
+{
+    static NSValueTransformer *s_transformer;
+    static dispatch_once_t s_onceToken;
+    dispatch_once(&s_onceToken, ^{
+        s_transformer = [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{ @"tv" : @(HomeSectionTVLive),
+                                                                                         @"radio" : @(HomeSectionRadioLive),
+                                                                                         @"livecenter" : @(HomeSectionTVLiveCenter),
+                                                                                         @"scheduled_livestreams" : @(HomeSectionTVScheduledLivestreams) }
+                                                                         defaultValue:@(HomeSectionUnknown)
+                                                                  reverseDefaultValue:nil];
+    });
+    return s_transformer;
+}
+
 __attribute__((constructor)) static void ApplicationSettingsInit(void)
 {
     NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
@@ -220,24 +237,31 @@ SRGMedia *ApplicationSettingSelectedLivestreamMediaForChannelUid(NSString *chann
     return [medias filteredArrayUsingPredicate:predicate].firstObject;
 }
 
-ApplicationSectionInfo *ApplicationSettingLastOpenHomepageApplicationSectionInfo(void)
+RadioChannel *ApplicationSettingLastOpenedRadioChannel(void)
 {
-    NSString *lastOpenHomepageUid = [NSUserDefaults.standardUserDefaults stringForKey:PlaySRGSettingLastOpenHomepageUid];
-    
-    RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:lastOpenHomepageUid];
-    ApplicationSection applicationSection = radioChannel ? ApplicationSectionRadioChannelOverview : ApplicationSectionVideos;
-    return [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel];
+    NSString *radioChannelUid = [NSUserDefaults.standardUserDefaults stringForKey:PlaySRGSettingLastOpenedRadioChannelUid];
+    return radioChannelUid ? [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:radioChannelUid] : nil;
 }
 
-void ApplicationSettingSetLastOpenHomepageApplicationSectionInfo(ApplicationSectionInfo *applicationSectionInfo)
+void ApplicationSettingSetLastOpenedRadioChannel(RadioChannel *radioChannel)
 {
-    // Save only radio home page or set to nil if it's the video home page
-    if (applicationSectionInfo.radioChannel || applicationSectionInfo.applicationSection == ApplicationSectionVideos
-            || applicationSectionInfo.applicationSection == ApplicationSectionShowByDate || applicationSectionInfo.applicationSection == ApplicationSectionShowAZ) {
-        NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-        [userDefaults setObject:applicationSectionInfo.radioChannel.uid forKey:PlaySRGSettingLastOpenHomepageUid];
-        [userDefaults synchronize];
-    }
+    NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+    [userDefaults setObject:radioChannel.uid forKey:PlaySRGSettingLastOpenedRadioChannelUid];
+    [userDefaults synchronize];
+}
+
+HomeSection ApplicationSettingLastOpenedLiveHomeSection(void)
+{
+    return [[SettingLiveSectionTransformer() transformedValue:[NSUserDefaults.standardUserDefaults stringForKey:PlaySRGSettingLastOpenedLiveSection]] integerValue];
+}
+
+void ApplicationSettingSetLastOpenedLiveHomeSection(HomeSection homeSection)
+{
+    NSString *homeSectionString = [SettingLiveSectionTransformer() reverseTransformedValue:@(homeSection)];
+    
+    NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
+    [userDefaults setObject:homeSectionString forKey:PlaySRGSettingLastOpenedLiveSection];
+    [userDefaults synchronize];
 }
 
 NSURL *ApplicationSettingServiceURLForKey(NSString *key)
