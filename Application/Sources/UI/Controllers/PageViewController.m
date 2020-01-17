@@ -13,9 +13,6 @@
 #import "MaterialTabs.h"
 #import <Masonry/Masonry.h>
 
-// Associated object keys
-static void *s_pageItemKey = &s_pageItemKey;
-
 @interface PageViewController () <MDCTabBarDelegate>
 
 @property (nonatomic, weak) UIPageViewController *pageViewController;
@@ -25,13 +22,6 @@ static void *s_pageItemKey = &s_pageItemKey;
 
 @property (nonatomic, weak) MDCTabBar *tabBar;
 @property (nonatomic, weak) UIVisualEffectView *blurView;
-
-@end
-
-@interface PageItem ()
-
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic) UIImage *image;
 
 @end
 
@@ -109,16 +99,13 @@ static void *s_pageItemKey = &s_pageItemKey;
     
     NSMutableArray<UITabBarItem *> *tabBarItems = [NSMutableArray array];
     [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
-        // TODO: Simply use bar item!
-        PageItem *pageItem = viewController.play_pageItem;
-        if (pageItem.title) {
+        UITabBarItem *tabBarItem = viewController.tabBarItem;
+        if (tabBarItem.title) {
             hasTitle = YES;
         }
-        if (pageItem.image) {
+        if (tabBarItem.image) {
             hasImage = YES;
         }
-        
-        UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:pageItem.title image:pageItem.image tag:idx];
         [tabBarItems addObject:tabBarItem];
     }];
     
@@ -229,7 +216,8 @@ static void *s_pageItemKey = &s_pageItemKey;
 
 - (void)tabBar:(MDCTabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
-    [self displayPageAtIndex:item.tag animated:YES];
+    NSUInteger index = [tabBar.items indexOfObject:item];
+    [self displayPageAtIndex:index animated:YES];
 }
 
 #pragma mark UIPageViewControllerDataSource protocol
@@ -267,28 +255,6 @@ static void *s_pageItemKey = &s_pageItemKey;
 
 @end
 
-@implementation PageItem
-
-- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image
-{
-    if (self = [super init]) {
-        self.title = title;
-        self.image = image;
-    }
-    return self;
-}
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"<%@: %p; title = %@; image = %@>",
-            self.class,
-            self,
-            self.title,
-            self.image];
-}
-
-@end
-
 @implementation UIViewController (PageViewController)
 
 #pragma mark Getters and setters
@@ -302,17 +268,6 @@ static void *s_pageItemKey = &s_pageItemKey;
     else {
         return nil;
     }
-}
-
-// Use KVO-compliant naming convention
-- (void)setPlay_pageItem:(PageItem *)pageItem
-{
-    objc_setAssociatedObject(self, s_pageItemKey, pageItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (PageItem *)play_pageItem
-{
-    return objc_getAssociatedObject(self, s_pageItemKey);
 }
 
 @end

@@ -11,30 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- *  Page item to be associated with a view controller.
- */
-@interface PageItem : NSObject
-
-/**
- *  Create a page item with the specified information.
- */
-- (instancetype)initWithTitle:(nullable NSString *)title image:(nullable UIImage *)image;
-
-/**
- *  Item title.
- */
-@property (nonatomic, copy, readonly, nullable) NSString *title;
-
-/**
- *  Item image.
- */
-@property (nonatomic, readonly, nullable) UIImage *image;
-
-@end
-
-/**
  *  Abstract container class to display pages of contents, between which the user can change using a swipe or a tab strip.
- *  Tabs can be customized by associating a `PageItem` with a view controller.
+ *  Tabs can be customized by associating a `UITabBarItem` with a view controller.
  *
  *  To use `PageViewController`, bind its `placeholderViews` property to a single view where pages will be displayed.
  */
@@ -72,14 +50,6 @@ NS_ASSUME_NONNULL_BEGIN
  *  The parent page view controller, if any.
  */
 @property (nonatomic, readonly, nullable) PageViewController *play_pageViewController;
-
-/**
- *  Item information to be displayed by a page view controller.
- *
- *  @discussion If an image has been set, the title will not be displayed. It will still be used for accessibility
- *              purposes, though.
- */
-@property (nonatomic, nullable) PageItem *play_pageItem;
 
 @end
 
