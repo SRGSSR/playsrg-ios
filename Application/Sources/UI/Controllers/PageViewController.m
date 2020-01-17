@@ -205,6 +205,12 @@
     return YES;
 }
 
+- (void)updateTabForViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    NSUInteger currentIndex = [self.viewControllers indexOfObject:viewController];
+    [self.tabBar setSelectedItem:self.tabBar.items[currentIndex] animated:animated];
+}
+
 #pragma mark ContainerContentInsets protocol
 
 - (UIEdgeInsets)play_additionalContentInsets
@@ -246,11 +252,14 @@
 
 #pragma mark UIPageViewControllerDelegate protocol
 
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+{
+    [self updateTabForViewController:pendingViewControllers.firstObject animated:YES];
+}
+
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
 {
-    UIViewController *currentViewController = self.pageViewController.viewControllers.firstObject;
-    NSUInteger currentIndex = [self.viewControllers indexOfObject:currentViewController];
-    self.tabBar.selectedItem = self.tabBar.items[currentIndex];
+    [self updateTabForViewController:pageViewController.viewControllers.firstObject animated:YES];
 }
 
 @end
