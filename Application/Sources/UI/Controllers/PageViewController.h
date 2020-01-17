@@ -42,9 +42,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PageViewController : HLSPlaceholderViewController <ContainerContentInsets, UIPageViewControllerDataSource>
 
 /**
- *  Create an instance displaying the supplied view controllers.
+ *  Create an instance displaying the supplied view controllers, and starting at the specified page.
+ *
+ *  @discussion If the page is not valid, the first page will be used instead.
  */
-- (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers initialPage:(NSInteger)initialPage NS_DESIGNATED_INITIALIZER;
+
+/**
+ *  Create an instance displaying the supplied view controllers, and starting with the first page.
+ */
+- (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers;
 
 /**
  *  Switch to an index.
