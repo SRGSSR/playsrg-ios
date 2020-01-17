@@ -74,7 +74,14 @@ static void *s_pageItemKey = &s_pageItemKey;
     }];
     self.placeholderViews = @[placeholderView];
     
-    UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIBlurEffectStyle blurEffectStyle;
+    if (@available(iOS 13, *)) {
+        blurEffectStyle = UIBlurEffectStyleSystemMaterialDark;
+    }
+    else {
+        blurEffectStyle = UIBlurEffectStyleDark;
+    }
+    UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:blurEffectStyle];
     UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     [self.view addSubview:blurView];
     [blurView mas_makeConstraints:^(MASConstraintMaker *make) {
