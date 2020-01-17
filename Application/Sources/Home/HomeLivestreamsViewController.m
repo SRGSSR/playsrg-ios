@@ -6,6 +6,7 @@
 
 #import "HomeLivestreamsViewController.h"
 
+#import "ApplicationSettings.h"
 #import "LiveMediaCollectionViewCell.h"
 #import "PageViewController.h"
 #import "UIColor+PlaySRG.h"
@@ -18,6 +19,9 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 @interface HomeLivestreamsViewController ()
 
 @property (nonatomic) HomeSectionInfo *homeSectionInfo;
+
+@property (nonatomic) NSMutableArray<SRGMedia *> *pendingMedias;
+@property (nonatomic) ListRequestPageCompletionHandler completionHandler;
 
 @end
 
@@ -90,7 +94,52 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
 
 - (void)prepareRefreshWithRequestQueue:(SRGRequestQueue *)requestQueue page:(SRGPage *)page completionHandler:(ListRequestPageCompletionHandler)completionHandler
 {
-    SRGBaseRequest *request = [self.homeSectionInfo requestWithPage:page completionBlock:completionHandler];
+    SRGBaseRequest *request = [self.homeSectionInfo requestWithPage:page completionBlock:^(NSArray * _Nullable items, SRGPage * _Nonnull page, SRGPage * _Nullable nextPage, NSHTTPURLResponse * _Nullable HTTPResponse, NSError * _Nullable error) {
+        // Support radio regional live streams
+        if (self.homeSectionInfo.homeSection == HomeSectionRadioLive) {
+            NSArray<SRGMedia *> *originalMedias = items;
+            NSMutableArray<SRGMedia *> *medias = items.mutableCopy;
+            
+            self.completionHandler = completionHandler;
+            self.pendingMedias = NSMutableArray.array;
+            
+            void (^replaceCompletion)(NSArray * _Nullable, SRGPage * _Nonnull, SRGPage * _Nullable, NSHTTPURLResponse * _Nullable, NSError * _Nullable) = ^(NSArray *items, SRGPage *page, SRGPage *nextPage, NSHTTPURLResponse *HTTPResponse, NSError *error) {
+                if (self.pendingMedias.count == 0) {
+                    self.completionHandler(items, page, nextPage, HTTPResponse, error);
+                    self.completionHandler = nil;
+                    self.pendingMedias = nil;
+                }
+            };
+            
+            for (SRGMedia *originalMedia in originalMedias) {
+                NSString *selectedLiveStreamURN = ApplicationSettingSelectedLiveStreamURNForChannelUid(originalMedia.channel.uid);
+                
+                // If a regional stream has been selected by the user, replace the main channel media with it
+                if (selectedLiveStreamURN && ! [originalMedia.URN isEqual:selectedLiveStreamURN]) {
+                    [self.pendingMedias addObject:originalMedia];
+                    
+                    SRGRequest *request = [SRGDataProvider.currentDataProvider radioLivestreamsForVendor:ApplicationConfiguration.sharedApplicationConfiguration.vendor channelUid:originalMedia.channel.uid withCompletionBlock:^(NSArray<SRGMedia *> * _Nullable channelMedias, NSHTTPURLResponse * _Nullable channelMediasHTTPResponse, NSError * _Nullable channelMediasError) {
+                        [requestQueue reportError:channelMediasError];
+                        
+                        SRGMedia *selectedMedia = ApplicationSettingSelectedLivestreamMediaForChannelUid(originalMedia.channel.uid, channelMedias);
+                        if (selectedMedia) {
+                            NSInteger index = [medias indexOfObject:originalMedia];
+                            NSAssert(index != NSNotFound, @"Media must be found in array by construction");
+                            [medias replaceObjectAtIndex:index withObject:selectedMedia];
+                        }
+                        
+                        [self.pendingMedias removeObject:originalMedia];
+                        replaceCompletion(medias.copy, page, nextPage, HTTPResponse, error);
+                    }];
+                    [requestQueue addRequest:request resume:YES];
+                }
+            }
+            replaceCompletion(medias.copy, page, nextPage, HTTPResponse, error);
+        }
+        else {
+            completionHandler(items, page, nextPage, HTTPResponse, error);
+        }
+    }];
     if (request) {
         [requestQueue addRequest:request resume:YES];
     }
