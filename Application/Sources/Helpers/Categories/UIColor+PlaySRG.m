@@ -55,11 +55,6 @@
     }
 }
 
-+ (UIColor *)play_grayButtonBackgroundColor
-{
-    return [UIColor srg_colorFromHexadecimalString:@"#232323"];
-}
-
 + (UIColor *)play_lightGrayButtonBackgroundColor
 {
     return [UIColor srg_colorFromHexadecimalString:@"#242424"];

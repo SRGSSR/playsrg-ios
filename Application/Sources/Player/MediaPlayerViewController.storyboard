@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -509,25 +509,17 @@
                                     <constraint firstItem="4mL-6P-GaC" firstAttribute="leading" secondItem="UOS-mh-sbP" secondAttribute="leading" constant="4" id="VvZ-Lv-12p"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSB-qJ-l25" customClass="LiveAccessView">
-                                <rect key="frame" x="0.0" y="798" width="414" height="98"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="VSB-qJ-l25" secondAttribute="trailing" id="2ep-UL-sb5"/>
                             <constraint firstItem="yDa-0T-uNV" firstAttribute="top" secondItem="cxL-OK-uak" secondAttribute="top" id="5Mj-xI-GH3"/>
-                            <constraint firstItem="cxL-OK-uak" firstAttribute="bottom" secondItem="VSB-qJ-l25" secondAttribute="top" constant="64" id="AVE-AV-doP"/>
                             <constraint firstItem="6iD-kT-jj5" firstAttribute="top" secondItem="cxL-OK-uak" secondAttribute="top" id="Fuv-m3-Pzn"/>
                             <constraint firstAttribute="bottom" secondItem="yDa-0T-uNV" secondAttribute="bottom" priority="850" id="GGg-eU-ikx"/>
                             <constraint firstItem="4mL-6P-GaC" firstAttribute="width" secondItem="PRe-mm-QIy" secondAttribute="width" constant="-8" id="Vka-c7-k3V"/>
                             <constraint firstItem="UOS-mh-sbP" firstAttribute="leading" secondItem="cxL-OK-uak" secondAttribute="leading" id="XgI-3i-uwi"/>
-                            <constraint firstAttribute="bottom" secondItem="VSB-qJ-l25" secondAttribute="bottom" id="XpI-fM-XSL"/>
                             <constraint firstItem="cxL-OK-uak" firstAttribute="trailing" secondItem="UOS-mh-sbP" secondAttribute="trailing" id="apl-b5-y27"/>
                             <constraint firstAttribute="trailing" secondItem="yDa-0T-uNV" secondAttribute="trailing" id="hLQ-bJ-Cuc"/>
                             <constraint firstItem="cxL-OK-uak" firstAttribute="trailing" secondItem="6iD-kT-jj5" secondAttribute="trailing" id="hve-Nx-TIp"/>
-                            <constraint firstItem="VSB-qJ-l25" firstAttribute="leading" secondItem="PRe-mm-QIy" secondAttribute="leading" id="ivh-oC-mf1"/>
                             <constraint firstItem="6iD-kT-jj5" firstAttribute="leading" secondItem="cxL-OK-uak" secondAttribute="leading" id="ktm-aa-bgl"/>
                             <constraint firstItem="UOS-mh-sbP" firstAttribute="top" secondItem="yDa-0T-uNV" secondAttribute="bottom" id="mP4-E3-lbA"/>
                             <constraint firstItem="yDa-0T-uNV" firstAttribute="leading" secondItem="PRe-mm-QIy" secondAttribute="leading" id="vFo-cX-AEA"/>
@@ -553,7 +545,6 @@
                         <outlet property="imageCopyrightSpacerView" destination="7Wy-WF-f0f" id="0LG-EU-9fX"/>
                         <outlet property="letterboxController" destination="dXH-ia-Dmj" id="y0X-sc-ych"/>
                         <outlet property="letterboxView" destination="JX5-nY-2fC" id="lFB-kd-d0k"/>
-                        <outlet property="liveAccessView" destination="VSB-qJ-l25" id="731-pq-KC8"/>
                         <outlet property="livestreamButton" destination="rUp-8z-FfR" id="tQ5-ER-1JK"/>
                         <outlet property="livestreamButtonImageView" destination="SWT-Kh-dsw" id="8Tc-Ht-E8t"/>
                         <outlet property="livestreamView" destination="drV-Ca-Mf5" id="1v8-ix-Ovc"/>

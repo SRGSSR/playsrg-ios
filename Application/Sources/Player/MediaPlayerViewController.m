@@ -15,7 +15,6 @@
 #import "Favorites.h"
 #import "GoogleCast.h"
 #import "History.h"
-#import "LiveAccessView.h"
 #import "ModalTransition.h"
 #import "NSBundle+PlaySRG.h"
 #import "NSDateFormatter+PlaySRG.h"
@@ -152,8 +151,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 @property (nonatomic, weak) IBOutlet UIView *relatedContentsSpacerView;
 @property (nonatomic, weak) IBOutlet UILabel *relatedContentsTitleLabel;
 @property (nonatomic, weak) IBOutlet UIStackView *relatedContentsStackView;
-
-@property (nonatomic, weak) IBOutlet LiveAccessView *liveAccessView;
 
 // Switching to and from full-screen is made by adjusting the priority of a constraint at the bottom of the player view
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *playerBottomConstraint;
@@ -391,8 +388,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
         }
     }
     
-    self.liveAccessView.letterboxController = self.letterboxController;
-    
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(mediaMetadataDidChange:)
                                                name:SRGLetterboxMetadataDidChangeNotification
@@ -555,7 +550,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
                 [self.letterboxView setUserInterfaceHidden:YES animated:NO /* will be animated with the view transition */];
             }
         }
-        [self updateLiveAccessButtonsVisibilityForFullScreen:self.letterboxView.fullScreen];
         [self updatePlayerViewAspectRatioWithSize:size];
     } completion:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
         UIDeviceOrientation deviceOrientation = UIDevice.currentDevice.orientation;
@@ -722,8 +716,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     }
     
     [self updateWatchLaterStatus];
-    
-    [self updateliveAccessViewContentForMediaType:media.mediaType force:NO];
 }
 
 // Details panel reloading
@@ -944,7 +936,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 {
     self.pullDownGestureRecognizer.enabled = ! fullScreen;
     self.playerBottomConstraint.priority = fullScreen ? MediaPlayerBottomConstraintFullScreenPriority : MediaPlayerBottomConstraintNormalPriority;
-    [self updateLiveAccessButtonsVisibilityForFullScreen:fullScreen];
     
     [self setNeedsStatusBarAppearanceUpdate];
 }
@@ -1172,37 +1163,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     [self.favoriteButton setImage:isFavorite ? [UIImage imageNamed:@"favorite_full-22"] : [UIImage imageNamed:@"favorite-22"] forState:UIControlStateNormal];
     
     self.favoriteButton.accessibilityLabel = isFavorite ? PlaySRGAccessibilityLocalizedString(@"Remove from favorites", @"Favorite show label when in favorites, in the player view") : PlaySRGAccessibilityLocalizedString(@"Add to favorites", @"Favorite show label when not in favorites, in the player view");
-}
-
-- (void)updateliveAccessViewContentForMediaType:(SRGMediaType)mediaType force:(BOOL)force
-{
-    if (self.liveAccessView.mediaType == mediaType && ! force) {
-        [self.liveAccessView updateLiveAccessButtonsSelection];
-    }
-    else {
-        @weakify(self)
-        [self.liveAccessView refreshWithMediaType:mediaType withCompletionBlock:^(NSError * _Nullable error) {
-            @strongify(self)
-            [self updateLiveAccessButtonsVisibilityForFullScreen:self.letterboxView.fullScreen];
-        }];
-    }
-    
-    [self updateLiveAccessButtonsVisibilityForFullScreen:self.letterboxView.fullScreen];
-}
-
-- (void)updateLiveAccessButtonsVisibilityForFullScreen:(BOOL)fullScreen
-{
-    BOOL hidden = (self.liveAccessView.medias.count == 0)
-        || fullScreen
-        || ((self.liveAccessView.medias.count == 1) && [self.liveAccessView.medias.firstObject isEqual:self.letterboxController.media]);
-    self.liveAccessView.hidden = hidden;
-    
-    CGFloat height = hidden ? 0.f : LiveAccessView.height;
-    UIEdgeInsets insets = UIEdgeInsetsMake(0.f, 0.f, height, 0.f);
-    self.scrollView.contentInset = insets;
-    self.scrollView.scrollIndicatorInsets = insets;
-    
-    [self.view layoutIfNeeded];
 }
 
 - (void)updateGoogleCastButton
@@ -1771,8 +1731,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
             else {
                 [self.letterboxController prepareToPlayMedia:media atPosition:nil withPreferredSettings:ApplicationSettingPlaybackSettings() completionHandler:nil];
             }
-            
-            [self updateliveAccessViewContentForMediaType:media.mediaType force:YES];
         }]];
     }];
     
