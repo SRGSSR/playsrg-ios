@@ -228,14 +228,6 @@
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Alternate radio homepage design</string>
-			<key>Key</key>
-			<string>PlaySRGSettingAlternateRadioHomepageDesignEnabled</string>
-		</dict>
-		<dict>
-			<key>Type</key>
 			<string>IASKButtonSpecifier</string>
 			<key>Title</key>
 			<string>Versions and release notes</string>

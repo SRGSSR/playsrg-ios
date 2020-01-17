@@ -1,5 +1,4 @@
 "Advanced features" = "Advanced features";
-"Alternate radio homepage design" = "Alternative homepage design";
 "Always visible when VoiceOver is active." = "Always visible when VoiceOver is active.";
 "Audio description availability" = "Audio description availability";
 "Autoplay" = "Autoplay";
@@ -40,6 +39,7 @@
 "This section is only available in nightly and beta versions, and won't appear in the production version." = "This section is only available in nightly and beta versions, and won't appear in the production version.";
 "User location" = "User location";
 "Version" = "Version";
+"Versions and release notes" = "Versions and release notes";
 "What's new" = "What's new";
 "When enabled, more content is automatically played after playback of the current content ends." = "When enabled, more content is automatically played after playback of the current content ends.";
 "When enabled, video playback continues even when you leave the application." = "When enabled, video playback continues even when you leave the application.";

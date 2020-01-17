@@ -28,7 +28,6 @@ typedef NS_ENUM(NSInteger, SettingUserLocation) {
     SettingUserLocationIgnored
 };
 
-OBJC_EXPORT NSString * const PlaySRGSettingAlternateRadioHomepageDesignEnabled;
 OBJC_EXPORT NSString * const PlaySRGSettingHDOverCellularEnabled;
 OBJC_EXPORT NSString * const PlaySRGSettingOriginalImagesOnlyEnabled;
 OBJC_EXPORT NSString * const PlaySRGSettingPresenterModeEnabled;

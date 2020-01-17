@@ -17,7 +17,6 @@
 #import <libextobjc/libextobjc.h>
 #import <SRGLetterbox/SRGLetterbox.h>
 
-NSString * const PlaySRGSettingAlternateRadioHomepageDesignEnabled = @"PlaySRGSettingAlternateRadioHomepageDesignEnabled";
 NSString * const PlaySRGSettingHDOverCellularEnabled = @"PlaySRGSettingHDOverCellularEnabled";
 NSString * const PlaySRGSettingOriginalImagesOnlyEnabled = @"PlaySRGSettingOriginalImagesOnlyEnabled";
 NSString * const PlaySRGSettingPresenterModeEnabled = @"PlaySRGSettingPresenterModeEnabled";
@@ -49,19 +48,13 @@ NSValueTransformer *SettingUserLocationTransformer(void)
 __attribute__((constructor)) static void ApplicationSettingsInit(void)
 {
     NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
-    [userDefaults registerDefaults:@{ PlaySRGSettingAlternateRadioHomepageDesignEnabled : @NO,
-                                      PlaySRGSettingHDOverCellularEnabled : @YES,
+    [userDefaults registerDefaults:@{ PlaySRGSettingHDOverCellularEnabled : @YES,
                                       PlaySRGSettingOriginalImagesOnlyEnabled : @NO,
                                       PlaySRGSettingPresenterModeEnabled : @NO,
                                       PlaySRGSettingStandaloneEnabled : @NO,
                                       PlaySRGSettingAutoplayEnabled : @YES,
                                       PlaySRGSettingBackgroundVideoPlaybackEnabled : @NO }];
     [userDefaults synchronize];
-}
-
-BOOL ApplicationSettingAlternateRadioHomepageDesignEnabled(void)
-{
-    return [NSUserDefaults.standardUserDefaults boolForKey:PlaySRGSettingAlternateRadioHomepageDesignEnabled];
 }
 
 BOOL ApplicationSettingOriginalImagesOnlyEnabled(void)

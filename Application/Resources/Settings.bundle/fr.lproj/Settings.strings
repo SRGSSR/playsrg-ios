@@ -1,5 +1,4 @@
 "Advanced features" = "Fonctionnalités avancées";
-"Alternate radio homepage design" = "Design alternatif de l'accueil radio";
 "Always visible when VoiceOver is active." = "Toujours visible lorsque VoiceOver est activé.";
 "Audio description availability" = "Disponibilité de l'audiodescription";
 "Autoplay" = "Lecture automatique";
@@ -40,6 +39,7 @@
 "This section is only available in nightly and beta versions, and won't appear in the production version." = "Cette section n’est disponible que dans les versions nightly et beta, et n'apparaîtra pas en production.";
 "User location" = "Géolocalisation";
 "Version" = "Version";
+"Versions and release notes" = "Versions et notes de mise à jour";
 "What's new" = "Nouveautés";
 "When enabled, more content is automatically played after playback of the current content ends." = "Lorsque cette fonctionnalité est activée, la lecture continue automatiquement avec un autre contenu lorsque le contenu lu actuellement se termine.";
 "When enabled, video playback continues even when you leave the application." = "Lorsque cette fonctionnalité est activée, la lecture vidéo se poursuit même quand vous sortez de l'application.";
