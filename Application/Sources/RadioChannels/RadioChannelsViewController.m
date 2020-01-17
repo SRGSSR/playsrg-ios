@@ -9,6 +9,7 @@
 #import "ApplicationSettings.h"
 #import "HomeViewController.h"
 #import "NSBundle+PlaySRG.h"
+#import "PageViewController+Private.h"
 
 #import <GoogleCast/GoogleCast.h>
 #import <libextobjc/libextobjc.h>
@@ -54,30 +55,22 @@
 
 #pragma mark Override
 
-- (BOOL)switchToIndex:(NSInteger)index animated:(BOOL)animated
+- (BOOL)displayPageAtIndex:(NSInteger)index animated:(BOOL)animated
 {
-    BOOL switched = [super switchToIndex:index animated:animated];
-    if (switched) {
+    BOOL displayed = [super displayPageAtIndex:index animated:animated];
+    if (displayed) {
         HomeViewController *selectedHomeViewController = (HomeViewController *)self.viewControllers[index];
         ApplicationSettingSetLastOpenedRadioChannel(selectedHomeViewController.radioChannel);
     }
-    return switched;
+    return displayed;
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+- (void)updateTabForViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    [super updateTabForViewController:viewController animated:animated];
+    
     HomeViewController *currentHomeViewController = (HomeViewController *)viewController;
     ApplicationSettingSetLastOpenedRadioChannel(currentHomeViewController.radioChannel);
-    
-    return [super pageViewController:pageViewController viewControllerBeforeViewController:viewController];
-}
-
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
-{
-    HomeViewController *currentHomeViewController = (HomeViewController *)viewController;
-    ApplicationSettingSetLastOpenedRadioChannel(currentHomeViewController.radioChannel);
-    
-    return [super pageViewController:pageViewController viewControllerAfterViewController:viewController];
 }
 
 #pragma mark SRGAnalyticsViewTracking protocol

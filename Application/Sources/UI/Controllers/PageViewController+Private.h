@@ -10,7 +10,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PageViewController (Private)
 
-@property (nonatomic, readonly, weak) UIPageViewController *pageViewController;
+#pragma mark Display
+
+- (BOOL)displayPageAtIndex:(NSInteger)index animated:(BOOL)animated;
+
+- (void)updateTabForViewController:(UIViewController *)viewController animated:(BOOL)animated;
 
 @end
 
