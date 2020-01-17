@@ -24,6 +24,7 @@
 #import "UIViewController+PlaySRG.h"
 
 #import <CoconutKit/CoconutKit.h>
+#import <GoogleCast/GoogleCast.h>
 #import <libextobjc/libextobjc.h>
 #import <SRGAppearance/SRGAppearance.h>
 #import <SRGDataProvider/SRGDataProvider.h>
@@ -125,6 +126,10 @@
     NSString *headerIdentifier = NSStringFromClass(HomeSectionHeaderView.class);
     UINib *homeSectionHeaderViewNib = [UINib nibWithNibName:headerIdentifier bundle:nil];
     [self.tableView registerNib:homeSectionHeaderViewNib forHeaderFooterViewReuseIdentifier:headerIdentifier];
+    
+    GCKUICastButton *castButton = [[GCKUICastButton alloc] init];
+    castButton.tintColor = self.navigationController.navigationBar.tintColor;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:castButton];
     
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(accessibilityVoiceOverStatusChanged:)

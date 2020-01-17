@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "NSBundle+PlaySRG.h"
 
+#import <GoogleCast/GoogleCast.h>
 #import <libextobjc/libextobjc.h>
 
 @implementation RadioChannelsViewController
@@ -30,6 +31,17 @@
         self.title = NSLocalizedString(@"Audios", @"Title displayed at the top of the audio view");
     }
     return self;
+}
+
+#pragma mark View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    GCKUICastButton *castButton = [[GCKUICastButton alloc] init];
+    castButton.tintColor = self.navigationController.navigationBar.tintColor;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:castButton];
 }
 
 #pragma mark SRGAnalyticsViewTracking protocol

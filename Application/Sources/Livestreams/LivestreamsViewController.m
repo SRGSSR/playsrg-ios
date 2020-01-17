@@ -9,6 +9,7 @@
 #import "ApplicationConfiguration.h"
 #import "HomeLivestreamsViewController.h"
 
+#import <GoogleCast/GoogleCast.h>
 #import <libextobjc/libextobjc.h>
 
 @implementation LivestreamsViewController
@@ -30,6 +31,17 @@
         self.title = NSLocalizedString(@"Live", @"Title displayed at the top of the livestreams view");
     }
     return self;
+}
+
+#pragma mark View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    GCKUICastButton *castButton = [[GCKUICastButton alloc] init];
+    castButton.tintColor = self.navigationController.navigationBar.tintColor;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:castButton];
 }
 
 #pragma mark SRGAnalyticsViewTracking protocol
