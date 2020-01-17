@@ -879,21 +879,6 @@
 		6F475FE31EB37BC6003021EA /* ModalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA01EB37BC6003021EA /* ModalTransition.m */; };
 		6F475FE41EB37BC6003021EA /* ModalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA01EB37BC6003021EA /* ModalTransition.m */; };
 		6F475FE51EB37BC6003021EA /* ModalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA01EB37BC6003021EA /* ModalTransition.m */; };
-		6F475FE61EB37BC6003021EA /* TabStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA41EB37BC6003021EA /* TabStrip.m */; };
-		6F475FE71EB37BC6003021EA /* TabStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA41EB37BC6003021EA /* TabStrip.m */; };
-		6F475FE81EB37BC6003021EA /* TabStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA41EB37BC6003021EA /* TabStrip.m */; };
-		6F475FE91EB37BC6003021EA /* TabStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA41EB37BC6003021EA /* TabStrip.m */; };
-		6F475FEA1EB37BC6003021EA /* TabStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA41EB37BC6003021EA /* TabStrip.m */; };
-		6F475FEB1EB37BC6003021EA /* TabStripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA61EB37BC6003021EA /* TabStripCell.m */; };
-		6F475FEC1EB37BC6003021EA /* TabStripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA61EB37BC6003021EA /* TabStripCell.m */; };
-		6F475FED1EB37BC6003021EA /* TabStripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA61EB37BC6003021EA /* TabStripCell.m */; };
-		6F475FEE1EB37BC6003021EA /* TabStripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA61EB37BC6003021EA /* TabStripCell.m */; };
-		6F475FEF1EB37BC6003021EA /* TabStripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FA61EB37BC6003021EA /* TabStripCell.m */; };
-		6F475FF01EB37BC6003021EA /* TabStripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F475FA71EB37BC6003021EA /* TabStripCell.xib */; };
-		6F475FF11EB37BC6003021EA /* TabStripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F475FA71EB37BC6003021EA /* TabStripCell.xib */; };
-		6F475FF21EB37BC6003021EA /* TabStripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F475FA71EB37BC6003021EA /* TabStripCell.xib */; };
-		6F475FF31EB37BC6003021EA /* TabStripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F475FA71EB37BC6003021EA /* TabStripCell.xib */; };
-		6F475FF41EB37BC6003021EA /* TabStripCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F475FA71EB37BC6003021EA /* TabStripCell.xib */; };
 		6F475FF51EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FAA1EB37BC6003021EA /* CollectionLoadMoreFooterView.m */; };
 		6F475FF61EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FAA1EB37BC6003021EA /* CollectionLoadMoreFooterView.m */; };
 		6F475FF71EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F475FAA1EB37BC6003021EA /* CollectionLoadMoreFooterView.m */; };
@@ -2042,11 +2027,6 @@
 		6F475F9F1EB37BC6003021EA /* ModalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalTransition.h; sourceTree = "<group>"; };
 		6F475FA01EB37BC6003021EA /* ModalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalTransition.m; sourceTree = "<group>"; };
 		6F475FA11EB37BC6003021EA /* Previewing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Previewing.h; sourceTree = "<group>"; };
-		6F475FA31EB37BC6003021EA /* TabStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabStrip.h; sourceTree = "<group>"; };
-		6F475FA41EB37BC6003021EA /* TabStrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabStrip.m; sourceTree = "<group>"; };
-		6F475FA51EB37BC6003021EA /* TabStripCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabStripCell.h; sourceTree = "<group>"; };
-		6F475FA61EB37BC6003021EA /* TabStripCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabStripCell.m; sourceTree = "<group>"; };
-		6F475FA71EB37BC6003021EA /* TabStripCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabStripCell.xib; sourceTree = "<group>"; };
 		6F475FA91EB37BC6003021EA /* CollectionLoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionLoadMoreFooterView.h; sourceTree = "<group>"; };
 		6F475FAA1EB37BC6003021EA /* CollectionLoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionLoadMoreFooterView.m; sourceTree = "<group>"; };
 		6F475FAB1EB37BC6003021EA /* CollectionLoadMoreFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionLoadMoreFooterView.xib; sourceTree = "<group>"; };
@@ -2766,7 +2746,6 @@
 				6F0A416C1F6FAB33000533E7 /* Calendar */,
 				6F475F8B1EB37BC6003021EA /* Controllers */,
 				6F475F9E1EB37BC6003021EA /* Helpers */,
-				6F475FA21EB37BC6003021EA /* TabStrip */,
 				6F475FA81EB37BC6003021EA /* Views */,
 			);
 			path = UI;
@@ -3149,18 +3128,6 @@
 				6F4091FF22DCF43D005F3850 /* Previewing.m */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		6F475FA21EB37BC6003021EA /* TabStrip */ = {
-			isa = PBXGroup;
-			children = (
-				6F475FA31EB37BC6003021EA /* TabStrip.h */,
-				6F475FA41EB37BC6003021EA /* TabStrip.m */,
-				6F475FA51EB37BC6003021EA /* TabStripCell.h */,
-				6F475FA61EB37BC6003021EA /* TabStripCell.m */,
-				6F475FA71EB37BC6003021EA /* TabStripCell.xib */,
-			);
-			path = TabStrip;
 			sourceTree = "<group>";
 		};
 		6F475FA81EB37BC6003021EA /* Views */ = {
@@ -4070,7 +4037,6 @@
 				6F1938361EFBFEBC0017B1D1 /* ApplicationConfiguration.json in Resources */,
 				6F340F4B220DA86B00778CA3 /* SRGUserData.bundle in Resources */,
 				6F1F92AA22A55EDA0026BFAC /* SearchShowListCollectionViewCell.xib in Resources */,
-				6F475FF01EB37BC6003021EA /* TabStripCell.xib in Resources */,
 				081DAA261E0C1E9700018623 /* DownloadFooterSectionView.xib in Resources */,
 				6F0C99B02121FBD800073AB6 /* SRGLogger.bundle in Resources */,
 				08280F0F2258EA4000AC978D /* WatchLaterViewController.storyboard in Resources */,
@@ -4188,7 +4154,6 @@
 				082590F31F054ACD00BB527C /* HomeMediaCollectionHeaderView.xib in Resources */,
 				6FD88F7D22D3618F008859EF /* SearchSettingsHeaderView.xib in Resources */,
 				6F0F888E1ECF0CDD0060A893 /* override_default_la1ere.pdf in Resources */,
-				6F475FF11EB37BC6003021EA /* TabStripCell.xib in Resources */,
 				081DAA271E0C1FC700018623 /* DownloadFooterSectionView.xib in Resources */,
 				6FE01B1723603E92008EBB27 /* AppCenterDistributeResources.bundle in Resources */,
 				08280F102258EA4000AC978D /* WatchLaterViewController.storyboard in Resources */,
@@ -4306,7 +4271,6 @@
 				6F12E4DA22D866F200BC1718 /* MostSearchedShowsHeaderView.xib in Resources */,
 				0875851F23A0025F00FA7207 /* LibraryViewController.storyboard in Resources */,
 				E694A9E11D65EFF300372DF0 /* SearchViewController.storyboard in Resources */,
-				6F475FF21EB37BC6003021EA /* TabStripCell.xib in Resources */,
 				6F0F88371ECEE7800060A893 /* override_default_la2.pdf in Resources */,
 				6F93DE1520AE9A9900B71572 /* OnboardingsViewController.storyboard in Resources */,
 				6F2961FE2006186100CAB0E4 /* placeholder_media_list-180.pdf in Resources */,
@@ -4410,7 +4374,6 @@
 				E6DB5F311D66E1640057094B /* ShowCollectionViewCell.xib in Resources */,
 				0837CEE61D3FDAFA00A1E089 /* SRGSSRType_Rg.ttf in Resources */,
 				E694A9E21D65EFF300372DF0 /* SearchViewController.storyboard in Resources */,
-				6F475FF31EB37BC6003021EA /* TabStripCell.xib in Resources */,
 				081DAA281E0C1FC800018623 /* DownloadFooterSectionView.xib in Resources */,
 				081220B91DD07B7B00BF8326 /* DownloadTableViewCell.xib in Resources */,
 				6F0F88401ECEE78C0060A893 /* override_default_rtr_srf_info.pdf in Resources */,
@@ -4524,7 +4487,6 @@
 				6FA7EC3D20AB0FEB00A9C5FE /* Onboardings.json in Resources */,
 				6F1938381EFBFEC80017B1D1 /* ApplicationConfiguration.json in Resources */,
 				6FF7BBB622A7901900FA758A /* SearchSettingsViewController.storyboard in Resources */,
-				6F475FF41EB37BC6003021EA /* TabStripCell.xib in Resources */,
 				6F1F92AE22A55EDA0026BFAC /* SearchShowListCollectionViewCell.xib in Resources */,
 				08DD9D6D1FFE6EFA00115906 /* ModuleViewController.storyboard in Resources */,
 				081DAA2A1E0C1FC900018623 /* DownloadFooterSectionView.xib in Resources */,
@@ -5061,6 +5023,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PlaySRG-Play SRF/Pods-PlaySRG-Play SRF-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit/InAppSettingsKit.bundle",
+				"${PODS_ROOT}/MaterialComponents/components/Tabs/src/MaterialTabs.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 				"${PODS_ROOT}/google-cast-sdk-no-bluetooth/GoogleCastSDK-ios-4.4.6_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
@@ -5069,6 +5032,7 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/InAppSettingsKit.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialTabs.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastCoreResources.bundle",
@@ -5105,6 +5069,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PlaySRG-Play RTS/Pods-PlaySRG-Play RTS-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit/InAppSettingsKit.bundle",
+				"${PODS_ROOT}/MaterialComponents/components/Tabs/src/MaterialTabs.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 				"${PODS_ROOT}/google-cast-sdk-no-bluetooth/GoogleCastSDK-ios-4.4.6_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
@@ -5113,6 +5078,7 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/InAppSettingsKit.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialTabs.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastCoreResources.bundle",
@@ -5491,6 +5457,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PlaySRG-Play RSI/Pods-PlaySRG-Play RSI-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit/InAppSettingsKit.bundle",
+				"${PODS_ROOT}/MaterialComponents/components/Tabs/src/MaterialTabs.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 				"${PODS_ROOT}/google-cast-sdk-no-bluetooth/GoogleCastSDK-ios-4.4.6_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
@@ -5499,6 +5466,7 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/InAppSettingsKit.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialTabs.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastCoreResources.bundle",
@@ -5517,6 +5485,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PlaySRG-Play SWI/Pods-PlaySRG-Play SWI-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit/InAppSettingsKit.bundle",
+				"${PODS_ROOT}/MaterialComponents/components/Tabs/src/MaterialTabs.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 				"${PODS_ROOT}/google-cast-sdk-no-bluetooth/GoogleCastSDK-ios-4.4.6_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
@@ -5525,6 +5494,7 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/InAppSettingsKit.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialTabs.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastCoreResources.bundle",
@@ -5633,6 +5603,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-PlaySRG-Play RTR/Pods-PlaySRG-Play RTR-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/InAppSettingsKit/InAppSettingsKit.bundle",
+				"${PODS_ROOT}/MaterialComponents/components/Tabs/src/MaterialTabs.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/SwiftMessages/SwiftMessages.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/UrbanAirship-iOS-SDK/AirshipResources.bundle",
 				"${PODS_ROOT}/google-cast-sdk-no-bluetooth/GoogleCastSDK-ios-4.4.6_static/GoogleCast.framework/GoogleCastCoreResources.bundle",
@@ -5641,6 +5612,7 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/InAppSettingsKit.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialTabs.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SwiftMessages.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AirshipResources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleCastCoreResources.bundle",
@@ -5770,7 +5742,6 @@
 				081220AA1DD079BB00BF8326 /* DownloadsViewController.m in Sources */,
 				0804917B22832C5D00E4CEC2 /* HomeShowCollectionViewCell.m in Sources */,
 				6FB0AEFC217F4975009D707A /* SRGMediaComposition+PlaySRG.m in Sources */,
-				6F475FE61EB37BC6003021EA /* TabStrip.m in Sources */,
 				6FF7BB9722A78DE400FA758A /* SearchSettingSwitchCell.m in Sources */,
 				E694A9F51D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6F80106920443230009FE197 /* PlayApplication.m in Sources */,
@@ -5796,7 +5767,6 @@
 				6F47603E1EB37BD1003021EA /* UICollectionView+PlaySRG.m in Sources */,
 				6F27F5CB23CDCE3500156B1C /* HomeLivestreamsViewController.m in Sources */,
 				6F4760091EB37BC6003021EA /* TranslucentTitleHeaderView.m in Sources */,
-				6F475FEB1EB37BC6003021EA /* TabStripCell.m in Sources */,
 				08C68F8A1D38DEA100BB8AAA /* PlayAppDelegate.m in Sources */,
 				6F40920822DCFE2B005F3850 /* MostSearchedShowCollectionViewCell.m in Sources */,
 				6FF7BBA122A78DE400FA758A /* SearchSettingsViewController.m in Sources */,
@@ -5883,7 +5853,6 @@
 				0841E70722F0953A009D8304 /* SRGDay+PlaySRG.m in Sources */,
 				086F8D6A22984B29001BE2F4 /* FavoriteTableViewCell.m in Sources */,
 				E6E2DF1B1D6ACA8B00791EDE /* ShowViewController.m in Sources */,
-				6F475FEC1EB37BC6003021EA /* TabStripCell.m in Sources */,
 				6FD88F7822D3618F008859EF /* SearchSettingsHeaderView.m in Sources */,
 				6F6B642F21A70FAA00E207FC /* HomeStatusHeaderView.m in Sources */,
 				6FD633DF1FFBC0BE00875BE5 /* GoogleCastMiniPlayerView.m in Sources */,
@@ -5909,7 +5878,6 @@
 				0852539822073D5200BCF0B1 /* UIApplication+PlaySRG.m in Sources */,
 				6F4760141EB37BC6003021EA /* Banner.m in Sources */,
 				6F4760351EB37BD1003021EA /* NSDateFormatter+PlaySRG.m in Sources */,
-				6F475FE71EB37BC6003021EA /* TabStrip.m in Sources */,
 				6F40920122DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF61EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
 				0875851923A0025F00FA7207 /* LibraryTableViewCell.m in Sources */,
@@ -6045,7 +6013,6 @@
 				0841E70822F0953A009D8304 /* SRGDay+PlaySRG.m in Sources */,
 				086F8D6B22984B29001BE2F4 /* FavoriteTableViewCell.m in Sources */,
 				E6E2DF1C1D6ACA8B00791EDE /* ShowViewController.m in Sources */,
-				6F475FED1EB37BC6003021EA /* TabStripCell.m in Sources */,
 				6FD88F7922D3618F008859EF /* SearchSettingsHeaderView.m in Sources */,
 				6F6B643021A70FAA00E207FC /* HomeStatusHeaderView.m in Sources */,
 				6FD633E01FFBC0BE00875BE5 /* GoogleCastMiniPlayerView.m in Sources */,
@@ -6071,7 +6038,6 @@
 				0852539922073D5200BCF0B1 /* UIApplication+PlaySRG.m in Sources */,
 				6F4760151EB37BC6003021EA /* Banner.m in Sources */,
 				6F4760361EB37BD1003021EA /* NSDateFormatter+PlaySRG.m in Sources */,
-				6F475FE81EB37BC6003021EA /* TabStrip.m in Sources */,
 				6F40920222DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF71EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
 				0875851A23A0025F00FA7207 /* LibraryTableViewCell.m in Sources */,
@@ -6207,7 +6173,6 @@
 				0841E70922F0953A009D8304 /* SRGDay+PlaySRG.m in Sources */,
 				086F8D6C22984B29001BE2F4 /* FavoriteTableViewCell.m in Sources */,
 				E6E2DF1D1D6ACA8B00791EDE /* ShowViewController.m in Sources */,
-				6F475FEE1EB37BC6003021EA /* TabStripCell.m in Sources */,
 				6FD88F7A22D3618F008859EF /* SearchSettingsHeaderView.m in Sources */,
 				6F6B643121A70FAA00E207FC /* HomeStatusHeaderView.m in Sources */,
 				6FD633E11FFBC0BE00875BE5 /* GoogleCastMiniPlayerView.m in Sources */,
@@ -6233,7 +6198,6 @@
 				0852539A22073D5200BCF0B1 /* UIApplication+PlaySRG.m in Sources */,
 				6F4760161EB37BC6003021EA /* Banner.m in Sources */,
 				6F4760371EB37BD1003021EA /* NSDateFormatter+PlaySRG.m in Sources */,
-				6F475FE91EB37BC6003021EA /* TabStrip.m in Sources */,
 				6F40920322DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF81EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
 				0875851B23A0025F00FA7207 /* LibraryTableViewCell.m in Sources */,
@@ -6369,7 +6333,6 @@
 				0841E70A22F0953A009D8304 /* SRGDay+PlaySRG.m in Sources */,
 				086F8D6D22984B29001BE2F4 /* FavoriteTableViewCell.m in Sources */,
 				E6E2DF1E1D6ACA8B00791EDE /* ShowViewController.m in Sources */,
-				6F475FEF1EB37BC6003021EA /* TabStripCell.m in Sources */,
 				6FD88F7B22D3618F008859EF /* SearchSettingsHeaderView.m in Sources */,
 				6F6B643221A70FAA00E207FC /* HomeStatusHeaderView.m in Sources */,
 				6FD633E21FFBC0BE00875BE5 /* GoogleCastMiniPlayerView.m in Sources */,
@@ -6395,7 +6358,6 @@
 				0852539B22073D5200BCF0B1 /* UIApplication+PlaySRG.m in Sources */,
 				6F4760171EB37BC6003021EA /* Banner.m in Sources */,
 				6F4760381EB37BD1003021EA /* NSDateFormatter+PlaySRG.m in Sources */,
-				6F475FEA1EB37BC6003021EA /* TabStrip.m in Sources */,
 				6F40920422DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF91EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
 				0875851C23A0025F00FA7207 /* LibraryTableViewCell.m in Sources */,

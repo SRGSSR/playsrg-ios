@@ -278,6 +278,56 @@ name: InAppSettingsKit, nameSpecified:
 body: Copyright (c) 2009-2…
 version: 2.10
 
+name: MaterialComponents, nameSpecified: 
+body: 
+                   …
+version: 101.1.1
+
+name: MaterialComponents, nameSpecified: 
+body: 
+                   …
+version: 101.1.1
+
+name: MaterialComponents, nameSpecified: 
+body: 
+                   …
+version: 101.1.1
+
+name: MaterialComponents, nameSpecified: 
+body: 
+                   …
+version: 101.1.1
+
+name: MaterialComponents, nameSpecified: 
+body: 
+                   …
+version: 101.1.1
+
+name: MDFInternationalization, nameSpecified: 
+body: 
+                   …
+version: 2.0.0
+
+name: MDFInternationalization, nameSpecified: 
+body: 
+                   …
+version: 2.0.0
+
+name: MDFInternationalization, nameSpecified: 
+body: 
+                   …
+version: 2.0.0
+
+name: MDFInternationalization, nameSpecified: 
+body: 
+                   …
+version: 2.0.0
+
+name: MDFInternationalization, nameSpecified: 
+body: 
+                   …
+version: 2.0.0
+
 name: MGSwipeTableCell, nameSpecified: 
 body: The MIT License (MIT…
 version: 1.6.8

@@ -182,6 +182,22 @@
 		</dict>
 		<dict>
 			<key>File</key>
+			<string>com.mono0926.LicensePlist/MaterialComponents</string>
+			<key>Title</key>
+			<string>MaterialComponents (101.1.1)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
+			<string>com.mono0926.LicensePlist/MDFInternationalization</string>
+			<key>Title</key>
+			<string>MDFInternationalization (2.0.0)</string>
+			<key>Type</key>
+			<string>PSChildPaneSpecifier</string>
+		</dict>
+		<dict>
+			<key>File</key>
 			<string>com.mono0926.LicensePlist/MGSwipeTableCell</string>
 			<key>Title</key>
 			<string>MGSwipeTableCell (1.6.8)</string>

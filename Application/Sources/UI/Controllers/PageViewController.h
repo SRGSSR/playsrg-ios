@@ -18,12 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Create a page item with the specified information.
  */
-- (instancetype)initWithTitle:(NSString *)title image:(nullable UIImage *)image;
+- (instancetype)initWithTitle:(nullable NSString *)title image:(nullable UIImage *)image;
 
 /**
  *  Item title.
  */
-@property (nonatomic, copy, readonly) NSString *title;
+@property (nonatomic, copy, readonly, nullable) NSString *title;
 
 /**
  *  Item image.
@@ -36,10 +36,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  Abstract container class to display pages of contents, between which the user can change using a swipe or a tab strip.
  *  Tabs can be customized by associating a `PageItem` with a view controller.
  *
- *  To use `PageViewController`, bind its `placeholderViews` property to a single view where pages will be displayed, 
- *  and the `tabStrip` property to a view with the `TabStrip` class.
+ *  To use `PageViewController`, bind its `placeholderViews` property to a single view where pages will be displayed.
  */
-@interface PageViewController : HLSPlaceholderViewController <ContainerContentInsets, UIPageViewControllerDataSource>
+@interface PageViewController : HLSPlaceholderViewController <ContainerContentInsets, UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 /**
  *  Create an instance displaying the supplied view controllers, and starting at the specified page.
@@ -54,9 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers;
 
 /**
- *  Switch to an index.
+ *  Switch to a tab index.
  *
- *  @discussion If the index is not valid, nothing change, and it returns `NO`. Otherwise, `YES`.
+ *  @discussion If the index is not valid, nothing changes and the method returns `NO`. Otherwise `YES`.
  */
 - (BOOL)switchToIndex:(NSInteger)index animated:(BOOL)animated;
 

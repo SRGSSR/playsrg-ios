@@ -7,23 +7,23 @@
 #import "PageViewController.h"
 
 #import "PlayLogger.h"
-#import "TabStrip.h"
 #import "UIColor+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 
+#import "MaterialTabs.h"
 #import <Masonry/Masonry.h>
 
 // Associated object keys
 static void *s_pageItemKey = &s_pageItemKey;
 
-@interface PageViewController ()
+@interface PageViewController () <MDCTabBarDelegate>
 
 @property (nonatomic, weak) UIPageViewController *pageViewController;
 
 @property (nonatomic) NSArray<UIViewController *> *viewControllers;
 @property (nonatomic) NSInteger initialPage;
 
-@property (nonatomic, weak) TabStrip *tabStrip;
+@property (nonatomic, weak) MDCTabBar *tabBar;
 @property (nonatomic, weak) UIVisualEffectView *blurView;
 
 @end
@@ -55,6 +55,7 @@ static void *s_pageItemKey = &s_pageItemKey;
         UIPageViewController *pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                                    navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                                                  options:@{ UIPageViewControllerOptionInterPageSpacingKey : @100.f }];
+        pageViewController.delegate = self;
         
         // Only allow scrolling if several pages are available
         if (viewControllers.count > 1) {
@@ -103,19 +104,53 @@ static void *s_pageItemKey = &s_pageItemKey;
     }];
     self.blurView = blurView;
     
-    TabStrip *tabStrip = [[TabStrip alloc] initWithFrame:blurView.bounds];
-    [blurView.contentView addSubview:tabStrip];
-    [tabStrip mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(blurView.contentView).with.insets(UIEdgeInsetsMake(8.f, 0.f, 8.f, 0.f));
+    __block BOOL hasTitle = NO;
+    __block BOOL hasImage = NO;
+    
+    NSMutableArray<UITabBarItem *> *tabBarItems = [NSMutableArray array];
+    [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
+        // TODO: Simply use bar item!
+        PageItem *pageItem = viewController.play_pageItem;
+        if (pageItem.title) {
+            hasTitle = YES;
+        }
+        if (pageItem.image) {
+            hasImage = YES;
+        }
+        
+        UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:pageItem.title image:pageItem.image tag:idx];
+        [tabBarItems addObject:tabBarItem];
     }];
-    self.tabStrip = tabStrip;
+    
+    MDCTabBar *tabBar = [[MDCTabBar alloc] initWithFrame:blurView.bounds];
+    tabBar.tintColor = UIColor.whiteColor;
+    // Use ripple effect without color, so that there is no Material-like highlighting (we are NOT adopting Material)
+    tabBar.enableRippleBehavior = YES;
+    tabBar.rippleColor = UIColor.clearColor;
+    tabBar.items = tabBarItems.copy;
+    tabBar.alignment = MDCTabBarAlignmentCenter;
+    if (hasTitle && hasImage) {
+        tabBar.itemAppearance = MDCTabBarItemAppearanceTitledImages;
+    }
+    else if (hasImage) {
+        tabBar.itemAppearance = MDCTabBarItemAppearanceImages;
+    }
+    else {
+        tabBar.itemAppearance = MDCTabBarItemAppearanceTitles;
+    }
+    tabBar.delegate = self;
+    [blurView.contentView addSubview:tabBar];
+    [tabBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(blurView.contentView);
+    }];
+    self.tabBar = tabBar;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self.tabStrip setPageViewController:self withInitialSelectedIndex:self.initialPage];
+    self.tabBar.selectedItem = self.tabBar.items[self.initialPage];
     
     self.view.backgroundColor = UIColor.play_blackColor;
     
@@ -127,25 +162,12 @@ static void *s_pageItemKey = &s_pageItemKey;
 
 - (BOOL)switchToIndex:(NSInteger)index animated:(BOOL)animated
 {
-    if (index >= 0 && index < self.viewControllers.count) {
-        UIViewController *currentViewController = self.pageViewController.viewControllers.firstObject;
-        NSUInteger currentIndex = [self.viewControllers indexOfObject:currentViewController];
-        
-        UIViewController *newViewController = self.viewControllers[index];
-        UIPageViewControllerNavigationDirection direction = (currentIndex < index) ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
-        [self.pageViewController setViewControllers:@[newViewController] direction:direction animated:animated completion:nil];
-        
-        if (self.tabStrip) {
-            self.tabStrip.selectedIndex = index;
-        }
-        else {
-            self.initialPage = index;
-        }
-        return YES;
-    }
-    else {
+    if (! [self displayPageAtIndex:index animated:animated]) {
         return NO;
     }
+    
+    [self.tabBar setSelectedItem:self.tabBar.items[index] animated:animated];
+    return YES;
 }
 
 #pragma mark Rotation
@@ -179,11 +201,35 @@ static void *s_pageItemKey = &s_pageItemKey;
     }
 }
 
+#pragma mark Display
+
+- (BOOL)displayPageAtIndex:(NSInteger)index animated:(BOOL)animated
+{
+    if (index < 0 || index >= self.viewControllers.count) {
+        return NO;
+    }
+    
+    UIViewController *currentViewController = self.pageViewController.viewControllers.firstObject;
+    NSUInteger currentIndex = [self.viewControllers indexOfObject:currentViewController];
+    UIPageViewControllerNavigationDirection direction = (currentIndex < index) ? UIPageViewControllerNavigationDirectionForward : UIPageViewControllerNavigationDirectionReverse;
+    
+    UIViewController *newViewController = self.viewControllers[index];
+    [self.pageViewController setViewControllers:@[newViewController] direction:direction animated:animated completion:nil];
+    return YES;
+}
+
 #pragma mark ContainerContentInsets protocol
 
 - (UIEdgeInsets)play_additionalContentInsets
 {
     return UIEdgeInsetsMake(CGRectGetHeight(self.blurView.frame), 0.f, 0.f, 0.f);
+}
+
+#pragma mark MDCTabBarDelegate protocol
+
+- (void)tabBar:(MDCTabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    [self displayPageAtIndex:item.tag animated:YES];
 }
 
 #pragma mark UIPageViewControllerDataSource protocol
@@ -208,6 +254,15 @@ static void *s_pageItemKey = &s_pageItemKey;
     else {
         return nil;
     }
+}
+
+#pragma mark UIPageViewControllerDelegate protocol
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    UIViewController *currentViewController = self.pageViewController.viewControllers.firstObject;
+    NSUInteger currentIndex = [self.viewControllers indexOfObject:currentViewController];
+    self.tabBar.selectedItem = self.tabBar.items[currentIndex];
 }
 
 @end
