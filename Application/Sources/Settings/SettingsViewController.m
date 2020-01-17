@@ -20,6 +20,7 @@
 #import "UIApplication+PlaySRG.h"
 #import "UIImage+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
+#import "UIWindow+PlaySRG.h"
 #import "WebViewController.h"
 
 #import <AppCenterDistribute/AppCenterDistribute.h>
@@ -187,8 +188,8 @@ static NSString * const SettingsFLEXButton = @"Button_FLEX";
         NSURL *appCenterURL = (appCenterURLString.length > 0) ? [NSURL URLWithString:appCenterURLString] : nil;
         if (appCenterURL) {
             SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:appCenterURL];
-            UIViewController *rootViewController = UIApplication.sharedApplication.delegate.window.rootViewController;
-            [rootViewController presentViewController:safariViewController animated:YES completion:nil];
+            UIViewController *topViewController = UIApplication.sharedApplication.delegate.window.play_topViewController;
+            [topViewController presentViewController:safariViewController animated:YES completion:nil];
         }
     }
     else if ([specifier.key isEqualToString:SettingsSubscribeToAllShowsButton]) {
