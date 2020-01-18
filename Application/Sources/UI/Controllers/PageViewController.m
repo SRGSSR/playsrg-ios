@@ -12,6 +12,7 @@
 
 #import "MaterialTabs.h"
 #import <Masonry/Masonry.h>
+#import <SRGAppearance/SRGAppearance.h>
 
 @interface PageViewController () <MDCTabBarDelegate>
 
@@ -68,6 +69,7 @@
 - (void)loadView
 {
     self.view = [[UIView alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    self.view.backgroundColor = UIColor.play_blackColor;
     
     UIView *placeholderView = [[UIView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:placeholderView];
@@ -94,15 +96,11 @@
     }];
     self.blurView = blurView;
     
-    __block BOOL hasTitle = NO;
     __block BOOL hasImage = NO;
     
     NSMutableArray<UITabBarItem *> *tabBarItems = [NSMutableArray array];
     [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
         UITabBarItem *tabBarItem = viewController.tabBarItem;
-        if (tabBarItem.title) {
-            hasTitle = YES;
-        }
         if (tabBarItem.image) {
             hasImage = YES;
         }
@@ -110,22 +108,23 @@
     }];
     
     MDCTabBar *tabBar = [[MDCTabBar alloc] initWithFrame:blurView.bounds];
+    tabBar.itemAppearance = hasImage ? MDCTabBarItemAppearanceImages : MDCTabBarItemAppearanceTitles;
+    tabBar.alignment = MDCTabBarAlignmentCenter;
+    tabBar.delegate = self;
+    tabBar.items = tabBarItems.copy;
+    
     tabBar.tintColor = UIColor.whiteColor;
+    tabBar.unselectedItemTintColor = UIColor.play_grayColor;
+    tabBar.selectedItemTintColor = UIColor.whiteColor;
+    
+    UIFont *tabBarFont = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleBody];
+    tabBar.unselectedItemTitleFont = tabBarFont;
+    tabBar.selectedItemTitleFont = tabBarFont;
+    
     // Use ripple effect without color, so that there is no Material-like highlighting (we are NOT adopting Material)
     tabBar.enableRippleBehavior = YES;
     tabBar.rippleColor = UIColor.clearColor;
-    tabBar.items = tabBarItems.copy;
-    tabBar.alignment = MDCTabBarAlignmentCenter;
-    if (hasTitle && hasImage) {
-        tabBar.itemAppearance = MDCTabBarItemAppearanceTitledImages;
-    }
-    else if (hasImage) {
-        tabBar.itemAppearance = MDCTabBarItemAppearanceImages;
-    }
-    else {
-        tabBar.itemAppearance = MDCTabBarItemAppearanceTitles;
-    }
-    tabBar.delegate = self;
+    
     [blurView.contentView addSubview:tabBar];
     [tabBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(blurView.contentView);
@@ -138,8 +137,6 @@
     [super viewDidLoad];
     
     self.tabBar.selectedItem = self.tabBar.items[self.initialPage];
-    
-    self.view.backgroundColor = UIColor.play_blackColor;
     
     UIViewController *initialViewController = self.viewControllers[self.initialPage];
     [self.pageViewController setViewControllers:@[initialViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];

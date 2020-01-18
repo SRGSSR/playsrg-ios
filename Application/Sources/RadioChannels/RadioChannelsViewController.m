@@ -28,7 +28,7 @@
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     for (RadioChannel *radioChannel in radioChannels) {
         HomeViewController *viewController = [[HomeViewController alloc] initWithRadioChannel:radioChannel];
-        viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:RadioChannelLogo22Image(radioChannel) tag:0];
+        viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:radioChannel.name image:RadioChannelLogo22Image(radioChannel) tag:0];
         [viewControllers addObject:viewController];
         
         if ([radioChannel isEqual:lastOpenedRadioChannel]) {
