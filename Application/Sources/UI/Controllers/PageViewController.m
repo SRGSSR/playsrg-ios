@@ -252,14 +252,11 @@
 
 #pragma mark UIPageViewControllerDelegate protocol
 
-- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
-{
-    [self updateTabForViewController:pendingViewControllers.firstObject animated:YES];
-}
-
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
 {
-    [self updateTabForViewController:pageViewController.viewControllers.firstObject animated:YES];
+    if (completed) {
+        [self updateTabForViewController:pageViewController.viewControllers.firstObject animated:YES];
+    }
 }
 
 @end
