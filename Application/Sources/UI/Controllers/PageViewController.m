@@ -9,6 +9,7 @@
 #import "PlayLogger.h"
 #import "UIColor+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
+#import "UIVisualEffectView+PlaySRG.h"
 
 #import "MaterialTabs.h"
 #import <Masonry/Masonry.h>
@@ -78,15 +79,7 @@
     }];
     self.placeholderViews = @[placeholderView];
     
-    UIBlurEffectStyle blurEffectStyle;
-    if (@available(iOS 13, *)) {
-        blurEffectStyle = UIBlurEffectStyleSystemMaterialDark;
-    }
-    else {
-        blurEffectStyle = UIBlurEffectStyleDark;
-    }
-    UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:blurEffectStyle];
-    UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    UIVisualEffectView *blurView = UIVisualEffectView.play_blurView;
     [self.view addSubview:blurView];
     [blurView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_topLayoutGuide);          // Warning: Needs self.view to be set, otherwise leads to infinite recursion

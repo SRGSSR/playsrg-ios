@@ -6,6 +6,7 @@
 
 #import "NavigationController.h"
 
+#import "UIColor+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 
 #import <CoconutKit/CoconutKit.h>
@@ -54,7 +55,13 @@
         else {
             navigationBar.layer.shadowOpacity = 0.f;
             
-            navigationBar.barTintColor = nil;
+            if (@available(iOS 13, *)) {
+                navigationBar.barTintColor = nil;
+            }
+            else {
+                navigationBar.barTintColor = UIColor.play_blurTintColor;
+            }
+            
             navigationBar.translucent = YES;
         }
         

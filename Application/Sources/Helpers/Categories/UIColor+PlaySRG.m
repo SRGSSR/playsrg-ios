@@ -75,4 +75,9 @@
     return [UIColor srg_colorFromHexadecimalString:@"#e4e4e4"];
 }
 
++ (UIColor *)play_blurTintColor
+{
+    return [UIColor colorWithWhite:0.11f alpha:0.73f];
+}
+
 @end

@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, nonatomic, readonly) UIColor *play_blackDurationLabelBackgroundColor;
 @property (class, nonatomic, readonly) UIColor *play_whiteBadgeColor;
 
+@property (class, nonatomic, readonly) UIColor *play_blurTintColor API_DEPRECATED("Use UIBlurEffectStyleSystemMaterialDark", ios(9.0, 12.0));
+
 @end
 
 NS_ASSUME_NONNULL_END

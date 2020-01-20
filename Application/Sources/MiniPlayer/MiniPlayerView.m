@@ -10,6 +10,7 @@
 #import "PlayMiniPlayerView.h"
 #import "GoogleCastMiniPlayerView.h"
 #import "UIColor+PlaySRG.h"
+#import "UIVisualEffectView+PlaySRG.h"
 
 #import <GoogleCast/GoogleCast.h>
 #import <libextobjc/libextobjc.h>
@@ -31,17 +32,8 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        UIBlurEffectStyle blurEffectStyle;
-        if (@available(iOS 13, *)) {
-            blurEffectStyle = UIBlurEffectStyleSystemMaterialDark;
-        }
-        else {
-            blurEffectStyle = UIBlurEffectStyleDark;
-        }
-        UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:blurEffectStyle];
-        UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        UIVisualEffectView *blurView = UIVisualEffectView.play_blurView;
         [self addSubview:blurView];
-        
         [blurView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);
         }];
