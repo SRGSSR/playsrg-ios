@@ -21,21 +21,15 @@
 {
     NSAssert(homeSections.count > 0, @"1 live section at least expected");
     
-    HomeSection lastOpenedHomeSection = ApplicationSettingLastOpenedLivestreamHomeSection();
-    NSInteger initialPage = 0;
-    
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     for (NSNumber *homeSectionNumber in homeSections) {
         HomeSection homeSection = homeSectionNumber.integerValue;
         HomeSectionInfo *homeSectionInfo = [[HomeSectionInfo alloc] initWithHomeSection:homeSection];
         HomeLivestreamsViewController *viewController = [[HomeLivestreamsViewController alloc] initWithHomeSectionInfo:homeSectionInfo];
         [viewControllers addObject:viewController];
-        
-        if (homeSection == lastOpenedHomeSection) {
-            initialPage = [homeSections indexOfObject:@(homeSection)];
-        }
     }
     
+    NSUInteger initialPage = [homeSections indexOfObject:@(ApplicationSettingLastOpenedLivestreamHomeSection())];
     if (self = [super initWithViewControllers:viewControllers.copy initialPage:initialPage]) {
         self.title = NSLocalizedString(@"Live", @"Title displayed at the top of the livestreams view");
     }

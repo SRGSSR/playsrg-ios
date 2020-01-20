@@ -21,20 +21,14 @@
 {
     NSAssert(radioChannels.count > 0, @"1 radio channel at least expected");
     
-    RadioChannel *lastOpenedRadioChannel = ApplicationSettingLastOpenedRadioChannel();
-    NSInteger initialPage = 0;
-    
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     for (RadioChannel *radioChannel in radioChannels) {
         HomeViewController *viewController = [[HomeViewController alloc] initWithRadioChannel:radioChannel];
         viewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:radioChannel.name image:RadioChannelLogo22Image(radioChannel) tag:0];
         [viewControllers addObject:viewController];
-        
-        if ([radioChannel isEqual:lastOpenedRadioChannel]) {
-            initialPage = [radioChannels indexOfObject:radioChannel];
-        }
     }
     
+    NSUInteger initialPage = [radioChannels indexOfObject:ApplicationSettingLastOpenedRadioChannel()];
     if (self = [super initWithViewControllers:viewControllers.copy initialPage:initialPage]) {
         self.title = NSLocalizedString(@"Audios", @"Title displayed at the top of the audio view");
     }

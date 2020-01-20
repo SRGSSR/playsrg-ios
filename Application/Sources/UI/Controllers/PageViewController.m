@@ -19,7 +19,7 @@
 @property (nonatomic, weak) UIPageViewController *pageViewController;
 
 @property (nonatomic) NSArray<UIViewController *> *viewControllers;
-@property (nonatomic) NSInteger initialPage;
+@property (nonatomic) NSUInteger initialPage;
 
 @property (nonatomic, weak) MDCTabBar *tabBar;
 @property (nonatomic, weak) UIVisualEffectView *blurView;
@@ -30,14 +30,14 @@
 
 #pragma mark Object lifecycle
 
-- (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers initialPage:(NSInteger)initialPage
+- (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers initialPage:(NSUInteger)initialPage
 {
     NSAssert(viewControllers.count != 0, @"At least one view controller is required");
     
     if (self = [super init]) {
         self.viewControllers = viewControllers;
         
-        if (initialPage < 0 || initialPage >= viewControllers.count) {
+        if (initialPage >= viewControllers.count) {
             PlayLogWarning(@"pageViewController", @"Invalid page. Fixed to 0");
             initialPage = 0;
         }
@@ -144,7 +144,7 @@
 
 #pragma mark Actions
 
-- (BOOL)switchToIndex:(NSInteger)index animated:(BOOL)animated
+- (BOOL)switchToIndex:(NSUInteger)index animated:(BOOL)animated
 {
     if (! [self displayPageAtIndex:index animated:animated]) {
         return NO;
@@ -187,9 +187,9 @@
 
 #pragma mark Display
 
-- (BOOL)displayPageAtIndex:(NSInteger)index animated:(BOOL)animated
+- (BOOL)displayPageAtIndex:(NSUInteger)index animated:(BOOL)animated
 {
-    if (index < 0 || index >= self.viewControllers.count) {
+    if (index >= self.viewControllers.count) {
         return NO;
     }
     

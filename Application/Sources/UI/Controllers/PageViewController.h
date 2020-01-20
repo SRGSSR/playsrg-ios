@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @discussion If the page is not valid, the first page will be used instead.
  */
-- (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers initialPage:(NSInteger)initialPage NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithViewControllers:(NSArray<UIViewController *> *)viewControllers initialPage:(NSUInteger)initialPage NS_DESIGNATED_INITIALIZER;
 
 /**
  *  Create an instance displaying the supplied view controllers, and starting with the first page.
@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @discussion If the index is not valid, nothing changes and the method returns `NO`. Otherwise `YES`.
  */
-- (BOOL)switchToIndex:(NSInteger)index animated:(BOOL)animated;
+- (BOOL)switchToIndex:(NSUInteger)index animated:(BOOL)animated;
 
 /**
  *  The view controllers loaded as pages.
