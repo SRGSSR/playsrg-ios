@@ -68,7 +68,7 @@ static SRGMedia *HistoryChapterMedia(SRGLetterboxController *controller)
 __attribute__((constructor)) static void HistoryPlayerTrackerInit(void)
 {
     s_cachedProgresses = [NSMutableDictionary dictionary];
-    s_trackerTimer = [NSTimer play_timerWithTimeInterval:5. repeats:YES block:^(NSTimer * _Nonnull timer) {
+    s_trackerTimer = [NSTimer play_timerWithTimeInterval:1. repeats:YES block:^(NSTimer * _Nonnull timer) {
         NSString *deviceUid = UIDevice.currentDevice.name;
         
         GCKSession *session = [GCKCastContext sharedInstance].sessionManager.currentSession;
