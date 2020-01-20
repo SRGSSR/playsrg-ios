@@ -1087,6 +1087,9 @@ static void *s_kvoContext = &s_kvoContext;
                 SRGLetterboxController *serviceController = SRGLetterboxService.sharedService.controller;
                 [serviceController reset];
                 ApplicationConfigurationApplyControllerSettings(serviceController);
+                
+                // Entirely reload the view controller hierarchy to reflect the changes
+                self.window.rootViewController = [[TabBarController alloc] init];
             }
         }
     }
