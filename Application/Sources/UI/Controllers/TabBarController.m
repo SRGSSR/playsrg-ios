@@ -70,23 +70,13 @@ static const CGFloat MiniPlayerOffset = 5.f;
         [viewControllers addObject:viewController];
         [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"library-25"] tag:TabBarItemIdentifierLibrary]];
         
-        TabBarItemIdentifier lastOpenedTabBarItemIdentifier = ApplicationSettingLastOpenedTabBarItemIdentifier();
-        
         NSMutableArray<NavigationController *> *navigationControllers = NSMutableArray.array;
-        __block NSInteger initialTabIndex = 0;
         [viewControllers enumerateObjectsUsingBlock:^(UIViewController * _Nonnull viewController, NSUInteger idx, BOOL * _Nonnull stop) {
-            UITabBarItem *tabBarItem = tabBarItems[idx];
-            
             NavigationController *navigationController = [[NavigationController alloc] initWithRootViewController:viewController];
             navigationController.delegate = self;
-            navigationController.tabBarItem = tabBarItem;
+            navigationController.tabBarItem = tabBarItems[idx];
             [navigationControllers addObject:navigationController];
-            
-            if (tabBarItem.tag == lastOpenedTabBarItemIdentifier) {
-                initialTabIndex = idx;
-            }
         }];
-        
         self.viewControllers = navigationControllers.copy;
         
         if (@available(iOS 13, *)) {
@@ -96,7 +86,10 @@ static const CGFloat MiniPlayerOffset = 5.f;
             self.tabBar.barTintColor = UIColor.play_blurTintColor;
         }
         
-        self.selectedIndex = initialTabIndex;
+        TabBarItemIdentifier lastOpenTabBarItem = ApplicationSettingLastOpenedTabBarItemIdentifier();
+        if (lastOpenTabBarItem) {
+            self.selectedIndex = lastOpenTabBarItem;
+        }
     }
     return self;
 }

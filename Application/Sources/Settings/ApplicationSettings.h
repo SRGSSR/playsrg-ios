@@ -32,8 +32,8 @@ typedef NS_ENUM(NSInteger, SettingUserLocation) {
  *  Tab bar item identifier.
  */
 typedef NS_ENUM(NSInteger, TabBarItemIdentifier) {
-    TabBarItemIdentifierNone = 0,
-    TabBarItemIdentifierVideos,
+    TabBarItemIdentifierNone,
+    TabBarItemIdentifierVideos = TabBarItemIdentifierNone,
     TabBarItemIdentifierAudios,
     TabBarItemIdentifierLivestreams,
     TabBarItemIdentifierSearch,
