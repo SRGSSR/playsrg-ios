@@ -6,9 +6,8 @@
 
 #import "HomeMediaListTableViewCell.h"
 
-#import "ApplicationSettings.h"
-#import "HomeMediaCollectionViewCell.h"
 #import "HomeMediaCollectionHeaderView.h"
+#import "HomeMediaCollectionViewCell.h"
 #import "MediaPlayerViewController.h"
 #import "SRGBaseTopic+PlaySRG.h"
 #import "UICollectionView+PlaySRG.h"
@@ -149,21 +148,11 @@ static const CGFloat HomeStandardMargin = 10.f;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (homeSectionInfo) {
-            // Scroll to the latest radio regional live stream played.
-            if (homeSectionInfo.homeSection == HomeSectionRadioLive && ! [self isEmpty]) {
-                SRGMedia *media = ApplicationSettingSelectedLivestreamMediaForChannelUid(homeSectionInfo.identifier, homeSectionInfo.items);
-                NSInteger index = [homeSectionInfo.items indexOfObject:media];
-                if (index != NSNotFound) {
-                    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-                }
-            }
             // Restore position in rows when scrolling vertically and returning to a previously scrolled row
-            else {
-                CGPoint maxContentOffset = self.collectionView.play_maximumContentOffset;
-                CGPoint contentOffset = CGPointMake(fmaxf(fminf(homeSectionInfo.contentOffset.x, maxContentOffset.x), 0.f),
-                                                    homeSectionInfo.contentOffset.y);
-                [self.collectionView setContentOffset:contentOffset animated:NO];
-            }
+            CGPoint maxContentOffset = self.collectionView.play_maximumContentOffset;
+            CGPoint contentOffset = CGPointMake(fmaxf(fminf(homeSectionInfo.contentOffset.x, maxContentOffset.x), 0.f),
+                                                homeSectionInfo.contentOffset.y);
+            [self.collectionView setContentOffset:contentOffset animated:NO];
         }
         self.collectionView.scrollEnabled = (homeSectionInfo.items.count != 0);
     });
@@ -241,12 +230,6 @@ static const CGFloat HomeStandardMargin = 10.f;
 {
     if (! [self isEmpty]) {
         SRGMedia *media = self.homeSectionInfo.items[indexPath.row];
-        
-        // Radio channel logic to scroll to the latest radio live stream played.
-        if (self.homeSectionInfo.homeSection == HomeSectionRadioLive && ! [self isEmpty]) {
-            ApplicationSettingSetSelectedLiveStreamURNForChannelUid(self.homeSectionInfo.identifier, media.URN);
-        }
-        
         [self.nearestViewController play_presentMediaPlayerWithMedia:media position:nil airPlaySuggestions:YES fromPushNotification:NO animated:YES completion:nil];
     }
 }
