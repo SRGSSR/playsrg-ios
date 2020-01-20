@@ -91,7 +91,7 @@
         }
         else {
             self.titleLabel.text = NSLocalizedString(@"Receiver is idle.", @"Title displayed when no media is being played on the connected Google Cast receiver (name unknown)");
-        } 
+        }
     }
 }
 

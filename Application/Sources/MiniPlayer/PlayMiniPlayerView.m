@@ -303,6 +303,7 @@
 
 #pragma mark Actions
 
+// The button is an `SRGPlaybackButton` which automatically toggles play / pause
 - (IBAction)togglePlaybackButton:(id)sender
 {
     if (! self.media) {
@@ -326,6 +327,10 @@
         [controller playMedia:media atPosition:position withPreferredSettings:ApplicationSettingPlaybackSettings()];
         [SRGLetterboxService.sharedService enableWithController:controller pictureInPictureDelegate:nil];
     }
+    
+    if (media.mediaType == SRGMediaTypeVideo && ! ApplicationSettingBackgroundVideoPlaybackEnabled()) {
+        [self.nearestViewController play_presentMediaPlayerFromLetterboxController:controller withAirPlaySuggestions:YES fromPushNotification:NO animated:YES completion:nil];
+    }
 }
 
 - (IBAction)close:(id)sender
@@ -340,11 +345,18 @@
 
 - (void)openFullScreenPlayer:(UIGestureRecognizer *)gestureRecognizer
 {
-    if (! self.media) {
+    SRGMedia *media = self.media;
+    if (! media) {
         return;
     }
     
-    [self.nearestViewController play_presentMediaPlayerWithMedia:self.media position:nil airPlaySuggestions:YES fromPushNotification:NO animated:YES completion:nil];
+    SRGLetterboxController *controller = self.controller;
+    if ([controller.media isEqual:media]) {
+        [self.nearestViewController play_presentMediaPlayerFromLetterboxController:controller withAirPlaySuggestions:YES fromPushNotification:NO animated:YES completion:nil];
+    }
+    else {
+        [self.nearestViewController play_presentMediaPlayerWithMedia:media position:nil airPlaySuggestions:YES fromPushNotification:NO animated:YES completion:nil];
+    }
 }
 
 #pragma mark Notifications
