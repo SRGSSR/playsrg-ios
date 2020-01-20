@@ -109,7 +109,7 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
             break;
         }
             
-        case ApplicationSectionVideos: {
+        case ApplicationSectionOverview: {
             return [UIImage imageNamed:@"home-22"];
             break;
         }
@@ -161,7 +161,7 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
     }
     
     ApplicationSectionInfo *otherApplicationSectionInfo = object;
-    return (self.applicationSection == otherApplicationSectionInfo.applicationSection && (self.applicationSection != ApplicationSectionRadioChannelOverview || [self.uid isEqualToString:otherApplicationSectionInfo.uid]));
+    return self.applicationSection == otherApplicationSectionInfo.applicationSection && ((! self.uid && ! otherApplicationSectionInfo.uid) || [self.uid isEqual:otherApplicationSectionInfo.uid]);
 }
 
 - (NSUInteger)hash

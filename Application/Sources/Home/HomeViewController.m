@@ -553,11 +553,8 @@
         [self.navigationController pushViewController:showsViewController animated:NO];
         return YES;
     }
-    else if (! self.radioChannel && sameChannel) {
-        return applicationSectionInfo.applicationSection == ApplicationSectionVideos;
-    }
     else if (sameChannel) {
-        return applicationSectionInfo.applicationSection == ApplicationSectionRadioChannelOverview;
+        return applicationSectionInfo.applicationSection == ApplicationSectionOverview;
     }
     else {
         return NO;

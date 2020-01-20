@@ -416,8 +416,7 @@ static void *s_kvoContext = &s_kvoContext;
     NSParameterAssert(mediaURN);
     
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
-    ApplicationSection applicationSection = radioChannel ? ApplicationSectionRadioChannelOverview : ApplicationSectionVideos;
-    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel options:nil];
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionOverview radioChannel:radioChannel options:nil];
     
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         CMTime time = (startTime > 0) ? CMTimeMakeWithSeconds(startTime, NSEC_PER_SEC) : kCMTimeZero;
@@ -431,8 +430,7 @@ static void *s_kvoContext = &s_kvoContext;
     NSParameterAssert(showURN);
     
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
-    ApplicationSection applicationSection = radioChannel ? ApplicationSectionRadioChannelOverview : ApplicationSectionVideos;
-    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel options:nil];
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionOverview radioChannel:radioChannel options:nil];
     
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         [self openShowURN:showURN show:nil fromPushNotification:fromPushNotification];
@@ -473,8 +471,7 @@ static void *s_kvoContext = &s_kvoContext;
 - (void)openHomeWithChannelUid:(NSString *)channelUid completionBlock:(void (^)(void))completionBlock
 {
     RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
-    ApplicationSection applicationSection = radioChannel ? ApplicationSectionRadioChannelOverview : ApplicationSectionVideos;
-    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel];
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionOverview radioChannel:radioChannel];
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:completionBlock];
 }
 
@@ -515,7 +512,7 @@ static void *s_kvoContext = &s_kvoContext;
 {
     NSParameterAssert(topicURN);
     
-    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionVideos radioChannel:nil];
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionOverview radioChannel:nil];
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         [self openTopicURN:topicURN];
         completionBlock ? completionBlock() : nil;
@@ -526,7 +523,7 @@ static void *s_kvoContext = &s_kvoContext;
 {
     NSParameterAssert(moduleURN);
     
-    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionVideos radioChannel:nil];
+    ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionOverview radioChannel:nil];
     [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
         [self openModuleURN:moduleURN];
         completionBlock ? completionBlock() : nil;
@@ -572,8 +569,7 @@ static void *s_kvoContext = &s_kvoContext;
             SRGShow *show = [NSKeyedUnarchiver unarchiveObjectWithData:userActivity.userInfo[@"SRGShowData"]];
             
             RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:show.primaryChannelUid];
-            ApplicationSection applicationSection = radioChannel ? ApplicationSectionRadioChannelOverview : ApplicationSectionVideos;
-            ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:applicationSection radioChannel:radioChannel options:nil];
+            ApplicationSectionInfo *applicationSectionInfo = [ApplicationSectionInfo applicationSectionInfoWithApplicationSection:ApplicationSectionOverview radioChannel:radioChannel options:nil];
             
             [self resetWithApplicationSectionInfo:applicationSectionInfo completionBlock:^{
                 [self openShowURN:showURN show:show fromPushNotification:NO];
