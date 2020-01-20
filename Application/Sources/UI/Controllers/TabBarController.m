@@ -80,7 +80,7 @@ static const CGFloat MiniPlayerOffset = 5.f;
         self.viewControllers = navigationControllers.copy;
         
         if (@available(iOS 13, *)) {
-            self.tabBar.tintColor = nil;
+            self.tabBar.barTintColor = nil;
         }
         else {
             self.tabBar.barTintColor = UIColor.play_blurTintColor;
