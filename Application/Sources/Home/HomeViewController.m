@@ -540,24 +540,25 @@
 
 - (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    BOOL sameChannel = (! self.radioChannel && ! applicationSectionInfo.radioChannel) || (self.radioChannel && [self.radioChannel isEqual:applicationSectionInfo.radioChannel]);
-    if (applicationSectionInfo.applicationSection == ApplicationSectionShowByDate && sameChannel) {
+    BOOL sameChannel = (! self.radioChannel && ! applicationSectionInfo.radioChannel) || [self.radioChannel isEqual:applicationSectionInfo.radioChannel];
+    if (! sameChannel) {
+        return NO;
+    }
+    
+    if (applicationSectionInfo.applicationSection == ApplicationSectionShowByDate) {
         NSDate *date = applicationSectionInfo.options[ApplicationSectionOptionShowByDateDateKey];
         CalendarViewController *calendarViewController = [[CalendarViewController alloc] initWithRadioChannel:applicationSectionInfo.radioChannel date:date];
         [self.navigationController pushViewController:calendarViewController animated:NO];
         return YES;
     }
-    else if (applicationSectionInfo.applicationSection == ApplicationSectionShowAZ && sameChannel) {
+    else if (applicationSectionInfo.applicationSection == ApplicationSectionShowAZ) {
         NSString *index = applicationSectionInfo.options[ApplicationSectionOptionShowAZIndexKey];
         ShowsViewController *showsViewController = [[ShowsViewController alloc] initWithRadioChannel:applicationSectionInfo.radioChannel alphabeticalIndex:index];
         [self.navigationController pushViewController:showsViewController animated:NO];
         return YES;
     }
-    else if (sameChannel) {
-        return applicationSectionInfo.applicationSection == ApplicationSectionOverview;
-    }
     else {
-        return NO;
+        return applicationSectionInfo.applicationSection == ApplicationSectionOverview;
     }
 }
 
