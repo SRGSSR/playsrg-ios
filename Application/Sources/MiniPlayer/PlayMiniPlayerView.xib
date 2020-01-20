@@ -41,7 +41,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oO5-25-JOn">
-                            <rect key="frame" x="61" y="18" width="479" height="18"/>
+                            <rect key="frame" x="61" y="18" width="478" height="18"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -67,7 +67,7 @@
                         <constraint firstAttribute="trailing" secondItem="Rm4-ky-aFv" secondAttribute="trailing" id="MEC-bn-dJV"/>
                         <constraint firstItem="Rm4-ky-aFv" firstAttribute="top" secondItem="Bfa-82-k4k" secondAttribute="top" id="ORv-Tg-jLV"/>
                         <constraint firstItem="iWC-hN-4pX" firstAttribute="top" secondItem="Bfa-82-k4k" secondAttribute="top" constant="6" id="RKG-FW-KyD"/>
-                        <constraint firstItem="wKg-8I-Eaj" firstAttribute="leading" secondItem="oO5-25-JOn" secondAttribute="trailing" constant="9" id="WbO-HY-uOc"/>
+                        <constraint firstItem="wKg-8I-Eaj" firstAttribute="leading" secondItem="oO5-25-JOn" secondAttribute="trailing" constant="10" id="WbO-HY-uOc"/>
                         <constraint firstItem="iWC-hN-4pX" firstAttribute="leading" secondItem="Bfa-82-k4k" secondAttribute="leading" constant="9" id="pdP-0Y-hhH"/>
                         <constraint firstItem="oO5-25-JOn" firstAttribute="centerY" secondItem="iWC-hN-4pX" secondAttribute="centerY" id="q2i-xD-Yq0"/>
                         <constraint firstItem="wKg-8I-Eaj" firstAttribute="centerY" secondItem="oO5-25-JOn" secondAttribute="centerY" id="qlG-3T-HMU"/>
