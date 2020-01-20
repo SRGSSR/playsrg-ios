@@ -28,7 +28,7 @@ NSString * const PlaySRGSettingSubtitleAvailabilityDisplayed = @"PlaySRGSettingS
 NSString * const PlaySRGSettingAudioDescriptionAvailabilityDisplayed = @"PlaySRGSettingAudioDescriptionAvailabilityDisplayed";
 
 NSString * const PlaySRGSettingLastLoggedInEmailAddress = @"PlaySRGSettingLastLoggedInEmailAddress";
-NSString * const PlaySRGSettingLastOpenedLiveSection = @"PlaySRGSettingLastOpenedRadioChannelUid";
+NSString * const PlaySRGSettingLastOpenedLiveSection = @"PlaySRGSettingLastOpenedLiveSection";
 NSString * const PlaySRGSettingLastOpenedRadioChannelUid = @"PlaySRGSettingLastOpenedRadioChannelUid";
 NSString * const PlaySRGSettingLastOpenedTabBarItem = @"PlaySRGSettingLastOpenedTabBarItem";
 NSString * const PlaySRGSettingSelectedLiveStreamURNForChannels = @"PlaySRGSettingSelectedLiveStreamURNForChannels";

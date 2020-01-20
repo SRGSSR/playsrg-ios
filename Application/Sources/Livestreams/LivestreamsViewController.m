@@ -27,7 +27,8 @@
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
     for (NSNumber *homeSectionNumber in homeSections) {
         HomeSection homeSection = homeSectionNumber.integerValue;
-        HomeLivestreamsViewController *viewController = [[HomeLivestreamsViewController alloc] initWithHomeSectionInfo: [[HomeSectionInfo alloc] initWithHomeSection:homeSection]];
+        HomeSectionInfo *homeSectionInfo = [[HomeSectionInfo alloc] initWithHomeSection:homeSection];
+        HomeLivestreamsViewController *viewController = [[HomeLivestreamsViewController alloc] initWithHomeSectionInfo:homeSectionInfo];
         [viewControllers addObject:viewController];
         
         if (homeSection == lastOpenedHomeSection) {
