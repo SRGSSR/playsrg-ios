@@ -175,6 +175,22 @@ static const CGFloat MiniPlayerOffset = 5.f;
     return supportedInterfaceOrientations & [self.selectedViewController supportedInterfaceOrientations];
 }
 
+#pragma mark Responsiveness
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        [self updateLayoutAnimated:NO];
+    } completion:nil];
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
+{
+    [super traitCollectionDidChange:previousTraitCollection];
+    
+    [self updateLayoutAnimated:NO];
+}
+
 #pragma mark Status bar
 
 - (BOOL)prefersStatusBarHidden
@@ -209,12 +225,31 @@ static const CGFloat MiniPlayerOffset = 5.f;
     void (^animations)(void) = ^{
         [self.miniPlayerView mas_remakeConstraints:^(MASConstraintMaker *make) {
             if (@available(iOS 11, *)) {
-                make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft).with.offset(MiniPlayerOffset);
                 make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight).with.offset(-MiniPlayerOffset);
             }
             else {
-                make.left.equalTo(self.view).with.offset(MiniPlayerOffset);
                 make.right.equalTo(self.view).with.offset(-MiniPlayerOffset);
+            }
+            
+            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                // Use 1/3 of the space, minimum of 500 pixels. If the player cannot fit in 80% of the screen,
+                // use all available space.
+                CGFloat availableWidth = CGRectGetWidth(self.view.frame) - 2 * MiniPlayerOffset;
+                CGFloat width = fmaxf(availableWidth / 3.f, 500.f);
+                if (width > 0.8f * availableWidth) {
+                    width = availableWidth;
+                }
+                make.width.equalTo(@(width));
+            }
+            else {
+                if (@available(iOS 11, *)) {
+                    make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft).with.offset(MiniPlayerOffset);
+                    make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight).with.offset(-MiniPlayerOffset);
+                }
+                else {
+                    make.left.equalTo(self.view).with.offset(MiniPlayerOffset);
+                    make.right.equalTo(self.view).with.offset(-MiniPlayerOffset);
+                }
             }
             
             if (self.miniPlayerView.active) {
