@@ -70,7 +70,7 @@ NSValueTransformer *TabBarItemIdentifierTransformer(void)
     dispatch_once(&s_onceToken, ^{
         s_transformer = [NSValueTransformer mtl_valueMappingTransformerWithDictionary:@{ @"videos" : @(TabBarItemIdentifierVideos),
                                                                                          @"audios" : @(TabBarItemIdentifierAudios),
-                                                                                         @"lives" : @(TabBarItemIdentifierLives),
+                                                                                         @"livestreams" : @(TabBarItemIdentifierLivestreams),
                                                                                          @"search" : @(TabBarItemIdentifierSearch),
                                                                                          @"library" : @(TabBarItemIdentifierLibrary) }
                                                                          defaultValue:@(TabBarItemIdentifierNone)
@@ -261,7 +261,7 @@ TabBarItemIdentifier ApplicationSettingLastOpenedTabBarItemIdentifier(void)
 
 void ApplicationSettingSetLastOpenedTabBarItemIdentifier(TabBarItemIdentifier tabBarItemIdentifier)
 {
-    if (tabBarItemIdentifier == TabBarItemIdentifierVideos || tabBarItemIdentifier == TabBarItemIdentifierAudios || tabBarItemIdentifier == TabBarItemIdentifierLives) {
+    if (tabBarItemIdentifier == TabBarItemIdentifierVideos || tabBarItemIdentifier == TabBarItemIdentifierAudios || tabBarItemIdentifier == TabBarItemIdentifierLivestreams) {
         NSString *tabBarItemIdentifierString = [TabBarItemIdentifierTransformer() reverseTransformedValue:@(tabBarItemIdentifier)];
         
         NSUserDefaults *userDefaults = NSUserDefaults.standardUserDefaults;
@@ -283,12 +283,12 @@ void ApplicationSettingSetLastOpenedRadioChannel(RadioChannel *radioChannel)
     [userDefaults synchronize];
 }
 
-HomeSection ApplicationSettingLastOpenedLiveHomeSection(void)
+HomeSection ApplicationSettingLastOpenedLivestreamHomeSection(void)
 {
     return [[SettingLiveSectionTransformer() transformedValue:[NSUserDefaults.standardUserDefaults stringForKey:PlaySRGSettingLastOpenedLiveSection]] integerValue];
 }
 
-void ApplicationSettingSetLastOpenedLiveHomeSection(HomeSection homeSection)
+void ApplicationSettingSetLastOpenedLivestreamHomeSection(HomeSection homeSection)
 {
     NSString *homeSectionString = [SettingLiveSectionTransformer() reverseTransformedValue:@(homeSection)];
     

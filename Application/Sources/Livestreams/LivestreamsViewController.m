@@ -22,7 +22,7 @@
 {
     NSAssert(homeSections.count > 0, @"1 live section at least expected");
     
-    HomeSection lastOpenedHomeSection = ApplicationSettingLastOpenedLiveHomeSection();
+    HomeSection lastOpenedHomeSection = ApplicationSettingLastOpenedLivestreamHomeSection();
     NSInteger initialPage = 0;
     
     NSMutableArray<UIViewController *> *viewControllers = [NSMutableArray array];
@@ -60,7 +60,7 @@
     BOOL displayed = [super displayPageAtIndex:index animated:animated];
     if (displayed) {
         HomeLivestreamsViewController *selectedHomeLivestreamsViewController = (HomeLivestreamsViewController *)self.viewControllers[index];
-        ApplicationSettingSetLastOpenedLiveHomeSection(selectedHomeLivestreamsViewController.homeSectionInfo.homeSection);
+        ApplicationSettingSetLastOpenedLivestreamHomeSection(selectedHomeLivestreamsViewController.homeSectionInfo.homeSection);
     }
     return displayed;
 }
@@ -70,7 +70,7 @@
     [super updateTabForViewController:viewController animated:animated];
     
     HomeLivestreamsViewController *currentHomeLivestreamsViewController = (HomeLivestreamsViewController *)viewController;
-    ApplicationSettingSetLastOpenedLiveHomeSection(currentHomeLivestreamsViewController.homeSectionInfo.homeSection);
+    ApplicationSettingSetLastOpenedLivestreamHomeSection(currentHomeLivestreamsViewController.homeSectionInfo.homeSection);
 }
 
 #pragma mark SRGAnalyticsViewTracking protocol

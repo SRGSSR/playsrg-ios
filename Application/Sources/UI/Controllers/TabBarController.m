@@ -59,7 +59,7 @@ static const CGFloat MiniPlayerOffset = 5.f;
         if (liveHomeSections.count > 0) {
             viewController = [[LivestreamsViewController alloc] initWithHomeSections:liveHomeSections];
             [viewControllers addObject:viewController];
-            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"live-25"] tag:TabBarItemIdentifierLives]];
+            [tabBarItems addObject:[[UITabBarItem alloc] initWithTitle:viewController.title image:[UIImage imageNamed:@"live-25"] tag:TabBarItemIdentifierLivestreams]];
         }
         
         viewController = [[SearchViewController alloc] init];
