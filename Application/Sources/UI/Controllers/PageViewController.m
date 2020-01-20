@@ -143,7 +143,12 @@
         return NO;
     }
     
-    [self.tabBar setSelectedItem:self.tabBar.items[index] animated:animated];
+    if (self.tabBar) {
+        [self.tabBar setSelectedItem:self.tabBar.items[index] animated:animated];
+    }
+    else {
+        self.initialPage = index;
+    }
     return YES;
 }
 
