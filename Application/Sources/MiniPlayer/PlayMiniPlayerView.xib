@@ -40,16 +40,8 @@
                                 <action selector="togglePlaybackButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="zt2-Xu-A9j"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gTU-pg-s3K">
-                            <rect key="frame" x="60" y="16" width="22" height="22"/>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="22" id="hsC-Jb-AOO"/>
-                                <constraint firstAttribute="width" secondItem="gTU-pg-s3K" secondAttribute="height" multiplier="1:1" id="oci-9E-acv"/>
-                            </constraints>
-                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oO5-25-JOn">
-                            <rect key="frame" x="98" y="18" width="442" height="18"/>
+                            <rect key="frame" x="61" y="18" width="479" height="18"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -70,17 +62,15 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="oO5-25-JOn" firstAttribute="leading" secondItem="iWC-hN-4pX" secondAttribute="trailing" constant="10" id="BLW-a1-Fow"/>
                         <constraint firstItem="Rm4-ky-aFv" firstAttribute="leading" secondItem="Bfa-82-k4k" secondAttribute="leading" id="Hpv-L9-Wj4"/>
                         <constraint firstAttribute="trailing" secondItem="Rm4-ky-aFv" secondAttribute="trailing" id="MEC-bn-dJV"/>
                         <constraint firstItem="Rm4-ky-aFv" firstAttribute="top" secondItem="Bfa-82-k4k" secondAttribute="top" id="ORv-Tg-jLV"/>
                         <constraint firstItem="iWC-hN-4pX" firstAttribute="top" secondItem="Bfa-82-k4k" secondAttribute="top" constant="6" id="RKG-FW-KyD"/>
                         <constraint firstItem="wKg-8I-Eaj" firstAttribute="leading" secondItem="oO5-25-JOn" secondAttribute="trailing" constant="9" id="WbO-HY-uOc"/>
-                        <constraint firstItem="gTU-pg-s3K" firstAttribute="centerY" secondItem="wKg-8I-Eaj" secondAttribute="centerY" id="fql-zg-s6U"/>
-                        <constraint firstItem="gTU-pg-s3K" firstAttribute="centerY" secondItem="iWC-hN-4pX" secondAttribute="centerY" id="kV9-0V-dZc"/>
-                        <constraint firstItem="gTU-pg-s3K" firstAttribute="leading" secondItem="iWC-hN-4pX" secondAttribute="trailing" constant="9" id="lm3-FF-Yty"/>
                         <constraint firstItem="iWC-hN-4pX" firstAttribute="leading" secondItem="Bfa-82-k4k" secondAttribute="leading" constant="9" id="pdP-0Y-hhH"/>
                         <constraint firstItem="oO5-25-JOn" firstAttribute="centerY" secondItem="iWC-hN-4pX" secondAttribute="centerY" id="q2i-xD-Yq0"/>
-                        <constraint firstItem="oO5-25-JOn" firstAttribute="leading" secondItem="gTU-pg-s3K" secondAttribute="trailing" constant="16" id="xfh-Pr-q69"/>
+                        <constraint firstItem="wKg-8I-Eaj" firstAttribute="centerY" secondItem="oO5-25-JOn" secondAttribute="centerY" id="qlG-3T-HMU"/>
                         <constraint firstAttribute="trailing" secondItem="wKg-8I-Eaj" secondAttribute="trailing" constant="9" id="xnB-eN-Rg0"/>
                     </constraints>
                 </view>
@@ -99,7 +89,6 @@
             <connections>
                 <outlet property="playbackButton" destination="iWC-hN-4pX" id="oIf-At-jhd"/>
                 <outlet property="progressView" destination="Rm4-ky-aFv" id="Y1o-ld-5KT"/>
-                <outlet property="thumbnailImageView" destination="gTU-pg-s3K" id="Jps-R0-CHJ"/>
                 <outlet property="titleLabel" destination="oO5-25-JOn" id="my1-v9-Sn0"/>
             </connections>
             <point key="canvasLocation" x="331" y="-161"/>

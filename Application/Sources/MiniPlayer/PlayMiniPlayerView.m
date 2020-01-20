@@ -36,9 +36,7 @@
 //        player controller exists and is used). Instead, write a Play SRG PlaybackButton. We could even think about moving
 //        this class to the Letterbox framework, but this requires some team discussion first.
 @property (nonatomic, weak) IBOutlet SRGPlaybackButton *playbackButton;
-
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
 
 @property (nonatomic, weak) id periodicTimeObserver;
 
@@ -231,20 +229,6 @@
     }
     else {
         self.titleLabel.text = self.media.title;
-    }
-    
-    // Fix for inconsistent RTS data. A media from a media list does not have a channel oject, and neither does "Podcast Originaux"
-    // medias created from a media composition. Use show primary channel uid as fallback.
-    NSString *channelUid = self.channel.uid ?: self.media.show.primaryChannelUid;
-    RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:channelUid];
-    if (radioChannel) {
-        self.thumbnailImageView.image = RadioChannelLogo22Image(radioChannel);
-    }
-    else if (self.media.mediaType == SRGMediaTypeAudio) {
-        self.thumbnailImageView.image = (self.media.contentType == SRGContentTypeLivestream || self.media.contentType == SRGContentTypeScheduledLivestream) ? [UIImage imageNamed:@"radioset-22"] : [UIImage imageNamed:@"audio-22"];
-    }
-    else {
-        self.thumbnailImageView.image = (self.media.contentType == SRGContentTypeLivestream || self.media.contentType == SRGContentTypeScheduledLivestream) ? [UIImage imageNamed:@"tv-22"] : [UIImage imageNamed:@"video-22"];
     }
     
     [self updateProgress];
