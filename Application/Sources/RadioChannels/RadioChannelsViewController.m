@@ -9,7 +9,6 @@
 #import "ApplicationSettings.h"
 #import "HomeViewController.h"
 #import "NSBundle+PlaySRG.h"
-#import "PageViewController+Private.h"
 
 #import <GoogleCast/GoogleCast.h>
 #import <libextobjc/libextobjc.h>
@@ -53,24 +52,14 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:castButton];
 }
 
-#pragma mark Override
+#pragma mark Overrides
 
-- (BOOL)displayPageAtIndex:(NSInteger)index animated:(BOOL)animated
+- (void)didDisplayViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    BOOL displayed = [super displayPageAtIndex:index animated:animated];
-    if (displayed) {
-        HomeViewController *selectedHomeViewController = (HomeViewController *)self.viewControllers[index];
-        ApplicationSettingSetLastOpenedRadioChannel(selectedHomeViewController.radioChannel);
-    }
-    return displayed;
-}
-
-- (void)updateTabForViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    [super updateTabForViewController:viewController animated:animated];
+    [super didDisplayViewController:viewController animated:animated];
     
-    HomeViewController *currentHomeViewController = (HomeViewController *)viewController;
-    ApplicationSettingSetLastOpenedRadioChannel(currentHomeViewController.radioChannel);
+    HomeViewController *homeViewController = (HomeViewController *)viewController;
+    ApplicationSettingSetLastOpenedRadioChannel(homeViewController.radioChannel);
 }
 
 #pragma mark SRGAnalyticsViewTracking protocol

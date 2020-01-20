@@ -44,6 +44,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+/**
+ *  Subclassing hooks.
+ */
+@interface PageViewController (Subclassing)
+
+/**
+ *  Called when the spcified view controller has been displayed, either because the user tapped on the corresponding
+ *  tab, or because `-switchToIndex:animated:` has been called.
+ */
+- (void)didDisplayViewController:(UIViewController *)viewController animated:(BOOL)animated NS_REQUIRES_SUPER;
+
+@end
+
 @interface UIViewController (PageViewController)
 
 /**

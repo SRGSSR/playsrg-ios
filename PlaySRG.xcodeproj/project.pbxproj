@@ -2019,7 +2019,6 @@
 		6F475F951EB37BC6003021EA /* MediasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediasViewController.m; sourceTree = "<group>"; };
 		6F475F961EB37BC6003021EA /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		6F475F971EB37BC6003021EA /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
-		6F475F981EB37BC6003021EA /* PageViewController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PageViewController+Private.h"; sourceTree = "<group>"; };
 		6F475F991EB37BC6003021EA /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
 		6F475F9A1EB37BC6003021EA /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
 		6F475F9C1EB37BC6003021EA /* RequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestViewController.h; sourceTree = "<group>"; };
@@ -3108,7 +3107,6 @@
 				6F475F971EB37BC6003021EA /* NavigationController.m */,
 				6F475F991EB37BC6003021EA /* PageViewController.h */,
 				6F475F9A1EB37BC6003021EA /* PageViewController.m */,
-				6F475F981EB37BC6003021EA /* PageViewController+Private.h */,
 				6F475F9C1EB37BC6003021EA /* RequestViewController.h */,
 				6F475F9D1EB37BC6003021EA /* RequestViewController.m */,
 				082910AC239E90D200D168F4 /* TabBarController.h */,

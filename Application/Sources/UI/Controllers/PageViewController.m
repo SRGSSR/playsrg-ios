@@ -199,14 +199,15 @@
     
     UIViewController *newViewController = self.viewControllers[index];
     [self.pageViewController setViewControllers:@[newViewController] direction:direction animated:animated completion:nil];
+    
+    [self didDisplayViewController:newViewController animated:animated];
     return YES;
 }
 
-- (void)updateTabForViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-    NSUInteger currentIndex = [self.viewControllers indexOfObject:viewController];
-    [self.tabBar setSelectedItem:self.tabBar.items[currentIndex] animated:animated];
-}
+#pragma mark Stubs
+
+- (void)didDisplayViewController:(UIViewController *)viewController animated:(BOOL)animated
+{}
 
 #pragma mark ContainerContentInsets protocol
 
@@ -252,7 +253,10 @@
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed
 {
     if (completed) {
-        [self updateTabForViewController:pageViewController.viewControllers.firstObject animated:YES];
+        UIViewController *newViewController = pageViewController.viewControllers.firstObject;
+        NSUInteger currentIndex = [self.viewControllers indexOfObject:newViewController];
+        [self.tabBar setSelectedItem:self.tabBar.items[currentIndex] animated:YES];;
+        [self didDisplayViewController:newViewController animated:YES];
     }
 }
 
