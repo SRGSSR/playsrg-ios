@@ -1875,6 +1875,8 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
         [self srg_trackPageView];
         self.fromPushNotification = NO;
     }
+    
+    [self updateGoogleCastButton];
 }
 
 - (void)playbackStateDidChange:(NSNotification *)notification
