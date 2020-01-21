@@ -7,6 +7,7 @@
 #import "GoogleCast.h"
 
 #import "ApplicationConfiguration.h"
+#import "History.h"
 #import "PlayErrors.h"
 #import "UIViewController+PlaySRG.h"
 #import "UIWindow+PlaySRG.h"
@@ -94,6 +95,44 @@ BOOL GoogleCastIsPossible(SRGMediaComposition *mediaComposition, NSError **pErro
         return NO;
     }
     
+    return YES;
+}
+
+BOOL GoogleCastPlayMediaComposition(SRGMediaComposition *mediaComposition, SRGPosition *position, NSError **pError)
+{
+    if (! GoogleCastIsPossible(mediaComposition, pError)) {
+        return NO;
+    }
+    
+    SRGChapter *mainChapter = mediaComposition.mainChapter;
+    
+    GCKMediaMetadata *metadata = [[GCKMediaMetadata alloc] init];
+    [metadata setString:mainChapter.title forKey:kGCKMetadataKeyTitle];
+    
+    NSString *subtitle = mainChapter.lead;
+    if (subtitle) {
+        [metadata setString:subtitle forKey:kGCKMetadataKeySubtitle];
+    }
+    
+    GCKMediaInformationBuilder *mediaInfoBuilder = [[GCKMediaInformationBuilder alloc] init];
+    mediaInfoBuilder.contentID = mediaComposition.chapterURN;
+    mediaInfoBuilder.streamType = GCKMediaStreamTypeNone;
+    mediaInfoBuilder.metadata = metadata;
+    mediaInfoBuilder.customData = @{ @"server" : SRGDataProvider.currentDataProvider.serviceURL.host };
+    
+    GCKCastSession *castSession = [GCKCastContext sharedInstance].sessionManager.currentCastSession;
+    GCKMediaLoadOptions *options = [[GCKMediaLoadOptions alloc] init];
+    
+    // Only apply playing position for on-demand streams. Does not work well with other kinds of streams.
+    CMTime time = position.time;
+    BOOL isLivestream = mainChapter.contentType == SRGContentTypeLivestream || mainChapter.contentType == SRGContentTypeScheduledLivestream;
+    if (! isLivestream && CMTIME_IS_VALID(time) && CMTIME_COMPARE_INLINE(time, !=, kCMTimeZero)) {
+        float progress = HistoryPlaybackProgress(CMTimeGetSeconds(time), mainChapter.duration / 1000.);
+        if (progress != 1.f) {
+            options.playPosition = CMTimeGetSeconds(time);
+        }
+    }
+    [castSession.remoteMediaClient loadMedia:[mediaInfoBuilder build] withOptions:options];
     return YES;
 }
 
