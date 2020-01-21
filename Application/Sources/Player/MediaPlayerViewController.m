@@ -432,10 +432,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
                                            selector:@selector(accessibilityVoiceOverStatusChanged:)
                                                name:UIAccessibilityVoiceOverStatusChanged
                                              object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(googleCastStateDidChange:)
-                                               name:kGCKCastStateDidChangeNotification
-                                             object:nil];
     
     @weakify(self)
     self.userInterfaceUpdateTimer = [SmartTimer timerWithTimeInterval:1. repeats:YES background:NO queue:NULL block:^{
@@ -1995,25 +1991,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 - (void)accessibilityVoiceOverStatusChanged:(NSNotification *)notification
 {
     [self updateDetailsAppearance];
-}
-
-- (void)googleCastStateDidChange:(NSNotification *)notification
-{
-    GCKCastState castState = [notification.userInfo[kGCKNotificationKeyCastState] integerValue];
-    if (castState == GCKCastStateConnected) {
-        NSError *castError = nil;
-        if (GoogleCastIsPossible(self.letterboxController.mediaComposition, &castError)) {
-            // Dismiss the player in all cases. We don't want the player to be accessible anymore once Google Cast is
-            // connected.
-            UIViewController *presentingViewController = self.presentingViewController;
-            [self dismissViewControllerAnimated:YES completion:^{
-                [presentingViewController play_presentMediaPlayerFromLetterboxController:self.letterboxController withAirPlaySuggestions:NO fromPushNotification:self.fromPushNotification animated:YES completion:nil];
-            }];
-        }
-        else if (castError) {
-            [Banner showWithStyle:BannerStyleInfo message:castError.localizedDescription image:nil sticky:NO inViewController:self];
-        }
-    }
 }
 
 @end

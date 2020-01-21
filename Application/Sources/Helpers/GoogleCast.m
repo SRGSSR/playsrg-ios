@@ -140,20 +140,21 @@ BOOL GoogleCastIsPossible(SRGMediaComposition *mediaComposition, NSError **pErro
 - (void)googleCastStateDidChange:(NSNotification *)notification
 {
     GCKCastState castState = [notification.userInfo[kGCKNotificationKeyCastState] integerValue];
-    
     if (castState == GCKCastStateConnected) {
         SRGLetterboxService *service = SRGLetterboxService.sharedService;
         SRGLetterboxController *controller = service.controller;
         
         // Transfer local playback to Google Cast
-        if (GoogleCastIsPossible(controller.mediaComposition, NULL) && controller.playbackState == SRGMediaPlayerPlaybackStatePlaying) {
-            [UIApplication.sharedApplication.keyWindow.play_topViewController play_presentMediaPlayerFromLetterboxController:controller withAirPlaySuggestions:NO fromPushNotification:NO animated:YES completion:nil];
+        if (controller.playbackState == SRGMediaPlayerPlaybackStatePlaying) {
+            [UIApplication.sharedApplication.keyWindow.play_topViewController play_presentMediaPlayerFromLetterboxController:controller withAirPlaySuggestions:NO fromPushNotification:NO animated:YES completion:^(PlayerType playerType) {
+                if (playerType == PlayerTypeGoogleCast) {
+                    [service disable];
+                    [controller reset];
+                }
+            }];
         }
-        
-        // Stop local playback when connecting to a Google Cast receiver
-        [service disable];
-        [controller reset];
     }
 }
+
 
 @end

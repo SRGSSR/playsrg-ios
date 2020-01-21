@@ -42,7 +42,7 @@
                 return;
             }
             
-            [viewController play_presentMediaPlayerWithMedia:media position:nil airPlaySuggestions:YES fromPushNotification:NO animated:YES completion:^{
+            [viewController play_presentMediaPlayerWithMedia:media position:nil airPlaySuggestions:YES fromPushNotification:NO animated:YES completion:^(PlayerType playerType) {
                 SRGAnalyticsHiddenEventLabels *labels = [[SRGAnalyticsHiddenEventLabels alloc] init];
                 labels.source = notification.showURN ?: AnalyticsSourceNotification;
                 labels.type = NotificationTypeString(notification.type) ?: AnalyticsTypeActionPlayMedia;

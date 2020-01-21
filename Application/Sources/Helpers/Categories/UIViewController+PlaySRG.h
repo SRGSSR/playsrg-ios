@@ -9,6 +9,14 @@
 #import <SRGLetterbox/SRGLetterbox.h>
 #import <UIKit/UIKit.h>
 
+/**
+ *  Player types.
+ */
+typedef NS_ENUM(NSInteger, PlayerType) {
+    PlayerTypeNative,           // Native Letterbox-based player
+    PlayerTypeGoogleCast        // Google Cast player interface
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (PlaySRG)
@@ -57,14 +65,14 @@ NS_ASSUME_NONNULL_BEGIN
  *  ignored.
  *
  *  The completion block is called when the media player has been presented (it will be called immediately if the
- *  player is readily visible).
+ *  player is readily visible). The type of player actually presented is returned.
  */
 - (void)play_presentMediaPlayerWithMedia:(SRGMedia *)media
                                 position:(nullable SRGPosition *)position
                       airPlaySuggestions:(BOOL)airPlaySuggestions
                     fromPushNotification:(BOOL)fromPushNotification
                                 animated:(BOOL)animated
-                              completion:(nullable void (^)(void))completion;
+                              completion:(nullable void (^)(PlayerType playerType))completion;
 
 /**
  *  Same as `-play_presentMediaPlayerWithMedia:atPosition:fromPushNotification:animated:completion:`, but resuming from
@@ -74,7 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
                                 withAirPlaySuggestions:(BOOL)airPlaySuggestions
                                   fromPushNotification:(BOOL)fromPushNotification
                                               animated:(BOOL)animated
-                                            completion:(nullable void (^)(void))completion;
+                                            completion:(nullable void (^)(PlayerType playerType))completion;
 
 @end
 
