@@ -91,6 +91,12 @@
     }
     
     _controller = controller;
+    
+    // Always keep the most recent media information to be able to restart at a later time
+    if (controller.media) {
+        self.media = controller.media;
+    }
+    
     [self reloadData];
     
     if (controller) {
@@ -255,7 +261,6 @@
 
 - (void)registerUserInterfaceUpdatesWithController:(SRGLetterboxController *)controller
 {
-    self.media = controller.media;
     self.playbackButton.mediaPlayerController = controller.mediaPlayerController;
     
     @weakify(self)
@@ -268,8 +273,6 @@
 
 - (void)unregisterUserInterfaceUpdatesWithController:(SRGLetterboxController *)controller
 {
-    // Do not reset the media. Keep in media player for later restart
-    
     self.playbackButton.mediaPlayerController = nil;
     [controller removePeriodicTimeObserver:self.periodicTimeObserver];
 }
