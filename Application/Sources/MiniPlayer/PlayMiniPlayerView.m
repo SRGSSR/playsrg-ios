@@ -10,6 +10,7 @@
 #import "ApplicationSettings.h"
 #import "Banner.h"
 #import "ChannelService.h"
+#import "GoogleCast.h"
 #import "History.h"
 #import "MediaPlayerViewController.h"
 #import "NSBundle+PlaySRG.h"
@@ -141,6 +142,10 @@
                                            selector:@selector(audioSessionRouteDidChange:)
                                                name:AVAudioSessionRouteChangeNotification
                                              object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(googleCastPlaybackDidStart:)
+                                               name:GoogleCastPlaybackDidStartNotification
+                                             object:nil];
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow
@@ -257,6 +262,20 @@
     self.progressView.progress = (self.media.contentType == SRGContentTypeLivestream) ? 1.f : HistoryPlaybackProgressForMediaMetadata(self.media);
 }
 
+- (void)updateMetadataWithMedia:(SRGMedia *)media
+{
+    if (! [media isEqual:self.media]) {
+        self.media = media;
+    }
+    // Fix for inconsistent RTS data. A media from a media list does not have a channel oject, but a media created from a
+    // media composition has one. Use the one retrieved from the Letterbox metadata notification if available as fallback.
+    else if (! self.channel && media.channel) {
+        self.media = media;
+    }
+    
+    [self reloadData];
+}
+
 #pragma mark Controller registration for playback-related UI updates
 
 - (void)registerUserInterfaceUpdatesWithController:(SRGLetterboxController *)controller
@@ -367,17 +386,7 @@
 - (void)mediaMetadataDidChange:(NSNotification *)notification
 {
     SRGMedia *media = notification.userInfo[SRGLetterboxMediaKey];
-    
-    if (! [media isEqual:self.media]) {
-        self.media = media;
-    }
-    // Fix for inconsistent RTS data. A media from a media list does not have a channel oject, but a media created from a
-    // media composition has one. Use the one retrieved from the Letterbox metadata notification if available as fallback.
-    else if (! self.channel && media.channel) {
-        self.media = media;
-    }
-    
-    [self reloadData];
+    [self updateMetadataWithMedia:media];
 }
 
 - (void)applicationDidEnterBackground:(NSNotification *)notification
@@ -390,6 +399,11 @@
     [self registerUserInterfaceUpdatesWithController:self.controller];
 }
 
+- (void)contentSizeCategoryDidChange:(NSNotification *)notification
+{
+    [self reloadData];
+}
+
 - (void)audioSessionRouteDidChange:(NSNotification *)notification
 {
     // Called on a background thread!
@@ -400,9 +414,10 @@
     });
 }
 
-- (void)contentSizeCategoryDidChange:(NSNotification *)notification
+- (void)googleCastPlaybackDidStart:(NSNotification *)notification
 {
-    [self reloadData];
+    SRGMedia *media = notification.userInfo[GoogleCastMediaKey];
+    [self updateMetadataWithMedia:media];
 }
 
 @end

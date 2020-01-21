@@ -15,6 +15,9 @@
 #import <CoconutKit/CoconutKit.h>
 #import <GoogleCast/GoogleCast.h>
 
+NSString * const GoogleCastPlaybackDidStartNotification = @"GoogleCastPlaybackDidStartNotification";
+NSString * const GoogleCastMediaKey = @"GoogleCastMedia";
+
 @interface GoogleCastManager : NSObject
 
 @end
@@ -133,6 +136,12 @@ BOOL GoogleCastPlayMediaComposition(SRGMediaComposition *mediaComposition, SRGPo
         }
     }
     [castSession.remoteMediaClient loadMedia:[mediaInfoBuilder build] withOptions:options];
+    
+    SRGMedia *media = [mediaComposition mediaForSubdivision:mainChapter];
+    [NSNotificationCenter.defaultCenter postNotificationName:GoogleCastPlaybackDidStartNotification
+                                                      object:nil
+                                                    userInfo:@{ GoogleCastMediaKey : media }];
+    
     return YES;
 }
 
