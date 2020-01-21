@@ -8,6 +8,8 @@
 
 #import "ApplicationConfiguration.h"
 #import "PlayErrors.h"
+#import "UIViewController+PlaySRG.h"
+#import "UIWindow+PlaySRG.h"
 
 #import <CoconutKit/CoconutKit.h>
 #import <GoogleCast/GoogleCast.h>
@@ -139,11 +141,18 @@ BOOL GoogleCastIsPossible(SRGMediaComposition *mediaComposition, NSError **pErro
 {
     GCKCastState castState = [notification.userInfo[kGCKNotificationKeyCastState] integerValue];
     
-    // Stop any local playback when connecting to a Google Cast receiver
     if (castState == GCKCastStateConnected) {
         SRGLetterboxService *service = SRGLetterboxService.sharedService;
+        SRGLetterboxController *controller = service.controller;
+        
+        // Transfer local playback to Google Cast
+        if (GoogleCastIsPossible(controller.mediaComposition, NULL) && controller.playbackState == SRGMediaPlayerPlaybackStatePlaying) {
+            [UIApplication.sharedApplication.keyWindow.play_topViewController play_presentMediaPlayerFromLetterboxController:controller withAirPlaySuggestions:NO fromPushNotification:NO animated:YES completion:nil];
+        }
+        
+        // Stop local playback when connecting to a Google Cast receiver
         [service disable];
-        [service.controller reset];
+        [controller reset];
     }
 }
 
