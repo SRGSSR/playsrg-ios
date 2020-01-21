@@ -138,7 +138,13 @@ BOOL GoogleCastIsPossible(SRGMediaComposition *mediaComposition, NSError **pErro
 - (void)googleCastStateDidChange:(NSNotification *)notification
 {
     GCKCastState castState = [notification.userInfo[kGCKNotificationKeyCastState] integerValue];
-    SRGLetterboxService.sharedService.nowPlayingInfoAndCommandsEnabled = (castState != GCKCastStateConnected);
+    
+    // Stop any local playback when connecting to a Google Cast receiver
+    if (castState == GCKCastStateConnected) {
+        SRGLetterboxService *service = SRGLetterboxService.sharedService;
+        [service disable];
+        [service.controller reset];
+    }
 }
 
 @end

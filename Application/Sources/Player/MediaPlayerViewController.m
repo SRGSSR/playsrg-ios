@@ -2005,7 +2005,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
             // connected.
             UIViewController *presentingViewController = self.presentingViewController;
             [self dismissViewControllerAnimated:YES completion:^{
-                [self.letterboxController pause];
                 [presentingViewController play_presentMediaPlayerFromLetterboxController:self.letterboxController withAirPlaySuggestions:NO fromPushNotification:self.fromPushNotification animated:YES completion:nil];
             }];
         }
