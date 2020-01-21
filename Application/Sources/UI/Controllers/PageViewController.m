@@ -133,6 +133,7 @@
     
     UIViewController *initialViewController = self.viewControllers[self.initialPage];
     [self.pageViewController setViewControllers:@[initialViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    [self didDisplayViewController:initialViewController animated:NO];
 }
 
 #pragma mark Actions

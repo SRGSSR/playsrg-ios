@@ -8,6 +8,7 @@
 
 #import "ApplicationSettings.h"
 #import "HomeViewController.h"
+#import "NavigationController.h"
 #import "NSBundle+PlaySRG.h"
 
 #import <GoogleCast/GoogleCast.h>
@@ -54,6 +55,11 @@
     
     HomeViewController *homeViewController = (HomeViewController *)viewController;
     ApplicationSettingSetLastOpenedRadioChannel(homeViewController.radioChannel);
+    
+    if ([self.navigationController isKindOfClass:NavigationController.class]) {
+        NavigationController *navigationController = (NavigationController *)self.navigationController;
+        [navigationController updateWithRadioChannel:homeViewController.radioChannel];
+    }
 }
 
 #pragma mark SRGAnalyticsViewTracking protocol

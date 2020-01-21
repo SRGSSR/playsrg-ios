@@ -102,17 +102,6 @@ static const CGFloat MiniPlayerOffset = 5.f;
     
     UIColor *foregroundColor = UIColor.whiteColor;
     
-    UINavigationBar.appearance.barStyle = UIBarStyleBlack;
-    UINavigationBar.appearance.tintColor = foregroundColor;
-    UINavigationBar.appearance.titleTextAttributes = @{ NSFontAttributeName : [UIFont srg_mediumFontWithSize:18.f],
-                                                        NSForegroundColorAttributeName : foregroundColor };
-    
-    for (NSNumber *controlState in @[ @(UIControlStateNormal), @(UIControlStateHighlighted), @(UIControlStateDisabled) ]) {
-        [UIBarButtonItem.appearance setTitleTextAttributes:@{ NSFontAttributeName : [UIFont srg_regularFontWithSize:16.f],
-                                                              NSForegroundColorAttributeName : foregroundColor }
-                                                  forState:controlState.integerValue];
-    }
-    
     UITabBar.appearance.barStyle = UIBarStyleBlack;
     UITabBar.appearance.tintColor = UIColor.whiteColor;
     
