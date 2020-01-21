@@ -139,11 +139,6 @@ UIImage *RadioChannelLogo22Image(RadioChannel *radioChannel)
     return [UIImage imageNamed:[NSString stringWithFormat:@"logo_%@-22", radioChannel.resourceUid]] ?: [UIImage imageNamed:@"radioset-22"];
 }
 
-UIImage *RadioChannelNavigationBarImage(RadioChannel *radioChannel)
-{
-    return [UIImage imageNamed:[NSString stringWithFormat:@"navigation_bar_logo_%@-26", radioChannel.resourceUid]] ?: [UIImage imageNamed:@"logo_play-20"];
-}
-
 NSString *RadioChannelImageOverridePath(RadioChannel *radioChannel, NSString *type)
 {
     NSString *overrideImageName = [NSString stringWithFormat:@"override_%@_%@", type, radioChannel.resourceUid];

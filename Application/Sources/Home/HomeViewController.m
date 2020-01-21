@@ -81,12 +81,7 @@
 {
     [super viewDidLoad];
     
-    if (self.radioChannel) {
-        self.navigationItem.titleView = [[UIImageView alloc] initWithImage:RadioChannelNavigationBarImage(self.radioChannel)];
-    }
-    else {
-        self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_play-20"]];
-    }
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_play-20"]];
     
     self.navigationItem.titleView.isAccessibilityElement = YES;
     self.navigationItem.titleView.accessibilityTraits = UIAccessibilityTraitHeader;
