@@ -14,6 +14,7 @@
 #import "LibraryAccountHeaderView.h"
 #import "LibraryHeaderSectionView.h"
 #import "LibraryTableViewCell.h"
+#import "NavigationController.h"
 #import "NotificationsViewController.h"
 #import "NSBundle+PlaySRG.h"
 #import "PushService.h"
@@ -370,7 +371,7 @@
 - (void)settings:(id)sender
 {
     SettingsViewController *settingsViewController = [[SettingsViewController alloc] init];
-    UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    NavigationController *settingsNavigationController = [[NavigationController alloc] initWithRootViewController:settingsViewController];
     [self presentViewController:settingsNavigationController animated:YES completion:nil];
 }
 
