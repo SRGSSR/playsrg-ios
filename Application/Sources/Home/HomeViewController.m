@@ -81,8 +81,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo_play-20"]];
-    
     self.navigationItem.titleView.isAccessibilityElement = YES;
     self.navigationItem.titleView.accessibilityTraits = UIAccessibilityTraitHeader;
     self.navigationItem.titleView.accessibilityLabel = self.title;
