@@ -454,12 +454,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     SRGMedia *media = self.originalLetterboxController.media ?: self.originalMedia;
     [self setUserInterfaceBehaviorForMedia:media animated:NO];
     
-    [NSNotificationCenter.defaultCenter postNotificationName:MediaPlayerViewControllerVisibilityDidChangeNotification
-                                                      object:self
-                                                    userInfo:@{ MediaPlayerViewControllerVisibleKey : @YES }];
-    
-    [SRGLetterboxService.sharedService enableWithController:self.letterboxController pictureInPictureDelegate:self];
-    
     self.closeButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Close", @"Close button label on player view");
     self.shareButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Share", @"Share button label on player view");
     
@@ -482,6 +476,14 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
         if (! self.transitionCoordinator.cancelled) {
             [self srg_trackPageView];
         }
+    }
+    
+    if (self.play_isMovingToParentViewController) {
+        [NSNotificationCenter.defaultCenter postNotificationName:MediaPlayerViewControllerVisibilityDidChangeNotification
+                                                          object:self
+                                                        userInfo:@{ MediaPlayerViewControllerVisibleKey : @YES }];
+        
+        [SRGLetterboxService.sharedService enableWithController:self.letterboxController pictureInPictureDelegate:self];
     }
     
     self.userActivity = [[NSUserActivity alloc] initWithActivityType:[NSBundle.mainBundle.bundleIdentifier stringByAppendingString:@".playing"]];
