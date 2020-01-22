@@ -530,7 +530,7 @@
 
 - (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo
 {
-    BOOL sameChannel = (! self.radioChannel && ! applicationSectionInfo.radioChannel) || [self.radioChannel isEqual:applicationSectionInfo.radioChannel];
+    BOOL sameChannel = (self.radioChannel == applicationSectionInfo.radioChannel) || [self.radioChannel isEqual:applicationSectionInfo.radioChannel];
     if (! sameChannel) {
         return NO;
     }

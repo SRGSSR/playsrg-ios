@@ -161,7 +161,7 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
     }
     
     ApplicationSectionInfo *otherApplicationSectionInfo = object;
-    return self.applicationSection == otherApplicationSectionInfo.applicationSection && ((! self.uid && ! otherApplicationSectionInfo.uid) || [self.uid isEqual:otherApplicationSectionInfo.uid]);
+    return self.applicationSection == otherApplicationSectionInfo.applicationSection && (self.uid == otherApplicationSectionInfo.uid || [self.uid isEqual:otherApplicationSectionInfo.uid]);
 }
 
 - (NSUInteger)hash
