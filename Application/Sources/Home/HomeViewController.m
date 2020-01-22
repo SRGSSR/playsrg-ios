@@ -81,10 +81,6 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.titleView.isAccessibilityElement = YES;
-    self.navigationItem.titleView.accessibilityTraits = UIAccessibilityTraitHeader;
-    self.navigationItem.titleView.accessibilityLabel = self.title;
-    
     self.view.backgroundColor = UIColor.play_blackColor;
     
     self.tableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
