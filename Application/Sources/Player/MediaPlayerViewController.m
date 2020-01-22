@@ -55,6 +55,9 @@
 #import <SRGAppearance/SRGAppearance.h>
 #import <SRGUserData/SRGUserData.h>
 
+NSString * const MediaPlayerViewControllerVisibilityDidChangeNotification = @"MediaPlayerViewControllerVisibilityDidChangeNotification";
+NSString * const MediaPlayerViewControllerVisibleKey = @"MediaPlayerViewControllerVisible";
+
 // Store the most recently used landscape orientation, also between player instantiations (so that the user last used
 // orientation is preferred)
 static UIDeviceOrientation s_previouslyUsedLandscapeDeviceOrientation = UIDeviceOrientationLandscapeLeft;
@@ -451,6 +454,10 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
     SRGMedia *media = self.originalLetterboxController.media ?: self.originalMedia;
     [self setUserInterfaceBehaviorForMedia:media animated:NO];
     
+    [NSNotificationCenter.defaultCenter postNotificationName:MediaPlayerViewControllerVisibilityDidChangeNotification
+                                                      object:self
+                                                    userInfo:@{ MediaPlayerViewControllerVisibleKey : @YES }];
+    
     [SRGLetterboxService.sharedService enableWithController:self.letterboxController pictureInPictureDelegate:self];
     
     self.closeButton.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"Close", @"Close button label on player view");
@@ -507,6 +514,10 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
         }
         
         [self.livestreamMediasRequest cancel];
+        
+        [NSNotificationCenter.defaultCenter postNotificationName:MediaPlayerViewControllerVisibilityDidChangeNotification
+                                                          object:self
+                                                        userInfo:@{ MediaPlayerViewControllerVisibleKey : @NO }];
     }
     else if (self.letterboxController.media.mediaType == SRGMediaTypeVideo) {
         [self.letterboxController pause];

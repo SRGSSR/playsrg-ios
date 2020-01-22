@@ -10,6 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+OBJC_EXPORT NSString * const MediaPlayerViewControllerVisibilityDidChangeNotification;
+OBJC_EXPORT NSString * const MediaPlayerViewControllerVisibleKey;
+
 @interface MediaPlayerViewController : HLSViewController <SRGLetterboxViewDelegate, SRGLetterboxPictureInPictureDelegate, SRGAnalyticsViewTracking, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate, NSUserActivityDelegate>
 
 // Use nil for starting at the default location (resumes if the media is already being played)
