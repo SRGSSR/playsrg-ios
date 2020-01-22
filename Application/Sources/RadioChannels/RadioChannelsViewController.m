@@ -7,11 +7,11 @@
 #import "RadioChannelsViewController.h"
 
 #import "ApplicationSettings.h"
+#import "GoogleCastBarButtonItem.h"
 #import "HomeViewController.h"
 #import "NavigationController.h"
 #import "NSBundle+PlaySRG.h"
 
-#import <GoogleCast/GoogleCast.h>
 #import <libextobjc/libextobjc.h>
 
 @implementation RadioChannelsViewController
@@ -42,9 +42,10 @@
 {
     [super viewDidLoad];
     
-    GCKUICastButton *castButton = [[GCKUICastButton alloc] init];
-    castButton.tintColor = self.navigationController.navigationBar.tintColor;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:castButton];
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    if (navigationBar) {
+        self.navigationItem.rightBarButtonItem = [[GoogleCastBarButtonItem alloc] initForNavigationBar:navigationBar];
+    }
 }
 
 #pragma mark Overrides

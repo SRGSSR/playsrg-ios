@@ -8,9 +8,9 @@
 
 #import "ApplicationConfiguration.h"
 #import "ApplicationSettings.h"
+#import "GoogleCastBarButtonItem.h"
 #import "HomeLivestreamsViewController.h"
 
-#import <GoogleCast/GoogleCast.h>
 #import <libextobjc/libextobjc.h>
 
 @implementation LivestreamsViewController
@@ -42,9 +42,10 @@
 {
     [super viewDidLoad];
     
-    GCKUICastButton *castButton = [[GCKUICastButton alloc] init];
-    castButton.tintColor = self.navigationController.navigationBar.tintColor;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:castButton];
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    if (navigationBar) {
+        self.navigationItem.rightBarButtonItem = [[GoogleCastBarButtonItem alloc] initForNavigationBar:navigationBar];
+    }
 }
 
 #pragma mark Overrides

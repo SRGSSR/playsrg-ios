@@ -1110,6 +1110,11 @@
 		6F861AFA1DAE65A600C46102 /* SRGMediaPlayerDesignables.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F861AF71DAE65A600C46102 /* SRGMediaPlayerDesignables.m */; };
 		6F861AFB1DAE65A600C46102 /* SRGMediaPlayerDesignables.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F861AF71DAE65A600C46102 /* SRGMediaPlayerDesignables.m */; };
 		6F861AFC1DAE65A600C46102 /* SRGMediaPlayerDesignables.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F861AF71DAE65A600C46102 /* SRGMediaPlayerDesignables.m */; };
+		6F88139523D85DD600A00826 /* GoogleCastBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88139423D85DD600A00826 /* GoogleCastBarButtonItem.m */; };
+		6F88139623D85DD600A00826 /* GoogleCastBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88139423D85DD600A00826 /* GoogleCastBarButtonItem.m */; };
+		6F88139723D85DD600A00826 /* GoogleCastBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88139423D85DD600A00826 /* GoogleCastBarButtonItem.m */; };
+		6F88139823D85DD600A00826 /* GoogleCastBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88139423D85DD600A00826 /* GoogleCastBarButtonItem.m */; };
+		6F88139923D85DD600A00826 /* GoogleCastBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F88139423D85DD600A00826 /* GoogleCastBarButtonItem.m */; };
 		6F8CAE902122C5DF005046BA /* CoconutKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8CAE8F2122C5DF005046BA /* CoconutKit.framework */; };
 		6F8CAE912122C5F1005046BA /* CoconutKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8CAE8F2122C5DF005046BA /* CoconutKit.framework */; };
 		6F8CAE922122C5FE005046BA /* CoconutKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8CAE8F2122C5DF005046BA /* CoconutKit.framework */; };
@@ -2112,6 +2117,8 @@
 		6F85E4B51EEA8F9B00552256 /* UIView+PlaySRG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PlaySRG.h"; sourceTree = "<group>"; };
 		6F85E4B61EEA8F9B00552256 /* UIView+PlaySRG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PlaySRG.m"; sourceTree = "<group>"; };
 		6F861AF71DAE65A600C46102 /* SRGMediaPlayerDesignables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRGMediaPlayerDesignables.m; sourceTree = "<group>"; };
+		6F88139323D85DD600A00826 /* GoogleCastBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleCastBarButtonItem.h; sourceTree = "<group>"; };
+		6F88139423D85DD600A00826 /* GoogleCastBarButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoogleCastBarButtonItem.m; sourceTree = "<group>"; };
 		6F8CAE8F2122C5DF005046BA /* CoconutKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoconutKit.framework; path = Carthage/Build/iOS/Static/CoconutKit.framework; sourceTree = "<group>"; };
 		6F9122BD1DC8708400725EEB /* PlayErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayErrors.h; sourceTree = "<group>"; };
 		6F9122BE1DC8708400725EEB /* PlayErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayErrors.m; sourceTree = "<group>"; };
@@ -3145,6 +3152,8 @@
 				6F475FA91EB37BC6003021EA /* CollectionLoadMoreFooterView.h */,
 				6F475FAA1EB37BC6003021EA /* CollectionLoadMoreFooterView.m */,
 				6F475FAB1EB37BC6003021EA /* CollectionLoadMoreFooterView.xib */,
+				6F88139323D85DD600A00826 /* GoogleCastBarButtonItem.h */,
+				6F88139423D85DD600A00826 /* GoogleCastBarButtonItem.m */,
 				0887824723AD61D400629312 /* LiveMediaCollectionViewCell.h */,
 				0887824823AD61D500629312 /* LiveMediaCollectionViewCell.m */,
 				0887824923AD61D500629312 /* LiveMediaCollectionViewCell.xib */,
@@ -5719,6 +5728,7 @@
 				6F7EEBDE22DC40B7005E5A97 /* SearchBar.m in Sources */,
 				E64BA3FA1D4A587E002C10D5 /* WebViewController.m in Sources */,
 				0827DA1E1F0D36D900A31A42 /* NSBundle+PlaySRG.m in Sources */,
+				6F88139523D85DD600A00826 /* GoogleCastBarButtonItem.m in Sources */,
 				6F47602F1EB37BD1003021EA /* PlayDurationFormatter.m in Sources */,
 				6F0E8D981F14F62F002014C3 /* SRGChannel+PlaySRG.m in Sources */,
 				08602BF72213786B0081D166 /* HomeShowsAccessTableViewCell.m in Sources */,
@@ -5885,6 +5895,7 @@
 				0887824B23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
 				0852539822073D5200BCF0B1 /* UIApplication+PlaySRG.m in Sources */,
 				6F4760141EB37BC6003021EA /* Banner.m in Sources */,
+				6F88139623D85DD600A00826 /* GoogleCastBarButtonItem.m in Sources */,
 				6F4760351EB37BD1003021EA /* NSDateFormatter+PlaySRG.m in Sources */,
 				6F40920122DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF61EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
@@ -6046,6 +6057,7 @@
 				0887824C23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
 				0852539922073D5200BCF0B1 /* UIApplication+PlaySRG.m in Sources */,
 				6F4760151EB37BC6003021EA /* Banner.m in Sources */,
+				6F88139723D85DD600A00826 /* GoogleCastBarButtonItem.m in Sources */,
 				6F4760361EB37BD1003021EA /* NSDateFormatter+PlaySRG.m in Sources */,
 				6F40920222DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF71EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
@@ -6207,6 +6219,7 @@
 				0887824D23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
 				0852539A22073D5200BCF0B1 /* UIApplication+PlaySRG.m in Sources */,
 				6F4760161EB37BC6003021EA /* Banner.m in Sources */,
+				6F88139823D85DD600A00826 /* GoogleCastBarButtonItem.m in Sources */,
 				6F4760371EB37BD1003021EA /* NSDateFormatter+PlaySRG.m in Sources */,
 				6F40920322DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF81EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
@@ -6368,6 +6381,7 @@
 				0887824E23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
 				0852539B22073D5200BCF0B1 /* UIApplication+PlaySRG.m in Sources */,
 				6F4760171EB37BC6003021EA /* Banner.m in Sources */,
+				6F88139923D85DD600A00826 /* GoogleCastBarButtonItem.m in Sources */,
 				6F4760381EB37BD1003021EA /* NSDateFormatter+PlaySRG.m in Sources */,
 				6F40920422DCF43D005F3850 /* Previewing.m in Sources */,
 				6F475FF91EB37BC6003021EA /* CollectionLoadMoreFooterView.m in Sources */,
