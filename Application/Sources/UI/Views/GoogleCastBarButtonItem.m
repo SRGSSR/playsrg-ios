@@ -23,7 +23,7 @@
 
 - (instancetype)initForNavigationBar:(UINavigationBar *)navigationBar
 {
-    GCKUICastButton *castButton = [[GCKUICastButton alloc] init];
+    GCKUICastButton *castButton = [[GCKUICastButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 44.f, 44.f)];
     if (self = [super initWithCustomView:castButton]) {
         self.castButton = castButton;
         self.navigationBar = navigationBar;
