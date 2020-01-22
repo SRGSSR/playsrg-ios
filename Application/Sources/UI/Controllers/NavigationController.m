@@ -118,16 +118,28 @@
     }
     
     [navigationBar setNeedsDisplay];
+    
+    // See https://stackoverflow.com/a/39543669/760435
+    [navigationBar layoutIfNeeded];
 }
 
-- (void)updateWithRadioChannel:(RadioChannel *)radioChannel
+- (void)updateWithRadioChannel:(RadioChannel *)radioChannel animated:(BOOL)animated
 {
-    UIStatusBarStyle darkStatusBarStyle = UIStatusBarStyleDefault;
-    if (@available(iOS 13, *)) {
-        darkStatusBarStyle = UIStatusBarStyleDarkContent;
+    void (^animations)(void) = ^{
+        UIStatusBarStyle darkStatusBarStyle = UIStatusBarStyleDefault;
+        if (@available(iOS 13, *)) {
+            darkStatusBarStyle = UIStatusBarStyleDarkContent;
+        }
+        UIStatusBarStyle statusBarStyle = radioChannel.hasDarkStatusBar ? darkStatusBarStyle : UIStatusBarStyleLightContent;
+        [self updateWithTintColor:radioChannel.titleColor backgroundColor:radioChannel.color statusBarStyle:statusBarStyle];
+    };
+    
+    if (animated) {
+        [UIView animateWithDuration:0.2 animations:animations];
     }
-    UIStatusBarStyle statusBarStyle = radioChannel.hasDarkStatusBar ? darkStatusBarStyle : UIStatusBarStyleLightContent;
-    [self updateWithTintColor:radioChannel.titleColor backgroundColor:radioChannel.color statusBarStyle:statusBarStyle];
+    else {
+        animations();
+    }
 }
 
 #pragma mark Accessibility

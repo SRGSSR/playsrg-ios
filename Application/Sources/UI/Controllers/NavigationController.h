@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Update the navigation bar, optionally branded for a radio channel. If none is provided, a default look-and-feel is applied.
 */
-- (void)updateWithRadioChannel:(nullable RadioChannel *)radioChannel;
+- (void)updateWithRadioChannel:(nullable RadioChannel *)radioChannel animated:(BOOL)animated;
 
 @end
 

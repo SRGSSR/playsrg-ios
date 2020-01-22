@@ -59,7 +59,7 @@
     
     if ([self.navigationController isKindOfClass:NavigationController.class]) {
         NavigationController *navigationController = (NavigationController *)self.navigationController;
-        [navigationController updateWithRadioChannel:homeViewController.radioChannel];
+        [navigationController updateWithRadioChannel:homeViewController.radioChannel animated:animated];
     }
 }
 
