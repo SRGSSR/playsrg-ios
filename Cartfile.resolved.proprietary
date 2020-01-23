@@ -14,7 +14,7 @@ github "SRGSSR/srgcontentprotection-apple" "4ae37fafd02d16197e10d6c59b56cece8936
 github "SRGSSR/srgdataprovider-apple" "6f42a0b71001044970e9c3ad39fff773cbd1b52a"
 github "SRGSSR/srgdiagnostics-apple" "b1c8d80725f26e3a547018bf378e522dde42aad9"
 github "SRGSSR/srgidentity-apple" "8f157cc36108d82c8c970ced5bf9df15ee69c9ef"
-github "SRGSSR/srgletterbox-apple" "745d239956145c56da4a56306bc0a57ee4955588"
+github "SRGSSR/srgletterbox-apple" "532c286620b04a5c1c79ec5c79e650636b645be1"
 github "SRGSSR/srglogger-apple" "2.0.0"
 github "SRGSSR/srgmediaplayer-apple" "90b97ad36647fdb4e1afa0343feca0645c2bc250"
 github "SRGSSR/srgnetwork-apple" "bb999ab0839e4a5714709bfcf89d49b09181ef80"
