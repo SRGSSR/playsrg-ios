@@ -513,7 +513,11 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
                 && ! AVAudioSession.srg_isAirPlayActive
                 && ! ApplicationSettingBackgroundVideoPlaybackEnabled()) {
             [SRGLetterboxService.sharedService disableForController:self.letterboxController];
+            [StoreReview requestReview];
         }
+        
+        // Avoids view retain, preventing playback from stopping.
+        [Banner hideAll];
         
         [self.livestreamMediasRequest cancel];
         
@@ -582,10 +586,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 
 - (BOOL)accessibilityPerformEscape
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [Banner hideAll];           // Avoids view retain, preventing playback from stopping.
-        [StoreReview requestReview];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
     return YES;
 }
 
@@ -1420,9 +1421,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 
 - (BOOL)letterboxDismissUserInterfaceForPictureInPicture
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [Banner hideAll]; // Avoids view retain
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
     return YES;
 }
 
@@ -1757,10 +1756,7 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
 
 - (IBAction)close:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        [Banner hideAll]; // Avoids view retain
-        [StoreReview requestReview];
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark Gesture recognizers
@@ -1782,9 +1778,6 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
                 // Only stop tracking the interactive transition at the very end. The completion block is called
                 // whether the transition ended or was cancelled
                 self.interactiveTransition = nil;
-                
-                [Banner hideAll]; // Avoids view retain
-                [StoreReview requestReview];
             }];
             break;
         }

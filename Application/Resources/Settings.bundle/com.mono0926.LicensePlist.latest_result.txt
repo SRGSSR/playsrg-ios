@@ -478,11 +478,11 @@ name: srgdiagnostics-apple, nameSpecified: , owner: SRGSSR, version: b1c8d80
 
 name: srgidentity-apple, nameSpecified: , owner: SRGSSR, version: 8f157cc
 
-name: srgletterbox-apple, nameSpecified: , owner: SRGSSR, version: 10ba034
+name: srgletterbox-apple, nameSpecified: , owner: SRGSSR, version: 745d239
 
 name: srglogger-apple, nameSpecified: , owner: SRGSSR, version: 2.0.0
 
-name: srgmediaplayer-apple, nameSpecified: , owner: SRGSSR, version: 12ed821
+name: srgmediaplayer-apple, nameSpecified: , owner: SRGSSR, version: 90b97ad
 
 name: srgnetwork-apple, nameSpecified: , owner: SRGSSR, version: bb999ab
 
