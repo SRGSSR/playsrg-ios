@@ -24,7 +24,6 @@
 #import "PlayErrors.h"
 #import "Playlist.h"
 #import "PlayLogger.h"
-#import "Play-Swift-Bridge.h"
 #import "PushService.h"
 #import "ShowViewController.h"
 #import "ShowsViewController.h"
@@ -184,10 +183,6 @@ static void *s_kvoContext = &s_kvoContext;
     // Local objects migration
     WatchLaterMigrate();
     FavoritesMigrate();
-    
-    if (! launchOptions[UIApplicationLaunchOptionsUserActivityDictionaryKey]) {
-        [self showNextAvailableOnboarding];
-    }
     
     NSURL *whatsNewURL = applicationConfiguration.whatsNewURL;
     PlayApplicationRunOnce(^(void (^completionHandler)(BOOL success)) {
@@ -917,28 +912,6 @@ static void *s_kvoContext = &s_kvoContext;
         }
     }];
     [self.window.play_topViewController presentViewController:productViewController animated:YES completion:nil];
-}
-
-#pragma mark Onboarding
-
-- (void)showNextAvailableOnboarding
-{
-    static NSString * const kReadOnboardingUidsKey = @"PlaySRGReadOnboardingUids";
-    
-    NSArray<NSString *> *readOnboardingUids = [NSUserDefaults.standardUserDefaults stringArrayForKey:kReadOnboardingUidsKey] ?: [NSArray array];
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Onboarding * _Nullable onboarding, NSDictionary<NSString *,id> * _Nullable bindings) {
-        return ! [readOnboardingUids containsObject:onboarding.uid];
-    }];
-    Onboarding *onboarding = [Onboarding.onboardings filteredArrayUsingPredicate:predicate].firstObject;
-    if (onboarding) {
-        OnboardingViewController *onboardingViewController = [[OnboardingViewController alloc] initWithOnboarding:onboarding];
-        onboardingViewController.modalPresentationStyle = UIModalPresentationFullScreen;
-        [self.window.play_topViewController presentViewController:onboardingViewController animated:YES completion:^{
-            NSArray<NSString *> *updatedReadOnboardingUids = [readOnboardingUids arrayByAddingObject:onboarding.uid];
-            [NSUserDefaults.standardUserDefaults setObject:updatedReadOnboardingUids forKey:kReadOnboardingUidsKey];
-            [NSUserDefaults.standardUserDefaults synchronize];
-        }];
-    }
 }
 
 #pragma mark SKStoreProductViewControllerDelegate protocol
