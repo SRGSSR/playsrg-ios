@@ -232,7 +232,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/srganalytics-apple</string>
 			<key>Title</key>
-			<string>srganalytics-apple (5dec6ed)</string>
+			<string>srganalytics-apple (6c767a3)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
@@ -280,7 +280,7 @@
 			<key>File</key>
 			<string>com.mono0926.LicensePlist/srgletterbox-apple</string>
 			<key>Title</key>
-			<string>srgletterbox-apple (295c490)</string>
+			<string>srgletterbox-apple (2301cfc)</string>
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
