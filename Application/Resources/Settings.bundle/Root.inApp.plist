@@ -120,6 +120,16 @@
 			<key>Type</key>
 			<string>IASKButtonSpecifier</string>
 			<key>Title</key>
+			<string>Help and copyright</string>
+			<key>Key</key>
+			<string>Button_HelpAndCopyright</string>
+			<key>IASKTextAlignment</key>
+			<string>IASKUITextAlignmentLeft</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+			<key>Title</key>
 			<string>Terms and conditions</string>
 			<key>Key</key>
 			<string>Button_TermsAndConditions</string>
@@ -138,6 +148,16 @@
 		</dict>
 		<dict>
 			<key>Type</key>
+			<string>IASKButtonSpecifier</string>
+			<key>Title</key>
+			<string>Your feedback</string>
+			<key>Key</key>
+			<string>Button_Feedback</string>
+			<key>IASKTextAlignment</key>
+			<string>IASKUITextAlignmentLeft</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 			<key>Title</key>
 			<string>Licenses</string>
@@ -148,9 +168,9 @@
 			<key>Type</key>
 			<string>IASKButtonSpecifier</string>
 			<key>Title</key>
-			<string>Become a beta tester</string>
+			<string>Source code</string>
 			<key>Key</key>
-			<string>Button_BetaTesting</string>
+			<string>Button_SourceCode</string>
 			<key>IASKTextAlignment</key>
 			<string>IASKUITextAlignmentLeft</string>
 		</dict>
@@ -158,9 +178,9 @@
 			<key>Type</key>
 			<string>IASKButtonSpecifier</string>
 			<key>Title</key>
-			<string>Source code</string>
+			<string>Become a beta tester</string>
 			<key>Key</key>
-			<string>Button_SourceCode</string>
+			<string>Button_BetaTesting</string>
 			<key>IASKTextAlignment</key>
 			<string>IASKUITextAlignmentLeft</string>
 		</dict>

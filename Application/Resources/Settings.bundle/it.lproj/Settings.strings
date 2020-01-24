@@ -16,6 +16,7 @@
 "Enable / disable FLEX" = "Abilitare / disabilitare FLEX";
 "Features" = "Funzionalità";
 "HD over cellular networks" = "HD su rete mobile";
+"Help and copyright" = "Aiuto e impressum";
 "Ignore location" = "Ignora la posizione";
 "Information" = "Informazioni";
 "Install previous version" = "Installare la versione precedente";
@@ -43,3 +44,4 @@
 "What's new" = "Novità";
 "When enabled, more content is automatically played after playback of the current content ends." = "Se attivato, un nuovo contenuto viene riprodotto automaticamente al termine di quello corrente.";
 "When enabled, video playback continues even when you leave the application." = "Quando è attivato, il play dei video continua in secondo piano anche quando si esce dall'applicazione.";
+"Your feedback" = "Esprimere un'opinione";

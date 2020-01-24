@@ -16,6 +16,7 @@
 "Enable / disable FLEX" = "Enable / disable FLEX";
 "Features" = "Features";
 "HD over cellular networks" = "Allow HD over cellular networks";
+"Help and copyright" = "Help and copyright";
 "Ignore location" = "Ignore location";
 "Information" = "Information";
 "Install previous version" = "Install previous version";
@@ -43,3 +44,4 @@
 "What's new" = "What's new";
 "When enabled, more content is automatically played after playback of the current content ends." = "When enabled, more content is automatically played after playback of the current content ends.";
 "When enabled, video playback continues even when you leave the application." = "When enabled, video playback continues even when you leave the application.";
+"Your feedback" = "Your feedback";

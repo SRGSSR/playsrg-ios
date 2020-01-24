@@ -16,6 +16,7 @@
 "Enable / disable FLEX" = "Activar / deactivar FLEX";
 "Features" = "Funcziuns";
 "HD over cellular networks" = "HD sur la rait cellulara";
+"Help and copyright" = "Agid ed impressum";
 "Ignore location" = "Ignorar lieu";
 "Information" = "Infurmaziun";
 "Install previous version" = "Installar la versiun precedenta";
@@ -39,7 +40,8 @@
 "This section is only available in nightly and beta versions, and won't appear in the production version." = "Questa secziun è mo disponibla en la versiun nightly ni beta e na vegn betg en producziun.";
 "User location" = "Lieu da l‘utilisader";
 "Version" = "Versiun";
-"Versions and release notes" = "Versions and release notes";
+"Versions and release notes" = "Remartgas davart versiuns e publicaziuns";
 "What's new" = "Tge ch'è nov";
 "When enabled, more content is automatically played after playback of the current content ends." = "Automaticamein dapli cuntegn suenter playback sche inabel.";
 "When enabled, video playback continues even when you leave the application." = "Activà, ed il video marscha vinavant, era sche Vus bandunais l'applicaziun.";
+"Your feedback" = "Voss resun";
