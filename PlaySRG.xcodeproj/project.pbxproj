@@ -297,11 +297,6 @@
 		08754F48201BB00400458F3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08754F45201BB00000458F3A /* InfoPlist.strings */; };
 		08754F4B201BB01000458F3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08754F49201BB01000458F3A /* InfoPlist.strings */; };
 		08754F4F201BB02900458F3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08754F4C201BB02300458F3A /* InfoPlist.strings */; };
-		087584E523A0008500FA7207 /* ApplicationSectionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */; };
-		087584E623A0008500FA7207 /* ApplicationSectionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */; };
-		087584E723A0008500FA7207 /* ApplicationSectionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */; };
-		087584E823A0008500FA7207 /* ApplicationSectionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */; };
-		087584E923A0008500FA7207 /* ApplicationSectionGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */; };
 		087584EF23A0008500FA7207 /* ApplicationSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */; };
 		087584F023A0008500FA7207 /* ApplicationSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */; };
 		087584F123A0008500FA7207 /* ApplicationSectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */; };
@@ -332,16 +327,6 @@
 		0875852423A0025F00FA7207 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* LibraryViewController.m */; };
 		0875852523A0025F00FA7207 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* LibraryViewController.m */; };
 		0875852623A0025F00FA7207 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850A23A0025E00FA7207 /* LibraryViewController.m */; };
-		0875852723A0025F00FA7207 /* LibraryHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* LibraryHeaderSectionView.xib */; };
-		0875852823A0025F00FA7207 /* LibraryHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* LibraryHeaderSectionView.xib */; };
-		0875852923A0025F00FA7207 /* LibraryHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* LibraryHeaderSectionView.xib */; };
-		0875852A23A0025F00FA7207 /* LibraryHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* LibraryHeaderSectionView.xib */; };
-		0875852B23A0025F00FA7207 /* LibraryHeaderSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0875850B23A0025F00FA7207 /* LibraryHeaderSectionView.xib */; };
-		0875852C23A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */; };
-		0875852D23A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */; };
-		0875852E23A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */; };
-		0875852F23A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */; };
-		0875853023A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */; };
 		0875853623A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */; };
 		0875853723A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */; };
 		0875853823A3DEFD00FA7207 /* LivestreamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */; };
@@ -1801,19 +1786,14 @@
 		08754F4A201BB01000458F3A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08754F4D201BB02300458F3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		087584C723A0008500FA7207 /* ApplicationSectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSectionInfo.h; sourceTree = "<group>"; };
-		087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSectionGroup.m; sourceTree = "<group>"; };
 		087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSectionInfo.m; sourceTree = "<group>"; };
-		087584D523A0008500FA7207 /* ApplicationSectionGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSectionGroup.h; sourceTree = "<group>"; };
 		0875850323A0025E00FA7207 /* LibraryAccountHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryAccountHeaderView.xib; sourceTree = "<group>"; };
 		0875850423A0025E00FA7207 /* LibraryAccountHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryAccountHeaderView.h; sourceTree = "<group>"; };
-		0875850523A0025E00FA7207 /* LibraryHeaderSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryHeaderSectionView.h; sourceTree = "<group>"; };
 		0875850623A0025E00FA7207 /* LibraryAccountHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryAccountHeaderView.m; sourceTree = "<group>"; };
 		0875850723A0025E00FA7207 /* LibraryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryTableViewCell.m; sourceTree = "<group>"; };
 		0875850823A0025E00FA7207 /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
 		0875850923A0025E00FA7207 /* LibraryViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LibraryViewController.storyboard; sourceTree = "<group>"; };
 		0875850A23A0025E00FA7207 /* LibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewController.m; sourceTree = "<group>"; };
-		0875850B23A0025F00FA7207 /* LibraryHeaderSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryHeaderSectionView.xib; sourceTree = "<group>"; };
-		0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryHeaderSectionView.m; sourceTree = "<group>"; };
 		0875850D23A0025F00FA7207 /* LibraryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryTableViewCell.h; sourceTree = "<group>"; };
 		0875853423A3DEFC00FA7207 /* LivestreamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivestreamsViewController.h; sourceTree = "<group>"; };
 		0875853523A3DEFC00FA7207 /* LivestreamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivestreamsViewController.m; sourceTree = "<group>"; };
@@ -2626,8 +2606,6 @@
 				08AF947F217D27E40028B082 /* ActivityItemSource.m */,
 				6FE1B4951DCB84F00094D5BA /* AnalyticsConstants.h */,
 				6FE1B4961DCB84F00094D5BA /* AnalyticsConstants.m */,
-				087584D523A0008500FA7207 /* ApplicationSectionGroup.h */,
-				087584CC23A0008500FA7207 /* ApplicationSectionGroup.m */,
 				087584C723A0008500FA7207 /* ApplicationSectionInfo.h */,
 				087584CF23A0008500FA7207 /* ApplicationSectionInfo.m */,
 				6FE686DF1EB9D57400067D40 /* ChannelService.h */,
@@ -2710,9 +2688,6 @@
 				0875850423A0025E00FA7207 /* LibraryAccountHeaderView.h */,
 				0875850623A0025E00FA7207 /* LibraryAccountHeaderView.m */,
 				0875850323A0025E00FA7207 /* LibraryAccountHeaderView.xib */,
-				0875850523A0025E00FA7207 /* LibraryHeaderSectionView.h */,
-				0875850C23A0025F00FA7207 /* LibraryHeaderSectionView.m */,
-				0875850B23A0025F00FA7207 /* LibraryHeaderSectionView.xib */,
 				0875850D23A0025F00FA7207 /* LibraryTableViewCell.h */,
 				0875850723A0025E00FA7207 /* LibraryTableViewCell.m */,
 				0875850823A0025E00FA7207 /* LibraryViewController.h */,
@@ -4107,7 +4082,6 @@
 				6F0F889E1ECF0CE50060A893 /* override_default_tv_srf1.pdf in Resources */,
 				6F0F889B1ECF0CE50060A893 /* override_artwork_srf3.pdf in Resources */,
 				6F58664A1DD226EE005DAFE4 /* Settings.bundle in Resources */,
-				0875852723A0025F00FA7207 /* LibraryHeaderSectionView.xib in Resources */,
 				08C690501D38E0BE00BB8AAA /* iTunesArtwork in Resources */,
 				6F12E4D522D866E600BC1718 /* MostSearchedShowsHeaderView.xib in Resources */,
 				6FF3B6942137DCD700F8A5E2 /* SRGContentProtection.bundle in Resources */,
@@ -4206,7 +4180,6 @@
 				08DADF8D20D92D6500291AD1 /* placeholder_notification-180.pdf in Resources */,
 				6F0F888D1ECF0CDD0060A893 /* override_default_rts_un.pdf in Resources */,
 				08C690DE1D38E5BE00BB8AAA /* HomeViewController.storyboard in Resources */,
-				0875852823A0025F00FA7207 /* LibraryHeaderSectionView.xib in Resources */,
 				086F8D6522984B29001BE2F4 /* FavoritesViewController.storyboard in Resources */,
 				6F1F92AB22A55EDA0026BFAC /* SearchShowListCollectionViewCell.xib in Resources */,
 				6F0F888C1ECF0CDD0060A893 /* override_default_couleur3.pdf in Resources */,
@@ -4349,7 +4322,6 @@
 				6FE01B1823603E92008EBB27 /* AppCenterDistributeResources.bundle in Resources */,
 				E6AE51351D3FD0ED00572CE4 /* HomeMediaListTableViewCell.xib in Resources */,
 				E6DB5F231D66E0950057094B /* ShowsViewController.storyboard in Resources */,
-				0875852923A0025F00FA7207 /* LibraryHeaderSectionView.xib in Resources */,
 				6FF7BBB422A7901900FA758A /* SearchSettingsViewController.storyboard in Resources */,
 				E66BEC231DA7FCED00AD4450 /* MediaPlayerViewController.storyboard in Resources */,
 				6FCB57481EC2047B0015CAB7 /* override_artwork_rete_due.pdf in Resources */,
@@ -4478,7 +4450,6 @@
 				0875851123A0025F00FA7207 /* LibraryAccountHeaderView.xib in Resources */,
 				0837CEE41D3FDAFA00A1E089 /* SRGSSRType_Lt.ttf in Resources */,
 				6F0C999A2121FBD800073AB6 /* SRGAppearance.bundle in Resources */,
-				0875852A23A0025F00FA7207 /* LibraryHeaderSectionView.xib in Resources */,
 				E6E2DF221D6ACA8B00791EDE /* ShowViewController.storyboard in Resources */,
 				0837CEE31D3FDAFA00A1E089 /* SRGSSRType_It.ttf in Resources */,
 				6F40921022DCFE2B005F3850 /* MostSearchedShowCollectionViewCell.xib in Resources */,
@@ -4570,7 +4541,6 @@
 				0804916D22831DEF00E4CEC2 /* HomeShowListTableViewCell.xib in Resources */,
 				0875852123A0025F00FA7207 /* LibraryViewController.storyboard in Resources */,
 				6F0C99AF2121FBD800073AB6 /* SRGDataProvider.bundle in Resources */,
-				0875852B23A0025F00FA7207 /* LibraryHeaderSectionView.xib in Resources */,
 				0837CEED1D3FDAFA00A1E089 /* SRGSSRType_Lt.ttf in Resources */,
 				6FD2CBC71DD19B0200B44958 /* placeholder_media-180.pdf in Resources */,
 				6F4760121EB37BC6003021EA /* TranslucentTitleHeaderView.xib in Resources */,
@@ -5696,7 +5666,6 @@
 				0841E70622F0953A009D8304 /* SRGDay+PlaySRG.m in Sources */,
 				08AA551D1D49EBF600C5026E /* ApplicationConfiguration.m in Sources */,
 				08C68F941D38DEA100BB8AAA /* HomeViewController.m in Sources */,
-				0875852C23A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */,
 				6FDF08EB218B126700B2AF2C /* OnboardingPage.m in Sources */,
 				6FB3C1A81DBCE783008160B4 /* MediaPreviewViewController.m in Sources */,
 				082590F01F054A6A00BB527C /* HomeMediaCollectionHeaderView.m in Sources */,
@@ -5794,7 +5763,6 @@
 				0887824A23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
 				6F4855A91E3A38D600B0141C /* SRGLetterboxDesignables.m in Sources */,
 				6FD633DE1FFBC0BE00875BE5 /* GoogleCastMiniPlayerView.m in Sources */,
-				087584E523A0008500FA7207 /* ApplicationSectionGroup.m in Sources */,
 				0804916E22831DEF00E4CEC2 /* HomeShowListTableViewCell.m in Sources */,
 				6FAF43001EF7CD8A0074E033 /* HomeTopicViewController.m in Sources */,
 				E6AE51181D3F54AA00572CE4 /* HomeSectionInfo.m in Sources */,
@@ -5889,7 +5857,6 @@
 				08C68F951D38DEA100BB8AAA /* HomeViewController.m in Sources */,
 				6F0A41701F6FAB6E000533E7 /* Calendar.m in Sources */,
 				6FDF08FB218B126700B2AF2C /* DeprecatedFavorite.m in Sources */,
-				087584E623A0008500FA7207 /* ApplicationSectionGroup.m in Sources */,
 				6F47600A1EB37BC6003021EA /* TranslucentTitleHeaderView.m in Sources */,
 				08AA55A51D49EF8E00C5026E /* ApplicationConfiguration.m in Sources */,
 				0887824B23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
@@ -5953,7 +5920,6 @@
 				E65FB20C1D66D69700820696 /* DailyMediasViewController.m in Sources */,
 				6FEC91AA21A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6F4760831EB37DF1003021EA /* UIStackView+PlaySRG.m in Sources */,
-				0875852D23A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */,
 				6F06E0A51DB7791300220FC6 /* ApplicationSettings.m in Sources */,
 				08564B1E1D41111A00381549 /* HomeSectionHeaderView.m in Sources */,
 				6FE686E21EB9D57400067D40 /* ChannelService.m in Sources */,
@@ -6051,7 +6017,6 @@
 				08C68F961D38DEA100BB8AAA /* HomeViewController.m in Sources */,
 				6F0A41711F6FAB6E000533E7 /* Calendar.m in Sources */,
 				6FDF08FC218B126700B2AF2C /* DeprecatedFavorite.m in Sources */,
-				087584E723A0008500FA7207 /* ApplicationSectionGroup.m in Sources */,
 				6F47600B1EB37BC6003021EA /* TranslucentTitleHeaderView.m in Sources */,
 				08AA55A61D49EF8E00C5026E /* ApplicationConfiguration.m in Sources */,
 				0887824C23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
@@ -6115,7 +6080,6 @@
 				E65FB20D1D66D69700820696 /* DailyMediasViewController.m in Sources */,
 				6FEC91AB21A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6F47608A1EB37DF1003021EA /* UIStackView+PlaySRG.m in Sources */,
-				0875852E23A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */,
 				6F06E0A61DB7791300220FC6 /* ApplicationSettings.m in Sources */,
 				08564B1F1D41111A00381549 /* HomeSectionHeaderView.m in Sources */,
 				6FE686E31EB9D57400067D40 /* ChannelService.m in Sources */,
@@ -6213,7 +6177,6 @@
 				08C68F971D38DEA100BB8AAA /* HomeViewController.m in Sources */,
 				6F0A41721F6FAB6E000533E7 /* Calendar.m in Sources */,
 				6FDF08FD218B126700B2AF2C /* DeprecatedFavorite.m in Sources */,
-				087584E823A0008500FA7207 /* ApplicationSectionGroup.m in Sources */,
 				6F47600C1EB37BC6003021EA /* TranslucentTitleHeaderView.m in Sources */,
 				08AA55A71D49EF8E00C5026E /* ApplicationConfiguration.m in Sources */,
 				0887824D23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
@@ -6277,7 +6240,6 @@
 				E65FB20E1D66D69700820696 /* DailyMediasViewController.m in Sources */,
 				6FEC91AC21A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6F4760911EB37DF1003021EA /* UIStackView+PlaySRG.m in Sources */,
-				0875852F23A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */,
 				6F06E0A71DB7791300220FC6 /* ApplicationSettings.m in Sources */,
 				08564B201D41111A00381549 /* HomeSectionHeaderView.m in Sources */,
 				6FE686E41EB9D57400067D40 /* ChannelService.m in Sources */,
@@ -6375,7 +6337,6 @@
 				08C68F981D38DEA100BB8AAA /* HomeViewController.m in Sources */,
 				6F0A41731F6FAB6E000533E7 /* Calendar.m in Sources */,
 				6FDF08FE218B126700B2AF2C /* DeprecatedFavorite.m in Sources */,
-				087584E923A0008500FA7207 /* ApplicationSectionGroup.m in Sources */,
 				6F47600D1EB37BC6003021EA /* TranslucentTitleHeaderView.m in Sources */,
 				08AA55A81D49EF8F00C5026E /* ApplicationConfiguration.m in Sources */,
 				0887824E23AD61D500629312 /* LiveMediaCollectionViewCell.m in Sources */,
@@ -6439,7 +6400,6 @@
 				E65FB20F1D66D69700820696 /* DailyMediasViewController.m in Sources */,
 				6FEC91AD21A6B39A00AA50C8 /* TableLoadMoreFooterView.m in Sources */,
 				6F4760981EB37DF2003021EA /* UIStackView+PlaySRG.m in Sources */,
-				0875853023A0025F00FA7207 /* LibraryHeaderSectionView.m in Sources */,
 				6F06E0A81DB7791300220FC6 /* ApplicationSettings.m in Sources */,
 				08564B211D41111A00381549 /* HomeSectionHeaderView.m in Sources */,
 				6FE686E51EB9D57400067D40 /* ChannelService.m in Sources */,

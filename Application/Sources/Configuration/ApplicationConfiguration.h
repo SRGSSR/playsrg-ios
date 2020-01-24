@@ -67,10 +67,7 @@ typedef NS_ENUM(NSInteger, ApplicationSection) {
     ApplicationSectionTVLive,
     ApplicationSectionRadioLive,
     ApplicationSectionLiveCenter,
-    ApplicationSectionScheduledLivestreams,
-    
-    ApplicationSectionFeedback,
-    ApplicationSectionHelp
+    ApplicationSectionScheduledLivestreams
     
     // FIXME: cleanup icons related to unsused sections.
 };

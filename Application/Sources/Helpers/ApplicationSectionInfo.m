@@ -50,6 +50,28 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
                                                               options:@{ ApplicationSectionOptionNotificationKey : notification }];
 }
 
++ (NSArray<ApplicationSectionInfo *> *)libraryApplicationSectionInfos
+{
+    NSMutableArray<ApplicationSectionInfo *> *sectionInfos = [NSMutableArray array];
+    if (@available(iOS 10, *)) {
+        if (PushService.sharedService.enabled) {
+            [sectionInfos addObject:[self applicationSectionInfoWithApplicationSection:ApplicationSectionNotifications radioChannel:nil]];
+            
+            NSArray<Notification *> *unreadNotifications = Notification.unreadNotifications;
+            NSArray<Notification *> *previewNotifications = [unreadNotifications subarrayWithRange:NSMakeRange(0, MIN(3, unreadNotifications.count))];
+            for (Notification *notification in previewNotifications) {
+                [sectionInfos addObject:[self applicationSectionInfoWithNotification:notification]];
+            }
+        }
+    }
+    [sectionInfos addObject:[self applicationSectionInfoWithApplicationSection:ApplicationSectionHistory radioChannel:nil]];
+    [sectionInfos addObject:[self applicationSectionInfoWithApplicationSection:ApplicationSectionFavorites radioChannel:nil]];
+    [sectionInfos addObject:[self applicationSectionInfoWithApplicationSection:ApplicationSectionWatchLater radioChannel:nil]];
+    [sectionInfos addObject:[self applicationSectionInfoWithApplicationSection:ApplicationSectionDownloads radioChannel:nil]];
+    
+    return sectionInfos.copy;
+}
+
 #pragma Object lifecycle
 
 - (instancetype)initWithApplicationSection:(ApplicationSection)applicationSection title:(NSString *)title uid:(NSString *)uid options:(NSDictionary<ApplicationSectionOptionKey, id> *)options
@@ -127,16 +149,6 @@ ApplicationSectionOptionKey const ApplicationSectionOptionShowByDateDateKey = @"
         case ApplicationSectionRadioLive: {
             RadioChannel *radioChannel = [ApplicationConfiguration.sharedApplicationConfiguration radioChannelForUid:self.uid];
             return RadioChannelLogo22Image(radioChannel);
-            break;
-        }
-            
-        case ApplicationSectionFeedback: {
-            return [UIImage imageNamed:@"feedback-22"];
-            break;
-        }
-            
-        case ApplicationSectionHelp: {
-            return [UIImage imageNamed:@"help-22"];
             break;
         }
             

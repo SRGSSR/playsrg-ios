@@ -6,13 +6,11 @@
 
 #import "LibraryViewController.h"
 
-#import "ApplicationConfiguration.h"
-#import "ApplicationSectionGroup.h"
+#import "ApplicationSectionInfo.h"
 #import "DownloadsViewController.h"
 #import "FavoritesViewController.h"
 #import "HistoryViewController.h"
 #import "LibraryAccountHeaderView.h"
-#import "LibraryHeaderSectionView.h"
 #import "LibraryTableViewCell.h"
 #import "NavigationController.h"
 #import "NotificationsViewController.h"
@@ -23,14 +21,13 @@
 #import "UIDevice+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
 #import "WatchLaterViewController.h"
-#import "WebViewController.h"
 
 #import <SRGAppearance/SRGAppearance.h>
 #import <SRGIdentity/SRGIdentity.h>
 
 @interface LibraryViewController ()
 
-@property (nonatomic) NSArray<ApplicationSectionGroup *> *sectionGroups;
+@property (nonatomic) NSArray<ApplicationSectionInfo *> *sectionInfos;
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
@@ -65,9 +62,6 @@
         self.tableView.tableHeaderView = [LibraryAccountHeaderView view];
     }
     
-    Class headerClass = LibraryHeaderSectionView.class;
-    [self.tableView registerClass:LibraryHeaderSectionView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(headerClass)];
-    
     NSString *cellIdentifier = NSStringFromClass(NotificationTableViewCell.class);
     UINib *cellNib = [UINib nibWithNibName:cellIdentifier bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:cellIdentifier];
@@ -75,10 +69,6 @@
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(accessibilityVoiceOverStatusChanged:)
                                                name:UIAccessibilityVoiceOverStatusChanged
-                                             object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self
-                                           selector:@selector(applicationConfigurationDidChange:)
-                                               name:ApplicationConfigurationDidChangeNotification
                                              object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(didReceiveNotification:)
@@ -151,7 +141,7 @@
 
 - (void)reloadData
 {
-    self.sectionGroups = ApplicationSectionGroup.libraryApplicationSectionGroups;
+    self.sectionInfos = ApplicationSectionInfo.libraryApplicationSectionInfos;
     [self.tableView reloadData];
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -163,7 +153,7 @@
 
 - (Notification *)notificationAtIndexPath:(NSIndexPath *)indexPath
 {
-    ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
+    ApplicationSectionInfo *applicationSectionInfo = self.sectionInfos[indexPath.row];
     if (applicationSectionInfo.applicationSection != ApplicationSectionNotifications) {
         return nil;
     }
@@ -173,8 +163,6 @@
 
 - (BOOL)openApplicationSectionInfo:(ApplicationSectionInfo *)applicationSectionInfo animated:(BOOL)animated
 {
-    ApplicationConfiguration *applicationConfiguration = ApplicationConfiguration.sharedApplicationConfiguration;
-    
     UIViewController *viewController = nil;
     switch (applicationSectionInfo.applicationSection) {
         case ApplicationSectionNotifications: {
@@ -199,48 +187,6 @@
             
         case ApplicationSectionDownloads: {
             viewController = [[DownloadsViewController alloc] init];
-            break;
-        }
-            
-        case ApplicationSectionFeedback: {
-            NSAssert(applicationConfiguration.feedbackURL, @"Feedback URL expected");
-            
-            NSMutableArray *queryItems = [NSMutableArray array];
-            [queryItems addObject:[NSURLQueryItem queryItemWithName:@"platform" value:@"iOS"]];
-            
-            NSString *appVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-            [queryItems addObject:[NSURLQueryItem queryItemWithName:@"version" value:appVersion]];
-            
-            BOOL isPad = UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad;
-            [queryItems addObject:[NSURLQueryItem queryItemWithName:@"type" value:isPad ? @"tablet" : @"phone"]];
-            [queryItems addObject:[NSURLQueryItem queryItemWithName:@"model" value:UIDevice.currentDevice.model]];
-            
-            NSString *tagCommanderUid = [NSUserDefaults.standardUserDefaults stringForKey:@"tc_unique_id"];
-            if (tagCommanderUid) {
-                [queryItems addObject:[NSURLQueryItem queryItemWithName:@"cid" value:tagCommanderUid]];
-            }
-            
-            NSURL *feedbackURL = applicationConfiguration.feedbackURL;
-            NSURLComponents *URLComponents = [NSURLComponents componentsWithURL:feedbackURL resolvingAgainstBaseURL:NO];
-            URLComponents.queryItems = queryItems.copy;
-            
-            NSURLRequest *request = [NSURLRequest requestWithURL:URLComponents.URL];
-            viewController = [[WebViewController alloc] initWithRequest:request customizationBlock:^(WKWebView *webView) {
-                webView.scrollView.scrollEnabled = NO;
-            } decisionHandler:nil analyticsPageType:AnalyticsPageTypeSystem];
-            viewController.title = NSLocalizedString(@"Your feedback", @"Title displayed at the top of the feedback view");
-            break;
-        }
-            
-        case ApplicationSectionHelp: {
-            NSAssert(applicationConfiguration.impressumURL, @"Impressum URL expected");
-            NSURLRequest *request = [NSURLRequest requestWithURL:applicationConfiguration.impressumURL];
-            WebViewController *impressumWebViewController = [[WebViewController alloc] initWithRequest:request customizationBlock:^(WKWebView * _Nonnull webView) {
-                webView.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-            } decisionHandler:nil analyticsPageType:AnalyticsPageTypeSystem];
-            impressumWebViewController.title = NSLocalizedString(@"Help and copyright", @"Title displayed at the top of the help and copyright view");
-            impressumWebViewController.tracked = NO;            // The website we display is already tracked.
-            viewController = impressumWebViewController;
             break;
         }
             
@@ -293,12 +239,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.sectionGroups.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.sectionGroups[section].sectionInfos.count;
+    return self.sectionInfos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -333,8 +279,7 @@
     }
     else {
         LibraryTableViewCell *libraryTableViewCell = (LibraryTableViewCell *)cell;
-        ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
-        libraryTableViewCell.applicationSectionInfo = applicationSectionInfo;
+        libraryTableViewCell.applicationSectionInfo = self.sectionInfos[indexPath.row];
     }
 }
 
@@ -348,22 +293,9 @@
         [tableView reloadData];
     }
     else {
-        ApplicationSectionInfo *applicationSectionInfo = self.sectionGroups[indexPath.section].sectionInfos[indexPath.row];
+        ApplicationSectionInfo *applicationSectionInfo = self.sectionInfos[indexPath.row];
         [self openApplicationSectionInfo:applicationSectionInfo animated:YES];
     }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    ApplicationSectionGroup *sectionGroup = self.sectionGroups[section];
-    return [LibraryHeaderSectionView heightForApplicationSectionGroup:sectionGroup];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    LibraryHeaderSectionView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(LibraryHeaderSectionView.class)];
-    headerView.applicationSectionGroup = self.sectionGroups[section];
-    return headerView;
 }
 
 #pragma mark Actions
@@ -378,11 +310,6 @@
 #pragma mark Notifications
 
 - (void)accessibilityVoiceOverStatusChanged:(NSNotification *)notification
-{
-    [self reloadData];
-}
-
-- (void)applicationConfigurationDidChange:(NSNotification *)notification
 {
     [self reloadData];
 }

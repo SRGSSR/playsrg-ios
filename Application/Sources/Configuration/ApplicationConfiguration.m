@@ -148,9 +148,7 @@ NSString *TitleForApplicationSection(ApplicationSection applicationSection)
     dispatch_once(&s_onceToken, ^{
         s_names = @{ @(ApplicationSectionDownloads) : NSLocalizedString(@"Downloads", @"Label to present downloads"),
                      @(ApplicationSectionFavorites) : NSLocalizedString(@"Favorites", @"Label to present Favorites"),
-                     @(ApplicationSectionFeedback) : NSLocalizedString(@"Feedback", @"Label to display the feedback form"),
                      @(ApplicationSectionHistory) : NSLocalizedString(@"History", @"Label to present history"),
-                     @(ApplicationSectionHelp) : NSLocalizedString(@"Help and copyright", @"Label to present the help page"),
                      @(ApplicationSectionNotifications) : NSLocalizedString(@"Notifications", @"Label to present the help page"),
                      @(ApplicationSectionSearch) : NSLocalizedString(@"Search", @"Label to present the search view"),
                      @(ApplicationSectionShowByDate) : NSLocalizedString(@"Programmes by date", @"Label to present programmes by date"),
