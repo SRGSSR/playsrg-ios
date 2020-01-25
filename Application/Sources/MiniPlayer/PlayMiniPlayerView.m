@@ -350,7 +350,8 @@
         [SRGLetterboxService.sharedService enableWithController:controller pictureInPictureDelegate:nil];
     }
     
-    if (media.mediaType == SRGMediaTypeVideo && ! ApplicationSettingBackgroundVideoPlaybackEnabled() && ! AVAudioSession.srg_isAirPlayActive) {
+    if (media.mediaType == SRGMediaTypeVideo && ! ApplicationSettingBackgroundVideoPlaybackEnabled()
+            && ! AVAudioSession.srg_isAirPlayActive && ! controller.pictureInPictureActive) {
         [self.nearestViewController play_presentMediaPlayerFromLetterboxController:controller withAirPlaySuggestions:YES fromPushNotification:NO animated:YES completion:nil];
     }
 }
