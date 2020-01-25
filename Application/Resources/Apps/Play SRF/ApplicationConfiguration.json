@@ -9,7 +9,6 @@
   "playURL": "https://www.srf.ch/play/",
   "middlewareURL": "https://playfff.herokuapp.com",
   "feedbackURL": "https://play.typeform.com/to/Vp8UPe",
-  "searchOptions": "tvShows,videos,radioShows,audios",
   "videoHomeSections": "tvTrending,tvFavoriteShows,tvShowsAccess,tvEvents,tvTopics",
   "liveHomeSections": "tvLive,radioLive",
   "tvTrendingEpisodesOnly": true,

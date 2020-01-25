@@ -8,7 +8,6 @@
   "playURL": "https://www.rtr.ch/play/",
   "middlewareURL": "https://playfff.herokuapp.com",
   "feedbackURL": "https://play.typeform.com/to/rarQYT",
-  "searchOptions": "tvShows,videos,radioShows,audios",
   "videoHomeSections": "tvTrending,tvFavoriteShows,tvShowsAccess,tvEvents,tvTopics",
   "liveHomeSections": "tvLive,radioLive",
   "tvTrendingEpisodesOnly": true,

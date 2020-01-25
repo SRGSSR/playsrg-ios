@@ -9,7 +9,6 @@
   "playURL": "https://play.swissinfo.ch/play/",
   "middlewareURL": "https://playfff.herokuapp.com",
   "feedbackURL": "https://play.typeform.com/to/bR8TQq",
-  "searchOptions": "videos",
   "videoHomeSections": "tvTrending,tvFavoriteShows,tvTopics",
   "tvTrendingEpisodesOnly": true,
   "tvTrendingEditorialLimit": 2,

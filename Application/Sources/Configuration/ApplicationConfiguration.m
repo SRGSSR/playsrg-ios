@@ -218,8 +218,6 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
 @property (nonatomic) UIColor *moduleDefaultLinkColor;
 @property (nonatomic) UIColor *moduleDefaultTextColor;
 
-@property (nonatomic) NSArray<NSNumber *> *searchOptions;
-
 @property (nonatomic) NSArray<NSNumber *> *videoHomeSections;
 @property (nonatomic) NSArray<NSNumber *> *liveHomeSections;
 
