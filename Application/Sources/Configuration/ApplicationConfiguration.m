@@ -233,10 +233,12 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
 @property (nonatomic) NSArray<NSNumber *> *topicSections;
 @property (nonatomic) NSArray<NSNumber *> *topicSectionsWithSubtopics;
 
+@property (nonatomic) NSArray<TVChannel *> *tvChannels;
+
 @property (nonatomic) NSArray<RadioChannel *> *radioChannels;
 @property (nonatomic) NSArray<NSNumber *> *audioHomeSections;                           // wrap `HomeSection` values
 
-@property (nonatomic) NSArray<TVChannel *> *tvChannels;
+@property (nonatomic) NSArray<RadioChannel *> *videoRadioChannels;
 
 @property (nonatomic, getter=isRadioFeaturedHomeSectionHeaderHidden) BOOL radioFeaturedHomeSectionHeaderHidden;
 
@@ -571,6 +573,22 @@ NSTimeInterval ApplicationConfigurationEffectiveEndTolerance(NSTimeInterval dura
         }
     }
     self.radioChannels = radioChannels.copy;
+    
+    NSMutableArray<RadioChannel *> *videoRadioChannels = [NSMutableArray array];
+    NSString *videoRadioChannelUidsString = [self.remoteConfig configValueForKey:@"videoRadioChannelUids"].stringValue;
+    if (videoRadioChannelUidsString.length != 0) {
+        NSArray<NSString *> *radioChanneIdentifiers = [videoRadioChannelUidsString componentsSeparatedByString:@","];
+        for (NSString *identifier in radioChanneIdentifiers) {
+            RadioChannel *radioChannel = [self radioChannelForUid:identifier];
+            if (radioChannel) {
+                [videoRadioChannels addObject:radioChannel];
+            }
+            else {
+                PlayLogWarning(@"configuration", @"Unknown radio channel identifier %@. Skipped.", identifier);
+            }
+        }
+    }
+    self.videoRadioChannels = videoRadioChannels.copy;
     
     NSMutableArray<TVChannel *> *tvChannels = [NSMutableArray array];
     if ([self.remoteConfig configValueForKey:@"tvChannels"].stringValue.length) {

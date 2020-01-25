@@ -87,7 +87,7 @@ Broadcast informations:
     * `titleColor` (optional, string): Hex color of the text displayed within the navigation bar (should provide sufficient contrast with `color`). If omitted, white.
     * `hasDarkStatusBar` (optional, boolean): `true` iff the status bar should be dark for this channel. If omitted, `false`.
     * `numberOfLivePlaceholders` (optional, number): The number of placeholders to be displayed while content is being loaded. By If omitted, 1.
-
+* `videoRadioChannelUids` (optional, string, multiple): The ordered list of radio channel unique identifiers supporting videos. Identifiers must be in the `radioChannels`.`uid` list.
 ### Search
 
 * `searchSettingsHidden` (optional, boolean): Set to `true` to hide support for search settings.

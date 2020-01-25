@@ -35,6 +35,8 @@
 @property (nonatomic) NSArray<NSNumber *> *homeSections;
 @property (nonatomic) RadioChannel *radioChannel;
 
+@property (nonatomic) NSArray<RadioChannel *> *videoRadioChannels;
+
 @property (nonatomic) NSArray<HomeSectionInfo *> *homeSectionInfos;
 
 @property (nonatomic) SRGServiceMessage *serviceMessage;
@@ -62,6 +64,8 @@
     if (self = [super init]) {
         self.homeSections = radioChannel ? radioChannel.homeSections : ApplicationConfiguration.sharedApplicationConfiguration.videoHomeSections;
         self.radioChannel = radioChannel;
+        
+        self.videoRadioChannels = radioChannel ? nil : ApplicationConfiguration.sharedApplicationConfiguration.videoRadioChannels;
         
         if (self.radioChannel) {
             self.title = self.radioChannel.name;
@@ -370,6 +374,14 @@
             }
             else if (! self.favoriteRadioShowsLoaded) {
                 [homeSectionInfos addObject:homeSectionInfo];
+            }
+        }
+        else if (homeSection.integerValue == HomeSectionRadioLatestVideos && ! self.radioChannel) {
+            if (self.videoRadioChannels.count != 0) {
+                for (RadioChannel *radioChannel in self.videoRadioChannels) {
+                    HomeSectionInfo *homeSectionInfo = [self infoForHomeSection:homeSection.integerValue withObject:radioChannel.uid title:radioChannel.name];
+                    [homeSectionInfos addObject:homeSectionInfo];
+                }
             }
         }
         else {

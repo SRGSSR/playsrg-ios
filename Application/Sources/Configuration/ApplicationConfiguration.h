@@ -141,8 +141,10 @@ OBJC_EXPORT NSString * const ApplicationConfigurationDidChangeNotification;
 @property (nonatomic, readonly) NSArray<NSNumber *> *topicSections;                     // wrap `TopicSection` values
 @property (nonatomic, readonly) NSArray<NSNumber *> *topicSectionsWithSubtopics;        // wrap `TopicSection` values
 
-@property (nonatomic, readonly) NSArray<RadioChannel *> *radioChannels;
 @property (nonatomic, readonly) NSArray<TVChannel *> *tvChannels;
+@property (nonatomic, readonly) NSArray<RadioChannel *> *radioChannels;
+
+@property (nonatomic, readonly) NSArray<RadioChannel *> *videoRadioChannels;
 
 @property (nonatomic, readonly, getter=isRadioFeaturedHomeSectionHeaderHidden) BOOL radioFeaturedHomeSectionHeaderHidden;
 
