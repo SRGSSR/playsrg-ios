@@ -16,9 +16,17 @@ If a remote configuration is found to be invalid (usually a mandatory parameter 
 
 A wide list of parameters are available. Some parameters support multiple comma-separated values.
 
-### Homepage
+### Homepages (videos, audios, livestreams)
 
-* `radioHomeSections` (optional, string, multiple): The sections to be displayed on the radio homepages, in the order they must appear. Available values are:
+* `videoHomeSections` (optional, string, multiple): The sections to be displayed on the videos homepage, in the order they must appear.
+* `audioHomeSections` (optional, string, multiple): for each radio channels, the sections to be displayed on their audio homepage in the order they must appear.
+* `liveHomeSections` (optional, string, multiple): The sections to be displayed on the live homepage, in the order they must appear.
+
+
+
+Available home section values are:
+
+* with radio channel uid support:
    * `radioAllShows`: All available shows.
    * `radioLatest`: The latest audios.
    * `radioLatestEpisodes`: The latest episodes.
@@ -27,8 +35,9 @@ A wide list of parameters are available. Some parameters support multiple comma-
    * `radioMostPopular`: The most popular audios.
    * `radioMyListShows`: Shows from "My list".
    * `radioShowsAccess`: A-Z and By date access buttons.
-* `radioFeaturedHomeSectionHeaderHidden` (optional, boolean): If set to `true`, featured media lists will not display any header on the radio homepages.
-* `tvHomeSections` (optional, string, multiple): The sections to be displayed on the TV homepage, in the order they must appear. Available values are:
+
+* others:
+
    * `tvEvents`: Event modules. 
    * `tvLatest`: The latest medias.
    * `tvLive`: Access to the livestreams.
@@ -40,10 +49,12 @@ A wide list of parameters are available. Some parameters support multiple comma-
    * `tvTopics`: Topics.
    * `tvTrending`: Trending medias and editorial picks. See `tvTrendingEpisodesOnly` and `tvTrendingEditorialLimit` options.
    * `tvMostPopular`: The most popular videos.
-* `tvTrendingEpisodesOnly` (optional, boolean): If set to `true`, `tvTrending` only returns episodes.
-* `tvTrendingEditorialLimit` (optional, number): The maximum number of editorial recommendations returned by `tvTrending`. If not set, all are returned.
+
+Here are UI options:
+
 * `tvFeaturedHomeSectionHeaderHidden` (optional, boolean): If set to `true`, featured media lists will not display any header on the TV homepage.
 * `moduleColorsDisabled` (optional, boolean): If set to `true`, module lists won't display colors.
+* `radioFeaturedHomeSectionHeaderHidden` (optional, boolean): If set to `true`, featured media lists will not display any header on the radio homepages.
 * `moduleDefaultLinkColor` (mandatory, string):  Hex color of title medias in module lists.
 * `moduleDefaultTextColor` (mandatory, string):  Hex color of subtitle medias in module lists.
 * `topicHeaders` (optional, JSON): A JSON array of JSON dictionaries describing topics headers, and made of the following keys:
@@ -51,28 +62,38 @@ A wide list of parameters are available. Some parameters support multiple comma-
     * `imageURL` (mandatory, string): The topic image URL (compatible with image scaling syntax).
     * `imageTitle` (optional, string): The image title.
     * `imageCopyright` (optional, string): The image copyright.
+
+Here are content options:
+
+* `tvTrendingEpisodesOnly` (optional, boolean): If set to `true`, `tvTrending` only returns episodes.
+* `tvTrendingEditorialLimit` (optional, number): The maximum number of editorial recommendations returned by `tvTrending`. If not set, all are returned.
+* `topicSections` (optional, string, multiple): The sections to be displayed when opening a topic. If none is provided, latest medias are displayed. Available values are:
+   * `latest`: The latest medias.
+   * `mostPopular`: The most popular medias
+* `topicSectionsWithSubtopics` (optional, string, multiple): The sections to be displayed when opening a topic with subtopics. If none is provided, only subtopics are displayed. Available values are the same as `topicSections`.
+
+Broadcast informations:
+
 * `tvChannels` (optional, JSON): A JSON array of JSON dictionaries describing TV channel configuration, and made of the following keys:
     * `uid` (mandatory, string): The unique identifier of the TV channel.
     * `name` (mandatory, string): The TV channel name.
     * `resourceUid` (mandatory, string): Local unique identifier for referencing resources related to the channel.
-
-### Menu
-
-* `radioMenuItems` (optional, string, multiple): The radio menu items to be displayed, in the order they must appear. These items are always displayed before the channel homepage entries, and available values are:
-    * `showAZ`: The show A-Z page.
 * `radioChannels` (optional, JSON): A JSON array of JSON dictionaries describing radio channel configuration, and made of the following keys:
     * `uid` (mandatory, string): The unique identifier of the radio channel.
     * `name` (mandatory, string): The radio channel name.
     * `resourceUid` (mandatory, string): Local unique identifier for referencing resources related to the channel.
     * `color` (mandatory, string): The radio channel primary hex color. Used as navigation bar background color.
-    * `homeSections` (optional, string, multiple): The sections to be displayed on the radio channel homepage. See `radioHomeSections` for available values. If omitted, the global `radioHomeSections` setting is used instead (in which case this value is required).
+    * `homeSections` (optional, string, multiple): The sections to be displayed on the radio channel homepage. See `audioHomeSections` for available values. If omitted, the global `audioHomeSections` setting is used instead (in which case this value is required).
     * `titleColor` (optional, string): Hex color of the text displayed within the navigation bar (should provide sufficient contrast with `color`). If omitted, white.
     * `hasDarkStatusBar` (optional, boolean): `true` iff the status bar should be dark for this channel. If omitted, `false`.
     * `numberOfLivePlaceholders` (optional, number): The number of placeholders to be displayed while content is being loaded. By If omitted, 1.
-* `tvMenuItems` (optional, string, multiple): The TV menu items to be displayed, in the order they must appear. These items are always displayed after the TV homepage entry, and available values are:
-   * `byDate`: The episode by date page.
-   * `showAZ`: The show A-Z page.
-   
+
+### Search
+
+* `searchSettingsHidden` (optional, boolean): Set to `true` to hide support for search settings.
+* `searchSettingSubtitledHidden` (optional, boolean): Set to `true` to hide the subtitled option in the search settings.
+* `showsSearchHidden ` (optional, boolean): Set to `true` to hide show search results.
+
 ### Player
 
 * `minimumSocialViewCount` (optional, number): The threshold under which social view counts will not be displayed. If omitted, 0.
@@ -82,22 +103,12 @@ A wide list of parameters are available. Some parameters support multiple comma-
 
 * `downloadsHintsHidden` (optional, boolean): If set to `true`, hints will not be displayed in lists for medias which can be downloaded.
 * `moreEpisodesHidden` (optional, boolean): If set to `true`, the option to display more episodes for a media will not be available from the long-press and peek menus.
-* `topicSections` (optional, string, multiple): The sections to be displayed when opening a topic. If none is provided, latest medias are displayed. Available values are:
-   * `latest`: The latest medias.
-   * `mostPopular`: The most popular medias
-* `topicSectionsWithSubtopics` (optional, string, multiple): The sections to be displayed when opening a topic with subtopics. If none is provided, only subtopics are displayed. Available values are the same as `topicSections`.
 * `googleCastReceiverIdentifier` (optional, string): Identifier of the Google Cast receiver to use. If not set, the default Google Cast receiver is used.
 * `appStoreProductIdentifier` (mandatory, number): Application product identifier on the AppStore.
 * `continuousPlaybackPlayerViewTransitionDuration` (optional, number): Duration in seconds for continuous playback when the player view is displayed. If empty, continuous playback is disabled; if equal to 0, upcoming media playback starts immediately.
 * `continuousPlaybackForegroundTransitionDuration` (optional, number): Duration in seconds for continuous playback when the application runs in foreground and the player view is not displayed. If empty, continuous playback is disabled; if equal to 0, upcoming media playback starts immediately.
 * `continuousPlaybackBackgroundTransitionDuration` (optional, number): Duration in seconds for continuous playback when the application runs in background. If empty, continuous playback is disabled; if equal to 0, upcoming media playback starts immediately.
 * `hiddenOnboardings` (optional, string, multiple): Identifier list of onboardings which must be hidden.
-
-### Search
-
-* `searchSettingsHidden` (optional, boolean): Set to `true` to hide support for search settings.
-* `searchSettingSubtitledHidden` (optional, boolean): Set to `true` to hide the subtitled option in the search settings.
-* `showsSearchHidden ` (optional, boolean): Set to `true` to hide show search results.
 
 ### History
 
