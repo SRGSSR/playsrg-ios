@@ -80,6 +80,8 @@ platform :ios do
 
     end
 
+    notify_ci
+
     saveLastNightliesSuccessGitCommitHash
 
   end
@@ -115,6 +117,8 @@ platform :ios do
       clean_build_artifacts
 
     end
+
+    notify_ci
 
     #Tag the new beta, bump build number and push to the repo only if we're not in a release process
     
@@ -358,7 +362,6 @@ platform :ios do
 
   # desc "A dev lane to test ruby scripts"
   # lane :devLane do
-    
   #   build_number = increment_build_number
   #   commit_version_bump(
   #       xcodeproj: "PlaySRG.xcodeproj",
@@ -366,6 +369,13 @@ platform :ios do
   #       ignore: /.+/
   #   )
   # end
+
+  # Do stuff on CI if success build uploads
+  def notify_ci
+    return unless ENV['TEAMCITY_VERSION']
+
+    puts '##teamcity[buildNumber \'' + getMarketingVersion + '-' + get_build_number + + '\']'
+  end
 
   def updateDSYMs (options, appcenter_app_name)
     min_version = options[:min_version]
