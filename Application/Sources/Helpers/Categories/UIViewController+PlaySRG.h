@@ -4,12 +4,19 @@
 //  License information is available from the LICENSE file.
 //
 
+#import "Playlist.h"
+
 #import <CoreMedia/CoreMedia.h>
 #import <SRGDataProvider/SRGDataProvider.h>
 #import <SRGLetterbox/SRGLetterbox.h>
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+/**
+ *  Create and replace the shared playlist.
+*/
+OBJC_EXPORT Playlist *SharedPlaylistForURN(NSString *URN);
 
 @interface UIViewController (PlaySRG)
 

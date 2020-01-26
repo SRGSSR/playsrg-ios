@@ -91,6 +91,13 @@
     [self.requestQueue addRequest:recommendationRequest resume:YES];
 }
 
+#pragma mark Getters
+
+- (NSArray<NSString *> *)URNs
+{
+    return [self.medias valueForKeyPath:@keypath(SRGMedia.new, URN)] ?: @[ self.URN ];
+}
+
 #pragma SRGLetterboxControllerPlaylistDataSource protocol
 
 - (SRGMedia *)previousMediaForController:(SRGLetterboxController *)controller

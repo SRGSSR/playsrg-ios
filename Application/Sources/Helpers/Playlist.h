@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithURN:(NSString *)URN;
 
 @property (nonatomic, nullable, readonly) NSString *recommendationUid;
+@property (nonatomic, nullable, readonly) NSArray<NSString *> *URNs;
 
 @end
 

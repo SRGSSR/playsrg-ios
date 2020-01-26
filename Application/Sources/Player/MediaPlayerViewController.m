@@ -1909,13 +1909,22 @@ static const UILayoutPriority MediaPlayerDetailsLabelExpandedPriority = 300;
         [self setUserInterfaceBehaviorForMedia:media animated:YES];
     }
     
-    // Notify page view when the full-length changes.
     SRGMediaComposition *previousMediaComposition = notification.userInfo[SRGLetterboxPreviousMediaCompositionKey];
     SRGMediaComposition *mediaComposition = notification.userInfo[SRGLetterboxMediaCompositionKey];
     
+    // Notify page view when the full-length changes.
     if ([self isViewVisible] && mediaComposition && ! [previousMediaComposition.fullLengthMedia isEqual:mediaComposition.fullLengthMedia]) {
         [self srg_trackPageView];
         self.fromPushNotification = NO;
+    }
+    
+    // Update playlist if the new select mainChapter is not in the current playlist
+    if (mediaComposition && previousMediaComposition && ! [previousMediaComposition.mainChapter isEqual:mediaComposition.mainChapter]) {
+        SRGMedia *mainMedia = [mediaComposition mediaForSubdivision:mediaComposition.mainChapter];
+        Playlist *playlist = [self.letterboxController.playlistDataSource isKindOfClass:Playlist.class] ? self.letterboxController.playlistDataSource : nil;
+        if (playlist && mainMedia && ! [playlist.URNs containsObject:mainMedia.URN]) {
+            self.letterboxController.playlistDataSource = SharedPlaylistForURN(mainMedia.URN);
+        }
     }
 }
 

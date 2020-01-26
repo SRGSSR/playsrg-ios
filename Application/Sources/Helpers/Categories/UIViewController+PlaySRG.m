@@ -13,7 +13,6 @@
 #import "History.h"
 #import "MediaPlayerViewController.h"
 #import "PlayErrors.h"
-#import "Playlist.h"
 #import "Previewing.h"
 #import "PreviewingDelegate.h"
 #import "UIDevice+PlaySRG.h"
@@ -25,7 +24,7 @@
 
 static Playlist *s_playlist;
 
-static Playlist *SharedPlaylistForURN(NSString *URN)
+Playlist *SharedPlaylistForURN(NSString *URN)
 {
     s_playlist = URN ? [[Playlist alloc] initWithURN:URN] : nil;
     return s_playlist;
