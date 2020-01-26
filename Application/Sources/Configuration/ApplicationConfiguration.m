@@ -31,7 +31,7 @@ NSString *TitleForHomeSection(HomeSection homeSection)
                      @(HomeSectionTVLatest) : NSLocalizedString(@"Latest videos", @"Title label used to present the latest videos"),
                      @(HomeSectionTVMostPopular) : NSLocalizedString(@"Most popular", @"Title label used to present the TV most seen / clicked / popular videos"),
                      @(HomeSectionTVSoonExpiring) : NSLocalizedString(@"Available for a limited time", @"Title label used to present the soon expiring videos"),
-                     @(HomeSectionTVScheduledLivestreams) : NSLocalizedString(@"Events", @"Title label used to present scheduled livestream medias. Only on test versions."),
+                     @(HomeSectionTVScheduledLivestreams) : NSLocalizedString(@"Event", @"Title label used to present scheduled livestream medias. Only on test versions."),
                      @(HomeSectionTVLiveCenter) : NSLocalizedString(@"Sport", @"Title label used to present live center medias. Only on test versions."),
                      @(HomeSectionTVShowsAccess) : NSLocalizedString(@"Shows", @"Title label used to present the TV shows AZ and TV shows by date access buttons."),
                      @(HomeSectionTVFavoriteShows) : NSLocalizedString(@"Favorites", @"Title label used to present the TV favorite shows."),
