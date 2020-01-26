@@ -33,7 +33,7 @@ static void lockComplete(CFNotificationCenterRef center, void *observer, CFStrin
 
 #pragma mark Functions
 
-__attribute__((constructor)) static void SRGLetterboxUIDeviceInit(void)
+__attribute__((constructor)) static void PlayUIDeviceInit(void)
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         // Differentiate between device lock and application sent to the background
