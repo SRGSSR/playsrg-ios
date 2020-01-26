@@ -50,6 +50,8 @@ platform :ios do
       build_number: appCenterBuildNumber + 1
     )
 
+    notify_build_number_to_ci
+
     changelog = default_changelog_for_nightlies
 
     branch_name = sh "git branch | grep \\* | cut -d ' ' -f2"
@@ -80,8 +82,6 @@ platform :ios do
 
     end
 
-    notify_ci
-
     saveLastNightliesSuccessGitCommitHash
 
   end
@@ -95,6 +95,8 @@ platform :ios do
     build_number = get_build_number
     marketing_version = getMarketingVersion
     tag_version = marketing_version + '-' + build_number
+
+    notify_build_number_to_ci
 
     whatsNewForBeta = getWhatsNewForBeta(tag_version: tag_version)
 
@@ -117,8 +119,6 @@ platform :ios do
       clean_build_artifacts
 
     end
-
-    notify_ci
 
     #Tag the new beta, bump build number and push to the repo only if we're not in a release process
     
@@ -370,11 +370,12 @@ platform :ios do
   #   )
   # end
 
-  # Do stuff on CI if success build uploads
-  def notify_ci
+  # Share build number to the continus integration
+  def notify_build_number_to_ci
     return unless ENV['TEAMCITY_VERSION']
 
-    puts '##teamcity[buildNumber \'' + getMarketingVersion + '-' + get_build_number + + '\']'
+    displayed_build_number = getMarketingVersion + '-' + get_build_number
+    puts '##teamcity[buildNumber \'' + displayed_build_number + + '\']'
   end
 
   def updateDSYMs (options, appcenter_app_name)
