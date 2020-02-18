@@ -6,15 +6,11 @@
 
 #import "SearchBar.h"
 
-@implementation SearchBar
-
-#pragma mark Overrides
-
-- (void)layoutSubviews
+__attribute__((constructor)) static void SearchBarInit(void)
 {
-    [super layoutSubviews];
-    
-    self.showsCancelButton = NO;
+    [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[ SearchBar.class ]].tintColor = UIColor.whiteColor;
 }
+
+@implementation SearchBar
 
 @end

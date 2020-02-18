@@ -146,7 +146,12 @@ static const CGFloat kLayoutHorizontalInset = 10.f;
     self.searchController.delegate = self;
     
     UISearchBar *searchBar = self.searchController.searchBar;
-    object_setClass(searchBar, SearchBar.class);
+    
+    if (@available(iOS 10, *)) {}
+    else {
+        // TODO: Remove SearchBar class as well when iOS 9 not supported anymore
+        object_setClass(searchBar, SearchBar.class);
+    }
     
     searchBar.placeholder = NSLocalizedString(@"Search", @"Search placeholder text");
     searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
