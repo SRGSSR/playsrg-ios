@@ -16,6 +16,7 @@
 #import "GoogleCast.h"
 #import "History.h"
 #import "MediaPlayerViewController.h"
+#import "NSBundle+PlaySRG.h"
 #import "NSDateFormatter+PlaySRG.h"
 #import "PlayAppDelegate.h"
 #import "PlayErrors.h"
@@ -287,6 +288,7 @@
                 [appDelegate.rootTabBarController pushViewController:showViewController animated:YES];
             }
         }];
+        showAction.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"More episodes", @"Button label to open the show episode page from the preview window");
         [previewActionItems addObject:showAction];
     }
     

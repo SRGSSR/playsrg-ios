@@ -17,6 +17,7 @@
 #import "MediaPlayerViewController.h"
 #import "MediaPreviewViewController.h"
 #import "ModuleViewController.h"
+#import "NSBundle+PlaySRG.h"
 #import "PlayErrors.h"
 #import "Previewing.h"
 #import "ShowViewController.h"
@@ -185,6 +186,7 @@
             ShowViewController *showViewController = [[ShowViewController alloc] initWithShow:media.show fromPushNotification:NO];
             [self.navigationController pushViewController:showViewController animated:YES];
         }];
+        moreEpisodesAction.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"More episodes", @"Button label to open the show episode page from the preview window");
         [menuActions addObject:moreEpisodesAction];
     }
     
@@ -513,10 +515,12 @@
         }
         
         if (self.navigationController && ! ApplicationConfiguration.sharedApplicationConfiguration.moreEpisodesHidden && media.show) {
-            [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"More episodes", @"Button label to open the show episode page from the long-press menu") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertAction *moreEpisodesAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"More episodes", @"Button label to open the show episode page from the long-press menu") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 ShowViewController *showViewController = [[ShowViewController alloc] initWithShow:media.show fromPushNotification:NO];
                 [self.navigationController pushViewController:showViewController animated:YES];
-            }]];
+            }];
+            moreEpisodesAction.accessibilityLabel = PlaySRGAccessibilityLocalizedString(@"More episodes", @"Button label to open the show episode page from the preview window");
+            [alertController addAction:moreEpisodesAction];
         }
         
         [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Open", @"Button label to open a media from the start from the long-press menu") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
