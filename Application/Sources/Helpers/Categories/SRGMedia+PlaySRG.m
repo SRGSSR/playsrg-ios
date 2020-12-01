@@ -93,7 +93,7 @@ NSTimeInterval PlayTimeIntervalBeforeEnd(id<SRGMediaMetadata> object)
 {
     NSDate *date = NSDate.date;
     SRGTimeAvailability timeAvailability = [object timeAvailabilityAtDate:date];
-    if (timeAvailability == SRGTimeAvailabilityAvailable && object.endDate && object.contentType != SRGContentTypeScheduledLivestream && object.contentType != SRGContentTypeLivestream) {
+    if (timeAvailability == SRGTimeAvailabilityAvailable && object.endDate && object.contentType != SRGContentTypeScheduledLivestream && object.contentType != SRGContentTypeLivestream && object.contentType != SRGContentTypeTrailer) {
         NSDateComponents *monthsDateComponents = [NSCalendar.currentCalendar components:NSCalendarUnitDay fromDate:date toDate:object.endDate options:0];
         if (monthsDateComponents.day <= 30) {
             return [object.endDate timeIntervalSinceDate:date];
