@@ -9,6 +9,7 @@
 #import "Layout.h"
 #import "NSBundle+PlaySRG.h"
 #import "NSDateFormatter+PlaySRG.h"
+#import "NSString+PlaySRG.h"
 #import "PlayDurationFormatter.h"
 #import "SRGMedia+PlaySRG.h"
 #import "UIColor+PlaySRG.h"
@@ -60,17 +61,14 @@ static NSString *LabelFormattedDuration(NSTimeInterval duration)
     self.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleBody];
     
     NSString *text = nil;
-    NSDate *nowDate = NSDate.date;
-    SRGTimeAvailability timeAvailability = [object timeAvailabilityAtDate:nowDate];
-    if (timeAvailability == SRGTimeAvailabilityNotAvailableAnymore) {
-        NSDate *endDate = object.endDate ?: [object.date dateByAddingTimeInterval:object.duration / 1000.];
-        NSTimeInterval timeIntervalAfterEnd = [nowDate timeIntervalSinceDate:endDate];
+    
+    NSTimeInterval timeIntervalAfterEnd = PlayTimeIntervalAfterEnd(object);
+    if (timeIntervalAfterEnd > DBL_MIN) {
         text = [NSString stringWithFormat:NSLocalizedString(@"Not available since %@", @"Explains that a content has expired (days or hours ago). Displayed in the media player view."), LabelFormattedDuration(timeIntervalAfterEnd)];
     }
-    else if (timeAvailability == SRGTimeAvailabilityAvailable && object.endDate && object.contentType != SRGContentTypeScheduledLivestream && object.contentType != SRGContentTypeLivestream) {
-        NSDateComponents *monthsDateComponents = [NSCalendar.currentCalendar components:NSCalendarUnitDay fromDate:nowDate toDate:object.endDate options:0];
-        if (monthsDateComponents.day <= 30) {
-            NSTimeInterval timeIntervalBeforeEnd = [object.endDate timeIntervalSinceDate:nowDate];
+    else {
+        NSTimeInterval timeIntervalBeforeEnd = PlayTimeIntervalBeforeEnd(object);
+        if (timeIntervalBeforeEnd > DBL_MIN) {
             text = [NSString stringWithFormat:NSLocalizedString(@"Still available for %@", @"Explains that a content is still online (for days or hours) but will expire. Displayed in the media player view."), LabelFormattedDuration(timeIntervalBeforeEnd)];
         }
     }
@@ -100,7 +98,27 @@ static NSString *LabelFormattedDuration(NSTimeInterval duration)
     self.text = [NSString stringWithFormat:@"  %@  ", NSLocalizedString(@"Web first", @"Web first label on media cells")].uppercaseString;
 }
 
+- (void)play_setAvailabilityBadgeForMediaMetadata:(id<SRGMediaMetadata>)object
+{
+    NSTimeInterval timeIntervalBeforeEnd = PlayTimeIntervalBeforeEnd(object);
+    if (timeIntervalBeforeEnd > DBL_MIN && ! PlayIsWebFirst(object)) {
+        [self play_setLeftBadgeWithRemainingTime:timeIntervalBeforeEnd];
+    }
+    else {
+        [self play_setWebFirstBadge];
+    }
+}
+
 #pragma mark Private
+
+- (void)play_setLeftBadgeWithRemainingTime:(NSTimeInterval)remainingTime
+{
+    self.backgroundColor = UIColor.play_orangeColor;
+    self.layer.cornerRadius = LayoutStandardLabelCornerRadius;
+    self.layer.masksToBounds = YES;
+    self.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleCaption];
+    self.text = [NSString stringWithFormat:@" %@ ", LabelFormattedDuration(remainingTime).play_localizedUppercaseFirstLetterString];
+}
 
 - (void)play_displayDurationLabelWithTimeAvailability:(SRGTimeAvailability)timeAvailability duration:(NSTimeInterval)duration isLivestreamOrScheduledLivestream:(BOOL)isLivestreamOrScheduledLivestream isLiveEvent:(BOOL)isLiveEvent
 {

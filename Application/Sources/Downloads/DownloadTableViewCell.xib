@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -102,8 +102,8 @@
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="nC0-9c-cwd" userLabel="Label Stack View">
                         <rect key="frame" x="169.5" y="42.5" width="453.5" height="14"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="&lt;webFirst&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zj-Mk-vl7" userLabel="Web First Label">
-                                <rect key="frame" x="0.0" y="0.0" width="64" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="&lt;availability&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zj-Mk-vl7" userLabel="Availability Label">
+                                <rect key="frame" x="0.0" y="0.0" width="74.5" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="ftD-xr-ysC"/>
                                 </constraints>
@@ -112,7 +112,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V4N-TA-uVf" userLabel="Space View">
-                                <rect key="frame" x="70" y="0.0" width="383.5" height="14"/>
+                                <rect key="frame" x="80.5" y="0.0" width="373" height="14"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -135,6 +135,7 @@
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
+                <outlet property="availabilityLabel" destination="3Zj-Mk-vl7" id="GAu-2E-oRU"/>
                 <outlet property="downloadStatusImageView" destination="TM2-Y3-cHc" id="99z-gi-J7l"/>
                 <outlet property="durationLabel" destination="Q5i-0Q-02k" id="r38-iC-xzY"/>
                 <outlet property="media360ImageView" destination="wmN-wN-Xz3" id="AS4-oR-5aq"/>
@@ -143,7 +144,6 @@
                 <outlet property="thumbnailImageView" destination="Bra-g0-jx8" id="urp-YA-072"/>
                 <outlet property="thumbnailWrapperView" destination="OjP-Yg-rNs" id="EJE-MM-fiK"/>
                 <outlet property="titleLabel" destination="fVk-qC-VaO" id="bdo-cz-anR"/>
-                <outlet property="webFirstLabel" destination="3Zj-Mk-vl7" id="GAu-2E-oRU"/>
                 <outlet property="youthProtectionColorImageView" destination="waL-Kb-K7H" id="TRC-5B-kk3"/>
             </connections>
             <point key="canvasLocation" x="634.5" y="152"/>

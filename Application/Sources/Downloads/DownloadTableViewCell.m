@@ -34,7 +34,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *youthProtectionColorImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *downloadStatusImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *media360ImageView;
-@property (nonatomic, weak) IBOutlet UILabel *webFirstLabel;
+@property (nonatomic, weak) IBOutlet UILabel *availabilityLabel;
 
 @property (nonatomic, weak) IBOutlet UIProgressView *progressView;
 
@@ -65,7 +65,7 @@
     self.durationLabelBackgroundColor = self.durationLabel.backgroundColor;
     
     self.youthProtectionColorImageView.hidden = YES;
-    self.webFirstLabel.hidden = YES;
+    self.availabilityLabel.hidden = YES;
     
     self.progressView.progressTintColor = UIColor.play_progressRedColor;
     
@@ -94,7 +94,7 @@
     [super prepareForReuse];
     
     self.youthProtectionColorImageView.hidden = YES;
-    self.webFirstLabel.hidden = YES;
+    self.availabilityLabel.hidden = YES;
     
     self.progressView.hidden = YES;
     
@@ -220,10 +220,11 @@
     
     self.media360ImageView.hidden = (download.presentation != SRGPresentation360);
     
-    BOOL isWebFirst = download.media.play_isWebFirst;
-    self.webFirstLabel.hidden = ! isWebFirst;
-    
-    [self.webFirstLabel play_setWebFirstBadge];
+    BOOL isWebFirst = download.media.play_webFirst;
+    BOOL isExpiringSoon = PlayTimeIntervalBeforeEnd(download.media) > DBL_MIN;
+    self.availabilityLabel.hidden = ! isWebFirst && ! isExpiringSoon;
+   
+    [self.availabilityLabel play_setAvailabilityBadgeForMediaMetadata:download.media];
     
     // Have content fit in (almost) constant size vertically by reducing the title number of lines when a tag is displayed
     UIContentSizeCategory contentSizeCategory = UIApplication.sharedApplication.preferredContentSizeCategory;

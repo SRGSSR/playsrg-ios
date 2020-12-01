@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -129,25 +129,25 @@
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="9dp-GV-cjN" userLabel="Properties Stack View">
                         <rect key="frame" x="159.5" y="40" width="362.5" height="14"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;webFirst&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8i-Ip-zcM" userLabel="Web First Label">
-                                <rect key="frame" x="0.0" y="0.0" width="64" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;availability&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8i-Ip-zcM" userLabel="Availability Label">
+                                <rect key="frame" x="0.0" y="0.0" width="74.5" height="14"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" ST " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jlk-qE-P3B">
-                                <rect key="frame" x="70" y="0.0" width="22.5" height="14"/>
+                                <rect key="frame" x="80.5" y="0.0" width="22.5" height="14"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audio_description-14" translatesAutoresizingMaskIntoConstraints="NO" id="L4G-le-Fga">
-                                <rect key="frame" x="98.5" y="0.0" width="14" height="14"/>
+                                <rect key="frame" x="109" y="0.0" width="14" height="14"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEV-lU-Fsm" userLabel="Space View">
-                                <rect key="frame" x="118.5" y="0.0" width="244" height="14"/>
+                                <rect key="frame" x="129" y="0.0" width="233.5" height="14"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -196,6 +196,7 @@
             </variation>
             <connections>
                 <outlet property="audioDescriptionImageView" destination="L4G-le-Fga" id="JIK-QS-Q8I"/>
+                <outlet property="availabilityLabel" destination="z8i-Ip-zcM" id="QPx-OD-6bE"/>
                 <outlet property="blockingOverlayView" destination="eXQ-vI-0FF" id="kHQ-fy-5qB"/>
                 <outlet property="blockingReasonImageView" destination="rxP-Xq-syp" id="La6-lb-DYl"/>
                 <outlet property="downloadStatusImageView" destination="m53-Px-eX9" id="ogI-wz-1bJ"/>
@@ -207,7 +208,6 @@
                 <outlet property="thumbnailImageView" destination="oyt-0M-2Tn" id="ScS-wz-5Ur"/>
                 <outlet property="thumbnailWrapperView" destination="S07-N6-cnb" id="4yr-RI-EVD"/>
                 <outlet property="titleLabel" destination="XHz-8o-wrG" id="qcw-Le-shV"/>
-                <outlet property="webFirstLabel" destination="z8i-Ip-zcM" id="QPx-OD-6bE"/>
                 <outlet property="youthProtectionColorImageView" destination="NRG-7r-BpG" id="GFd-S0-08f"/>
                 <outletCollection property="compactRegularLayoutConstraints" destination="NnA-e3-o1T" id="gUP-an-EDv"/>
                 <outletCollection property="compactRegularLayoutConstraints" destination="xsS-oc-dzu" id="6gZ-dY-8mg"/>

@@ -44,7 +44,7 @@
 @property (nonatomic, weak) IBOutlet UIImageView *youthProtectionColorImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *downloadStatusImageView;
 @property (nonatomic, weak) IBOutlet UIImageView *media360ImageView;
-@property (nonatomic, weak) IBOutlet UILabel *webFirstLabel;
+@property (nonatomic, weak) IBOutlet UILabel *availabilityLabel;
 @property (nonatomic, weak) IBOutlet UILabel *subtitlesLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *audioDescriptionImageView;
 
@@ -96,7 +96,7 @@
     self.audioDescriptionImageView.tintColor = UIColor.play_whiteBadgeColor;
     
     self.youthProtectionColorImageView.hidden = YES;
-    self.webFirstLabel.hidden = YES;
+    self.availabilityLabel.hidden = YES;
     self.subtitlesLabel.hidden = YES;
     self.audioDescriptionImageView.hidden = YES;
 
@@ -120,7 +120,7 @@
     self.placeholderView.hidden = NO;
     
     self.youthProtectionColorImageView.hidden = YES;
-    self.webFirstLabel.hidden = YES;
+    self.availabilityLabel.hidden = YES;
     self.subtitlesLabel.hidden = YES;
     self.audioDescriptionImageView.hidden = YES;
     
@@ -278,7 +278,8 @@
     BOOL downloaded = [Download downloadForMedia:self.media].state == DownloadStateDownloaded;
     
     BOOL isWebFirst = self.media.play_webFirst;
-    self.webFirstLabel.hidden = ! isWebFirst;
+    BOOL isExpiringSoon = PlayTimeIntervalBeforeEnd(self.media) > DBL_MIN;
+    self.availabilityLabel.hidden = ! isWebFirst && ! isExpiringSoon;
     
     BOOL hasSubtitles = ApplicationSettingSubtitleAvailabilityDisplayed() && self.media.play_subtitlesAvailable && ! downloaded;
     self.subtitlesLabel.hidden = ! hasSubtitles;
@@ -286,11 +287,11 @@
     BOOL hasAudioDescription = ApplicationSettingAudioDescriptionAvailabilityDisplayed() && self.media.play_audioDescriptionAvailable && ! downloaded;
     self.audioDescriptionImageView.hidden = ! hasAudioDescription;
     
-    [self.webFirstLabel play_setWebFirstBadge];
+    [self.availabilityLabel play_setAvailabilityBadgeForMediaMetadata:self.media];
     [self.subtitlesLabel play_setSubtitlesAvailableBadge];
     
     // Have content fit in (almost) constant size vertically by reducing the title number of lines when a tag is displayed
-    self.titleLabel.numberOfLines = (isWebFirst || hasSubtitles || hasAudioDescription) ? 1 : 2;
+    self.titleLabel.numberOfLines = (isWebFirst || isExpiringSoon || hasSubtitles || hasAudioDescription) ? 1 : 2;
     
     self.youthProtectionColorImageView.image = YouthProtectionImageForColor(self.media.youthProtectionColor);
     self.youthProtectionColorImageView.hidden = (self.youthProtectionColorImageView.image == nil);

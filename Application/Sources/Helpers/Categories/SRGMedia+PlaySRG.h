@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 OBJC_EXPORT BOOL PlayIsSwissTXTURN(NSString *URN);
 
+OBJC_EXPORT BOOL PlayIsWebFirst(id<SRGMediaMetadata> object);
+OBJC_EXPORT NSTimeInterval PlayTimeIntervalBeforeEnd(id<SRGMediaMetadata> object);
+OBJC_EXPORT NSTimeInterval PlayTimeIntervalAfterEnd(id<SRGMediaMetadata> object);
+
 @interface SRGMedia (PlaySRG)
 
 @property (nonatomic, readonly, getter=play_isToday) BOOL play_today;

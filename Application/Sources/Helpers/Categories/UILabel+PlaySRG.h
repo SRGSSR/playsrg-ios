@@ -31,6 +31,11 @@ NS_ASSUME_NONNULL_BEGIN
 */
 - (void)play_setWebFirstBadge;
 
+/**
+ *  Call to display the standard "left" or "web first" badge.
+*/
+- (void)play_setAvailabilityBadgeForMediaMetadata:(id<SRGMediaMetadata>)object;
+
 @end
 
 NS_ASSUME_NONNULL_END

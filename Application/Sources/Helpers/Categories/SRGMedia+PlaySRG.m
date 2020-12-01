@@ -50,8 +50,7 @@
 
 - (BOOL)play_isWebFirst
 {
-    NSDate *date = NSDate.date;
-    return [self.date compare:date] == NSOrderedDescending && [self timeAvailabilityAtDate:date] == SRGTimeAvailabilityAvailable && self.contentType == SRGContentTypeEpisode;
+    return PlayIsWebFirst(self);
 }
 
 - (NSArray<NSString *> *)play_subtitleLanguages
@@ -81,4 +80,35 @@
 BOOL PlayIsSwissTXTURN(NSString *mediaURN)
 {
     return [mediaURN containsString:@":swisstxt:"];
+}
+
+BOOL PlayIsWebFirst(id<SRGMediaMetadata> object)
+{
+    NSDate *date = NSDate.date;
+    SRGTimeAvailability timeAvailability = [object timeAvailabilityAtDate:date];
+    return [object.date compare:date] == NSOrderedDescending && timeAvailability == SRGTimeAvailabilityAvailable && object.contentType == SRGContentTypeEpisode;
+}
+
+NSTimeInterval PlayTimeIntervalBeforeEnd(id<SRGMediaMetadata> object)
+{
+    NSDate *date = NSDate.date;
+    SRGTimeAvailability timeAvailability = [object timeAvailabilityAtDate:date];
+    if (timeAvailability == SRGTimeAvailabilityAvailable && object.endDate && object.contentType != SRGContentTypeScheduledLivestream && object.contentType != SRGContentTypeLivestream) {
+        NSDateComponents *monthsDateComponents = [NSCalendar.currentCalendar components:NSCalendarUnitDay fromDate:date toDate:object.endDate options:0];
+        if (monthsDateComponents.day <= 30) {
+            return [object.endDate timeIntervalSinceDate:date];
+        }
+    }
+    return DBL_MIN;
+}
+
+NSTimeInterval PlayTimeIntervalAfterEnd(id<SRGMediaMetadata> object)
+{
+    NSDate *date = NSDate.date;
+    SRGTimeAvailability timeAvailability = [object timeAvailabilityAtDate:date];
+    if (timeAvailability == SRGTimeAvailabilityNotAvailableAnymore) {
+        NSDate *endDate = object.endDate ?: [object.date dateByAddingTimeInterval:object.duration / 1000.];
+        return [date timeIntervalSinceDate:endDate];
+    }
+    return DBL_MIN;
 }
