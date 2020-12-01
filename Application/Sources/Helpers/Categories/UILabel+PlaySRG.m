@@ -61,6 +61,7 @@ static NSString *LabelFormattedDuration(NSTimeInterval duration)
     self.font = [UIFont srg_mediumFontWithTextStyle:SRGAppearanceFontTextStyleBody];
     
     NSString *text = nil;
+    UIColor *textColor = UIColor.play_grayColor;
     
     NSTimeInterval timeIntervalAfterEnd = PlayTimeIntervalAfterEnd(object);
     if (timeIntervalAfterEnd > DBL_MIN) {
@@ -70,11 +71,13 @@ static NSString *LabelFormattedDuration(NSTimeInterval duration)
         NSTimeInterval timeIntervalBeforeEnd = PlayTimeIntervalBeforeEnd(object);
         if (timeIntervalBeforeEnd > DBL_MIN) {
             text = [NSString stringWithFormat:NSLocalizedString(@"Still available for %@", @"Explains that a content is still online (for days or hours) but will expire. Displayed in the media player view."), LabelFormattedDuration(timeIntervalBeforeEnd)];
+            textColor = UIColor.play_orangeColor;
         }
     }
     
     if (text) {
         self.text = text;
+        self.textColor = textColor;
         self.hidden = NO;
     }
     else {
