@@ -155,14 +155,18 @@ class SectionViewController: UIViewController {
     }
     #endif
     
-    func reloadData(for state: SectionViewModel.State) {
+    private func reloadData(for state: SectionViewModel.State) {
         switch state {
         case .loading:
             emptyView.content = EmptyView(state: .loading)
+            navigationItem.setRightBarButton(nil, animated: true)
         case let .failed(error: error):
             emptyView.content = EmptyView(state: .failed(error: error))
+            navigationItem.setRightBarButton(nil, animated: true)
         case let .loaded(headerItem: headerItem, row: row):
+            let isEmpty = row.isEmpty
             emptyView.content = (headerItem == nil && row.isEmpty) ? EmptyView(state: .empty) : nil
+            navigationItem.setRightBarButton(!isEmpty ? editButtonItem : nil, animated: true)
         }
         
         contentInsets = Self.contentInsets(for: state)
@@ -188,14 +192,14 @@ class SectionViewController: UIViewController {
     }
     
     #if os(iOS)
-    @objc func pullToRefresh(_ refreshControl: RefreshControl) {
+    @objc private func pullToRefresh(_ refreshControl: RefreshControl) {
         if refreshControl.isRefreshing {
             refreshControl.endRefreshing()
         }
         refreshTriggered = true
     }
     
-    @objc func shareContent(_ barButtonItem: UIBarButtonItem) {
+    @objc private func shareContent(_ barButtonItem: UIBarButtonItem) {
         guard let sharingItem = model.section.properties.sharingItem else { return }
         
         let activityViewController = UIActivityViewController(sharingItem: sharingItem, source: .button, in: self)

@@ -164,7 +164,7 @@ class PageViewController: UIViewController {
     }
     #endif
     
-    func reloadData(for state: PageViewModel.State) {
+    private func reloadData(for state: PageViewModel.State) {
         switch state {
         case .loading:
             emptyView.content = EmptyView(state: .loading)
@@ -189,7 +189,7 @@ class PageViewController: UIViewController {
     }
     
     #if os(iOS)
-    @objc func pullToRefresh(_ refreshControl: RefreshControl) {
+    @objc private func pullToRefresh(_ refreshControl: RefreshControl) {
         if refreshControl.isRefreshing {
             refreshControl.endRefreshing()
         }
