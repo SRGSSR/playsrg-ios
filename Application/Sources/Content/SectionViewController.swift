@@ -166,7 +166,9 @@ class SectionViewController: UIViewController {
         case let .loaded(headerItem: headerItem, row: row):
             let isEmpty = row.isEmpty
             emptyView.content = (headerItem == nil && row.isEmpty) ? EmptyView(state: .empty) : nil
-            navigationItem.setRightBarButton(!isEmpty ? editButtonItem : nil, animated: true)
+            
+            let hasEditButton = model.section.properties.supportsEdition && !isEmpty
+            navigationItem.setRightBarButton(hasEditButton ? editButtonItem : nil, animated: true)
         }
         
         contentInsets = Self.contentInsets(for: state)

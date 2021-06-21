@@ -56,6 +56,7 @@ protocol SectionProperties {
     var label: String? { get }
     var placeholderItems: [Content.Item] { get }
     var displaysTitle: Bool { get }
+    var supportsEdition: Bool { get }
     
     var analyticsTitle: String? { get }
     var analyticsLevels: [String]? { get }
@@ -142,6 +143,22 @@ private extension Content {
         
         var displaysTitle: Bool {
             return contentSection.type != .showAndMedias
+        }
+        
+        var supportsEdition: Bool {
+            switch contentSection.type {
+            case .medias, .showAndMedias, .shows:
+                return false
+            case .predefined:
+                switch presentation.type {
+                case .favoriteShows, .resumePlayback, .watchLater:
+                    return true
+                default:
+                    return false
+                }
+            case .none:
+                return false
+            }
         }
         
         var analyticsTitle: String? {
@@ -366,6 +383,15 @@ private extension Content {
         
         var displaysTitle: Bool {
             return true
+        }
+        
+        var supportsEdition: Bool {
+            switch configuredSection {
+            case .radioFavoriteShows, .radioResumePlayback, .radioWatchLater:
+                return true
+            default:
+                return false
+            }
         }
         
         var analyticsTitle: String? {
