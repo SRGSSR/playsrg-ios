@@ -346,6 +346,8 @@ private extension Content {
             case .watchLater:
                 return Signal.watchLaterUpdate()
             default:
+                // TODO: No history updates yet for battery consumption reasons. Fix when an efficient way to
+                //       broadcast and apply history updates is available.
                 return nil
             }
         }
@@ -659,6 +661,8 @@ private extension Content {
             case .radioWatchLater, .watchLater:
                 return Signal.watchLaterUpdate()
             default:
+                // TODO: No history updates yet for battery consumption reasons. Fix when an efficient way to
+                //       broadcast and apply history updates is available.
                 return nil
             }
         }
