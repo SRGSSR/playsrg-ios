@@ -111,7 +111,7 @@ class SectionViewController: UIViewController {
         
         let cellRegistration = UICollectionView.CellRegistration<HostCollectionViewCell<ItemCell>, SectionViewModel.Item> { cell, _, item in
             cell.content = ItemCell(item: item)
-            cell.contentView.alpha = (!self.isEditing || self.model.hasSelected(item)) ? 1 : 0.5
+            cell.contentView.alpha = (!self.isEditing || self.model.hasSelected(item)) ? 1 : 0.3
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item in
@@ -163,6 +163,7 @@ class SectionViewController: UIViewController {
         collectionView.isEditing = editing
         
         if editing {
+            title = NSLocalizedString("Select items", comment: "Title displayed when item selection has been enabled")
             leftBarButtonItem = navigationItem.leftBarButtonItem
             
             let deleteBarButtonItem = UIBarButtonItem(image: UIImage(named: "delete"), style: .plain, target: self, action: #selector(deleteSelectedItems))
@@ -171,6 +172,7 @@ class SectionViewController: UIViewController {
             navigationItem.setLeftBarButton(deleteBarButtonItem, animated: animated)
         }
         else {
+            title = model.title
             model.clearSelection()
             navigationItem.setLeftBarButton(leftBarButtonItem, animated: animated)
         }
