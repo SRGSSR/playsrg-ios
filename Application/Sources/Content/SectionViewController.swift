@@ -277,6 +277,7 @@ class SectionViewController: UIViewController {
     
     @objc private func deleteSelectedItems(_ barButtonItem: UIBarButtonItem) {
         model.deleteSelection()
+        setEditing(false, animated: true)
     }
     #endif
 }
