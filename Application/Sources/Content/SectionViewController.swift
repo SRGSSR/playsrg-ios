@@ -67,6 +67,7 @@ class SectionViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
+        collectionView.allowsMultipleSelectionDuringEditing = true
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
@@ -161,7 +162,6 @@ class SectionViewController: UIViewController {
         super.setEditing(editing, animated: animated)
         
         collectionView.isEditing = editing
-        collectionView.allowsMultipleSelectionDuringEditing = editing
         
         if editing {
             leftBarButtonItem = navigationItem.leftBarButtonItem
@@ -220,6 +220,43 @@ class SectionViewController: UIViewController {
         DispatchQueue.global(qos: .userInteractive).async {
             self.dataSource.apply(snapshot)
         }
+    }
+    
+    private func reloadCell(for item: Content.Item) {
+        var snapshot = dataSource.snapshot()
+        snapshot.reloadItems([item])
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.dataSource.apply(snapshot)
+        }
+    }
+    
+    private func open(_ item: Content.Item) {
+        switch item {
+        case let .media(media):
+            play_presentMediaPlayer(with: media, position: nil, airPlaySuggestions: true, fromPushNotification: false, animated: true, completion: nil)
+        case let .show(show):
+            if let navigationController = navigationController {
+                let showViewController = SectionViewController.showViewController(for: show)
+                navigationController.pushViewController(showViewController, animated: true)
+            }
+        case let .topic(topic):
+            if let navigationController = navigationController {
+                let pageViewController = PageViewController(id: .topic(topic: topic))
+                navigationController.pushViewController(pageViewController, animated: true)
+            }
+        default:
+            ()
+        }
+    }
+    
+    private func toggleSelection(for item: Content.Item) {
+        if selectedItems.contains(item) {
+            selectedItems.remove(item)
+        }
+        else {
+            selectedItems.insert(item)
+        }
+        reloadCell(for: item)
     }
     
     private static func contentInsets(for state: SectionViewModel.State) -> UIEdgeInsets {
@@ -335,40 +372,17 @@ extension SectionViewController: UICollectionViewDelegate {
         let section = snapshot.sectionIdentifiers[indexPath.section]
         let item = snapshot.itemIdentifiers(inSection: section)[indexPath.row]
         
-        guard !collectionView.isEditing else {
-            selectedItems.insert(item)
-            return
+        if collectionView.isEditing {
+            toggleSelection(for: item)
         }
-        
-        switch item {
-        case let .media(media):
-            play_presentMediaPlayer(with: media, position: nil, airPlaySuggestions: true, fromPushNotification: false, animated: true, completion: nil)
-        case let .show(show):
-            if let navigationController = navigationController {
-                let showViewController = SectionViewController.showViewController(for: show)
-                navigationController.pushViewController(showViewController, animated: true)
-            }
-        case let .topic(topic):
-            if let navigationController = navigationController {
-                let pageViewController = PageViewController(id: .topic(topic: topic))
-                navigationController.pushViewController(pageViewController, animated: true)
-            }
-        default:
-            ()
+        else {
+            open(item)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard collectionView.isEditing else { return }
-        
-        let snapshot = dataSource.snapshot()
-        let section = snapshot.sectionIdentifiers[indexPath.section]
-        let item = snapshot.itemIdentifiers(inSection: section)[indexPath.row]
-        
-        selectedItems.remove(item)
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        guard !collectionView.isEditing else { return nil }
+        
         let snapshot = dataSource.snapshot()
         let section = snapshot.sectionIdentifiers[indexPath.section]
         let item = snapshot.itemIdentifiers(inSection: section)[indexPath.row]
