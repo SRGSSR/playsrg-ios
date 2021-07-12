@@ -403,9 +403,9 @@ private extension PageViewModel {
                 #else
                 return .liveMediaSwimlane
                 #endif
-            case .radioEpisodesForDay, .radioLatestEpisodesFromFavorites, .radioResumePlayback, .radioWatchLater, .tvEpisodesForDay, .tvLiveCenter, .tvScheduledLivestreams:
+            case .history, .watchLater, .radioEpisodesForDay, .radioLatestEpisodesFromFavorites, .radioResumePlayback, .radioWatchLater, .tvEpisodesForDay, .tvLiveCenter, .tvScheduledLivestreams:
                 return .mediaSwimlane
-            case .radioFavoriteShows, .show:
+            case .favoriteShows, .radioFavoriteShows, .show:
                 return .showSwimlane
             case .radioAllShows, .tvAllShows:
                 return .showGrid

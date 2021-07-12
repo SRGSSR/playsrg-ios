@@ -33,6 +33,10 @@ extension ApplicationConfiguration {
 enum ConfiguredSection: Hashable {
     case show(SRGShow)
     
+    case favoriteShows
+    case history
+    case watchLater
+    
     case tvAllShows
     case tvEpisodesForDay(_ day: SRGDay)
     

@@ -387,9 +387,11 @@ private extension Content {
         
         var title: String? {
             switch configuredSection {
+            case .history:
+                return NSLocalizedString("History", comment: "Title label used to present the history")
             case .radioAllShows, .tvAllShows:
                 return NSLocalizedString("Shows", comment: "Title label used to present radio associated shows")
-            case .radioFavoriteShows:
+            case .favoriteShows, .radioFavoriteShows:
                 return NSLocalizedString("Favorites", comment: "Title label used to present the radio favorite shows")
             case .radioLatest:
                 return NSLocalizedString("The latest audios", comment: "Title label used to present the radio latest audios")
@@ -409,7 +411,7 @@ private extension Content {
                 return NSLocalizedString("Resume playback", comment: "Title label used to present medias whose playback can be resumed")
             case .radioShowAccess:
                 return NSLocalizedString("Shows", comment: "Title label used to present the radio shows AZ and radio shows by date access buttons")
-            case .radioWatchLater:
+            case .radioWatchLater, .watchLater:
                 return NSLocalizedString("Later", comment: "Title Label used to present the audio later list")
             case .tvLive:
                 return NSLocalizedString("TV channels", comment: "Title label to present main TV livestreams")
@@ -432,11 +434,11 @@ private extension Content {
         
         var placeholderItems: [Content.Item] {
             switch configuredSection {
-            case .show, .radioEpisodesForDay, .radioLatest, .radioLatestEpisodes, .radioLatestVideos, .radioMostPopular, .tvEpisodesForDay, .tvLiveCenter, .tvScheduledLivestreams:
+            case .show, .history, .watchLater, .radioEpisodesForDay, .radioLatest, .radioLatestEpisodes, .radioLatestVideos, .radioMostPopular, .tvEpisodesForDay, .tvLiveCenter, .tvScheduledLivestreams:
                 return (0..<defaultNumberOfPlaceholders).map { .mediaPlaceholder(index: $0) }
             case .tvLive, .radioLive, .radioLiveSatellite:
                 return (0..<defaultNumberOfLivestreamPlaceholders).map { .mediaPlaceholder(index: $0) }
-            case .radioAllShows, .tvAllShows:
+            case .favoriteShows, .radioAllShows, .tvAllShows:
                 return (0..<defaultNumberOfPlaceholders).map { .showPlaceholder(index: $0) }
             case .radioFavoriteShows, .radioLatestEpisodesFromFavorites, .radioResumePlayback, .radioShowAccess, .radioWatchLater:
                 return []
@@ -460,9 +462,11 @@ private extension Content {
             switch configuredSection {
             case let .show(show):
                 return show.title
+            case .history:
+                return AnalyticsPageTitle.history.rawValue
             case .radioAllShows, .tvAllShows:
                 return AnalyticsPageTitle.showsAZ.rawValue
-            case .radioFavoriteShows:
+            case .favoriteShows, .radioFavoriteShows:
                 return AnalyticsPageTitle.favorites.rawValue
             case .radioLatest, .radioLatestVideos:
                 return AnalyticsPageTitle.latest.rawValue
@@ -474,7 +478,7 @@ private extension Content {
                 return AnalyticsPageTitle.mostPopular.rawValue
             case .radioResumePlayback:
                 return AnalyticsPageTitle.resumePlayback.rawValue
-            case .radioWatchLater:
+            case .radioWatchLater, .watchLater:
                 return AnalyticsPageTitle.watchLater.rawValue
             case .tvLiveCenter:
                 return AnalyticsPageTitle.sports.rawValue
@@ -513,6 +517,8 @@ private extension Content {
                 return [AnalyticsPageLevel.play.rawValue, AnalyticsPageLevel.live.rawValue]
             case .radioEpisodesForDay, .radioLive, .radioLiveSatellite, .radioShowAccess, .tvEpisodesForDay, .tvLive:
                 return nil
+            case .favoriteShows, .history, .watchLater:
+                return [AnalyticsPageLevel.play.rawValue, AnalyticsPageLevel.user.rawValue]
             }
         }
         
@@ -536,6 +542,18 @@ private extension Content {
             switch configuredSection {
             case let .show(show):
                 return dataProvider.latestMediasForShow(withUrn: show.urn, pageSize: pageSize, paginatedBy: paginator)
+                    .map { $0.map { .media($0) } }
+                    .eraseToAnyPublisher()
+            case .favoriteShows:
+                return dataProvider.favoritesPublisher(filter: nil)
+                    .map { $0.map { .show($0) } }
+                    .eraseToAnyPublisher()
+            case .history:
+                return dataProvider.favoritesPublisher(filter: nil)
+                    .map { $0.map { .show($0) } }
+                    .eraseToAnyPublisher()
+            case .watchLater:
+                return dataProvider.laterPublisher(pageSize: pageSize, paginatedBy: paginator, filter: nil)
                     .map { $0.map { .media($0) } }
                     .eraseToAnyPublisher()
             case .tvAllShows:
