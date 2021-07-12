@@ -41,6 +41,50 @@ enum Content {
         @available(tvOS, unavailable)
         case showAccess(radioChannel: RadioChannel?)
     }
+    
+    static func mediaItems(from items: [Content.Item]) -> [Content.Item] {
+        return items.filter { item in
+            if case .media = item {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+    }
+    
+    static func medias(from items: [Content.Item]) -> [SRGMedia] {
+        return items.compactMap { item in
+            if case let .media(media) = item {
+                return media
+            }
+            else {
+                return nil
+            }
+        }
+    }
+    
+    static func showItems(from items: [Content.Item]) -> [Content.Item] {
+        return items.filter { item in
+            if case .show = item {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+    }
+    
+    static func shows(from items: [Content.Item]) -> [SRGShow] {
+        return items.compactMap { item in
+            if case let .show(show) = item {
+                return show
+            }
+            else {
+                return nil
+            }
+        }
+    }
 }
 
 // MARK: Section properties
@@ -620,28 +664,14 @@ private extension Content {
 
 private extension Content {
     static func removeFromFavorites(_ items: [Content.Item]) {
-        let shows = items.compactMap { item -> SRGShow? in
-            if case let .show(show) = item {
-                return show
-            }
-            else {
-                return nil
-            }
-        }
+        let shows = Content.shows(from: items)
         FavoritesRemoveShows(shows)
         Signal.removeFavorite(for: items)
     }
     
     static func removeFromWatchLater(_ items: [Content.Item]) {
-        let urns = items.compactMap { item -> String? in
-            if case let .media(media) = item {
-                return media.urn
-            }
-            else {
-                return nil
-            }
-        }
-        // TODO: API for WatchLater
+        // TODO: API for WatchLater item removal
+        let urns = Content.medias(from: items).map(\.urn)
         SRGUserData.current?.playlists.discardPlaylistEntries(withUids: urns, fromPlaylistWithUid: SRGPlaylistUid.watchLater.rawValue) { error in
             guard error == nil else { return }
             Signal.removeWatchLater(for: items)
@@ -649,15 +679,8 @@ private extension Content {
     }
     
     static func removeFromHistory(_ items: [Content.Item]) {
-        let urns = items.compactMap { item -> String? in
-            if case let .media(media) = item {
-                return media.urn
-            }
-            else {
-                return nil
-            }
-        }
-        // TODO: API for History
+        // TODO: API for History item removal
+        let urns = Content.medias(from: items).map(\.urn)
         SRGUserData.current?.history.discardHistoryEntries(withUids: urns) { error in
             guard error == nil else { return }
             Signal.removeHistory(for: items)

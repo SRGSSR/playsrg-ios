@@ -135,30 +135,8 @@ enum Signal {
 // MARK: Methods which can be used to declare item removal
 
 extension Signal {
-    private static func mediaItems(from items: [Content.Item]) -> [Content.Item] {
-        return items.filter { item in
-            if case .media = item {
-                return true
-            }
-            else {
-                return false
-            }
-        }
-    }
-    
-    private static func showItems(from items: [Content.Item]) -> [Content.Item] {
-        return items.filter { item in
-            if case .show = item {
-                return true
-            }
-            else {
-                return false
-            }
-        }
-    }
-    
     static func removeHistory(for items: [Content.Item]) {
-        let removedItems = mediaItems(from: items)
+        let removedItems = Content.mediaItems(from: items)
         guard !removedItems.isEmpty else { return }
         NotificationCenter.default.post(name: .didRemoveHistoryEntries, object: nil, userInfo: [
             RemovalKey.removedItems: removedItems
@@ -166,7 +144,7 @@ extension Signal {
     }
     
     static func removeWatchLater(for items: [Content.Item]) {
-        let removedItems = mediaItems(from: items)
+        let removedItems = Content.mediaItems(from: items)
         guard !removedItems.isEmpty else { return }
         NotificationCenter.default.post(name: .didRemoveWatchLaterEntries, object: nil, userInfo: [
             RemovalKey.removedItems: removedItems
@@ -174,7 +152,7 @@ extension Signal {
     }
     
     static func removeFavorite(for items: [Content.Item]) {
-        let removedItems = showItems(from: items)
+        let removedItems = Content.showItems(from: items)
         guard !removedItems.isEmpty else { return }
         NotificationCenter.default.post(name: .didRemoveFavorites, object: nil, userInfo: [
             RemovalKey.removedItems: removedItems
