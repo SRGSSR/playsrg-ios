@@ -27,6 +27,8 @@ class SectionViewController: UIViewController {
     #endif
     
     private var refreshTriggered = false
+    private var contentInsets: UIEdgeInsets
+    private var selectedItems = Set<Content.Item>()
     
     private var globalHeaderTitle: String? {
         #if os(tvOS)
@@ -35,8 +37,6 @@ class SectionViewController: UIViewController {
         return nil
         #endif
     }
-    
-    private var contentInsets: UIEdgeInsets
     
     private static func snapshot(from state: SectionViewModel.State) -> NSDiffableDataSourceSnapshot<SectionViewModel.Section, SectionViewModel.Item> {
         var snapshot = NSDiffableDataSourceSnapshot<SectionViewModel.Section, SectionViewModel.Item>()
@@ -158,7 +158,14 @@ class SectionViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         collectionView.isEditing = editing
-        collectionView.allowsMultipleSelection = editing
+        collectionView.allowsMultipleSelectionDuringEditing = editing
+        
+        if editing {
+            // TODO: Display delete button
+        }
+        else {
+            selectedItems.removeAll()
+        }
     }
     
     private func reloadData(for state: SectionViewModel.State) {
@@ -299,11 +306,14 @@ extension SectionViewController: ContentInsets {
 extension SectionViewController: UICollectionViewDelegate {
     #if os(iOS)
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard !collectionView.isEditing else { return }
-        
         let snapshot = dataSource.snapshot()
         let section = snapshot.sectionIdentifiers[indexPath.section]
         let item = snapshot.itemIdentifiers(inSection: section)[indexPath.row]
+        
+        guard !collectionView.isEditing else {
+            selectedItems.insert(item)
+            return
+        }
         
         switch item {
         case let .media(media):
@@ -321,6 +331,16 @@ extension SectionViewController: UICollectionViewDelegate {
         default:
             ()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard collectionView.isEditing else { return }
+        
+        let snapshot = dataSource.snapshot()
+        let section = snapshot.sectionIdentifiers[indexPath.section]
+        let item = snapshot.itemIdentifiers(inSection: section)[indexPath.row]
+        
+        selectedItems.remove(item)
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
