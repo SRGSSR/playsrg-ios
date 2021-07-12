@@ -1,4 +1,5 @@
 disabled_rules:
+    - cyclomatic_complexity
     - identifier_name
     - force_cast
     - force_try
@@ -21,9 +22,6 @@ type_name:
 
 function_parameter_count:
   warning: 8
-
-cyclomatic_complexity:
-  warning: 17
 
 nesting:
   type_level: 2
