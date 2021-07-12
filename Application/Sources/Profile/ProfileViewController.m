@@ -199,17 +199,17 @@
         }
             
         case ApplicationSectionHistory: {
-            viewController = [[HistoryViewController alloc] init];
+            viewController = [SectionViewController historyViewController];
             break;
         }
             
         case ApplicationSectionFavorites: {
-            viewController = [[FavoritesViewController alloc] init];
+            viewController = [SectionViewController favoriteShowsViewController];
             break;
         }
             
         case ApplicationSectionWatchLater: {
-            viewController = [[WatchLaterViewController alloc] init];
+            viewController = [SectionViewController watchLaterViewController];
             break;
         }
             

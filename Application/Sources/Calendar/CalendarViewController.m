@@ -247,7 +247,7 @@
         }
     }
     
-    UIViewController *newDailyMediasViewController = [SectionViewController viewControllerForDay:[SRGDay dayFromDate:date] channelUid:self.radioChannel.uid];
+    UIViewController *newDailyMediasViewController = [SectionViewController mediasViewControllerForDay:[SRGDay dayFromDate:date] channelUid:self.radioChannel.uid];
     [self.pageViewController setViewControllers:@[newDailyMediasViewController] direction:navigationDirection animated:animated completion:nil];
     
     [self setNavigationBarItemsHidden:[date isEqualToDate:self.calendar.today]];
@@ -403,7 +403,7 @@
     
     UIViewController<DailyMediasViewController> *currentDailyMediasViewController = (UIViewController<DailyMediasViewController> *)viewController;
     NSDate *date = [NSCalendar.currentCalendar dateByAddingComponents:dateComponents toDate:currentDailyMediasViewController.date options:0];
-    return [SectionViewController viewControllerForDay:[SRGDay dayFromDate:date] channelUid:self.radioChannel.uid];
+    return [SectionViewController mediasViewControllerForDay:[SRGDay dayFromDate:date] channelUid:self.radioChannel.uid];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
@@ -417,7 +417,7 @@
     dateComponents.day = 1;
     
     NSDate *date = [NSCalendar.currentCalendar dateByAddingComponents:dateComponents toDate:currentDailyMediasViewController.date options:0];
-    return [SectionViewController viewControllerForDay:[SRGDay dayFromDate:date] channelUid:self.radioChannel.uid];
+    return [SectionViewController mediasViewControllerForDay:[SRGDay dayFromDate:date] channelUid:self.radioChannel.uid];
 }
 
 #pragma mark UIPageViewControllerDelegate protocol

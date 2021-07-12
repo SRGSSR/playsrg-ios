@@ -318,7 +318,19 @@ extension SectionViewController {
         return SectionViewController(section: .content(contentSection))
     }
     
-    @objc static func viewController(forDay day: SRGDay, channelUid: String?) -> SectionViewController & DailyMediasViewController {
+    @objc static func favoriteShowsViewController() -> SectionViewController {
+        return SectionViewController(section: .configured(.favoriteShows))
+    }
+    
+    @objc static func historyViewController() -> SectionViewController {
+        return SectionViewController(section: .configured(.history))
+    }
+    
+    @objc static func watchLaterViewController() -> SectionViewController {
+        return SectionViewController(section: .configured(.watchLater))
+    }
+    
+    @objc static func mediasViewController(forDay day: SRGDay, channelUid: String?) -> SectionViewController & DailyMediasViewController {
         if let channelUid = channelUid {
             return SectionViewController(section: .configured(.radioEpisodesForDay(day, channelUid: channelUid)))
         }
