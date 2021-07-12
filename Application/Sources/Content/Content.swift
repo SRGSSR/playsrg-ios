@@ -451,7 +451,7 @@ private extension Content {
         
         var supportsEdition: Bool {
             switch configuredSection {
-            case .radioFavoriteShows, .radioResumePlayback, .radioWatchLater:
+            case .favoriteShows, .history, .radioFavoriteShows, .radioResumePlayback, .radioWatchLater, .watchLater:
                 return true
             default:
                 return false
@@ -641,11 +641,11 @@ private extension Content {
         
         func removalPublisher() -> AnyPublisher<[Content.Item], Never> {
             switch configuredSection {
-            case .radioFavoriteShows, .radioLatestEpisodesFromFavorites:
+            case .favoriteShows, .radioFavoriteShows, .radioLatestEpisodesFromFavorites:
                 return Signal.favoritesRemoval()
-            case .radioResumePlayback:
+            case .history, .radioResumePlayback:
                 return Signal.historyRemoval()
-            case .radioWatchLater:
+            case .radioWatchLater, .watchLater:
                 return Signal.watchLaterRemoval()
             default:
                 return Just([]).eraseToAnyPublisher()
@@ -654,9 +654,9 @@ private extension Content {
         
         func reloadSignal() -> AnyPublisher<Void, Never>? {
             switch configuredSection {
-            case .radioFavoriteShows, .radioLatestEpisodesFromFavorites:
+            case .favoriteShows, .radioFavoriteShows, .radioLatestEpisodesFromFavorites:
                 return Signal.favoritesUpdate()
-            case .radioWatchLater:
+            case .radioWatchLater, .watchLater:
                 return Signal.watchLaterUpdate()
             default:
                 return nil
@@ -665,11 +665,11 @@ private extension Content {
         
         func remove(_ items: [Content.Item]) {
             switch configuredSection {
-            case .radioFavoriteShows:
+            case .favoriteShows, .radioFavoriteShows:
                 Content.removeFromFavorites(items)
-            case .radioWatchLater:
+            case .radioWatchLater, .watchLater:
                 Content.removeFromWatchLater(items)
-            case .radioResumePlayback:
+            case .history, .radioResumePlayback:
                 Content.removeFromHistory(items)
             default:
                 ()
