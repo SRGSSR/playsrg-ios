@@ -158,6 +158,7 @@ class SectionViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         collectionView.isEditing = editing
+        collectionView.allowsMultipleSelection = editing
     }
     
     private func reloadData(for state: SectionViewModel.State) {
@@ -298,6 +299,8 @@ extension SectionViewController: ContentInsets {
 extension SectionViewController: UICollectionViewDelegate {
     #if os(iOS)
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard !collectionView.isEditing else { return }
+        
         let snapshot = dataSource.snapshot()
         let section = snapshot.sectionIdentifiers[indexPath.section]
         let item = snapshot.itemIdentifiers(inSection: section)[indexPath.row]
@@ -318,7 +321,6 @@ extension SectionViewController: UICollectionViewDelegate {
         default:
             ()
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
