@@ -549,8 +549,8 @@ private extension Content {
                     .map { $0.map { .show($0) } }
                     .eraseToAnyPublisher()
             case .history:
-                return dataProvider.favoritesPublisher(filter: nil)
-                    .map { $0.map { .show($0) } }
+                return dataProvider.historyPublisher(pageSize: pageSize, paginatedBy: paginator, filter: nil)
+                    .map { $0.map { .media($0) } }
                     .eraseToAnyPublisher()
             case .watchLater:
                 return dataProvider.laterPublisher(pageSize: pageSize, paginatedBy: paginator, filter: nil)
@@ -766,6 +766,30 @@ private extension SRGDataProvider {
         return radioLivestreams(for: vendor, contentProviders: contentProviders)
             .eraseToAnyPublisher()
         #endif
+    }
+    
+    func historyPublisher(pageSize: UInt, paginatedBy paginator: Trigger.Signal?, filter: SectionFiltering?) -> AnyPublisher<[SRGMedia], Error> {
+        // Use a deferred future to make it repeatable on-demand
+        // See https://heckj.github.io/swiftui-notes/#reference-future
+        return Deferred {
+            Future<[String], Error> { promise in
+                let sortDescriptor = NSSortDescriptor(keyPath: \SRGHistoryEntry.date, ascending: false)
+                SRGUserData.current!.history.historyEntries(matching: nil, sortedWith: [sortDescriptor]) { historyEntries, error in
+                    if let error = error {
+                        promise(.failure(error))
+                    }
+                    else {
+                        promise(.success(historyEntries?.compactMap(\.uid) ?? []))
+                    }
+                }
+            }
+        }
+        .map { urns in
+            return self.medias(withUrns: urns, pageSize: pageSize, paginatedBy: paginator)
+                .map { filter?.compatibleMedias($0) ?? $0 }
+        }
+        .switchToLatest()
+        .eraseToAnyPublisher()
     }
     
     func resumePlaybackPublisher(pageSize: UInt, paginatedBy paginator: Trigger.Signal?, filter: SectionFiltering?) -> AnyPublisher<[SRGMedia], Error> {
