@@ -15,15 +15,16 @@ import struct Foundation.Notification
  *  Internal notifications sent to signal item removal.
  */
 private extension Notification.Name {
-    static let didRemoveFavorite = Notification.Name("SignalDidRemoveFavoriteNotification")
-    static let didRemoveWatchLaterEntry = Notification.Name("SignalDidRemoveWatchLaterEntryNotification")
+    static let didRemoveFavorites = Notification.Name("SignalDidRemoveFavoritesNotification")
+    static let didRemoveHistoryEntries = Notification.Name("SignalDidRemoveHistoryEntriesNotification")
+    static let didRemoveWatchLaterEntries = Notification.Name("SignalDidRemoveWatchLaterEntriesNotification")
 }
 
 // MARK: Signals which can be used in pipelines
 
 enum Signal {
     enum RemovalKey {
-        static let removedItem = "SignalRemovedItemKey"
+        static let removedItems = "SignalRemovedItemsKey"
     }
 
     /**
@@ -87,17 +88,24 @@ enum Signal {
             .eraseToAnyPublisher()
     }
     
+    static func historyRemoval() -> AnyPublisher<[Content.Item], Never> {
+        return NotificationCenter.default.publisher(for: .didRemoveHistoryEntries)
+            .compactMap { $0.userInfo?[RemovalKey.removedItems] as? [Content.Item] }
+            .scan([Content.Item]()) { $0 + $1 }
+            .eraseToAnyPublisher()
+    }
+    
     static func watchLaterRemoval() -> AnyPublisher<[Content.Item], Never> {
-        return NotificationCenter.default.publisher(for: .didRemoveWatchLaterEntry)
-            .compactMap { $0.userInfo?[RemovalKey.removedItem] as? Content.Item }
-            .scan([Content.Item]()) { $0.appending($1) }
+        return NotificationCenter.default.publisher(for: .didRemoveWatchLaterEntries)
+            .compactMap { $0.userInfo?[RemovalKey.removedItems] as? [Content.Item] }
+            .scan([Content.Item]()) { $0 + $1 }
             .eraseToAnyPublisher()
     }
     
     static func favoritesRemoval() -> AnyPublisher<[Content.Item], Never> {
-        return NotificationCenter.default.publisher(for: .didRemoveFavorite)
-            .compactMap { $0.userInfo?[RemovalKey.removedItem] as? Content.Item }
-            .scan([Content.Item]()) { $0.appending($1) }
+        return NotificationCenter.default.publisher(for: .didRemoveFavorites)
+            .compactMap { $0.userInfo?[RemovalKey.removedItems] as? [Content.Item] }
+            .scan([Content.Item]()) { $0 + $1 }
             .eraseToAnyPublisher()
     }
     
@@ -127,17 +135,49 @@ enum Signal {
 // MARK: Methods which can be used to declare item removal
 
 extension Signal {
-    static func removeLater(for item: Content.Item) {
-        guard case .media = item else { return }
-        NotificationCenter.default.post(name: .didRemoveWatchLaterEntry, object: nil, userInfo: [
-            RemovalKey.removedItem: item
+    private static func mediaItems(from items: [Content.Item]) -> [Content.Item] {
+        return items.filter { item in
+            if case .media = item {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+    }
+    
+    private static func showItems(from items: [Content.Item]) -> [Content.Item] {
+        return items.filter { item in
+            if case .show = item {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+    }
+    
+    static func removeHistory(for items: [Content.Item]) {
+        let removedItems = mediaItems(from: items)
+        guard !removedItems.isEmpty else { return }
+        NotificationCenter.default.post(name: .didRemoveHistoryEntries, object: nil, userInfo: [
+            RemovalKey.removedItems: removedItems
         ])
     }
     
-    static func removeFavorite(for item: Content.Item) {
-        guard case .show = item else { return }
-        NotificationCenter.default.post(name: .didRemoveFavorite, object: nil, userInfo: [
-            RemovalKey.removedItem: item
+    static func removeWatchLater(for items: [Content.Item]) {
+        let removedItems = mediaItems(from: items)
+        guard !removedItems.isEmpty else { return }
+        NotificationCenter.default.post(name: .didRemoveWatchLaterEntries, object: nil, userInfo: [
+            RemovalKey.removedItems: removedItems
+        ])
+    }
+    
+    static func removeFavorite(for items: [Content.Item]) {
+        let removedItems = showItems(from: items)
+        guard !removedItems.isEmpty else { return }
+        NotificationCenter.default.post(name: .didRemoveFavorites, object: nil, userInfo: [
+            RemovalKey.removedItems: removedItems
         ])
     }
 }

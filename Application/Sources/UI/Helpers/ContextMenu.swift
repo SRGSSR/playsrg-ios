@@ -122,7 +122,7 @@ private extension ContextMenu {
                 guard error == nil else { return }
                 
                 if !added, let item = item {
-                    Signal.removeLater(for: item)
+                    Signal.removeWatchLater(for: [item])
                 }
                 
                 let labels = SRGAnalyticsHiddenEventLabels()
@@ -229,7 +229,7 @@ private extension ContextMenu {
             FavoritesToggleShow(show)
             
             if isFavorite, let item = item {
-                Signal.removeFavorite(for: item)
+                Signal.removeFavorite(for: [item])
             }
             
             let labels = SRGAnalyticsHiddenEventLabels()

@@ -74,6 +74,9 @@ protocol SectionProperties {
     
     /// Signal which can be used to trigger a section reload.
     func reloadSignal() -> AnyPublisher<Void, Never>?
+    
+    /// Method to be called for removing the specified items from an editable section.
+    func remove(_ items: [Content.Item])
 }
 
 private extension Content {
@@ -280,6 +283,8 @@ private extension Content {
                 switch contentSection.presentation.type {
                 case .favoriteShows, .personalizedProgram:
                     return Signal.favoritesRemoval()
+                case .resumePlayback:
+                    return Signal.historyRemoval()
                 case .watchLater:
                     return Signal.watchLaterRemoval()
                 default:
@@ -298,6 +303,19 @@ private extension Content {
                 return Signal.watchLaterUpdate()
             default:
                 return nil
+            }
+        }
+        
+        func remove(_ items: [Content.Item]) {
+            switch presentation.type {
+            case .favoriteShows:
+                Content.removeFromFavorites(items)
+            case .watchLater:
+                Content.removeFromWatchLater(items)
+            case .resumePlayback:
+                Content.removeFromHistory(items)
+            default:
+                ()
             }
         }
         
@@ -563,6 +581,8 @@ private extension Content {
             switch configuredSection {
             case .radioFavoriteShows, .radioLatestEpisodesFromFavorites:
                 return Signal.favoritesRemoval()
+            case .radioResumePlayback:
+                return Signal.historyRemoval()
             case .radioWatchLater:
                 return Signal.watchLaterRemoval()
             default:
@@ -579,6 +599,68 @@ private extension Content {
             default:
                 return nil
             }
+        }
+        
+        func remove(_ items: [Content.Item]) {
+            switch configuredSection {
+            case .radioFavoriteShows:
+                Content.removeFromFavorites(items)
+            case .radioWatchLater:
+                Content.removeFromWatchLater(items)
+            case .radioResumePlayback:
+                Content.removeFromHistory(items)
+            default:
+                ()
+            }
+        }
+    }
+}
+
+// MARK: Removal
+
+private extension Content {
+    static func removeFromFavorites(_ items: [Content.Item]) {
+        let shows = items.compactMap { item -> SRGShow? in
+            if case let .show(show) = item {
+                return show
+            }
+            else {
+                return nil
+            }
+        }
+        FavoritesRemoveShows(shows)
+        Signal.removeFavorite(for: items)
+    }
+    
+    static func removeFromWatchLater(_ items: [Content.Item]) {
+        let urns = items.compactMap { item -> String? in
+            if case let .media(media) = item {
+                return media.urn
+            }
+            else {
+                return nil
+            }
+        }
+        // TODO: API for WatchLater
+        SRGUserData.current?.playlists.discardPlaylistEntries(withUids: urns, fromPlaylistWithUid: SRGPlaylistUid.watchLater.rawValue) { error in
+            guard error == nil else { return }
+            Signal.removeWatchLater(for: items)
+        }
+    }
+    
+    static func removeFromHistory(_ items: [Content.Item]) {
+        let urns = items.compactMap { item -> String? in
+            if case let .media(media) = item {
+                return media.urn
+            }
+            else {
+                return nil
+            }
+        }
+        // TODO: API for History
+        SRGUserData.current?.history.discardHistoryEntries(withUids: urns) { error in
+            guard error == nil else { return }
+            Signal.removeHistory(for: items)
         }
     }
 }

@@ -14,6 +14,7 @@ class SectionViewModel: ObservableObject {
     
     @Published private(set) var state: State = .loading
     
+    private var selectedItems = Set<Content.Item>()
     private var trigger = Trigger()
     private var cancellables = Set<AnyCancellable>()
     
@@ -65,6 +66,28 @@ class SectionViewModel: ObservableObject {
         if deep || state.isEmpty {
             trigger.activate(for: TriggerId.reload)
         }
+    }
+    
+    func toggleSelection(for item: Content.Item) {
+        if selectedItems.contains(item) {
+            selectedItems.remove(item)
+        }
+        else {
+            selectedItems.insert(item)
+        }
+    }
+    
+    func hasSelected(_ item: Content.Item) -> Bool {
+        return selectedItems.contains(item)
+    }
+    
+    func clearSelection() {
+        selectedItems.removeAll()
+    }
+    
+    func deleteSelection() {
+        section.properties.remove(Array(selectedItems))
+        selectedItems.removeAll()
     }
 }
 

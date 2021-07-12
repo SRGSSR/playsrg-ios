@@ -28,7 +28,6 @@ class SectionViewController: UIViewController {
     
     private var refreshTriggered = false
     private var contentInsets: UIEdgeInsets
-    private var selectedItems = Set<Content.Item>()
     private var leftBarButtonItem: UIBarButtonItem?
     
     private var globalHeaderTitle: String? {
@@ -112,7 +111,7 @@ class SectionViewController: UIViewController {
         
         let cellRegistration = UICollectionView.CellRegistration<HostCollectionViewCell<ItemCell>, SectionViewModel.Item> { cell, _, item in
             cell.content = ItemCell(item: item)
-            cell.contentView.alpha = (!self.isEditing || self.selectedItems.contains(item)) ? 1 : 0.5
+            cell.contentView.alpha = (!self.isEditing || self.model.hasSelected(item)) ? 1 : 0.5
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item in
@@ -172,7 +171,7 @@ class SectionViewController: UIViewController {
             navigationItem.setLeftBarButton(deleteBarButtonItem, animated: animated)
         }
         else {
-            selectedItems.removeAll()
+            model.clearSelection()
             navigationItem.setLeftBarButton(leftBarButtonItem, animated: animated)
         }
         
@@ -249,16 +248,6 @@ class SectionViewController: UIViewController {
         }
     }
     
-    private func toggleSelection(for item: Content.Item) {
-        if selectedItems.contains(item) {
-            selectedItems.remove(item)
-        }
-        else {
-            selectedItems.insert(item)
-        }
-        reloadCell(for: item)
-    }
-    
     private static func contentInsets(for state: SectionViewModel.State) -> UIEdgeInsets {
         let top = (state.headerItem != nil) ? 0 : Self.layoutVerticalMargin
         return UIEdgeInsets(top: top, left: 0, bottom: Self.layoutVerticalMargin, right: 0)
@@ -285,7 +274,7 @@ class SectionViewController: UIViewController {
     }
     
     @objc private func deleteSelectedItems(_ barButtonItem: UIBarButtonItem) {
-        
+        model.deleteSelection()
     }
     #endif
 }
@@ -373,7 +362,8 @@ extension SectionViewController: UICollectionViewDelegate {
         let item = snapshot.itemIdentifiers(inSection: section)[indexPath.row]
         
         if collectionView.isEditing {
-            toggleSelection(for: item)
+            model.toggleSelection(for: item)
+            reloadCell(for: item)
         }
         else {
             open(item)
