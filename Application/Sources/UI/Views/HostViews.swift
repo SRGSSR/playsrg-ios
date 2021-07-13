@@ -39,6 +39,12 @@ class HostCollectionViewCell<Content: View>: UICollectionViewCell {
             update(with: content)
         }
     }
+    
+    override var isSelected: Bool {
+        didSet {
+            alpha = isSelected ? 0.3 : 1
+        }
+    }
 }
 
 /**

@@ -236,7 +236,7 @@ class SectionViewController: UIViewController {
             snapshot.reloadSections([row.section])
         }
         DispatchQueue.global(qos: .userInteractive).async {
-            self.dataSource.apply(snapshot)
+            self.dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
         }
     }
     
@@ -410,7 +410,9 @@ extension SectionViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {
-        setEditing(true, animated: true)
+        if !isEditing {
+            setEditing(true, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
