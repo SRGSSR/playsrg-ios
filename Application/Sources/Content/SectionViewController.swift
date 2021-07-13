@@ -155,7 +155,6 @@ class SectionViewController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return Self.play_supportedInterfaceOrientations
     }
-    #endif
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
@@ -179,6 +178,7 @@ class SectionViewController: UIViewController {
         
         reloadCells()
     }
+    #endif
     
     private func reloadData(for state: SectionViewModel.State) {
         switch state {
@@ -231,6 +231,12 @@ class SectionViewController: UIViewController {
         }
     }
     
+    private static func contentInsets(for state: SectionViewModel.State) -> UIEdgeInsets {
+        let top = (state.headerItem != nil) ? 0 : Self.layoutVerticalMargin
+        return UIEdgeInsets(top: top, left: 0, bottom: Self.layoutVerticalMargin, right: 0)
+    }
+    
+    #if os(iOS)
     private func open(_ item: Content.Item) {
         switch item {
         case let .media(media):
@@ -250,12 +256,6 @@ class SectionViewController: UIViewController {
         }
     }
     
-    private static func contentInsets(for state: SectionViewModel.State) -> UIEdgeInsets {
-        let top = (state.headerItem != nil) ? 0 : Self.layoutVerticalMargin
-        return UIEdgeInsets(top: top, left: 0, bottom: Self.layoutVerticalMargin, right: 0)
-    }
-    
-    #if os(iOS)
     @objc private func pullToRefresh(_ refreshControl: RefreshControl) {
         if refreshControl.isRefreshing {
             refreshControl.endRefreshing()
