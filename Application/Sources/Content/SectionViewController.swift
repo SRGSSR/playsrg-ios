@@ -202,16 +202,16 @@ class SectionViewController: UIViewController {
         switch state {
         case .loading:
             emptyView.content = EmptyView(state: .loading)
-            navigationItem.setRightBarButton(nil, animated: true)
+            navigationItem.rightBarButtonItem = nil
         case let .failed(error: error):
             emptyView.content = EmptyView(state: .failed(error: error))
-            navigationItem.setRightBarButton(nil, animated: true)
+            navigationItem.rightBarButtonItem = nil
         case let .loaded(headerItem: headerItem, row: row):
             let isEmpty = row.isEmpty
             emptyView.content = (headerItem == nil && row.isEmpty) ? EmptyView(state: .empty) : nil
             
             let hasEditButton = model.section.properties.supportsEdition && !isEmpty
-            navigationItem.setRightBarButton(hasEditButton ? editButtonItem : nil, animated: true)
+            navigationItem.rightBarButtonItem = hasEditButton ? editButtonItem : nil
         }
         
         contentInsets = Self.contentInsets(for: state)
