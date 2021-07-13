@@ -174,7 +174,6 @@ class SectionViewController: UIViewController {
         }
         
         updateTitle()
-        reloadCells()
     }
     
     private func updateTitle() {
@@ -227,16 +226,6 @@ class SectionViewController: UIViewController {
                 }
                 #endif
             }
-        }
-    }
-    
-    private func reloadCells() {
-        var snapshot = dataSource.snapshot()
-        if case let .loaded(headerItem: _, row: row) = model.state {
-            snapshot.reloadSections([row.section])
-        }
-        DispatchQueue.global(qos: .userInteractive).async {
-            self.dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
         }
     }
     
