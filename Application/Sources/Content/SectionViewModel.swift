@@ -22,6 +22,10 @@ class SectionViewModel: ObservableObject {
         return section.properties.displaysTitle ? section.properties.title : nil
     }
     
+    var numberOfSelectedItem: Int {
+        return selectedItems.count
+    }
+    
     init(section: Content.Section, filter: SectionFiltering?) {
         self.section = section
         

@@ -162,7 +162,6 @@ class SectionViewController: UIViewController {
         collectionView.isEditing = editing
         
         if editing {
-            title = NSLocalizedString("Select items", comment: "Title displayed when item selection has been enabled")
             leftBarButtonItem = navigationItem.leftBarButtonItem
             
             let deleteBarButtonItem = UIBarButtonItem(image: UIImage(named: "delete"), style: .plain, target: self, action: #selector(deleteSelectedItems))
@@ -171,12 +170,31 @@ class SectionViewController: UIViewController {
             navigationItem.setLeftBarButton(deleteBarButtonItem, animated: animated)
         }
         else {
-            title = model.title
             model.clearSelection()
             navigationItem.setLeftBarButton(leftBarButtonItem, animated: animated)
         }
         
+        updateTitle()
         reloadCells()
+    }
+    
+    private func updateTitle() {
+        if isEditing {
+            // TODO: Should use plural localization here but a bit costly (and not sure it is well integrated with CrowdIn)
+            //       See https://developer.apple.com/documentation/xcode/localizing-strings-that-contain-plurals
+            if model.numberOfSelectedItem == 0 {
+                title = NSLocalizedString("Select items", comment: "Title displayed when no item has been selected")
+            }
+            else if model.numberOfSelectedItem == 1 {
+                title = NSLocalizedString("1 item selected", comment: "Title displayed when 1 item has been selected")
+            }
+            else {
+                title = String(format: NSLocalizedString("%d items selected", comment: "Title displayed when several items have been selected"), model.numberOfSelectedItem)
+            }
+        }
+        else {
+            title = model.title
+        }
     }
     #endif
     
@@ -379,6 +397,7 @@ extension SectionViewController: UICollectionViewDelegate {
         if collectionView.isEditing {
             model.toggleSelection(for: item)
             reloadCell(for: item)
+            updateTitle()
         }
         else {
             open(item)
