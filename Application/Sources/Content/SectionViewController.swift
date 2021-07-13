@@ -111,7 +111,6 @@ class SectionViewController: UIViewController {
         
         let cellRegistration = UICollectionView.CellRegistration<HostCollectionViewCell<ItemCell>, SectionViewModel.Item> { cell, _, item in
             cell.content = ItemCell(item: item)
-            cell.contentView.alpha = (!self.isEditing || self.model.hasSelected(item)) ? 1 : 0.3
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { collectionView, indexPath, item in
@@ -236,14 +235,6 @@ class SectionViewController: UIViewController {
         if case let .loaded(headerItem: _, row: row) = model.state {
             snapshot.reloadSections([row.section])
         }
-        DispatchQueue.global(qos: .userInteractive).async {
-            self.dataSource.apply(snapshot)
-        }
-    }
-    
-    private func reloadCell(for item: Content.Item) {
-        var snapshot = dataSource.snapshot()
-        snapshot.reloadItems([item])
         DispatchQueue.global(qos: .userInteractive).async {
             self.dataSource.apply(snapshot)
         }
@@ -395,13 +386,23 @@ extension SectionViewController: UICollectionViewDelegate {
         let item = snapshot.itemIdentifiers(inSection: section)[indexPath.row]
         
         if collectionView.isEditing {
-            model.toggleSelection(for: item)
-            reloadCell(for: item)
+            model.select(item)
             updateTitle()
         }
         else {
             open(item)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard collectionView.isEditing else { return }
+        
+        let snapshot = dataSource.snapshot()
+        let section = snapshot.sectionIdentifiers[indexPath.section]
+        let item = snapshot.itemIdentifiers(inSection: section)[indexPath.row]
+        
+        model.deselect(item)
+        updateTitle()
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {

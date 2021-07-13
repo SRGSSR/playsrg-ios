@@ -72,17 +72,12 @@ class SectionViewModel: ObservableObject {
         }
     }
     
-    func toggleSelection(for item: Content.Item) {
-        if selectedItems.contains(item) {
-            selectedItems.remove(item)
-        }
-        else {
-            selectedItems.insert(item)
-        }
+    func select(_ item: Content.Item) {
+        selectedItems.insert(item)
     }
     
-    func hasSelected(_ item: Content.Item) -> Bool {
-        return selectedItems.contains(item)
+    func deselect(_ item: Content.Item) {
+        selectedItems.remove(item)
     }
     
     func clearSelection() {
