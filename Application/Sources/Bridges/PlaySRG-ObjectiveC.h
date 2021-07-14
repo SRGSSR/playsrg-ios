@@ -22,7 +22,6 @@
 #import "Layout.h"
 #import "MediaPlayerViewController.h"
 #import "MediaPlayerViewController+Private.h"
-#import "MediaPreviewViewController.h"
 #import "NavigationController.h"
 #import "NSBundle+PlaySRG.h"
 #import "NSDateFormatter+PlaySRG.h"
