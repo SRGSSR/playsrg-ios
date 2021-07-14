@@ -118,11 +118,6 @@
     return [ContextMenuObjC configurationFor:self.shows[indexPath.row] at:indexPath in:self.play_nearestViewController];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)configuration animator:(id<UIContextMenuInteractionCommitAnimating>)animator
-{
-    [ContextMenuObjC commitPreviewIn:self.play_nearestViewController animator:animator];
-}
-
 - (UITargetedPreview *)collectionView:(UICollectionView *)collectionView previewForHighlightingContextMenuWithConfiguration:(UIContextMenuConfiguration *)configuration
 {
     return [self previewForConfiguration:configuration inCollectionView:collectionView];

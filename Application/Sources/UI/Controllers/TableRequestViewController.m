@@ -322,11 +322,6 @@
     return [ContextMenuObjC configurationFor:self.items[indexPath.row] at:indexPath in:self];
 }
 
-- (void)tableView:(UITableView *)tableView willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)configuration animator:(id<UIContextMenuInteractionCommitAnimating>)animator
-{
-    [ContextMenuObjC commitPreviewIn:self animator:animator];
-}
-
 - (UITargetedPreview *)tableView:(UITableView *)tableView previewForHighlightingContextMenuWithConfiguration:(UIContextMenuConfiguration *)configuration
 {
     return [self previewForConfiguration:configuration inTableView:tableView];

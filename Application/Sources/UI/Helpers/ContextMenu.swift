@@ -35,20 +35,6 @@ enum ContextMenu {
         guard let indexPath = configuration.identifier as? NSIndexPath else { return nil }
         return collectionView.cellForItem(at: IndexPath(row: indexPath.row, section: indexPath.section))
     }
-    
-    static func commitPreview(in viewController: UIViewController, animator: UIContextMenuInteractionCommitAnimating) {
-        animator.preferredCommitStyle = .pop
-        animator.addCompletion {
-            guard let previewViewController = animator.previewViewController else { return }
-            if let mediaPreviewViewController = previewViewController as? MediaPreviewViewController {
-                guard let letterboxController = mediaPreviewViewController.letterboxController else { return }
-                viewController.play_presentMediaPlayer(from: letterboxController, withAirPlaySuggestions: true, fromPushNotification: false, animated: true, completion: nil)
-            }
-            else if let navigationController = viewController.navigationController {
-                navigationController.pushViewController(previewViewController, animated: true)
-            }
-        }
-    }
 }
 
 // MARK: Sharing
@@ -79,9 +65,7 @@ private extension ContextMenu {
 private extension ContextMenu {
     // TODO: Make item mandatory when the ObjC API is not needed anymore
     static func configuration(for media: SRGMedia, item: Content.Item?, identifier: NSCopying?, in viewController: UIViewController) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: identifier) {
-            return MediaPreviewViewController(media: media)
-        } actionProvider: { _ in
+        return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil) { _ in
             return menu(for: media, item: item, in: viewController)
         }
     }
@@ -201,9 +185,7 @@ private extension ContextMenu {
 private extension ContextMenu {
     // TODO: Make item mandatory when the ObjC API is not needed anymore
     static func configuration(for show: SRGShow, item: Content.Item?, identifier: NSCopying?, in viewController: UIViewController) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: identifier) {
-            return SectionViewController.showViewController(for: show)
-        } actionProvider: { _ in
+        return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil) { _ in
             return menu(for: show, item: item, in: viewController)
         }
     }
@@ -283,9 +265,5 @@ private extension ContextMenu {
     
     @objc static func interactionView(inCollectionView collectionView: UICollectionView, with configuration: UIContextMenuConfiguration) -> UIView? {
         return ContextMenu.interactionView(in: collectionView, with: configuration)
-    }
-    
-    @objc static func commitPreview(in viewController: UIViewController, animator: UIContextMenuInteractionCommitAnimating) {
-        ContextMenu.commitPreview(in: viewController, animator: animator)
     }
 }

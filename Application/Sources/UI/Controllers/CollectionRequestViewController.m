@@ -308,11 +308,6 @@
     return [ContextMenuObjC configurationFor:self.items[indexPath.row] at:indexPath in:self];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)configuration animator:(id<UIContextMenuInteractionCommitAnimating>)animator
-{
-    [ContextMenuObjC commitPreviewIn:self animator:animator];
-}
-
 - (UITargetedPreview *)collectionView:(UICollectionView *)collectionView previewForHighlightingContextMenuWithConfiguration:(UIContextMenuConfiguration *)configuration
 {
     return [self previewForConfiguration:configuration inCollectionView:collectionView];

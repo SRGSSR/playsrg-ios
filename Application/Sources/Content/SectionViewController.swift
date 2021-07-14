@@ -317,10 +317,6 @@ extension SectionViewController: UICollectionViewDelegate {
         return ContextMenu.configuration(for: item, at: indexPath, in: self)
     }
     
-    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        ContextMenu.commitPreview(in: self, animator: animator)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         return preview(for: configuration, in: collectionView)
     }
