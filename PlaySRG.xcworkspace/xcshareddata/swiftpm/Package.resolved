@@ -239,8 +239,8 @@
         "package": "SRGDataProvider",
         "repositoryURL": "https://github.com/SRGSSR/srgdataprovider-apple.git",
         "state": {
-          "branch": "develop",
-          "revision": "40cd892d79303e12816ab4d46fd9abfa66eb62a5",
+          "branch": "feature/program-guide",
+          "revision": "812b0ed9e97aa2b7a81270aa911d510fb06bc4db",
           "version": null
         }
       },

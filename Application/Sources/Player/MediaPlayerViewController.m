@@ -942,9 +942,9 @@ static NSDateComponentsFormatter *MediaPlayerViewControllerSkipIntervalAccessibi
         
         self.numberOfEpisodesLabel.font = [SRGFont fontWithStyle:SRGFontStyleSubtitle1];
         
-        NSInteger numberOfEpisodes = show.numberOfEpisodes;
-        if (numberOfEpisodes != 0) {
-            NSString *numberOfEpisodesString = [NSNumberFormatter localizedStringFromNumber:@(numberOfEpisodes) numberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *numberOfEpisodes = show.numberOfEpisodes;
+        if (numberOfEpisodes) {
+            NSString *numberOfEpisodesString = [NSNumberFormatter localizedStringFromNumber:numberOfEpisodes numberStyle:NSNumberFormatterDecimalStyle];
             self.numberOfEpisodesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ episodes", @"The amount of episodes available for a show"), numberOfEpisodesString];
         }
         else {
