@@ -9,8 +9,6 @@
 #import "AnalyticsConstants.h"
 #import "ApplicationSectionInfo.h"
 #import "DownloadsViewController.h"
-#import "FavoritesViewController.h"
-#import "HistoryViewController.h"
 #import "Layout.h"
 #import "NavigationController.h"
 #import "NotificationTableViewCell.h"
@@ -26,7 +24,6 @@
 #import "UIDevice+PlaySRG.h"
 #import "UIScrollView+PlaySRG.h"
 #import "UIViewController+PlaySRG.h"
-#import "WatchLaterViewController.h"
 
 @import SRGAppearance;
 @import SRGIdentity;
