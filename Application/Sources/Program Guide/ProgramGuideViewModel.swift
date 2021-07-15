@@ -49,5 +49,18 @@ extension ProgramGuideViewModel {
         case loading
         case failed(error: Error)
         case loaded([SRGProgramComposition])
+        
+        var channels: [SRGChannel] {
+            switch self {
+            case let .loaded(programCompositions):
+                return programCompositions.map { $0.channel }
+            default:
+                return []
+            }
+        }
+        
+        static func channels(from states: [State]) -> [SRGChannel] {
+            return states.first?.channels ?? []
+        }
     }
 }

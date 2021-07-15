@@ -13,7 +13,11 @@ final class ProgramGuideDailyViewController: UIViewController {
     let day: SRGDay
     private let model: ProgramGuideDailyViewModel
     
-    var channel: SRGChannel?
+    var channel: SRGChannel? {
+        didSet {
+            model.channel = channel
+        }
+    }
     
     var programs: [SRGProgram] = []
     

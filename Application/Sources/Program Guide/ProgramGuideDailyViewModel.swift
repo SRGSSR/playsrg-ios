@@ -12,21 +12,18 @@ final class ProgramGuideDailyViewModel: ObservableObject {
     let day: SRGDay
     private let parentModel: ProgramGuideViewModel
     
-    var channel: SRGChannel?
+    var channel: SRGChannel? {
+        didSet {
+            updatePublishers()
+        }
+    }
     
     @Published private(set) var state: State = .loading
     
     init(day: SRGDay, parentModel: ProgramGuideViewModel) {
         self.day = day
         self.parentModel = parentModel
-        
-        parentModel.$states
-            .compactMap { [weak self] states in
-                guard let self = self, let state = states[self.day] else { return nil }
-                return Self.state(from: state, for: self.channel)
-            }
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$state)
+        updatePublishers()
         parentModel.loadDay(day)
     }
     
@@ -48,6 +45,16 @@ final class ProgramGuideDailyViewModel: ObservableObject {
         else {
             return programCompositions.first?.programs
         }
+    }
+    
+    private func updatePublishers() {
+        parentModel.$states
+            .compactMap { [weak self] states in
+                guard let self = self, let state = states[self.day] else { return nil }
+                return Self.state(from: state, for: self.channel)
+            }
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$state)
     }
 }
 
