@@ -7,6 +7,8 @@
 import SRGDataProviderCombine
 import SRGUserData
 
+// MARK: View model
+
 class MediaDetailViewModel: ObservableObject {
     struct Recommendation: Codable {
         let recommendationId: String

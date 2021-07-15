@@ -8,7 +8,7 @@ import SRGDataProviderCombine
 
 // MARK: View model
 
-class PageViewModel: Identifiable, ObservableObject {
+final class PageViewModel: Identifiable, ObservableObject {
     let id: Id
     
     var title: String? {

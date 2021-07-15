@@ -699,6 +699,16 @@
 		6F362A8626A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */; };
 		6F362A8726A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */; };
 		6F362A8826A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */; };
+		6F362A8A26A0706F00CBCC9D /* ProgramGuideDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8926A0706F00CBCC9D /* ProgramGuideDailyViewController.swift */; };
+		6F362A8B26A0706F00CBCC9D /* ProgramGuideDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8926A0706F00CBCC9D /* ProgramGuideDailyViewController.swift */; };
+		6F362A8C26A0706F00CBCC9D /* ProgramGuideDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8926A0706F00CBCC9D /* ProgramGuideDailyViewController.swift */; };
+		6F362A8D26A0706F00CBCC9D /* ProgramGuideDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8926A0706F00CBCC9D /* ProgramGuideDailyViewController.swift */; };
+		6F362A8E26A0706F00CBCC9D /* ProgramGuideDailyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8926A0706F00CBCC9D /* ProgramGuideDailyViewController.swift */; };
+		6F362A9026A089D100CBCC9D /* ProgramGuideDailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8F26A089D100CBCC9D /* ProgramGuideDailyViewModel.swift */; };
+		6F362A9126A089D100CBCC9D /* ProgramGuideDailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8F26A089D100CBCC9D /* ProgramGuideDailyViewModel.swift */; };
+		6F362A9226A089D100CBCC9D /* ProgramGuideDailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8F26A089D100CBCC9D /* ProgramGuideDailyViewModel.swift */; };
+		6F362A9326A089D100CBCC9D /* ProgramGuideDailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8F26A089D100CBCC9D /* ProgramGuideDailyViewModel.swift */; };
+		6F362A9426A089D100CBCC9D /* ProgramGuideDailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8F26A089D100CBCC9D /* ProgramGuideDailyViewModel.swift */; };
 		6F390D7E268C97D500587B1F /* FocusableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA14534254729DA006E8D3B /* FocusableRegion.swift */; };
 		6F390D7F268C97D600587B1F /* FocusableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA14534254729DA006E8D3B /* FocusableRegion.swift */; };
 		6F390D80268C97D700587B1F /* FocusableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA14534254729DA006E8D3B /* FocusableRegion.swift */; };
@@ -2448,6 +2458,8 @@
 		6F340F50220DA99B00778CA3 /* History.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
 		6F340F51220DA99B00778CA3 /* History.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
 		6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramGuideViewController.swift; sourceTree = "<group>"; };
+		6F362A8926A0706F00CBCC9D /* ProgramGuideDailyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramGuideDailyViewController.swift; sourceTree = "<group>"; };
+		6F362A8F26A089D100CBCC9D /* ProgramGuideDailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramGuideDailyViewModel.swift; sourceTree = "<group>"; };
 		6F3A47AE1DD19A5B00C79E67 /* RSIResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RSIResources.xcassets; sourceTree = "<group>"; };
 		6F3A47B01DD19A6900C79E67 /* RTRResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RTRResources.xcassets; sourceTree = "<group>"; };
 		6F3A47B21DD19A7B00C79E67 /* RTSResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RTSResources.xcassets; sourceTree = "<group>"; };
@@ -4077,6 +4089,8 @@
 		6F93D50726A00CC900711039 /* Program Guide */ = {
 			isa = PBXGroup;
 			children = (
+				6F362A8926A0706F00CBCC9D /* ProgramGuideDailyViewController.swift */,
+				6F362A8F26A089D100CBCC9D /* ProgramGuideDailyViewModel.swift */,
 				6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */,
 				6F93D50826A00CED00711039 /* ProgramGuideViewModel.swift */,
 			);
@@ -7598,6 +7612,7 @@
 				6FC1FA882292E3480036CB34 /* NSSet+PlaySRG.m in Sources */,
 				084F94B022D3B77700D2D3A5 /* SearchSettingMultiSelectionViewController.m in Sources */,
 				086F8D5A22984B29001BE2F4 /* FavoritesViewController.m in Sources */,
+				6F362A9026A089D100CBCC9D /* ProgramGuideDailyViewModel.swift in Sources */,
 				6FE14E6B263EA9B5004AD913 /* TitleView.swift in Sources */,
 				6F4760791EB37D60003021EA /* UIDevice+PlaySRG.m in Sources */,
 				6F475FE11EB37BC6003021EA /* ModalTransition.m in Sources */,
@@ -7681,6 +7696,7 @@
 				6F8A545A2655100400AE78FD /* SectionViewController.swift in Sources */,
 				08209308208F522A00711DE4 /* PushService.m in Sources */,
 				6F4760091EB37BC6003021EA /* TranslucentTitleHeaderView.m in Sources */,
+				6F362A8A26A0706F00CBCC9D /* ProgramGuideDailyViewController.swift in Sources */,
 				08C68F8A1D38DEA100BB8AAA /* PlayAppDelegate.m in Sources */,
 				6F40920822DCFE2B005F3850 /* MostSearchedShowCollectionViewCell.m in Sources */,
 				080981302622195900AA586B /* LiveMediaCell.swift in Sources */,
@@ -7838,6 +7854,7 @@
 				6F74293E265BE52E0000538D /* Signals.swift in Sources */,
 				6F566E8124EE95CB0024B4CA /* PlayFirebaseConfiguration.m in Sources */,
 				6FD68619246052A100B8018A /* GradientView.m in Sources */,
+				6F362A8B26A0706F00CBCC9D /* ProgramGuideDailyViewController.swift in Sources */,
 				6F7F2B07249CD78D00C37526 /* SRGLetterboxController+PlaySRG.m in Sources */,
 				6FC2F7F92628F23700BF6B19 /* FirstResponder.swift in Sources */,
 				6F93DE0E20AE985C00B71572 /* OnboardingsViewController.m in Sources */,
@@ -7917,6 +7934,7 @@
 				6F475FBA1EB37BC6003021EA /* CollectionRequestViewController.m in Sources */,
 				6F16C7A426025698006F685A /* PageViewController.swift in Sources */,
 				6FDF08D8218B126700B2AF2C /* Download.m in Sources */,
+				6F362A9126A089D100CBCC9D /* ProgramGuideDailyViewModel.swift in Sources */,
 				6FC24A7F26395F3E00CACC20 /* FeaturedDescriptionView.swift in Sources */,
 				6FAE025A266812B000791A76 /* FocusTracker.swift in Sources */,
 				08F5DBC2262DF34400F717D0 /* FeaturedContentCell.swift in Sources */,
@@ -8042,6 +8060,7 @@
 				6F74293F265BE52E0000538D /* Signals.swift in Sources */,
 				6F566E8224EE95CB0024B4CA /* PlayFirebaseConfiguration.m in Sources */,
 				6FD6861A246052A100B8018A /* GradientView.m in Sources */,
+				6F362A8C26A0706F00CBCC9D /* ProgramGuideDailyViewController.swift in Sources */,
 				6F7F2B08249CD78D00C37526 /* SRGLetterboxController+PlaySRG.m in Sources */,
 				6FC2F7FA2628F23800BF6B19 /* FirstResponder.swift in Sources */,
 				6F93DE0F20AE985C00B71572 /* OnboardingsViewController.m in Sources */,
@@ -8121,6 +8140,7 @@
 				6F475FBB1EB37BC6003021EA /* CollectionRequestViewController.m in Sources */,
 				6F16C7A526025698006F685A /* PageViewController.swift in Sources */,
 				6FDF08D9218B126700B2AF2C /* Download.m in Sources */,
+				6F362A9226A089D100CBCC9D /* ProgramGuideDailyViewModel.swift in Sources */,
 				6FC24A8026395F3E00CACC20 /* FeaturedDescriptionView.swift in Sources */,
 				6FAE025B266812B000791A76 /* FocusTracker.swift in Sources */,
 				08F5DBC3262DF34400F717D0 /* FeaturedContentCell.swift in Sources */,
@@ -8246,6 +8266,7 @@
 				6F742940265BE52E0000538D /* Signals.swift in Sources */,
 				6F566E8324EE95CB0024B4CA /* PlayFirebaseConfiguration.m in Sources */,
 				6FD6861B246052A100B8018A /* GradientView.m in Sources */,
+				6F362A8D26A0706F00CBCC9D /* ProgramGuideDailyViewController.swift in Sources */,
 				6F7F2B09249CD78D00C37526 /* SRGLetterboxController+PlaySRG.m in Sources */,
 				6FC2F7FB2628F23800BF6B19 /* FirstResponder.swift in Sources */,
 				6F93DE1020AE985C00B71572 /* OnboardingsViewController.m in Sources */,
@@ -8325,6 +8346,7 @@
 				6F475FBC1EB37BC6003021EA /* CollectionRequestViewController.m in Sources */,
 				6F16C7A626025698006F685A /* PageViewController.swift in Sources */,
 				6FDF08DA218B126700B2AF2C /* Download.m in Sources */,
+				6F362A9326A089D100CBCC9D /* ProgramGuideDailyViewModel.swift in Sources */,
 				6FC24A8126395F3E00CACC20 /* FeaturedDescriptionView.swift in Sources */,
 				6FAE025D266812B300791A76 /* FocusTracker.swift in Sources */,
 				08F5DBC4262DF34400F717D0 /* FeaturedContentCell.swift in Sources */,
@@ -8450,6 +8472,7 @@
 				6F742941265BE52E0000538D /* Signals.swift in Sources */,
 				6F566E8424EE95CB0024B4CA /* PlayFirebaseConfiguration.m in Sources */,
 				6FD6861C246052A100B8018A /* GradientView.m in Sources */,
+				6F362A8E26A0706F00CBCC9D /* ProgramGuideDailyViewController.swift in Sources */,
 				6F7F2B0A249CD78E00C37526 /* SRGLetterboxController+PlaySRG.m in Sources */,
 				6FC2F7FC2628F23900BF6B19 /* FirstResponder.swift in Sources */,
 				6F93DE1120AE985C00B71572 /* OnboardingsViewController.m in Sources */,
@@ -8529,6 +8552,7 @@
 				6F475FBD1EB37BC6003021EA /* CollectionRequestViewController.m in Sources */,
 				6F16C7A726025698006F685A /* PageViewController.swift in Sources */,
 				6FDF08DB218B126700B2AF2C /* Download.m in Sources */,
+				6F362A9426A089D100CBCC9D /* ProgramGuideDailyViewModel.swift in Sources */,
 				6FC24A8226395F3E00CACC20 /* FeaturedDescriptionView.swift in Sources */,
 				6FAE025E266812B300791A76 /* FocusTracker.swift in Sources */,
 				08F5DBC5262DF34400F717D0 /* FeaturedContentCell.swift in Sources */,

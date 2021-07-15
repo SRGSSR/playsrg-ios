@@ -22,7 +22,7 @@ struct Accessibility<T>: DynamicProperty {
     }
 }
 
-class AccessibilitySettings: ObservableObject {
+final class AccessibilitySettings: ObservableObject {
     static let shared = AccessibilitySettings()
     
     @Published var isVoiceOverRunning = UIAccessibility.isVoiceOverRunning

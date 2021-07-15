@@ -6,7 +6,9 @@
 
 import Combine
 
-class MediaVisualViewModel: ObservableObject {
+// MARK: View model
+
+final class MediaVisualViewModel: ObservableObject {
     @Published var media: SRGMedia? {
         didSet {
             updatePublishers()

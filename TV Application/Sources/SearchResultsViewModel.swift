@@ -6,6 +6,8 @@
 
 import SRGDataProviderCombine
 
+// MARK: View model
+
 class SearchResultsViewModel: ObservableObject {
     enum State {
         case loading

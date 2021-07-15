@@ -4,7 +4,9 @@
 //  License information is available from the LICENSE file.
 //
 
-class LiveMediaCellViewModel: ObservableObject {
+// MARK: View model
+
+final class LiveMediaCellViewModel: ObservableObject {
     @Published var media: SRGMedia? {
         didSet {
             registerForChannelUpdates(for: media)

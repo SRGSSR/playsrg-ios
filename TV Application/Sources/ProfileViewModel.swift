@@ -9,6 +9,8 @@ import SwiftUI
 import SRGAnalytics
 import SRGUserData
 
+// MARK: View model
+
 class ProfileViewModel: ObservableObject {
     @Published private(set) var isLoggedIn = false
     @Published private(set) var account: SRGAccount?

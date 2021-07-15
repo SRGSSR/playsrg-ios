@@ -7,7 +7,9 @@
 import Combine
 import SRGDataProviderModel
 
-class ShowHeaderViewModel: ObservableObject {
+// MARK: View model
+
+final class ShowHeaderViewModel: ObservableObject {
     var show: SRGShow? {
         didSet {
             updatePublishers()

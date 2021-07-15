@@ -9,53 +9,36 @@ import SRGDataProviderCombine
 
 // MARK: View model
 
-class ProgramGuideViewModel: ObservableObject {
-    @Published var date: Date {
-        didSet {
-            updatePublishers()
-        }
+final class ProgramGuideViewModel: ObservableObject {
+    @Published private(set) var states: [SRGDay: State] = [:]
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        loadDay(.today)
     }
     
-    @Published private(set) var previousState: State = .loading
-    @Published private(set) var state: State = .loading
-    @Published private(set) var nextState: State = .loading
-    
-    init(date: Date = Date()) {
-        self.date = date
-        updatePublishers()
-    }
-    
-    private func updatePublishers() {
-        Self.tvPrograms(for: date)
+    // TODO: We probably don't want to reload all cached days when the application is woken up, but
+    //       to trigger refreshes again when navigating days
+    func loadDay(_ day: SRGDay) {
+        guard states[day] == nil else { return }
+        Self.tvPrograms(for: day)
             .receive(on: DispatchQueue.main)
-            .assign(to: &$state)
-        Self.tvPrograms(for: Self.day(before: date))
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$previousState)
-        Self.tvPrograms(for: Self.day(after: date))
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$nextState)
+            .sink { [weak self] state in
+                self?.states[day] = state
+            }
+            .store(in: &cancellables)
     }
     
-    private static func day(before date: Date) -> Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: date) ?? Date()
-    }
-    
-    private static func day(after date: Date) -> Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: date) ?? Date()
-    }
-    
-    private static func tvPrograms(for date: Date) -> AnyPublisher<State, Never> {
-        return Publishers.PublishAndRepeat(onOutputFrom: Signal.wokenUp()) {
-            return SRGDataProvider.current!.tvPrograms(for: ApplicationConfiguration.shared.vendor, day: SRGDay(from: date))
-                .map { programCompositions in
-                    return State.loaded(programCompositions)
-                }
-                .catch { error in
-                    return Just(State.failed(error: error))
-                }
-        }
-        .eraseToAnyPublisher()
+    private static func tvPrograms(for day: SRGDay) -> AnyPublisher<State, Never> {
+        return SRGDataProvider.current!.tvPrograms(for: ApplicationConfiguration.shared.vendor, day: day)
+            .map { programCompositions in
+                return State.loaded(programCompositions)
+            }
+            .catch { error in
+                return Just(State.failed(error: error))
+            }
+            .eraseToAnyPublisher()
     }
 }
 
