@@ -401,8 +401,8 @@ extension PageViewController: ShowAccessCellActions {
     
     func openShowByDate() {
         if let navigationController = navigationController {
-            let calendarViewController = CalendarViewController(radioChannel: radioChannel, date: nil)
-            navigationController.pushViewController(calendarViewController, animated: true)
+            let programGuideViewController = ProgramGuideViewController()
+            navigationController.pushViewController(programGuideViewController, animated: true)
         }
     }
 }

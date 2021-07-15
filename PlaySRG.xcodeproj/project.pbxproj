@@ -694,6 +694,11 @@
 		6F340F54220DA99B00778CA3 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F340F51220DA99B00778CA3 /* History.m */; };
 		6F340F55220DA99B00778CA3 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F340F51220DA99B00778CA3 /* History.m */; };
 		6F340F56220DA99B00778CA3 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F340F51220DA99B00778CA3 /* History.m */; };
+		6F362A8426A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */; };
+		6F362A8526A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */; };
+		6F362A8626A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */; };
+		6F362A8726A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */; };
+		6F362A8826A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */; };
 		6F390D7E268C97D500587B1F /* FocusableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA14534254729DA006E8D3B /* FocusableRegion.swift */; };
 		6F390D7F268C97D600587B1F /* FocusableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA14534254729DA006E8D3B /* FocusableRegion.swift */; };
 		6F390D80268C97D700587B1F /* FocusableRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA14534254729DA006E8D3B /* FocusableRegion.swift */; };
@@ -2442,6 +2447,7 @@
 		6F331D4424D06C2600C096AB /* Play SWI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Play SWI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F340F50220DA99B00778CA3 /* History.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
 		6F340F51220DA99B00778CA3 /* History.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramGuideViewController.swift; sourceTree = "<group>"; };
 		6F3A47AE1DD19A5B00C79E67 /* RSIResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RSIResources.xcassets; sourceTree = "<group>"; };
 		6F3A47B01DD19A6900C79E67 /* RTRResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RTRResources.xcassets; sourceTree = "<group>"; };
 		6F3A47B21DD19A7B00C79E67 /* RTSResources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RTSResources.xcassets; sourceTree = "<group>"; };
@@ -4071,6 +4077,7 @@
 		6F93D50726A00CC900711039 /* Program Guide */ = {
 			isa = PBXGroup;
 			children = (
+				6F362A8326A0461B00CBCC9D /* ProgramGuideViewController.swift */,
 				6F93D50826A00CED00711039 /* ProgramGuideViewModel.swift */,
 			);
 			path = "Program Guide";
@@ -7699,6 +7706,7 @@
 				0821D53E227F5ED300FC091F /* DeepLinkService.m in Sources */,
 				08B77AF0240A86FD00A3BC3B /* AccessibilityIdentifierConstants.m in Sources */,
 				0875851823A0025F00FA7207 /* ProfileTableViewCell.m in Sources */,
+				6F362A8426A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */,
 				6FC0C695245FF06D00B44CAE /* ProgramHeaderView.m in Sources */,
 				6F49EF93263A9F2200ED96D2 /* LiveMediaCellViewModel.swift in Sources */,
 				081DAA1F1E099A3A00018623 /* DownloadFooterSectionView.m in Sources */,
@@ -7864,6 +7872,7 @@
 				081220AE1DD07B7A00BF8326 /* DownloadsViewController.m in Sources */,
 				087BC6641EDF1B7C00EED89B /* UILabel+PlaySRG.m in Sources */,
 				082910B6239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */,
+				6F362A8526A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */,
 				E694A9F61D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8B22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F53220DA99B00778CA3 /* History.m in Sources */,
@@ -8067,6 +8076,7 @@
 				081220B21DD07B7B00BF8326 /* DownloadsViewController.m in Sources */,
 				087BC6651EDF1B7C00EED89B /* UILabel+PlaySRG.m in Sources */,
 				082910B7239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */,
+				6F362A8626A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */,
 				E694A9F71D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8C22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F54220DA99B00778CA3 /* History.m in Sources */,
@@ -8270,6 +8280,7 @@
 				081220B61DD07B7B00BF8326 /* DownloadsViewController.m in Sources */,
 				087BC6661EDF1B7C00EED89B /* UILabel+PlaySRG.m in Sources */,
 				082910B8239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */,
+				6F362A8726A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */,
 				E694A9F81D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8D22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F55220DA99B00778CA3 /* History.m in Sources */,
@@ -8473,6 +8484,7 @@
 				081220BA1DD07B7B00BF8326 /* DownloadsViewController.m in Sources */,
 				087BC6671EDF1B7D00EED89B /* UILabel+PlaySRG.m in Sources */,
 				082910B9239EA69C00D168F4 /* RadioChannelsViewController.m in Sources */,
+				6F362A8826A0461B00CBCC9D /* ProgramGuideViewController.swift in Sources */,
 				E694A9F91D65F02700372DF0 /* CalendarViewController.m in Sources */,
 				6FD88F8E22D4BC41008859EF /* UISearchBar+PlaySRG.m in Sources */,
 				6F340F56220DA99B00778CA3 /* History.m in Sources */,

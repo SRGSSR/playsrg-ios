@@ -10,7 +10,7 @@ import SRGDataProviderCombine
 // MARK: View model
 
 class ProgramGuideViewModel: ObservableObject {
-    @Published var date: Date = Date() {
+    @Published var date: Date {
         didSet {
             updatePublishers()
         }
@@ -19,6 +19,11 @@ class ProgramGuideViewModel: ObservableObject {
     @Published private(set) var previousState: State = .loading
     @Published private(set) var state: State = .loading
     @Published private(set) var nextState: State = .loading
+    
+    init(date: Date = Date()) {
+        self.date = date
+        updatePublishers()
+    }
     
     private func updatePublishers() {
         Self.tvPrograms(for: date)
