@@ -1230,6 +1230,11 @@
 		6F939F712090A1B200D3B0C6 /* NSArray+PlaySRG.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F939F6E2090A1B200D3B0C6 /* NSArray+PlaySRG.m */; };
 		6F939F722090A1B200D3B0C6 /* NSArray+PlaySRG.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F939F6E2090A1B200D3B0C6 /* NSArray+PlaySRG.m */; };
 		6F939F732090A1B200D3B0C6 /* NSArray+PlaySRG.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F939F6E2090A1B200D3B0C6 /* NSArray+PlaySRG.m */; };
+		6F93D50926A00CED00711039 /* ProgramGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F93D50826A00CED00711039 /* ProgramGuideViewModel.swift */; };
+		6F93D50A26A00CED00711039 /* ProgramGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F93D50826A00CED00711039 /* ProgramGuideViewModel.swift */; };
+		6F93D50B26A00CED00711039 /* ProgramGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F93D50826A00CED00711039 /* ProgramGuideViewModel.swift */; };
+		6F93D50C26A00CED00711039 /* ProgramGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F93D50826A00CED00711039 /* ProgramGuideViewModel.swift */; };
+		6F93D50D26A00CED00711039 /* ProgramGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F93D50826A00CED00711039 /* ProgramGuideViewModel.swift */; };
 		6F93DE0D20AE985C00B71572 /* OnboardingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F93DE0C20AE985C00B71572 /* OnboardingsViewController.m */; };
 		6F93DE0E20AE985C00B71572 /* OnboardingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F93DE0C20AE985C00B71572 /* OnboardingsViewController.m */; };
 		6F93DE0F20AE985C00B71572 /* OnboardingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F93DE0C20AE985C00B71572 /* OnboardingsViewController.m */; };
@@ -2593,6 +2598,7 @@
 		6F93962520CA5AE1003ECC1B /* NotificationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		6F939F6D2090A1B200D3B0C6 /* NSArray+PlaySRG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+PlaySRG.h"; sourceTree = "<group>"; };
 		6F939F6E2090A1B200D3B0C6 /* NSArray+PlaySRG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PlaySRG.m"; sourceTree = "<group>"; };
+		6F93D50826A00CED00711039 /* ProgramGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramGuideViewModel.swift; sourceTree = "<group>"; };
 		6F93DE0B20AE985C00B71572 /* OnboardingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnboardingsViewController.h; sourceTree = "<group>"; };
 		6F93DE0C20AE985C00B71572 /* OnboardingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnboardingsViewController.m; sourceTree = "<group>"; };
 		6F93DE1220AE9A9900B71572 /* OnboardingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardingsViewController.storyboard; sourceTree = "<group>"; };
@@ -3523,6 +3529,7 @@
 				6F00BFD320A9C630009795AF /* Onboarding */,
 				E66BEC181DA7FCC000AD4450 /* Player */,
 				087584C623A0008500FA7207 /* Profile */,
+				6F93D50726A00CC900711039 /* Program Guide */,
 				0875853323A3DDB800FA7207 /* RadioChannels */,
 				E694A9D61D65EFF300372DF0 /* Search */,
 				0806E7B41D50D8DD002ED406 /* Settings */,
@@ -4059,6 +4066,14 @@
 				6F93962420CA5AE1003ECC1B /* NotificationService.m */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		6F93D50726A00CC900711039 /* Program Guide */ = {
+			isa = PBXGroup;
+			children = (
+				6F93D50826A00CED00711039 /* ProgramGuideViewModel.swift */,
+			);
+			path = "Program Guide";
 			sourceTree = "<group>";
 		};
 		6F9CEA6321884ACC007DE35F /* History */ = {
@@ -7508,6 +7523,7 @@
 				6F54D3C72605100F008B46FF /* ProgressBar.swift in Sources */,
 				6F9D2743203AD99C00FDE899 /* Playlist.m in Sources */,
 				E66BEC1C1DA7FCED00AD4450 /* MediaPlayerViewController.m in Sources */,
+				6F93D50926A00CED00711039 /* ProgramGuideViewModel.swift in Sources */,
 				6F1A77832643CAB600A00EFC /* EmptyView.swift in Sources */,
 				6FFCB62424504C6C00D16466 /* SwimlaneCollectionViewLayout.m in Sources */,
 				6F475FC31EB37BC6003021EA /* ListRequestViewController.m in Sources */,
@@ -7895,6 +7911,7 @@
 				6FC24A7F26395F3E00CACC20 /* FeaturedDescriptionView.swift in Sources */,
 				6FAE025A266812B000791A76 /* FocusTracker.swift in Sources */,
 				08F5DBC2262DF34400F717D0 /* FeaturedContentCell.swift in Sources */,
+				6F93D50A26A00CED00711039 /* ProgramGuideViewModel.swift in Sources */,
 				6FB03F5D25DECB3A0033132B /* ApplicationSettingsConstants.m in Sources */,
 				0832BF1122BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m in Sources */,
 				6FDF70012682022C0004437E /* ApplicationSettings+Common.m in Sources */,
@@ -8097,6 +8114,7 @@
 				6FC24A8026395F3E00CACC20 /* FeaturedDescriptionView.swift in Sources */,
 				6FAE025B266812B000791A76 /* FocusTracker.swift in Sources */,
 				08F5DBC3262DF34400F717D0 /* FeaturedContentCell.swift in Sources */,
+				6F93D50B26A00CED00711039 /* ProgramGuideViewModel.swift in Sources */,
 				6FB03F5E25DECB3A0033132B /* ApplicationSettingsConstants.m in Sources */,
 				0832BF1222BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m in Sources */,
 				6FDF70022682022C0004437E /* ApplicationSettings+Common.m in Sources */,
@@ -8299,6 +8317,7 @@
 				6FC24A8126395F3E00CACC20 /* FeaturedDescriptionView.swift in Sources */,
 				6FAE025D266812B300791A76 /* FocusTracker.swift in Sources */,
 				08F5DBC4262DF34400F717D0 /* FeaturedContentCell.swift in Sources */,
+				6F93D50C26A00CED00711039 /* ProgramGuideViewModel.swift in Sources */,
 				6FB03F5F25DECB3A0033132B /* ApplicationSettingsConstants.m in Sources */,
 				0832BF1322BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m in Sources */,
 				6FDF70032682022C0004437E /* ApplicationSettings+Common.m in Sources */,
@@ -8501,6 +8520,7 @@
 				6FC24A8226395F3E00CACC20 /* FeaturedDescriptionView.swift in Sources */,
 				6FAE025E266812B300791A76 /* FocusTracker.swift in Sources */,
 				08F5DBC5262DF34400F717D0 /* FeaturedContentCell.swift in Sources */,
+				6F93D50D26A00CED00711039 /* ProgramGuideViewModel.swift in Sources */,
 				6FB03F6025DECB3A0033132B /* ApplicationSettingsConstants.m in Sources */,
 				0832BF1422BD6BB000EFFFE6 /* SearchLoadingCollectionViewCell.m in Sources */,
 				6FDF70042682022C0004437E /* ApplicationSettings+Common.m in Sources */,
