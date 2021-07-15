@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: View controller
 
-class PageViewController: UIViewController {
+final class PageViewController: UIViewController {
     private let model: PageViewModel
     
     private var cancellables = Set<AnyCancellable>()
